@@ -685,25 +685,7 @@ window.SOPHIA_I18N = {
 // Section 8: Language toggle injection
 // =============================================
 document.addEventListener('DOMContentLoaded', function() {
-    var desktopNav = document.querySelector('header nav.hidden');
-    if (!desktopNav) return;
     var lang = window.SOPHIA_LANG;
-    var toggle = document.createElement('div');
-    toggle.className = 'flex items-center gap-1 ml-4';
-    toggle.innerHTML =
-        '<button class="lang-btn text-sm px-2 py-0.5 rounded transition-all ' + (lang === 'de' ? 'bg-white/20 text-white font-bold' : 'text-white/60 hover:text-white/80') + '" data-lang="de">DE</button>' +
-        '<span class="text-white/30 text-xs">|</span>' +
-        '<button class="lang-btn text-sm px-2 py-0.5 rounded transition-all ' + (lang === 'en' ? 'bg-white/20 text-white font-bold' : 'text-white/60 hover:text-white/80') + '" data-lang="en">EN</button>';
-    desktopNav.appendChild(toggle);
-
-    // Handle pages with dark nav (imprint, privacy)
-    var isDarkNav = desktopNav.querySelector('a.text-black');
-    if (isDarkNav) {
-        toggle.innerHTML =
-            '<button class="lang-btn text-sm px-2 py-0.5 rounded transition-all ' + (lang === 'de' ? 'bg-black/10 text-black font-bold' : 'text-black/40 hover:text-black/60') + '" data-lang="de">DE</button>' +
-            '<span class="text-black/20 text-xs">|</span>' +
-            '<button class="lang-btn text-sm px-2 py-0.5 rounded transition-all ' + (lang === 'en' ? 'bg-black/10 text-black font-bold' : 'text-black/40 hover:text-black/60') + '" data-lang="en">EN</button>';
-    }
 
     function attachHandler(btn) {
         btn.addEventListener('click', function() {
@@ -714,5 +696,38 @@ document.addEventListener('DOMContentLoaded', function() {
             window.location.href = url.toString();
         });
     }
-    toggle.querySelectorAll('.lang-btn').forEach(attachHandler);
+
+    // Desktop toggle (in the hidden md:flex nav)
+    var desktopNav = document.querySelector('header nav.hidden');
+    if (desktopNav) {
+        var toggle = document.createElement('div');
+        toggle.className = 'flex items-center gap-1 ml-4';
+        var isDarkNav = desktopNav.querySelector('a.text-black');
+        if (isDarkNav) {
+            toggle.innerHTML =
+                '<button class="lang-btn text-sm px-2 py-0.5 rounded transition-all ' + (lang === 'de' ? 'bg-black/10 text-black font-bold' : 'text-black/40 hover:text-black/60') + '" data-lang="de">DE</button>' +
+                '<span class="text-black/20 text-xs">|</span>' +
+                '<button class="lang-btn text-sm px-2 py-0.5 rounded transition-all ' + (lang === 'en' ? 'bg-black/10 text-black font-bold' : 'text-black/40 hover:text-black/60') + '" data-lang="en">EN</button>';
+        } else {
+            toggle.innerHTML =
+                '<button class="lang-btn text-sm px-2 py-0.5 rounded transition-all ' + (lang === 'de' ? 'bg-white/20 text-white font-bold' : 'text-white/60 hover:text-white/80') + '" data-lang="de">DE</button>' +
+                '<span class="text-white/30 text-xs">|</span>' +
+                '<button class="lang-btn text-sm px-2 py-0.5 rounded transition-all ' + (lang === 'en' ? 'bg-white/20 text-white font-bold' : 'text-white/60 hover:text-white/80') + '" data-lang="en">EN</button>';
+        }
+        desktopNav.appendChild(toggle);
+        toggle.querySelectorAll('.lang-btn').forEach(attachHandler);
+    }
+
+    // Mobile toggle (inside the #mobile-menu panel, which is white-on-blur on all pages)
+    var mobileMenuInner = document.querySelector('#mobile-menu > div');
+    if (mobileMenuInner) {
+        var mToggle = document.createElement('div');
+        mToggle.className = 'flex items-center gap-1 py-3 mt-1 border-t border-white/15';
+        mToggle.innerHTML =
+            '<button class="lang-btn text-sm px-2 py-1 rounded transition-all ' + (lang === 'de' ? 'bg-white/20 text-white font-bold' : 'text-white/60 hover:text-white') + '" data-lang="de">DE</button>' +
+            '<span class="text-white/30 text-xs">|</span>' +
+            '<button class="lang-btn text-sm px-2 py-1 rounded transition-all ' + (lang === 'en' ? 'bg-white/20 text-white font-bold' : 'text-white/60 hover:text-white') + '" data-lang="en">EN</button>';
+        mobileMenuInner.appendChild(mToggle);
+        mToggle.querySelectorAll('.lang-btn').forEach(attachHandler);
+    }
 });

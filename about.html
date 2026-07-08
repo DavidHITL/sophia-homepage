@@ -119,7 +119,7 @@
     <section class="bg-white py-16 md:py-24 fade-in-scroll">
         <div class="max-w-[1618px] mx-auto px-6 md:px-16">
             <h3 class="text-5xl md:text-7xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] font-bold mb-8">Mission</h3>
-            <p class="text-lg md:text-xl lg:text-[24px] leading-[1.5] tracking-[-0.5px] max-w-[1403px]">
+            <p class="text-lg md:text-xl lg:text-[24px] leading-[1.5] tracking-[-0.5px] max-w-[1403px]" data-de="Unsere Mission ist es, die maßgebliche autonome Operations-Plattform für den Fertigungsmittelstand zu bauen. Wir helfen unseren Partnern zum <strong>Win From Within</strong>, indem wir operatives Chaos in reibungslosen Fluss verwandeln. Aus der Verbindung von Fertigungs-DNA und autonomer Intelligenz liefern wir die Erkenntnisse und die Umsetzung, um den Wettbewerb zu überholen und Ihre Margen zu schützen.">
                 Our mission is to build the definitive autonomous operations platform for manufacturing SMEs. We help our partners <strong>Win From Within</strong> by turning operational chaos into seamless flow. Through a combination of manufacturing DNA and autonomous intelligence, we provide the insights and execution needed to outpace the competition and protect your margins.
             </p>
         </div>
@@ -229,7 +229,7 @@
                     <div class="flex flex-col gap-4">
                         <img src="assets/footer-logo.png" alt="SOPHIA" class="h-[30px] w-[115px] object-contain object-left">
                         <p class="text-[15px] text-white leading-[1.4] tracking-[-0.15px] max-w-[262px]">
-                            Sophia — Operational excellence, straight from your inbox.
+                            Sophia. Operational excellence, straight from your inbox.
                         </p>
                     </div>
                     <div class="flex items-center gap-4 mt-12 lg:mt-[180px]">
@@ -270,6 +270,48 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Deutsche Fassung (?lang=de), gespiegelt vom index.html-Mechanismus.
+        // window.SOPHIA_LANG wird von i18n.js (head) gesetzt. Namen und "Win From Within" bleiben unuebersetzt.
+        if (window.SOPHIA_LANG === 'de') {
+            const DE = {
+                'About Us': 'Über uns',
+                'Product': 'Produkt',
+                'Security': 'Sicherheit',
+                'Careers': 'Karriere',
+                'Sophia is building the leading autonomous operations platform for manufacturing SMEs.': 'Sophia baut die führende autonome Operations-Plattform für den Fertigungsmittelstand.',
+                'We are building a world where manufacturing companies can dedicate 100% of their energy to their products, while our autonomous systems handle the rest.': 'Wir bauen eine Welt, in der sich Fertigungsunternehmen zu 100% ihren Produkten widmen können, während unsere autonomen Systeme den Rest übernehmen.',
+                'The Team': 'Das Team',
+                'Founder and CEO': 'Gründer und CEO',
+                'A serial entrepreneur and technology founder, Simon brings over 14 years of deep-rooted experience in the manufacturing sector. Having navigated the unique landscape of the German Mittelstand firsthand, he is driven by a passion for bridging the gap between cutting-edge technology and traditional industry.': 'Als mehrfacher Unternehmer und Technologiegründer bringt Simon über 14 Jahre tief verwurzelte Erfahrung in der Fertigungsbranche mit. Er kennt die besondere Welt des deutschen Mittelstands aus erster Hand, und ihn treibt die Leidenschaft, die Lücke zwischen modernster Technologie und traditioneller Industrie zu schließen.',
+                'With the launch of Sophia, Simon is on a mission to revitalize European manufacturing. By putting AI to work he aims to initiate a new era of industrial growth and competitiveness across Europe.': 'Mit dem Start von Sophia hat sich Simon vorgenommen, die europäische Fertigung neu zu beleben. Indem er KI zum Einsatz bringt, will er eine neue Ära industriellen Wachstums und industrieller Wettbewerbsfähigkeit in ganz Europa einleiten.',
+                'Founding Engineer, Fullstack': 'Gründungsingenieur, Fullstack',
+                'A seasoned software architect and problem-solver, Adam brings over 7 years of specialized experience in bringing digital transformation to the manufacturing floor. He is driven by a core philosophy of simplicity: deconstructing complex industrial challenges into elegant, intuitive technology that empowers traditional sectors.': 'Als erfahrener Software-Architekt und Problemlöser bringt Adam über sieben Jahre spezialisierte Erfahrung darin mit, die digitale Transformation auf den Fertigungsboden zu bringen. Ihn leitet eine Grundphilosophie der Einfachheit: komplexe industrielle Herausforderungen in elegante, intuitive Technologie zu zerlegen, die traditionelle Branchen stärkt.',
+                'As a Founding Engineer at Sophia, Adam is the architect behind our customer-facing applications. By building robust, fullstack solutions, he is dedicated to translating sophisticated data into seamless user experiences, ensuring that the power of AI is accessible to every manufacturer.': 'Als Gründungsingenieur bei Sophia ist Adam der Architekt hinter unseren kundenseitigen Anwendungen. Mit robusten Fullstack-Lösungen übersetzt er anspruchsvolle Daten in reibungslose Nutzererlebnisse und stellt sicher, dass die Kraft der KI jedem Fertiger zugänglich ist.',
+                'Founding Engineer, AI Systems': 'Gründungsingenieur, KI-Systeme',
+                'An engineer of rare depth and range, Seung-Zin brings over a decade of experience building software at the intersection of AI and industry. From scientific computing at the Max Planck Institute to AI systems for CNC machines and the agentic bridge between OT and IT in discrete manufacturing, he has spent his career turning hard research problems into production systems that work.': 'Als Ingenieur von seltener Tiefe und Breite bringt Seung-Zin über ein Jahrzehnt Erfahrung im Bau von Software an der Schnittstelle von KI und Industrie mit. Vom wissenschaftlichen Rechnen am Max-Planck-Institut über KI-Systeme für CNC-Maschinen bis zur agentischen Brücke zwischen OT und IT in der diskreten Fertigung hat er seine Laufbahn damit verbracht, schwierige Forschungsprobleme in Produktionssysteme zu verwandeln, die funktionieren.',
+                'As a Founding Engineer at Sophia, Seung-Zin builds the intelligence at the core of our platform. Drawing on deep expertise in knowledge graphs, distributed systems, and applied machine learning, he designs the AI agents that read, reason over, and act on business data, ensuring every decision Sophia makes is accurate, reliable, and grounded in the realities of the business.': 'Als Gründungsingenieur bei Sophia baut Seung-Zin die Intelligenz im Kern unserer Plattform. Mit tiefem Wissen über Wissensgraphen, verteilte Systeme und angewandtes maschinelles Lernen entwirft er die KI-Agenten, die Geschäftsdaten lesen, durchdenken und danach handeln, damit jede Entscheidung von Sophia präzise, verlässlich und in der Wirklichkeit des Unternehmens verankert ist.',
+                'Sophia. Operational excellence, straight from your inbox.': 'Sophia. Operative Exzellenz, direkt aus Ihrem Postfach.',
+                'Company': 'Unternehmen',
+                'Contact': 'Kontakt',
+                'Legal': 'Rechtliches',
+                'Imprint': 'Impressum',
+                'Terms': 'AGB',
+                'Privacy': 'Datenschutz',
+                'Sub-processors': 'Unterauftragsverarbeiter',
+                '© 2026 Sophia AI GmbH. All Rights Reserved.': '© 2026 Sophia AI GmbH. Alle Rechte vorbehalten.'
+            };
+            document.querySelectorAll('a, p, h1, h2, h3, h4, h5, h6, span, li, button').forEach(function (el) {
+                if (el.children.length) return;
+                const key = el.textContent.trim().replace(/’/g, "'");
+                if (Object.prototype.hasOwnProperty.call(DE, key)) el.textContent = DE[key];
+            });
+            document.querySelectorAll('[data-de]').forEach(function (el) {
+                el.innerHTML = el.getAttribute('data-de');
+            });
+        }
+    </script>
 
     <script>
         const observer = new IntersectionObserver(function(entries) {
