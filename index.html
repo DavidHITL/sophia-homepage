@@ -172,18 +172,20 @@
         }
         .zone-tint section { background-color: transparent; }
 
-        /* Dunkle Bahn (Security = Tresor): staerkster Kontrast-Beat, aber warm statt kaltschwarz.
-           Nimmt den Bogen des Hero-Gradients auf (kuehles Anthrazit oben in warmes Rostbraun),
-           dunkel genug fuer weisse Schrift ueber die ganze Hoehe. */
+        /* Dunkle Bahn (Security = Tresor): der echte Hero-Gradient (Blau ueber Orange in Rost),
+           mit einem sanften dunklen Scrim darueber (am staerksten ueber der hellen Orange-Mitte),
+           damit die Marken-Farbreise erkennbar bleibt und weisse Schrift trotzdem sitzt. */
         .zone-dark {
-            background: linear-gradient(168deg, #1f2731 0%, #2c1d13 52%, #17100b 100%);
+            background:
+                linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.48) 55%, rgba(0,0,0,0.40) 100%),
+                linear-gradient(180deg, #3c66a9 0%, #6a7a9a 30%, #c5752d 60%, #b7490f 80%, #4a1a08 100%);
             color: #ffffff;
         }
         .zone-dark section { background-color: transparent; }
         /* Utility-Text im Dunkeln invertieren (hoehere Spezifitaet schlaegt die Tailwind-Klasse) */
         .zone-dark .text-black\/60 { color: rgba(255,255,255,0.66); }
         .zone-dark .text-black\/50 { color: rgba(255,255,255,0.55); }
-        .zone-dark .text-black\/40 { color: rgba(255,255,255,0.45); }
+        .zone-dark .text-black\/40 { color: rgba(255,255,255,0.62); }
         .zone-dark .text-black\/30 { color: rgba(255,255,255,0.40); }
         .zone-dark .text-green-600 { color: #4ade80; }
         .zone-dark .bg-black\/5 { background: rgba(255,255,255,0.08); }
@@ -199,11 +201,13 @@
         }
         .security-card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(0,0,0,0.06); }
         .zone-dark .security-card {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.10);
+            background: rgba(15,12,14,0.34);
+            border: 1px solid rgba(255,255,255,0.12);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         .zone-dark .security-card:hover {
-            background: rgba(255,255,255,0.06);
+            background: rgba(15,12,14,0.46);
             box-shadow: 0 14px 34px rgba(0,0,0,0.45);
         }
         /* Einheitliches monochromes Icon-Chip (an Spark-Mark und Compliance-Badges angelehnt) */
@@ -234,7 +238,7 @@
         .compliance-badge.completed { border-color: #22c55e; background: rgba(34, 197, 94, 0.04); }
         .compliance-badge.pending { border-color: #e0e0e0; background: #fafafa; }
         .zone-dark .compliance-badge.completed { border-color: rgba(34,197,94,0.55); background: rgba(34,197,94,0.10); }
-        .zone-dark .compliance-badge.pending { border-color: rgba(255,255,255,0.16); background: rgba(255,255,255,0.03); }
+        .zone-dark .compliance-badge.pending { border-color: rgba(255,255,255,0.16); background: rgba(15,12,14,0.32); }
 
         /* Feature card */
         .feature-card {
