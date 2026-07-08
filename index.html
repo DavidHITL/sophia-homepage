@@ -160,14 +160,34 @@
             transform: scale(1.02);
         }
 
-        /* Security cards (portiert von security.html) */
+        /* Alternierende Tint-Zonen: weiche Bahn, blendet oben/unten ueber 80px ins Weiss.
+           Sektionen darin werden transparent, damit die Bahn durchscheint (Gradient-Karten behalten ihre inline-Gradients). */
+        .zone-tint {
+            background: linear-gradient(180deg, #ffffff 0, #f6f7f9 80px, #f6f7f9 calc(100% - 80px), #ffffff 100%);
+        }
+        .zone-tint section { background-color: transparent; }
+        /* Security cards: weiss schwebend auf der Tint-Bahn */
         .security-card {
-            background: #f8f8f8;
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.05);
             border-radius: 16px;
             padding: 32px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .security-card:hover { transform: translateY(-4px); }
+        .security-card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(0,0,0,0.06); }
+        /* Einheitliches monochromes Icon-Chip (an Spark-Mark und Compliance-Badges angelehnt) */
+        .icon-chip {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.75rem;
+            background: rgba(0,0,0,0.035);
+            border: 1px solid rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
         .compliance-badge {
             border: 1px solid #e0e0e0;
             border-radius: 12px;
@@ -594,6 +614,10 @@
     </section>
 
     <!-- ============================================ -->
+    <!-- ZONE Proof (Metriken + Integration + Feature-Cards): Tint-Bahn -->
+    <!-- ============================================ -->
+    <div class="zone-tint">
+    <!-- ============================================ -->
     <!-- 2. RESULTS BAND - Outcome metrics -->
     <!-- ============================================ -->
     <section class="bg-white py-20 md:py-32 fade-in-scroll">
@@ -678,7 +702,7 @@
                 <!-- Card 1: Connect -->
                 <div class="rounded-lg min-h-[400px] md:min-h-[550px] flex flex-col overflow-hidden" style="background: linear-gradient(180deg, #1e528e 0%, #728a7c 50%, #e9ce5d 100%);">
                     <div class="p-8 md:p-12">
-                        <h3 class="text-2xl md:text-[36px] leading-[1.1] tracking-[-0.4px] text-white">Connects everything</h3>
+                        <h3 class="text-2xl md:text-[36px] leading-[1.1] tracking-[-0.4px] font-medium text-white">Connects everything</h3>
                         <p class="text-sm md:text-base leading-[1.5] text-white/80 mt-4 max-w-[500px]">
                             Sophia integrates with your ERP, CRM, DMS, and inbox, letting agents operate across your entire business, not just one tool.
                         </p>
@@ -723,7 +747,7 @@
                 <!-- Card 2: Email-Centric -->
                 <div class="rounded-lg min-h-[400px] md:min-h-[550px] flex flex-col overflow-hidden" style="background: linear-gradient(180deg, #1e528e 0%, #728a7c 50%, #e9ce5d 100%);">
                     <div class="p-8 md:p-12">
-                        <h3 class="text-2xl md:text-[36px] leading-[1.1] tracking-[-0.4px] text-white">Email Centric</h3>
+                        <h3 class="text-2xl md:text-[36px] leading-[1.1] tracking-[-0.4px] font-medium text-white">Email Centric</h3>
                         <p id="email-centric-sub" class="text-sm md:text-base leading-[1.5] text-white/80 mt-4 max-w-[500px]">
                             Sophia is your new Email client, reading emails, drafting replies, checking material prices and availability and updating your ERP. No new tools to learn, no workflows to change.
                         </p>
@@ -746,6 +770,8 @@
             </div>
         </div>
     </section>
+    </div>
+    <!-- /zone-tint Proof -->
 
     <!-- ============================================ -->
     <!-- 5b. PRODUCT ON THE LANDING PAGE -->
@@ -872,11 +898,13 @@
     </section>
 
     <!-- ============================================ -->
-    <!-- 5c. SECURITY ON THE LANDING PAGE (portiert von security.html) -->
+    <!-- 5c. SECURITY + COMPLIANCE (Trust-Zone auf der Landingpage) -->
     <!-- ============================================ -->
-    <section id="security" class="bg-white pt-12 md:pt-20 pb-8 md:pb-10 fade-in-scroll" style="scroll-margin-top: 32px;">
+    <div class="zone-tint">
+    <section id="security" class="pt-16 md:pt-28 pb-8 md:pb-12 fade-in-scroll" style="scroll-margin-top: 32px;">
         <div class="max-w-[1794px] mx-auto px-6 md:px-16 text-center">
-            <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] font-bold">
+            <p class="text-sm md:text-base uppercase tracking-[2px] text-black/40 mb-6 md:mb-8">Security &amp; compliance</p>
+            <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] font-normal text-center">
                 European Security
             </h2>
             <a href="contact.html" class="inline-block mt-8 md:mt-10 bg-black text-white text-sm px-6 py-3 rounded-full btn-hover transition-all hover:opacity-90">
@@ -886,59 +914,59 @@
     </section>
 
     <!-- Security features -->
-    <section class="bg-white pb-12 md:pb-16 fade-in-scroll">
+    <section class="pb-16 md:pb-20 fade-in-scroll">
         <div class="max-w-[1400px] mx-auto px-6 md:px-16">
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                <!-- Card 1 -->
+                <!-- Card 1: Privacy (lock) -->
                 <div class="security-card">
-                    <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+                    <div class="icon-chip">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
                     </div>
                     <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Privacy at the core</h3>
                     <p class="text-base text-black/60 leading-[1.6]">Your business data belongs to you. Sophia is architected so that sensitive information never leaves your control or gets used for model training.</p>
                 </div>
 
-                <!-- Card 2 -->
+                <!-- Card 2: EU-hosted (globe) -->
                 <div class="security-card">
-                    <div class="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+                    <div class="icon-chip">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
                     </div>
                     <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">German-engineered. EU-hosted.</h3>
                     <p class="text-base text-black/60 leading-[1.6]">All data processing and storage stays within European borders. GDPR-compliant from day one, because manufacturing data deserves sovereign infrastructure.</p>
                 </div>
 
-                <!-- Card 3 -->
+                <!-- Card 3: Protection (shield-check) -->
                 <div class="security-card">
-                    <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+                    <div class="icon-chip">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
                     </div>
                     <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Industrial-strength protection</h3>
                     <p class="text-base text-black/60 leading-[1.6]">End-to-end encryption, role-based access, and audit logging at every layer. The same rigour you expect from your ERP, applied to your AI.</p>
                 </div>
 
-                <!-- Card 4 -->
+                <!-- Card 4: Verified (check-badge) -->
                 <div class="security-card">
-                    <div class="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.35 3.836c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15a2.25 2.25 0 012.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m8.9-4.414c.376.023.75.05 1.124.08 1.131.094 1.976 1.057 1.976 2.192V16.5A2.25 2.25 0 0118 18.75h-2.25m-7.5-10.5H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V18.75m-7.5-10.5h6.375c.621 0 1.125.504 1.125 1.125v9.375m-8.25-3l1.5 1.5 3-3.75"/></svg>
+                    <div class="icon-chip">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"/></svg>
                     </div>
                     <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Independently verified</h3>
                     <p class="text-base text-black/60 leading-[1.6]">Regular third-party penetration testing and security audits. We don't ask you to take our word for it, we prove it.</p>
                 </div>
 
-                <!-- Card 5 -->
+                <!-- Card 5: Reliability (arrow-path) -->
                 <div class="security-card">
-                    <div class="w-12 h-12 rounded-xl bg-cyan-50 flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7m0 0a3 3 0 01-3 3m0 3h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008zm-3 6h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008z"/></svg>
+                    <div class="icon-chip">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/></svg>
                     </div>
                     <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Always-on reliability</h3>
                     <p class="text-base text-black/60 leading-[1.6]">Redundant infrastructure with automatic failover. Your back-office agents keep running, even when things go wrong upstream.</p>
                 </div>
 
-                <!-- Card 6 -->
+                <!-- Card 6: Control (adjustments) -->
                 <div class="security-card">
-                    <div class="w-12 h-12 rounded-xl bg-rose-50 flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+                    <div class="icon-chip">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"/></svg>
                     </div>
                     <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">You stay in control</h3>
                     <p class="text-base text-black/60 leading-[1.6]">Every agent action can be reviewed, approved, or overridden. You decide how much autonomy to give, Sophia adapts to your comfort level.</p>
@@ -949,7 +977,7 @@
     </section>
 
     <!-- Compliance -->
-    <section class="bg-white pb-16 md:pb-24 fade-in-scroll">
+    <section class="pb-20 md:pb-28 fade-in-scroll">
         <div class="max-w-[1400px] mx-auto px-6 md:px-16 text-center">
             <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] font-normal mb-16">
                 Compliance you can count on.
@@ -982,6 +1010,8 @@
             </div>
         </div>
     </section>
+    </div>
+    <!-- /zone-trust -->
 
     <!-- ============================================ -->
     <!-- 4. BELIEF TEXT -->
@@ -1027,7 +1057,7 @@
                 </div>
                 <!-- Text -->
                 <div class="order-1 md:order-2 flex flex-col justify-between self-stretch">
-                    <h3 class="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] font-normal">More Revenue</h3>
+                    <h3 class="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] leading-[0.95] tracking-[-0.5px] sm:tracking-[-1px] md:tracking-[-2px] font-normal">More Revenue</h3>
                     <p class="text-lg md:text-xl tracking-[-0.2px] leading-[1.5] text-black/60">Sophia creates quotes in seconds, ensures no email request goes unanswered, and proactively follows up with customers. By identifying opportunities hidden in customer behavior, your team closes more deals without lifting a finger.</p>
                 </div>
             </div>
@@ -1042,7 +1072,7 @@
             <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
                 <!-- Text -->
                 <div class="flex flex-col justify-between self-stretch">
-                    <h3 class="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] font-normal">Better Margins</h3>
+                    <h3 class="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] leading-[0.95] tracking-[-0.5px] sm:tracking-[-1px] md:tracking-[-2px] font-normal">Better Margins</h3>
                     <p class="text-lg md:text-xl tracking-[-0.2px] leading-[1.5] text-black/60">Sophia automatically compares supplier pricing, sends out RFQs to multiple vendors, and flags cost-saving opportunities across your procurement. Proactive negotiation with competing quotes protects your margins without manual effort.</p>
                 </div>
                 <!-- Interactive mini agent - RFQs Processing -->
@@ -1107,7 +1137,7 @@
                 </div>
                 <!-- Text -->
                 <div class="order-1 md:order-2 flex flex-col justify-between self-stretch">
-                    <h3 class="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] font-normal">Outstanding Customer Service</h3>
+                    <h3 class="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] leading-[0.95] tracking-[-0.5px] sm:tracking-[-1px] md:tracking-[-2px] font-normal">Outstanding Customer Service</h3>
                     <p class="text-lg md:text-xl tracking-[-0.2px] leading-[1.5] text-black/60">When a supplier delays, Sophia doesn't wait for your customers to ask. It proactively notifies affected customers, searches for alternatives, and escalates decisions to your team, all before anyone picks up the phone.</p>
                 </div>
             </div>
@@ -1122,7 +1152,7 @@
             <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
                 <!-- Text -->
                 <div class="flex flex-col justify-between self-stretch">
-                    <h3 class="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] font-normal">Clarity</h3>
+                    <h3 class="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] leading-[0.95] tracking-[-0.5px] sm:tracking-[-1px] md:tracking-[-2px] font-normal">Clarity</h3>
                     <p class="text-lg md:text-xl tracking-[-0.2px] leading-[1.5] text-black/60">Every invoice, claim, order, and request is processed the same day it arrives. Sophia pulls messy data from emails and combines it with your ERP and accounting systems, giving you a single, clean view of what's happening across your business.</p>
                 </div>
                 <!-- Diagram tile - Sky Gradient 9 -->
@@ -1205,6 +1235,10 @@
     </section>
 
     <!-- ============================================ -->
+    <!-- ZONE Close (WIN FROM WITHIN): Tint-Bahn -->
+    <!-- ============================================ -->
+    <div class="zone-tint">
+    <!-- ============================================ -->
     <!-- WIN FROM WITHIN -->
     <!-- ============================================ -->
     <section class="bg-white py-20 md:py-32">
@@ -1214,6 +1248,8 @@
             </h2>
         </div>
     </section>
+    </div>
+    <!-- /zone-tint Close -->
 
     <!-- ============================================ -->
     <!-- 6. FOOTER -->
@@ -1307,11 +1343,11 @@
                 const h1 = document.getElementById('hero-h1');
                 if (h1) h1.textContent = 'Die autonome Operations-Plattform';
                 const sub = document.getElementById('hero-sub');
-                if (sub) sub.textContent = 'KI-Agenten, die Ihren Posteingang erledigen. Sie lesen E-Mails, prüfen Daten im ERP und handeln eigenständig. Keine neuen Systeme. Keine Datenmigration.';
+                if (sub) sub.textContent = 'KI-Agenten, die direkt aus Ihrem Posteingang arbeiten. Sie lesen E-Mails, prüfen Daten im ERP und handeln eigenständig. Keine neuen Systeme. Keine Datenmigration.';
                 const cta = document.getElementById('hero-cta');
                 if (cta) cta.textContent = 'Kontakt aufnehmen';
                 const ecSub = document.getElementById('email-centric-sub');
-                if (ecSub) ecSub.textContent = 'Sophia ist Ihr neuer E-Mail-Client: liest E-Mails, entwirft Antworten, prüft Materialpreise und Verfügbarkeiten und aktualisiert Ihr ERP. Keine neuen Tools zu lernen, keine Abläufe zu ändern.';
+                if (ecSub) ecSub.textContent = 'Sophia ist Ihr neuer E-Mail-Client: liest E-Mails, entwirft Antworten, prüft Materialpreise und Verfügbarkeiten und aktualisiert Ihr ERP. Keine neuen Tools, keine geänderten Abläufe.';
                 const ptH2 = document.getElementById('product-teaser-h2');
                 if (ptH2) ptH2.textContent = 'Sophia bei der Arbeit';
 
@@ -1325,11 +1361,12 @@
                     'Product': 'Produkt',
                     'Security': 'Sicherheit',
                     'Careers': 'Karriere',
+                    'Security & compliance': 'Sicherheit & Compliance',
                     'Connects everything': 'Verbindet alles',
                     'Sophia integrates with your ERP, CRM, DMS, and inbox, letting agents operate across your entire business, not just one tool.': 'Sophia integriert sich in Ihr ERP, CRM, DMS und Postfach, sodass Agenten in Ihrem gesamten Unternehmen arbeiten, nicht nur in einem Tool.',
-                    'Email Centric': 'E-Mail-zentriert',
+                    'Email Centric': 'Rund um die E-Mail',
                     'Impact from day one': 'Wirkung ab dem ersten Tag',
-                    'Designed to seamlessly integrate into your processes. No disruption.': 'Nahtlos in Ihre Prozesse integriert. Ohne Unterbrechung.',
+                    'Designed to seamlessly integrate into your processes. No disruption.': 'Nahtlos in Ihre Prozesse integriert. Ohne Umstellung.',
                     'Native integrations with 20+ ERP systems': 'Native Integrationen mit über 20 ERP-Systemen',
                     'We make your business 10x stronger.': '10x mehr Zeit für Ihre Kunden.',
                     'More Revenue': 'Mehr Umsatz',
@@ -1339,7 +1376,7 @@
                     'Outstanding Customer Service': 'Herausragender Kundenservice',
                     "When a supplier delays, Sophia doesn't wait for your customers to ask. It proactively notifies affected customers, searches for alternatives, and escalates decisions to your team, all before anyone picks up the phone.": 'Wenn ein Lieferant sich verspätet, wartet Sophia nicht, bis Ihre Kunden nachfragen. Sie benachrichtigt proaktiv betroffene Kunden, sucht nach Alternativen und eskaliert Entscheidungen an Ihr Team, alles noch bevor jemand zum Hörer greift.',
                     'Clarity': 'Klarheit',
-                    "Every invoice, claim, order, and request is processed the same day it arrives. Sophia pulls messy data from emails and combines it with your ERP and accounting systems, giving you a single, clean view of what's happening across your business.": 'Jede Rechnung, Reklamation, Bestellung und Anfrage wird noch am selben Tag bearbeitet, an dem sie eintrifft. Sophia zieht unstrukturierte Daten aus E-Mails und kombiniert sie mit Ihrem ERP und Ihren Buchhaltungssystemen und gibt Ihnen so einen einzigen, klaren Blick auf alles, was in Ihrem Unternehmen passiert.',
+                    "Every invoice, claim, order, and request is processed the same day it arrives. Sophia pulls messy data from emails and combines it with your ERP and accounting systems, giving you a single, clean view of what's happening across your business.": 'Jede Rechnung, Reklamation, Bestellung und Anfrage wird noch am selben Tag bearbeitet, an dem sie eintrifft. Sophia zieht unstrukturierte Daten aus E-Mails und kombiniert sie mit Ihrem ERP und Ihren Buchhaltungssystemen und gibt Ihnen so einen klaren, einheitlichen Überblick über alles, was in Ihrem Unternehmen passiert.',
                     'Sophia. Operational excellence, straight from your inbox.': 'Sophia. Operative Exzellenz, direkt aus Ihrem Postfach.',
                     'Company': 'Unternehmen',
                     'Contact': 'Kontakt',
@@ -1368,8 +1405,8 @@
                     'Overview': 'Übersicht',
                     'European Security': 'Europäische Sicherheit',
                     'Get in touch': 'Kontakt aufnehmen',
-                    'Privacy at the core': 'Datenschutz im Kern',
-                    'German-engineered. EU-hosted.': 'Deutsch entwickelt. In der EU gehostet.',
+                    'Privacy at the core': 'Datenschutz im Zentrum',
+                    'German-engineered. EU-hosted.': 'In Deutschland entwickelt. In der EU gehostet.',
                     'Industrial-strength protection': 'Schutz auf Industrieniveau',
                     'Independently verified': 'Unabhängig geprüft',
                     'Always-on reliability': 'Zuverlässig rund um die Uhr',
@@ -1379,7 +1416,7 @@
                     'End-to-end encryption, role-based access, and audit logging at every layer. The same rigour you expect from your ERP, applied to your AI.': 'Ende-zu-Ende-Verschlüsselung, rollenbasierter Zugriff und Audit-Logging auf jeder Ebene. Dieselbe Sorgfalt, die Sie von Ihrem ERP erwarten, angewendet auf Ihre KI.',
                     "Regular third-party penetration testing and security audits. We don't ask you to take our word for it, we prove it.": 'Regelmäßige Penetrationstests und Sicherheitsaudits durch Dritte. Sie müssen uns nicht glauben, wir weisen es nach.',
                     'Redundant infrastructure with automatic failover. Your back-office agents keep running, even when things go wrong upstream.': 'Redundante Infrastruktur mit automatischem Failover. Ihre Back-Office-Agenten laufen weiter, auch wenn es an anderer Stelle hakt.',
-                    'Every agent action can be reviewed, approved, or overridden. You decide how much autonomy to give, Sophia adapts to your comfort level.': 'Jede Agenten-Aktion lässt sich prüfen, freigeben oder überschreiben. Sie entscheiden, wie viel Autonomie Sie geben, Sophia passt sich Ihrem Komfortniveau an.',
+                    'Every agent action can be reviewed, approved, or overridden. You decide how much autonomy to give, Sophia adapts to your comfort level.': 'Jede Agenten-Aktion lässt sich prüfen, freigeben oder überschreiben. Sie entscheiden, wie viel Autonomie Sie übertragen, und Sophia richtet sich danach.',
                     'Compliance you can count on.': 'Compliance, auf die Sie sich verlassen können.',
                     'GDPR': 'DSGVO',
                     'Compliant': 'Konform',
