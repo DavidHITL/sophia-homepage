@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOPHIA - About Us</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="manifest" href="images/site.webmanifest">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-light.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-light.woff') format('woff'); font-weight: 300; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-book.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-book.woff') format('woff'); font-weight: 350; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-regular.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-regular.woff') format('woff'); font-weight: 400; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-medium.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-medium.woff') format('woff'); font-weight: 500; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-bold.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-bold.woff') format('woff'); font-weight: 700; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-heavy.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-heavy.woff') format('woff'); font-weight: 800; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-black.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-black.woff') format('woff'); font-weight: 900; font-style: normal; font-display: swap; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"KMR Apparat"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'KMR Apparat', sans-serif; background-color: #ffffff; color: #000000; overflow-x: hidden; }
+        html { scroll-behavior: smooth; }
+        /* Hero entrance animation */
+        .hero-animate {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: heroFadeUp 1s ease-out forwards;
+        }
+        .hero-animate-delay-1 { animation-delay: 0.2s; }
+        .hero-animate-delay-2 { animation-delay: 0.5s; }
+        .hero-animate-delay-3 { animation-delay: 0.8s; }
+        @keyframes heroFadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Scroll fade-in */
+        .fade-in-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in-scroll.visible { opacity: 1; transform: translateY(0); }
+        .hero-gradient { background: linear-gradient(180deg, #4a4969 0%, #7072ab 50%, #cd82a0 100%); }
+        .btn-hover { transition: all 0.3s ease; }
+        .btn-hover:hover { opacity: 0.85; transform: scale(1.02); }
+    </style>
+    <script src="i18n.js"></script>
+</head>
+<body>
+
+    <!-- ============================================ -->
+    <!-- 1. HERO -->
+    <!-- ============================================ -->
+    <section class="relative min-h-screen flex flex-col overflow-hidden">
+        <div class="absolute inset-0 hero-gradient"></div>
+
+        <!-- Navigation -->
+        <header class="relative z-10 w-full">
+            <div class="max-w-[1794px] mx-auto flex justify-between items-center px-8 py-6">
+                <a href="index.html" class="flex items-center">
+                    <img src="assets/logo.png" alt="SOPHIA" class="h-8 md:h-10">
+                </a>
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="about.html" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">About Us</a>
+                    <a href="product.html" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">Product</a>
+                    <a href="security.html" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">Security</a>
+                    <a href="careers.html" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">Careers</a>
+                </nav>
+                <button class="md:hidden text-white" id="mobile-menu-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <nav id="mobile-menu" class="hidden md:hidden backdrop-blur-[20px] border-b border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.15)]" style="background: rgba(255, 255, 255, 0.2); -webkit-backdrop-filter: blur(20px);">
+                <div class="flex flex-col py-4 px-8">
+                    <a href="about.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">About Us</a>
+                    <a href="product.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Product</a>
+                    <a href="security.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Security</a>
+                    <a href="careers.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Careers</a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Hero content -->
+        <div class="relative z-10 flex-1 flex flex-col items-center justify-center text-white text-center px-6 pb-24">
+            <h1 class="hero-animate text-[40px] sm:text-5xl md:text-7xl lg:text-[110px] font-bold uppercase leading-[0.9] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] max-w-[1700px]">
+                Sophia is building the leading autonomous operations platform for manufacturing SMEs.
+            </h1>
+            <a href="careers.html" class="hero-animate hero-animate-delay-2 mt-10 md:mt-14 border border-white text-white text-sm px-6 py-3 rounded-full btn-hover hover:bg-white hover:text-black transition-all">
+                Careers
+            </a>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 3. VISION -->
+    <!-- ============================================ -->
+    <section class="bg-white py-20 md:py-32 fade-in-scroll">
+        <div class="max-w-[1618px] mx-auto px-6 md:px-16">
+            <h3 class="text-5xl md:text-7xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] font-bold text-right mb-8">Vision</h3>
+            <p class="text-lg md:text-xl lg:text-[24px] leading-[1.5] tracking-[-0.5px] text-right max-w-[1154px] ml-auto">
+                We are building a world where manufacturing companies can dedicate 100% of their energy to their products, while our autonomous systems handle the rest.
+            </p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 4. MISSION -->
+    <!-- ============================================ -->
+    <section class="bg-white py-16 md:py-24 fade-in-scroll">
+        <div class="max-w-[1618px] mx-auto px-6 md:px-16">
+            <h3 class="text-5xl md:text-7xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] font-bold mb-8">Mission</h3>
+            <p class="text-lg md:text-xl lg:text-[24px] leading-[1.5] tracking-[-0.5px] max-w-[1403px]">
+                Our mission is to build the definitive autonomous operations platform for manufacturing SMEs. We help our partners <strong>Win From Within</strong> by turning operational chaos into seamless flow. Through a combination of manufacturing DNA and autonomous intelligence, we provide the insights and execution needed to outpace the competition and protect your margins.
+            </p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 5. TEAM -->
+    <!-- ============================================ -->
+    <section class="bg-white py-16 md:py-24 fade-in-scroll">
+        <div class="max-w-[1618px] mx-auto px-6 md:px-16">
+            <h3 class="text-5xl md:text-7xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] font-bold text-center mb-8">The Team</h3>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 6. FOUNDER -->
+    <!-- ============================================ -->
+    <section class="bg-white pb-20 md:pb-32 fade-in-scroll">
+        <div class="max-w-[1618px] mx-auto px-6 md:px-16">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start">
+                <!-- Photo -->
+                <div class="rounded-2xl overflow-hidden aspect-[679/566] relative" style="background: linear-gradient(180deg, #4a4969 0%, #7072ab 50%, #cd82a0 100%);">
+                    <img src="assets/founders.jpg" alt="Simon Tüchelmann" class="w-full h-full object-cover relative z-10">
+                </div>
+                <!-- Bio -->
+                <div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <h4 class="text-2xl md:text-3xl font-bold tracking-[-1px]">Simon Tüchelmann</h4>
+                        <a href="https://www.linkedin.com/in/simtue/" target="_blank" rel="noopener noreferrer" class="hover:opacity-80 transition-opacity">
+                            <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                        </a>
+                    </div>
+                    <p class="text-sm text-black/50 mb-6">Founder and CEO</p>
+                    <p class="text-base md:text-lg leading-[1.6] tracking-[-0.2px] text-black/70 mb-4">
+                        A serial entrepreneur and technology founder, Simon brings over 14 years of deep-rooted experience in the manufacturing sector. Having navigated the unique landscape of the German Mittelstand firsthand, he is driven by a passion for bridging the gap between cutting-edge technology and traditional industry.
+                    </p>
+                    <p class="text-base md:text-lg leading-[1.6] tracking-[-0.2px] text-black/70">
+                        With the launch of Sophia, Simon is on a mission to revitalize European manufacturing. By putting AI to work he aims to initiate a new era of industrial growth and competitiveness across Europe.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Adam Touzani -->
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start mt-16 md:mt-24">
+                <!-- Bio (left on this one for alternating layout) -->
+                <div class="md:order-2">
+                    <div class="flex items-center gap-3 mb-2">
+                        <h4 class="text-2xl md:text-3xl font-bold tracking-[-1px]">Adam Touzani</h4>
+                        <a href="https://www.linkedin.com/in/adamtouzani/" target="_blank" rel="noopener noreferrer" class="hover:opacity-80 transition-opacity">
+                            <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                        </a>
+                    </div>
+                    <p class="text-sm text-black/50 mb-6">Founding Engineer, Fullstack</p>
+                    <p class="text-base md:text-lg leading-[1.6] tracking-[-0.2px] text-black/70 mb-4">
+                        A seasoned software architect and problem-solver, Adam brings over 7 years of specialized experience in bringing digital transformation to the manufacturing floor. He is driven by a core philosophy of simplicity: deconstructing complex industrial challenges into elegant, intuitive technology that empowers traditional sectors.
+                    </p>
+                    <p class="text-base md:text-lg leading-[1.6] tracking-[-0.2px] text-black/70">
+                        As a Founding Engineer at Sophia, Adam is the architect behind our customer-facing applications. By building robust, fullstack solutions, he is dedicated to translating sophisticated data into seamless user experiences, ensuring that the power of AI is accessible to every manufacturer.
+                    </p>
+                </div>
+                <!-- Photo -->
+                <div class="rounded-2xl overflow-hidden aspect-[679/566] relative md:order-1" style="background: linear-gradient(180deg, #1e528e 0%, #728a7c 50%, #e9ce5d 100%);"></div>
+            </div>
+
+            <!-- Seung-Zin Nam -->
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start mt-16 md:mt-24">
+                <!-- Photo -->
+                <div class="rounded-2xl overflow-hidden aspect-[679/566] relative" style="background: linear-gradient(180deg, #2d3a6e 0%, #6e7fae 50%, #d9a06b 100%);"></div>
+                <!-- Bio -->
+                <div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <h4 class="text-2xl md:text-3xl font-bold tracking-[-1px]">Seung-Zin Nam</h4>
+                        <a href="https://www.linkedin.com/in/seung-zin-nam-47bbab99/" target="_blank" rel="noopener noreferrer" class="hover:opacity-80 transition-opacity">
+                            <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                        </a>
+                    </div>
+                    <p class="text-sm text-black/50 mb-6">Founding Engineer, AI Systems</p>
+                    <p class="text-base md:text-lg leading-[1.6] tracking-[-0.2px] text-black/70 mb-4">
+                        An engineer of rare depth and range, Seung-Zin brings over a decade of experience building software at the intersection of AI and industry. From scientific computing at the Max Planck Institute to AI systems for CNC machines and the agentic bridge between OT and IT in discrete manufacturing, he has spent his career turning hard research problems into production systems that work.
+                    </p>
+                    <p class="text-base md:text-lg leading-[1.6] tracking-[-0.2px] text-black/70">
+                        As a Founding Engineer at Sophia, Seung-Zin builds the intelligence at the core of our platform. Drawing on deep expertise in knowledge graphs, distributed systems, and applied machine learning, he designs the AI agents that read, reason over, and act on business data, ensuring every decision Sophia makes is accurate, reliable, and grounded in the realities of the business.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- WIN FROM WITHIN -->
+    <!-- ============================================ -->
+    <section class="bg-white py-20 md:py-32">
+        <div class="max-w-[1794px] mx-auto px-6 md:px-16 text-right">
+            <h2 class="text-4xl sm:text-6xl md:text-8xl lg:text-[150px] font-bold uppercase leading-[0.9] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px]">
+                WIN FROM<br>WITHIN.
+            </h2>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- FOOTER -->
+    <!-- ============================================ -->
+    <footer class="bg-black text-white">
+        <div class="max-w-[1200px] mx-auto px-6 pt-[120px] pb-6">
+            <div class="flex flex-col lg:flex-row justify-between gap-16 lg:gap-[320px]">
+                <div class="flex flex-col justify-between">
+                    <div class="flex flex-col gap-4">
+                        <img src="assets/footer-logo.png" alt="SOPHIA" class="h-[30px] w-[115px] object-contain object-left">
+                        <p class="text-[15px] text-white leading-[1.4] tracking-[-0.15px] max-w-[262px]">
+                            Sophia — Operational excellence, straight from your inbox.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 mt-12 lg:mt-[180px]">
+                        <a href="#" class="hover:opacity-80 transition-opacity"><img src="assets/linkedin.svg" alt="LinkedIn" class="w-6 h-6"></a>
+                        <a href="#" class="hover:opacity-80 transition-opacity"><img src="assets/x.svg" alt="X" class="w-6 h-6"></a>
+                        <a href="#" class="hover:opacity-80 transition-opacity"><img src="assets/youtube.svg" alt="YouTube" class="w-6 h-6"></a>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-16 lg:gap-[120px]">
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Product</h4>
+                        <a href="product.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Product</a>
+                        <a href="security.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Security</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Company</h4>
+                        <a href="about.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">About Us</a>
+                        <a href="careers.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Careers</a>
+                        <a href="contact.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Contact</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Legal</h4>
+                        <a href="imprint.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Imprint</a>
+                        <a href="privacy.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Privacy</a>
+                        <a href="subprocessors.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Sub-processors</a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row justify-between items-center mt-[120px] pt-0 text-white/60 text-[15px] tracking-[-0.15px]">
+                <span>© 2026 Sophia AI GmbH. All Rights Reserved.</span>
+                <div class="flex gap-8 mt-4 sm:mt-0">
+                    <a href="imprint.html" class="hover:text-white transition-colors">Imprint</a>
+                    <a href="terms.html" class="hover:text-white transition-colors">Terms</a>
+                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy</a>
+                    <a href="subprocessors.html" class="hover:text-white transition-colors">Sub-processors</a>
+                    <a href="#" class="hover:text-white transition-colors">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in-scroll').forEach(function(el) { observer.observe(el); });
+        document.getElementById('mobile-menu-button')?.addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

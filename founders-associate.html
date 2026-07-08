@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOPHIA - Founders Associate</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="manifest" href="images/site.webmanifest">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-light.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-light.woff') format('woff'); font-weight: 300; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-regular.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-regular.woff') format('woff'); font-weight: 400; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-medium.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-medium.woff') format('woff'); font-weight: 500; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-bold.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-bold.woff') format('woff'); font-weight: 700; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-heavy.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-heavy.woff') format('woff'); font-weight: 800; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-black.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-black.woff') format('woff'); font-weight: 900; font-style: normal; font-display: swap; }
+    </style>
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { sans: ['"KMR Apparat"', 'sans-serif'] } } } }
+    </script>
+    <style>
+        body { font-family: 'KMR Apparat', sans-serif; background-color: #ffffff; color: #000000; overflow-x: hidden; }
+        html { scroll-behavior: smooth; }
+        /* Hero entrance animation */
+        .hero-animate {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: heroFadeUp 1s ease-out forwards;
+        }
+        .hero-animate-delay-1 { animation-delay: 0.2s; }
+        .hero-animate-delay-2 { animation-delay: 0.5s; }
+        .hero-animate-delay-3 { animation-delay: 0.8s; }
+        @keyframes heroFadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Scroll fade-in */
+        .fade-in-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in-scroll.visible { opacity: 1; transform: translateY(0); }
+        /* Sky Gradient 19 */
+        .hero-gradient { background: linear-gradient(180deg, rgb(22, 60, 82) 0%, rgb(79, 79, 71) 30%, rgb(197, 117, 45) 60%, rgb(183, 73, 15) 80%, rgb(47, 17, 7) 100%); }
+        .btn-hover { transition: all 0.3s ease; }
+        .btn-hover:hover { opacity: 0.85; transform: scale(1.02); }
+        .section-divider { height: 1px; background: rgba(0,0,0,0.08); }
+    </style>
+    <script src="i18n.js"></script>
+</head>
+<body>
+
+    <!-- ============================================ -->
+    <!-- HERO -->
+    <!-- ============================================ -->
+    <section class="relative min-h-screen flex flex-col overflow-hidden">
+        <div class="absolute inset-0 hero-gradient"></div>
+
+        <!-- Navigation -->
+        <header class="relative z-10 w-full">
+            <div class="max-w-[1794px] mx-auto flex justify-between items-center px-8 py-6">
+                <a href="index.html" class="flex items-center">
+                    <img src="assets/logo.png" alt="SOPHIA" class="h-8 md:h-10">
+                </a>
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="about.html" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">About Us</a>
+                    <a href="product.html" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">Product</a>
+                    <a href="security.html" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">Security</a>
+                    <a href="careers.html" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">Careers</a>
+                </nav>
+                <button class="md:hidden text-white" id="mobile-menu-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <nav id="mobile-menu" class="hidden md:hidden backdrop-blur-[20px] border-b border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.15)]" style="background: rgba(255, 255, 255, 0.2); -webkit-backdrop-filter: blur(20px);">
+                <div class="flex flex-col py-4 px-8">
+                    <a href="about.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">About Us</a>
+                    <a href="product.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Product</a>
+                    <a href="security.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Security</a>
+                    <a href="careers.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Careers</a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Hero content -->
+        <div class="relative z-10 flex-1 flex flex-col items-center justify-center text-white text-center px-6 pb-24">
+            <p class="hero-animate text-sm md:text-base text-white/60 uppercase tracking-widest mb-6">We're hiring</p>
+            <h1 class="hero-animate hero-animate-delay-1 text-[40px] sm:text-5xl md:text-7xl lg:text-[110px] font-bold uppercase leading-[0.9] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px]">
+                Founders<br>Associate
+            </h1>
+            <p class="hero-animate hero-animate-delay-2 text-lg md:text-[24px] leading-[1.4] mt-8 max-w-[700px] text-white/80">
+                Right-Hand Generalist &mdash; Operations, GTM &amp; Special Projects
+            </p>
+            <div class="hero-animate hero-animate-delay-3 flex flex-wrap justify-center gap-4 mt-8 text-sm text-white/60">
+                <span class="px-4 py-2 rounded-full border border-white/20">Freiburg, Germany</span>
+                <span class="px-4 py-2 rounded-full border border-white/20">Onsite</span>
+                <span class="px-4 py-2 rounded-full border border-white/20">&euro;70-85k &middot; 0.75-1.5% Equity</span>
+            </div>
+            <a href="mailto:hello@gosophia.ai" class="hero-animate hero-animate-delay-3 mt-10 md:mt-14 text-white text-sm px-6 py-3 rounded-full btn-hover transition-all" style="background: rgba(255,255,255,0.12); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.25); box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 4px 16px rgba(0,0,0,0.1);">
+                Apply now &mdash; hello@gosophia.ai
+            </a>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- JOB CONTENT -->
+    <!-- ============================================ -->
+    <main class="max-w-[900px] mx-auto px-6 py-16 md:py-24">
+
+        <!-- MISSION -->
+        <section class="mb-16 md:mb-24 fade-in-scroll">
+            <h2 class="text-3xl md:text-5xl font-bold tracking-[-0.5px] sm:tracking-[-1px] md:tracking-[-2px] mb-8">The Mission: Autonomous Operations for Manufacturing SMBs</h2>
+            <p class="text-lg leading-[1.7] text-black/70 mb-6">
+                Manufacturing SMBs are currently drowning in complexity. Every day, critical data is lost in a flood of emails, phone calls, and manual spreadsheets that try to bridge the gap between accounting, supply chain, and production.
+            </p>
+            <p class="text-lg leading-[1.7] text-black/70 mb-6">
+                Sophia builds the platform that ends this chaos. We don't just digitize processes; we automate them, driving immediate improvements in revenue and efficiency.
+            </p>
+            <div class="bg-[#f8f8f8] rounded-2xl p-6 md:p-8 mt-8">
+                <h3 class="text-xl font-bold mb-4">Why does this role exist?</h3>
+                <p class="text-base leading-[1.7] text-black/70">
+                    A founder's time is the single most expensive resource at a seed-stage company. As Founders Associate, you take on everything that doesn't strictly require the founder &mdash; from running the customer onboarding playbook to closing the next deal, from hiring the next engineer to keeping the cap table clean. You bring <strong>structure to chaos</strong> and turn decisions into execution.
+                </p>
+                <p class="text-base leading-[1.7] text-black/70 mt-4 font-bold">
+                    The destination is clear: a company that runs at the speed of the founder &mdash; without depending on the founder.
+                </p>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- YOUR ROLE -->
+        <section class="my-16 md:my-24 fade-in-scroll">
+            <h2 class="text-3xl md:text-5xl font-bold tracking-[-0.5px] sm:tracking-[-1px] md:tracking-[-2px] mb-8">Your Role: Force Multiplier</h2>
+            <p class="text-lg leading-[1.7] text-black/70 mb-8">
+                You will be the Founder's right hand. Half operator, half closer, fully owner. Expect to switch from a customer call at 9am, to a hiring loop at 11am, to drafting an investor update by lunch &mdash; and to ship all three.
+            </p>
+            <div class="space-y-6">
+                <div class="flex gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center flex-shrink-0 mt-1">
+                        <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/></svg>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold mb-1">Customer Operations &amp; GTM</h4>
+                        <p class="text-base text-black/60 leading-[1.6]">Run pilot deployments end-to-end. Sit on the shop floor with customers. Build the onboarding playbook. Source leads, draft outreach, qualify pipeline, and close the next five logos.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center flex-shrink-0 mt-1">
+                        <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"/></svg>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold mb-1">Internal Ops &amp; Finance</h4>
+                        <p class="text-base text-black/60 leading-[1.6]">Own the unsexy but critical work: hiring funnels, vendor contracts, accounting handoffs, KPIs, board materials, and cap-table hygiene. If a process is missing, you build it &mdash; lightweight, in writing, in our tools.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0 mt-1">
+                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25"/></svg>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold mb-1">Special Projects &amp; Strategy</h4>
+                        <p class="text-base text-black/60 leading-[1.6]">Whatever moves the needle this week: deep-dive market research, partnership negotiations, fundraising materials, a pricing model, or a new product wedge. You scope, ship, and present.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center flex-shrink-0 mt-1">
+                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold mb-1">Ownership</h4>
+                        <p class="text-base text-black/60 leading-[1.6]">No "I sent the email." Did the customer reply? Was the deal won? Was the hire made? You drive things over the finish line and report outcomes, not activity.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE TOOLKIT -->
+        <section class="mb-16 md:mb-24 fade-in-scroll">
+            <h2 class="text-3xl md:text-5xl font-bold tracking-[-0.5px] sm:tracking-[-1px] md:tracking-[-2px] mb-4">Your Toolkit</h2>
+            <p class="text-base text-black/50 mb-8">We are an AI-native team. We expect you to multiply your output with software &mdash; starting with our own.</p>
+            <div class="bg-black text-white rounded-xl p-5 mb-3">
+                <div class="flex items-center justify-between gap-4">
+                    <div>
+                        <p class="text-sm text-white/50 mb-1">Dogfooded &mdash; Operations, Finance &amp; GTM</p>
+                        <p class="text-lg font-medium">Sophia</p>
+                    </div>
+                    <span class="text-xs uppercase tracking-widest text-white/60 border border-white/20 rounded-full px-3 py-1 flex-shrink-0">Our own product</span>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="bg-[#f8f8f8] rounded-xl p-5">
+                    <p class="text-sm text-black/40 mb-1">Operations</p>
+                    <p class="text-lg font-medium">Notion, Linear, Slack</p>
+                </div>
+                <div class="bg-[#f8f8f8] rounded-xl p-5">
+                    <p class="text-sm text-black/40 mb-1">GTM</p>
+                    <p class="text-lg font-medium">HubSpot, Apollo, LinkedIn</p>
+                </div>
+                <div class="bg-[#f8f8f8] rounded-xl p-5">
+                    <p class="text-sm text-black/40 mb-1">Finance &amp; Hiring</p>
+                    <p class="text-lg font-medium">DATEV, Personio, Ashby</p>
+                </div>
+                <div class="bg-[#f8f8f8] rounded-xl p-5">
+                    <p class="text-sm text-black/40 mb-1">AI Leverage</p>
+                    <p class="text-lg font-medium">Claude, ChatGPT, Cursor</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- WHO YOU ARE -->
+        <section class="my-16 md:my-24 fade-in-scroll">
+            <h2 class="text-3xl md:text-5xl font-bold tracking-[-0.5px] sm:tracking-[-1px] md:tracking-[-2px] mb-4">Who You Are</h2>
+            <p class="text-base text-black/50 mb-8">We don't care about your title history. We care about what you've owned end-to-end.</p>
+            <div class="space-y-6">
+                <div class="flex gap-4">
+                    <span class="text-2xl mt-0.5">&#x1f3af;</span>
+                    <div>
+                        <h4 class="text-lg font-bold mb-1">Generalist Operator</h4>
+                        <p class="text-base text-black/60 leading-[1.6]">You can run a customer call, a hiring loop, and a P&amp;L review in the same day &mdash; and do all three well. You bring structure where there is none.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <span class="text-2xl mt-0.5">&#x1f680;</span>
+                    <div>
+                        <h4 class="text-lg font-bold mb-1">Bias to Action</h4>
+                        <p class="text-base text-black/60 leading-[1.6]">You don't wait for a brief. You scope the problem, draft a solution, and ship it. Done is better than perfect &mdash; and you know which is which.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <span class="text-2xl mt-0.5">&#x1f393;</span>
+                    <div>
+                        <h4 class="text-lg font-bold mb-1">2-5 Years In, or a Cracked New Grad</h4>
+                        <p class="text-base text-black/60 leading-[1.6]">Ex-consulting, ex-banking, ex-startup, or a fresh graduate with a track record of running things. If you've already started a company &mdash; even better.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <span class="text-2xl mt-0.5">&#x1f4dd;</span>
+                    <div>
+                        <h4 class="text-lg font-bold mb-1">Sharp Communicator</h4>
+                        <p class="text-base text-black/60 leading-[1.6]">You write clearly under time pressure. You can pitch a CFO in the morning and joke with a shop-floor foreman in the afternoon. Fluent German &amp; English.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <span class="text-2xl mt-0.5">&#x1f4cd;</span>
+                    <div>
+                        <h4 class="text-lg font-bold mb-1">Freiburg &amp; at Customer On-Site</h4>
+                        <p class="text-base text-black/60 leading-[1.6]">We work in tight loops. Being in the room together &mdash; with the team and with the customer &mdash; matters at this stage.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- WHY SOPHIA -->
+        <section class="my-16 md:my-24 fade-in-scroll">
+            <h2 class="text-3xl md:text-5xl font-bold tracking-[-0.5px] sm:tracking-[-1px] md:tracking-[-2px] mb-8">Why Sophia?</h2>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div class="bg-[#f8f8f8] rounded-xl p-6">
+                    <h4 class="text-lg font-bold mb-2">Founder Apprenticeship</h4>
+                    <p class="text-base text-black/60 leading-[1.6]">A front-row seat to building a category-defining AI company. The fastest path to becoming a founder yourself.</p>
+                </div>
+                <div class="bg-[#f8f8f8] rounded-xl p-6">
+                    <h4 class="text-lg font-bold mb-2">Real Equity</h4>
+                    <p class="text-base text-black/60 leading-[1.6]">Meaningful ownership in a VC-backed, high-growth AI startup &mdash; not a token grant.</p>
+                </div>
+                <div class="bg-[#f8f8f8] rounded-xl p-6">
+                    <h4 class="text-lg font-bold mb-2">Real Scope</h4>
+                    <p class="text-base text-black/60 leading-[1.6]">From day one, you own functions, not tasks. As we scale, you grow into the right leadership seat &mdash; Ops, GTM, or Chief of Staff.</p>
+                </div>
+                <div class="bg-[#f8f8f8] rounded-xl p-6">
+                    <h4 class="text-lg font-bold mb-2">European Backbone</h4>
+                    <p class="text-base text-black/60 leading-[1.6]">Help the European manufacturing sector stay competitive globally. The work matters beyond the cap table.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- ABOUT THE FOUNDER -->
+        <section class="my-16 md:my-24 fade-in-scroll">
+            <h2 class="text-3xl md:text-5xl font-bold tracking-[-0.5px] sm:tracking-[-1px] md:tracking-[-2px] mb-8">About the Founder</h2>
+            <div class="text-lg leading-[1.7] text-black/70 space-y-6">
+                <p>I have spent the last 12 years operating at the intersection of manufacturing and technology. My path hasn't been linear &mdash; it ranges from co-founding <strong>Knusperreich</strong> (a pioneer in D2C food) to running a traditional family-owned precision casting firm serving the aerospace and medical sectors.</p>
+                <p>That deep dive into the 'Mittelstand' revealed massive friction in industrial procurement, inspiring me to launch <strong>KREATIZE</strong>. There, we helped machinery companies automate sourcing, backed by <strong>&euro;20m in funding</strong> from Tier-1 VCs like Atlantic and Earlybird.</p>
+                <p>While I navigated the startup rollercoaster over the last decade, I often felt I was too early or too young to fully capitalize on major tech waves. <strong>With AI, that changes.</strong> I am convinced the next generation of value belongs to the application layer &mdash; solving unsexy, complex problems for real industries. That is the mission behind <strong>Sophia</strong>.</p>
+            </div>
+            <div class="mt-10 space-y-4">
+                <h3 class="text-xl font-bold mb-4">Operating Principles</h3>
+                <div class="space-y-3">
+                    <div class="flex gap-3 items-start">
+                        <span class="w-6 h-6 rounded-full bg-black text-white text-xs flex items-center justify-center flex-shrink-0 mt-0.5 font-bold">1</span>
+                        <p class="text-base text-black/70"><strong>Sequence Matters:</strong> We will not scale the organization until we have undeniable Product-Market Fit. We solve the pain point first; we scale second.</p>
+                    </div>
+                    <div class="flex gap-3 items-start">
+                        <span class="w-6 h-6 rounded-full bg-black text-white text-xs flex items-center justify-center flex-shrink-0 mt-0.5 font-bold">2</span>
+                        <p class="text-base text-black/70"><strong>Talent Density:</strong> We hire fewer people, but better people. A small team of A-players outperforms a large army of average performers.</p>
+                    </div>
+                    <div class="flex gap-3 items-start">
+                        <span class="w-6 h-6 rounded-full bg-black text-white text-xs flex items-center justify-center flex-shrink-0 mt-0.5 font-bold">3</span>
+                        <p class="text-base text-black/70"><strong>Speed is the Moat:</strong> We operate with extreme urgency to iterate, learn, and ship faster than the incumbents.</p>
+                    </div>
+                    <div class="flex gap-3 items-start">
+                        <span class="w-6 h-6 rounded-full bg-black text-white text-xs flex items-center justify-center flex-shrink-0 mt-0.5 font-bold">4</span>
+                        <p class="text-base text-black/70"><strong>Builders Only:</strong> Everyone contributes directly to product or revenue. We avoid pure "management" layers entirely in the early stage.</p>
+                    </div>
+                    <div class="flex gap-3 items-start">
+                        <span class="w-6 h-6 rounded-full bg-black text-white text-xs flex items-center justify-center flex-shrink-0 mt-0.5 font-bold">5</span>
+                        <p class="text-base text-black/70"><strong>Brand as Leverage:</strong> We invest in brand early to lower CAC and attract top talent, treating it as a compounding asset.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- INTERVIEW PROCESS -->
+        <section class="my-16 md:my-24 fade-in-scroll">
+            <h2 class="text-3xl md:text-5xl font-bold tracking-[-0.5px] sm:tracking-[-1px] md:tracking-[-2px] mb-4">The Interview Process</h2>
+            <p class="text-base text-black/50 mb-8">We move fast. Everywhere. We want to go from first chat to offer in 5 days.</p>
+            <div class="space-y-4">
+                <div class="bg-[#f8f8f8] rounded-xl p-6 flex gap-5 items-start">
+                    <span class="text-2xl font-bold text-black/20">01</span>
+                    <div>
+                        <h4 class="text-lg font-bold mb-1">The Vibe Check <span class="text-black/40 font-normal">(30 min)</span></h4>
+                        <p class="text-base text-black/60">Chat with Simon about the vision, your background, and what you want to learn.</p>
+                    </div>
+                </div>
+                <div class="bg-[#f8f8f8] rounded-xl p-6 flex gap-5 items-start">
+                    <span class="text-2xl font-bold text-black/20">02</span>
+                    <div>
+                        <h4 class="text-lg font-bold mb-1">Case &amp; Background Deep Dive <span class="text-black/40 font-normal">(60 min)</span></h4>
+                        <p class="text-base text-black/60">We walk through a real operational or GTM problem we are facing today and see how you structure and attack it.</p>
+                    </div>
+                </div>
+                <div class="bg-[#f8f8f8] rounded-xl p-6 flex gap-5 items-start">
+                    <span class="text-2xl font-bold text-black/20">03</span>
+                    <div>
+                        <h4 class="text-lg font-bold mb-1">Trial Project <span class="text-black/40 font-normal">(48 hrs, async)</span></h4>
+                        <p class="text-base text-black/60">A short, paid take-home: build an outbound campaign, a hiring funnel, or a customer onboarding playbook &mdash; whichever fits the moment. We grade clarity, judgment, and shipping.</p>
+                    </div>
+                </div>
+                <div class="bg-[#f8f8f8] rounded-xl p-6 flex gap-5 items-start">
+                    <span class="text-2xl font-bold text-black/20">04</span>
+                    <div>
+                        <h4 class="text-lg font-bold mb-1">Onsite Co-Work</h4>
+                        <p class="text-base text-black/60">Spend half a day with us in Freiburg. We work on a real workstream together and meet the team.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- OTHER OPEN ROLES -->
+        <section class="my-16 md:my-24 fade-in-scroll">
+            <h2 class="text-3xl md:text-5xl font-bold tracking-[-0.5px] sm:tracking-[-1px] md:tracking-[-2px] mb-8">Other Open Roles</h2>
+            <a href="careers.html" class="block bg-[#f8f8f8] rounded-2xl p-6 md:p-8 hover:bg-[#f0f0f0] transition-colors group">
+                <div class="flex items-center justify-between gap-4">
+                    <div>
+                        <p class="text-sm text-black/40 uppercase tracking-widest mb-2">We're hiring</p>
+                        <h3 class="text-2xl md:text-3xl font-bold tracking-[-0.5px] mb-2">Founding Engineer</h3>
+                        <p class="text-base text-black/60 leading-[1.6]">Backend + AI-Focused Full-Stack Developer.</p>
+                    </div>
+                    <svg class="w-8 h-8 text-black/30 group-hover:text-black group-hover:translate-x-1 transition-all flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/></svg>
+                </div>
+            </a>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- CTA -->
+        <section class="my-16 md:my-24 fade-in-scroll text-center">
+            <h2 class="text-3xl md:text-5xl font-bold tracking-[-0.5px] sm:tracking-[-1px] md:tracking-[-2px] mb-6">We would love to hear from you!</h2>
+            <p class="text-lg text-black/60 mb-8">Just send us an email with your details &mdash; and one thing you've owned end-to-end that you're proud of.</p>
+            <a href="mailto:hello@gosophia.ai" class="bg-black text-white text-lg font-medium px-8 py-4 rounded-full hover:bg-black/80 transition-colors inline-block">
+                hello@gosophia.ai
+            </a>
+        </section>
+
+    </main>
+
+    <!-- ============================================ -->
+    <!-- WIN FROM WITHIN -->
+    <!-- ============================================ -->
+    <section class="bg-white py-20 md:py-32">
+        <div class="max-w-[1794px] mx-auto px-6 md:px-16 text-right">
+            <h2 class="text-4xl sm:text-6xl md:text-8xl lg:text-[150px] font-bold uppercase leading-[0.9] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px]">
+                WIN FROM<br>WITHIN.
+            </h2>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- FOOTER -->
+    <!-- ============================================ -->
+    <footer class="bg-black text-white">
+        <div class="max-w-[1200px] mx-auto px-6 pt-[120px] pb-6">
+            <div class="flex flex-col lg:flex-row justify-between gap-16 lg:gap-[320px]">
+                <div class="flex flex-col justify-between">
+                    <div class="flex flex-col gap-4">
+                        <img src="assets/footer-logo.png" alt="SOPHIA" class="h-[30px] w-[115px] object-contain object-left">
+                        <p class="text-[15px] text-white leading-[1.4] tracking-[-0.15px] max-w-[262px]">Sophia — Operational excellence, straight from your inbox.</p>
+                    </div>
+                    <div class="flex items-center gap-4 mt-12 lg:mt-[180px]">
+                        <a href="#" class="hover:opacity-80 transition-opacity"><img src="assets/linkedin.svg" alt="LinkedIn" class="w-6 h-6"></a>
+                        <a href="#" class="hover:opacity-80 transition-opacity"><img src="assets/x.svg" alt="X" class="w-6 h-6"></a>
+                        <a href="#" class="hover:opacity-80 transition-opacity"><img src="assets/youtube.svg" alt="YouTube" class="w-6 h-6"></a>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-16 lg:gap-[120px]">
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Product</h4>
+                        <a href="product.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Product</a>
+                        <a href="security.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Security</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Company</h4>
+                        <a href="about.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">About Us</a>
+                        <a href="careers.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Careers</a>
+                        <a href="contact.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Contact</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Legal</h4>
+                        <a href="imprint.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Imprint</a>
+                        <a href="privacy.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Privacy</a>
+                        <a href="subprocessors.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Sub-processors</a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row justify-between items-center mt-[120px] pt-0 text-white/60 text-[15px] tracking-[-0.15px]">
+                <span>&copy; 2026 Sophia AI GmbH. All Rights Reserved.</span>
+                <div class="flex gap-8 mt-4 sm:mt-0">
+                    <a href="imprint.html" class="hover:text-white transition-colors">Imprint</a>
+                    <a href="terms.html" class="hover:text-white transition-colors">Terms</a>
+                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy</a>
+                    <a href="subprocessors.html" class="hover:text-white transition-colors">Sub-processors</a>
+                    <a href="#" class="hover:text-white transition-colors">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in-scroll').forEach(function(el) { observer.observe(el); });
+        document.getElementById('mobile-menu-button')?.addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

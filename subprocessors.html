@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOPHIA - Authorized Sub-processors</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="manifest" href="images/site.webmanifest">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-light.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-light.woff') format('woff'); font-weight: 300; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-regular.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-regular.woff') format('woff'); font-weight: 400; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-medium.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-medium.woff') format('woff'); font-weight: 500; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-bold.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-bold.woff') format('woff'); font-weight: 700; font-style: normal; font-display: swap; }
+    </style>
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { sans: ['"KMR Apparat"', 'sans-serif'] } } } }
+    </script>
+    <style>
+        body { font-family: 'KMR Apparat', sans-serif; background-color: #ffffff; color: #000000; }
+        html { scroll-behavior: smooth; }
+    </style>
+    <script src="i18n.js"></script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header class="w-full bg-white">
+        <div class="max-w-[1794px] mx-auto flex justify-between items-center px-8 py-6">
+            <a href="index.html" class="flex items-center">
+                <img src="assets/logo.png" alt="SOPHIA" class="h-8 md:h-10" style="filter: invert(1);">
+            </a>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="about.html" class="text-black text-sm tracking-wide hover:opacity-60 transition-opacity">About Us</a>
+                <a href="product.html" class="text-black text-sm tracking-wide hover:opacity-60 transition-opacity">Product</a>
+                <a href="security.html" class="text-black text-sm tracking-wide hover:opacity-60 transition-opacity">Security</a>
+                <a href="careers.html" class="text-black text-sm tracking-wide hover:opacity-60 transition-opacity">Careers</a>
+            </nav>
+            <button class="md:hidden text-black" id="mobile-menu-button">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        <nav id="mobile-menu" class="hidden md:hidden backdrop-blur-[20px] border-b border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.15)]" style="background: rgba(255, 255, 255, 0.2); -webkit-backdrop-filter: blur(20px);">
+            <div class="flex flex-col py-4 px-8">
+                <a href="about.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">About Us</a>
+                <a href="product.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Product</a>
+                <a href="security.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Security</a>
+                <a href="careers.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Careers</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Content -->
+    <main class="max-w-[900px] mx-auto px-6 py-16 md:py-24">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-[-0.5px] sm:tracking-[-1px] md:tracking-[-2px] mb-4">Authorized Sub-processors</h1>
+        <div class="flex flex-col sm:flex-row sm:gap-8 text-sm text-black/40 mb-12">
+            <p>Last Updated: July 6, 2026</p>
+            <p>Effective Date: January 20, 2026</p>
+        </div>
+
+        <div class="space-y-12 text-base leading-[1.7] text-black/70">
+
+            <section>
+                <p>To deliver our Services, Krops GmbH ("Company", "We", "Us") engages third-party entities to assist with our data processing activities. These entities are known as "Sub-processors" under the General Data Protection Regulation (GDPR).</p>
+                <p class="mt-4">In accordance with Section 4 of our Data Processing Agreement (DPA), we maintain strict oversight over these entities. Each authorized sub-processor is bound by contractual data protection terms that are substantially equivalent to those set forth in our DPA, ensuring the continued security, confidentiality, and integrity of Customer Personal Data.</p>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-black mb-6">Current Sub-processor List</h2>
+                <div class="overflow-x-auto -mx-6 px-6 md:mx-0 md:px-0">
+                    <table class="w-full text-sm border-collapse">
+                        <thead>
+                            <tr class="border-b border-black/20">
+                                <th class="text-left font-medium text-black py-3 pr-4 align-bottom">Sub-processor</th>
+                                <th class="text-left font-medium text-black py-3 pr-4 align-bottom">Purpose of Processing</th>
+                                <th class="text-left font-medium text-black py-3 pr-4 align-bottom">Corporate Location</th>
+                                <th class="text-left font-medium text-black py-3 pr-4 align-bottom">Data Processing Region</th>
+                                <th class="text-left font-medium text-black py-3 align-bottom">Transfer Safeguards</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-black/10 align-top">
+                                <td class="py-4 pr-4 font-medium text-black">Hetzner Online GmbH</td>
+                                <td class="py-4 pr-4">Cloud Infrastructure &amp; Application Hosting</td>
+                                <td class="py-4 pr-4">Germany</td>
+                                <td class="py-4 pr-4">Germany (EU)</td>
+                                <td class="py-4">N/A (Processed entirely within the EU)</td>
+                            </tr>
+                            <tr class="border-b border-black/10 align-top">
+                                <td class="py-4 pr-4 font-medium text-black">Google Cloud EMEA Limited</td>
+                                <td class="py-4 pr-4">Core Platform Infrastructure &amp; Database Management</td>
+                                <td class="py-4 pr-4">Ireland</td>
+                                <td class="py-4 pr-4">Frankfurt, Germany (EU)</td>
+                                <td class="py-4">N/A (Processed entirely within the EU)</td>
+                            </tr>
+                            <tr class="border-b border-black/10 align-top">
+                                <td class="py-4 pr-4 font-medium text-black">Anthropic, Inc. <span class="block text-black/50 font-normal text-xs mt-1">(Served via Google Cloud)</span></td>
+                                <td class="py-4 pr-4">AI Model Inference &amp; Content Processing</td>
+                                <td class="py-4 pr-4">United States</td>
+                                <td class="py-4 pr-4">Frankfurt, Germany (EU)</td>
+                                <td class="py-4">N/A (Data processing is strictly bound to Google Cloud's EU Data Boundary)</td>
+                            </tr>
+                            <tr class="border-b border-black/10 align-top">
+                                <td class="py-4 pr-4 font-medium text-black">Nebius B.V.</td>
+                                <td class="py-4 pr-4">AI Model Inference &amp; Content Processing (Zero Data Retention)</td>
+                                <td class="py-4 pr-4">Netherlands</td>
+                                <td class="py-4 pr-4">Finland (EU)</td>
+                                <td class="py-4">N/A (Processed entirely within the EU)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <div class="bg-black/[0.03] border border-black/10 rounded-lg p-6 md:p-8">
+                    <h3 class="text-lg font-bold text-black mb-3">💡 Enterprise Trust &amp; AI Data Privacy Note</h3>
+                    <p>We understand the sensitive nature of operational enterprise data. When utilizing advanced language models via our platform, your data is isolated and secured under enterprise-grade protocols:</p>
+                    <ul class="list-none pl-0 mt-4 space-y-3">
+                        <li><strong class="text-black">Zero Model Training:</strong> Neither Krops GmbH, Google Cloud, Anthropic, nor Nebius will use your inputs, prompts, document context, or generated outputs to train public or foundational artificial intelligence models.</li>
+                        <li><strong class="text-black">Strict EU Data Residency:</strong> While Anthropic, Inc. is a U.S. corporate entity, our technical implementation interfaces exclusively with Google Cloud's infrastructure inside Frankfurt, Germany. Your data packets never cross jurisdictions or exit the European Union data boundary during processing.</li>
+                        <li><strong class="text-black">Incident Isolation:</strong> No communication or workspace data processed by our AI algorithms is accessible by other platform tenants.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-black mb-4">Subscribe to Infrastructure Updates</h2>
+                <p>Per Section 4.1.1 of the Krops GmbH Data Processing Agreement, customers have the right to receive notice of, and object to, any intended addition or replacement of an authorized sub-processor.</p>
+                <p class="mt-4">If you wish to receive automated email notifications at least two (2) weeks before we introduce a new sub-processor to this list, please opt-in by submitting your details below:</p>
+
+                <form id="subprocessor-subscribe-form" class="mt-6 flex flex-col sm:flex-row gap-3" onsubmit="return handleSubprocessorSubscribe(event)">
+                    <input
+                        type="email"
+                        name="email"
+                        required
+                        placeholder="Your Business Email Address"
+                        class="flex-1 px-4 py-3 border border-black/20 rounded-md text-base text-black placeholder-black/40 focus:outline-none focus:border-black transition-colors"
+                    >
+                    <button
+                        type="submit"
+                        class="px-6 py-3 bg-black text-white text-base font-medium rounded-md hover:bg-black/80 transition-colors whitespace-nowrap"
+                    >
+                        Subscribe to Updates
+                    </button>
+                </form>
+                <p id="subprocessor-subscribe-result" class="mt-3 text-sm hidden"></p>
+            </section>
+
+            <section>
+                <p>For any specific questions, legal objections, or technical inquiries regarding our sub-processors, please contact our data privacy desk directly at <a href="mailto:hello@gosophia.ai" class="underline hover:text-black">hello@gosophia.ai</a>.</p>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white">
+        <div class="max-w-[1200px] mx-auto px-6 pt-[120px] pb-6">
+            <div class="flex flex-col lg:flex-row justify-between gap-16 lg:gap-[320px]">
+                <div class="flex flex-col justify-between">
+                    <div class="flex flex-col gap-4">
+                        <img src="assets/footer-logo.png" alt="SOPHIA" class="h-[30px] w-[115px] object-contain object-left">
+                        <p class="text-[15px] text-white leading-[1.4] tracking-[-0.15px] max-w-[262px]">Sophia — Operational excellence, straight from your inbox.</p>
+                    </div>
+                    <div class="flex items-center gap-4 mt-12 lg:mt-[180px]">
+                        <a href="#" class="hover:opacity-80 transition-opacity"><img src="assets/linkedin.svg" alt="LinkedIn" class="w-6 h-6"></a>
+                        <a href="#" class="hover:opacity-80 transition-opacity"><img src="assets/x.svg" alt="X" class="w-6 h-6"></a>
+                        <a href="#" class="hover:opacity-80 transition-opacity"><img src="assets/youtube.svg" alt="YouTube" class="w-6 h-6"></a>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-16 lg:gap-[120px]">
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Product</h4>
+                        <a href="product.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Product</a>
+                        <a href="security.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Security</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Company</h4>
+                        <a href="about.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">About Us</a>
+                        <a href="careers.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Careers</a>
+                        <a href="contact.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Contact</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Legal</h4>
+                        <a href="imprint.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Imprint</a>
+                        <a href="privacy.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Privacy</a>
+                        <a href="subprocessors.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Sub-processors</a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row justify-between items-center mt-[120px] pt-0 text-white/60 text-[15px] tracking-[-0.15px]">
+                <span>&copy; 2026 Sophia AI GmbH. All Rights Reserved.</span>
+                <div class="flex gap-8 mt-4 sm:mt-0">
+                    <a href="imprint.html" class="hover:text-white transition-colors">Imprint</a>
+                    <a href="terms.html" class="hover:text-white transition-colors">Terms</a>
+                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy</a>
+                    <a href="subprocessors.html" class="hover:text-white transition-colors">Sub-processors</a>
+                    <a href="#" class="hover:text-white transition-colors">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('mobile-menu-button')?.addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        function handleSubprocessorSubscribe(event) {
+            event.preventDefault();
+            const form = event.target;
+            const result = document.getElementById('subprocessor-subscribe-result');
+            const email = form.email.value.trim();
+            if (!email) return false;
+            result.textContent = 'Thank you — you will receive sub-processor change notifications at ' + email + '.';
+            result.className = 'mt-3 text-sm text-black';
+            form.reset();
+            return false;
+        }
+    </script>
+</body>
+</html>

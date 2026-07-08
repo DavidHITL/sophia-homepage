@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOPHIA - General Terms and Conditions</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="manifest" href="images/site.webmanifest">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-light.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-light.woff') format('woff'); font-weight: 300; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-regular.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-regular.woff') format('woff'); font-weight: 400; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-medium.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-medium.woff') format('woff'); font-weight: 500; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-bold.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-bold.woff') format('woff'); font-weight: 700; font-style: normal; font-display: swap; }
+    </style>
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { sans: ['"KMR Apparat"', 'sans-serif'] } } } }
+    </script>
+    <style>
+        body { font-family: 'KMR Apparat', sans-serif; background-color: #ffffff; color: #000000; }
+        html { scroll-behavior: smooth; }
+    </style>
+    <script src="i18n.js"></script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header class="w-full bg-white">
+        <div class="max-w-[1794px] mx-auto flex justify-between items-center px-8 py-6">
+            <a href="index.html" class="flex items-center">
+                <img src="assets/logo.png" alt="SOPHIA" class="h-8 md:h-10" style="filter: invert(1);">
+            </a>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="about.html" class="text-black text-sm tracking-wide hover:opacity-60 transition-opacity">About Us</a>
+                <a href="product.html" class="text-black text-sm tracking-wide hover:opacity-60 transition-opacity">Product</a>
+                <a href="security.html" class="text-black text-sm tracking-wide hover:opacity-60 transition-opacity">Security</a>
+                <a href="careers.html" class="text-black text-sm tracking-wide hover:opacity-60 transition-opacity">Careers</a>
+            </nav>
+            <button class="md:hidden text-black" id="mobile-menu-button">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        <nav id="mobile-menu" class="hidden md:hidden backdrop-blur-[20px] border-b border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.15)]" style="background: rgba(255, 255, 255, 0.2); -webkit-backdrop-filter: blur(20px);">
+            <div class="flex flex-col py-4 px-8">
+                <a href="about.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">About Us</a>
+                <a href="product.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Product</a>
+                <a href="security.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Security</a>
+                <a href="careers.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Careers</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Content -->
+    <main class="max-w-[800px] mx-auto px-6 py-16 md:py-24">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-[-0.5px] sm:tracking-[-1px] md:tracking-[-2px] mb-4">General Terms and Conditions</h1>
+        <p class="text-gray-500 mb-12">Effective as of January 20, 2026</p>
+
+        <p class="text-gray-700 leading-relaxed mb-4">Krops GmbH, Gustav-Adolfstr. 142a, 13086 Berlin, Germany ("Krops") offers an online Technical Sales AI Platform to support customers (each a "Client"; Clients and Krops together "Parties") in the automation of their sales processes ("Sophia AI Platform"). The Technical Sales AI Platform is controlled via a dashboard using standard browsers and is based on a Software-as-a-Service platform provided for a fee.</p>
+        <p class="text-gray-700 leading-relaxed mb-4">These General Terms and Conditions regulate the contractual relationship between Krops and the Clients regarding the use of the Sophia AI Platform.</p>
+        <p class="text-gray-700 leading-relaxed mb-4">The services of Krops are not aimed at consumers within the meaning of Section 13 of the German Civil Code (BGB).</p>
+
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold text-black mt-10 mb-4">1. Object and Conclusion of the Contract; Client's T&C</h2>
+            <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-3">
+                <li>1.1 These General Terms and Conditions apply to the provision of the Sophia AI Platform by Krops.</li>
+                <li>1.2 The Client's General Terms and Conditions shall only form part of the Agreement if this has been expressly agreed upon in writing.</li>
+                <li>1.3 The Agreement shall become effective with both Parties signing the Order Form (text form being sufficient).</li>
+            </ul>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold text-black mt-10 mb-4">2. Services by Krops</h2>
+            <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-3">
+                <li>2.1 Krops shall provide the Client with access to the Sophia AI Platform exclusively via the internet for a limited period during the term of the Agreement. The point of service transfer is the router exit of the data center used by Krops. All services are provided exclusively from data centers within the European Union.</li>
+                <li>2.2 The Client is solely responsible for ensuring that the necessary infrastructure, such as hardware and compatible software (e.g., a browser), is in place to access the Sophia AI Platform. Access to the source code of the Sophia AI Platform is not included in the Agreement. The operation and use of the Sophia AI Platform remain the Client's responsibility.</li>
+                <li>2.3 AI Powered Automations: The Technical Sales AI Platform includes AI-powered automation modules that support commercial sales processes, including in particular: (i) quotation automation through the Quotation AI Assistant, which processes commercial requests and generates quotations; and (ii) order processing automation through the Order Processing AI Assistant, which processes purchase orders and creates corresponding sales orders.</li>
+                <li>2.4 Krops API Integration: Krops' API interface enables integration with the Client's third-party systems such as ERP platforms, data warehouses, and communication tools, ensuring seamless data flow and operational continuity. Krops may update or enhance API features for security, technical, or legal reasons, with significant changes communicated in advance. Older API versions may be discontinued after prior notice.</li>
+                <li>2.5 The third-party systems to be integrated with Krops are defined and confirmed prior to the pilot or implementation phases of each module. These integrations form part of the agreed project scope. If the Client wishes to change or replace an integrated system, this will require a separate implementation project, which will be scoped and quoted independently.</li>
+                <li>2.6 Maintenance and Updates: Planned maintenance and emergency updates to ensure operational safety and data security may occur. Clients will be notified in advance for planned maintenance. Updates or new features introduced to the Sophia AI Platform may be subject to additional fees unless explicitly provided as part of the Agreement.</li>
+                <li>2.7 Krops reserves the right to block access to its platform if there are indications of misuse, security breaches, legal obligations, or non-payment of fees. Notification will be provided where possible.</li>
+            </ul>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold text-black mt-10 mb-4">3. Obligations of the Client</h2>
+            <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-3">
+                <li>3.1 The Client shall keep access credentials for the Sophia AI Platform secure and accessible only to authorized employees. The Client undertakes to ensure that employees handle these credentials confidentially and to notify Krops immediately if there is any suspicion that the credentials have been disclosed to unauthorized persons.</li>
+                <li>3.2 The Client grants Krops a non-exclusive, territorially and temporally unlimited right to use the content transmitted to Krops' servers for purposes necessary to fulfill the Agreement. This includes, but is not limited to, reproducing content and making it available for workflows based on the Client's settings. Krops may grant sub-licenses to its subcontractors if required to fulfill its contractual obligations. Krops retains the right to store the Client's content beyond the Agreement's term when legally or technically necessary, such as maintaining backup copies or retaining data required for accounting, documentation, and billing.</li>
+                <li>3.3 The Client guarantees compliance with all applicable laws when using the Sophia AI Platform, including but not limited to laws governing intellectual property, competition, and data protection. The Client agrees to use the platform solely for its intended purposes and to refrain from uploading or transmitting any content that: contains malicious software such as viruses, trojans, or other malware; intends to deceive others into disclosing confidential information (e.g., passwords); harasses or infringes on the rights of third parties; impairs the platform's functionality; or violates any applicable laws or regulations.</li>
+                <li>3.4 The Client shall indemnify Krops from all claims of third parties (including the associated costs and expenses, in particular customary lawyer's fees), which they assert against Krops due to the Client's illegal or contractually non-compliant use of the Sophia AI Platform. Krops shall inform the Client immediately about claims asserted by third parties and on request provide the information and documents necessary for the defence. In addition, Krops shall either leave the defence to the Client or after consultation carry it out with the Client. In particular, Krops shall neither acknowledge nor make claims asserted by third parties indisputable without consulting the Client. The provisions of this clause shall apply accordingly to contractual penalties as well as administrative or judicial fines and penalties, insofar as the Client is responsible for them.</li>
+            </ul>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold text-black mt-10 mb-4">4. Scope of the Rights of Use</h2>
+            <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-3">
+                <li>4.1 Corresponding with the commencement of the Agreement, Krops grants the Client, limited to the duration of the Agreement, the non-exclusive, worldwide, non-transferable and non-sublicensable right to use the Sophia AI Platform in accordance with the Agreement. All other rights are reserved.</li>
+                <li>4.2 Unless expressly agreed otherwise, the Client may only use the Sophia AI Platform for internal purposes and in particular may not arrange for its use to third parties for their own use, whether for payment or free of charge.</li>
+            </ul>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold text-black mt-10 mb-4">5. Data Protection</h2>
+            <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-3">
+                <li>5.1 In regard to the personal data of the Client which is used by the Client in connection with the Sophia AI Platform, Krops acts as the data processor and the Client acts as the controller. The Client is therefore solely responsible for the legality of the processing, unless data protection laws, in particular the General Data Protection Regulation, assigns the data processor its own liability. Details of the Parties' obligations under data protection laws are governed by the "Data Processing Agreement" in Schedule 1, which is hereby expressly incorporated into this Agreement.</li>
+            </ul>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold text-black mt-10 mb-4">6. Fees</h2>
+            <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-3">
+                <li>6.1 The fees payable by the Client are set out in the Order Form. The Client shall pay a fixed monthly service fee. Any discounts applicable to the monthly service fee are specified in the Order Form and shall apply for the periods and under the conditions stated therein.</li>
+                <li>6.2 Krops issues one invoice at the beginning of each month, covering the monthly service fee (and any applicable discounts). All invoiced fees are payable within 14 days of the invoice date, without deduction, to the account specified by Krops.</li>
+            </ul>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold text-black mt-10 mb-4">7. Warranty</h2>
+            <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-3">
+                <li>7.1 The relevant statutory warranty provisions shall apply to complimentary services.</li>
+                <li>7.2 Krops shall otherwise be liable for defects in the provision of the Sophia AI Platform and the Krops API exclusively in accordance with the following clauses.</li>
+                <li>7.3 Defects are substantial deviations from the contractually stipulated scope of functions or services.</li>
+                <li>7.4 If the services to be provided by Krops according to this Agreement are defective, Krops shall, at its discretion, within a reasonable period of time and after receipt of a notification of defects from the Client in text form, either rectify the services or provide them again. If Krops uses third-party software, the rectification shall consist of the procurement and installation of generally available upgrades, updates or patches.</li>
+                <li>7.5 The provision of instructions for use with which the Client can reasonably deal with defects that have occurred in order to use the Sophia AI Platform according to the Agreement shall also be considered a rectification defect.</li>
+                <li>7.6 If the defect-free provision of services fails for reasons for which Krops is responsible, even within a reasonable period of time set by the Client in text form, the Client may reduce the agreed fee by an appropriate amount. For each day which the defect continues the entitlement to reduce payment is restricted to the amount of the price relating to the defective part of the service.</li>
+                <li>7.7 If the reduction pursuant to Section 7.6 reaches the maximum limit or operational restrictions specified in Section 7.6 in two consecutive months or in two months of a quarter, the Client may terminate the Agreement without notice.</li>
+                <li>7.8 The Client shall immediately notify Krops of any defects in writing or by email. Furthermore, the Client shall support Krops free of charge in remedying defects and shall in particular provide Krops with all information and documents that Krops requires for the analysis and rectification of defects.</li>
+            </ul>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold text-black mt-10 mb-4">8. Compensation and Liability</h2>
+            <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-3">
+                <li>8.1 Krops shall be liable for complimentary services in accordance with the statutory provisions.</li>
+                <li>8.2 In all other cases, the legal liability of Krops for intent and gross negligence as well as for damages resulting from injury to life, body or health is unlimited.</li>
+                <li>8.3 For simple negligence in cases other than those mentioned in Section 8.2, Krops shall only be liable for the breach of an obligation fundamental to the contract. An obligation fundamental to the contract in the sense of this clause is an obligation, the compliance to which is prerequisite to allow the execution of the Agreement in the first place and on whose compliance here to the contractual partner can reasonably expect to be able to rely on.</li>
+                <li>8.4 In the case of Section 8.3, Krops shall not be liable for lack of economic success, loss of profit and indirect damages.</li>
+                <li>8.5 Liability in accordance with the above Section 8.3 is limited to the typical, foreseeable damage at the time of the conclusion of the Agreement.</li>
+                <li>8.6 Liability for damages due to loss of data in the case of Section 8.3 is limited to the amount of restoration of data which would have accrued from backups made by the Client at regularly scheduled intervals in accordance with the risk involved.</li>
+                <li>8.7 These limitations of liability shall apply mutatis mutandis to the organs, employees, representatives and vicarious agents of Krops.</li>
+                <li>8.8 Any liability of Krops for given guarantees (which must be expressly stated as such) and for claims based on the German Product Liability Act and data protection law shall remain unaffected.</li>
+                <li>8.9 Any further liability of Krops is excluded.</li>
+            </ul>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold text-black mt-10 mb-4">9. Confidentiality and Proprietary Rights</h2>
+            <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-3">
+                <li>9.1 Each party (the "Receiving Party") understands that the other party (the "Disclosing Party") has disclosed or may disclose business, technical or financial information relating to the Disclosing Party's business (hereinafter referred to as "Proprietary Information" of the Disclosing Party). Proprietary Information of Krops includes non-public information regarding features, functionality and performance of the Service. Proprietary Information of Client includes non-public data provided by Client to Krops to enable the provision of the Services ("Client Data").</li>
+                <li>9.2 The Receiving Party agrees: (i) to take reasonable precautions to protect such Proprietary Information, and (ii) not to use (except in performance of the Services or as otherwise permitted herein) or divulge to any third person any such Proprietary Information. The Disclosing Party agrees that the foregoing shall not apply with respect to any information after five (5) years following the disclosure thereof or any information that the Receiving Party can document (a) is or becomes generally available to the public, or (b) was in its possession or known by it prior to receipt from the Disclosing Party, or (c) was rightfully disclosed to it without restriction by a third party, or (d) was independently developed without use of any Proprietary Information of the Disclosing Party or (e) is required to be disclosed by law.</li>
+                <li>9.3 Client shall own all right, title and interest in and to the Client Data. Krops shall own and retain all right, title and interest in and to (a) the Services and Software, all improvements, enhancements or modifications thereto, (b) any software, applications, inventions or other technology developed in connection with the Pilot Project, implementation services or support, and (c) all intellectual property rights related to any of the foregoing.</li>
+                <li>9.4 Notwithstanding anything to the contrary, Krops shall have the right to collect and analyze data and other information relating to the provision, use and performance of various aspects of the Services and related systems and technologies with the exception of Client Data, and Krops will be free (during and after the term hereof) to (i) use such information and data to improve and enhance the Services and for other development, diagnostic and corrective purposes in connection with the Services and other Krops offerings, and (ii) disclose such data solely in aggregate or other de-identified form in connection with its business. No rights or licenses are granted except as expressly set forth herein.</li>
+            </ul>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold text-black mt-10 mb-4">10. Client Reference and Marketing</h2>
+            <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-3">
+                <li>10.1 Subject to Client's trademark and brand usage guidelines, Krops may include Client's name and logo in Krops' customer lists, partner listings, and on Company's website and marketing materials solely for the purpose of identifying Client as a user of the Services, without requiring prior approval.</li>
+                <li>10.2 Any public use of Client's name, logo, trademarks, or statements beyond the foregoing, including but not limited to case studies, testimonials, press releases, or joint marketing materials, shall require Client's prior written approval, which shall not be unreasonably withheld or delayed.</li>
+            </ul>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold text-black mt-10 mb-4">11. Term and Termination</h2>
+            <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-3">
+                <li>11.1 This Agreement shall commence upon execution of the applicable Order Form by both Parties and shall remain in effect for the initial service term specified in the Order Form (the "Initial Service Term").</li>
+                <li>11.2 Unless otherwise specified in the Order Form, upon expiration of the Initial Service Term, this Agreement shall automatically renew for successive renewal terms equal in duration to the Initial Service Term (each a "Renewal Term"), unless either Party provides written notice of non-renewal at least one (1) month prior to the end of the then-current term.</li>
+                <li>11.3 Any rights of termination for convenience, early termination, or termination following pilot, evaluation, or implementation phases (including any module-specific termination rights) shall apply exclusively as set out in the applicable Order Form.</li>
+                <li>11.4 The statutory right of either Party to terminate this Agreement for good cause without notice remains unaffected.</li>
+                <li>11.5 Upon termination or expiration of this Agreement, the Client's right to access and use the Services shall cease. Client Data shall be handled in accordance with the Data Processing Agreement and applicable law.</li>
+            </ul>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold text-black mt-10 mb-4">12. Modifications to the General Terms and Conditions</h2>
+            <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-3">
+                <li>12.1 These General Terms and Conditions can be changed between the Client and Krops by corresponding agreement as described below, if the change is necessary due to a change in the applicable law (including jurisdiction) or for similar compelling reasons and the main performance obligations of the Parties are not changed to the disadvantage of the Client as a result: Krops shall transmit the amended terms and conditions in text form before the planned effective date and shall make separate reference to the new regulations and the planned effective date.</li>
+                <li>12.2 At the same time, Krops shall grant the Client an appropriate period of at least six weeks to declare whether he accepts the amended terms and conditions for the continued use of the services. If no declaration is made within this period, which begins to run from receipt of the message in text form, the amended terms and conditions shall be deemed to have been agreed. At the start of the period Krops shall inform the Client separately of this legal consequence, i.e. the right to object, the objection period and the significance of remaining silent.</li>
+            </ul>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold text-black mt-10 mb-4">13. Final Provisions</h2>
+            <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-3">
+                <li>13.1 The Client may only offset against claims of Krops or assert a right of retention if the counterclaim is undisputed or legally binding or is in a synallagmatic relationship to the respective claim concerned.</li>
+                <li>13.2 The contract language is English. Translations into other languages serve exclusively for comprehensibility and are not legally binding.</li>
+                <li>13.3 The law of the Federal Republic of Germany shall apply, excluding the UN Convention on Contracts for the International Sale of Goods (CISG). The exclusive place of jurisdiction for all disputes arising from or in connection with this contract is Berlin.</li>
+            </ul>
+        </section>
+
+        <p class="text-gray-500 mt-12">These General Terms and Conditions are effective as of January 20, 2026.</p>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white">
+        <div class="max-w-[1200px] mx-auto px-6 pt-[120px] pb-6">
+            <div class="flex flex-col lg:flex-row justify-between gap-16 lg:gap-[320px]">
+                <div class="flex flex-col justify-between">
+                    <div class="flex flex-col gap-4">
+                        <img src="assets/footer-logo.png" alt="SOPHIA" class="h-[30px] w-[115px] object-contain object-left">
+                        <p class="text-[15px] text-white leading-[1.4] tracking-[-0.15px] max-w-[262px]">Sophia — Operational excellence, straight from your inbox.</p>
+                    </div>
+                    <div class="flex items-center gap-4 mt-12 lg:mt-[180px]">
+                        <a href="#" class="hover:opacity-80 transition-opacity"><img src="assets/linkedin.svg" alt="LinkedIn" class="w-6 h-6"></a>
+                        <a href="#" class="hover:opacity-80 transition-opacity"><img src="assets/x.svg" alt="X" class="w-6 h-6"></a>
+                        <a href="#" class="hover:opacity-80 transition-opacity"><img src="assets/youtube.svg" alt="YouTube" class="w-6 h-6"></a>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-16 lg:gap-[120px]">
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Product</h4>
+                        <a href="product.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Product</a>
+                        <a href="security.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Security</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Company</h4>
+                        <a href="about.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">About Us</a>
+                        <a href="careers.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Careers</a>
+                        <a href="contact.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Contact</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Legal</h4>
+                        <a href="imprint.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Imprint</a>
+                        <a href="terms.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Terms</a>
+                        <a href="privacy.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Privacy</a>
+                        <a href="subprocessors.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Sub-processors</a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row justify-between items-center mt-[120px] pt-0 text-white/60 text-[15px] tracking-[-0.15px]">
+                <span>&copy; 2026 Sophia AI GmbH. All Rights Reserved.</span>
+                <div class="flex gap-8 mt-4 sm:mt-0">
+                    <a href="imprint.html" class="hover:text-white transition-colors">Imprint</a>
+                    <a href="terms.html" class="hover:text-white transition-colors">Terms</a>
+                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

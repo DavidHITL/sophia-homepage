@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOPHIA - Product</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="manifest" href="images/site.webmanifest">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @font-face {
+            font-family: 'KMR Apparat';
+            src: url('assets/KMR Apparat/kmr-apparat-light.woff2') format('woff2'),
+                 url('assets/KMR Apparat/kmr-apparat-light.woff') format('woff');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'KMR Apparat';
+            src: url('assets/KMR Apparat/kmr-apparat-book.woff2') format('woff2'),
+                 url('assets/KMR Apparat/kmr-apparat-book.woff') format('woff');
+            font-weight: 350;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'KMR Apparat';
+            src: url('assets/KMR Apparat/kmr-apparat-regular.woff2') format('woff2'),
+                 url('assets/KMR Apparat/kmr-apparat-regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'KMR Apparat';
+            src: url('assets/KMR Apparat/kmr-apparat-medium.woff2') format('woff2'),
+                 url('assets/KMR Apparat/kmr-apparat-medium.woff') format('woff');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'KMR Apparat';
+            src: url('assets/KMR Apparat/kmr-apparat-bold.woff2') format('woff2'),
+                 url('assets/KMR Apparat/kmr-apparat-bold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'KMR Apparat';
+            src: url('assets/KMR Apparat/kmr-apparat-heavy.woff2') format('woff2'),
+                 url('assets/KMR Apparat/kmr-apparat-heavy.woff') format('woff');
+            font-weight: 800;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'KMR Apparat';
+            src: url('assets/KMR Apparat/kmr-apparat-black.woff2') format('woff2'),
+                 url('assets/KMR Apparat/kmr-apparat-black.woff') format('woff');
+            font-weight: 900;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"KMR Apparat"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'KMR Apparat', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Hero entrance animation */
+        .hero-animate {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: heroFadeUp 1s ease-out forwards;
+        }
+        .hero-animate-delay-1 { animation-delay: 0.2s; }
+        .hero-animate-delay-2 { animation-delay: 0.5s; }
+        .hero-animate-delay-3 { animation-delay: 0.8s; }
+        @keyframes heroFadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Scroll fade-in */
+        .fade-in-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero gradient - Sky Gradient 21 */
+        .hero-gradient {
+            background: linear-gradient(180deg,
+                #1e528e 0%,
+                #728a7c 50%,
+                #e9ce5d 100%);
+        }
+
+        /* CTA gradient */
+        .cta-gradient {
+            background: linear-gradient(180deg,
+                rgb(22, 60, 82) 6.25%,
+                rgb(79, 79, 71) 30%,
+                rgb(197, 117, 45) 60%,
+                rgb(183, 73, 15) 80%,
+                rgb(47, 17, 7) 96.154%,
+                rgb(0, 0, 0) 100%);
+        }
+
+        /* Button hover */
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        .btn-hover:hover {
+            opacity: 0.85;
+            transform: scale(1.02);
+        }
+
+        /* Team tab */
+        .team-tab {
+            cursor: pointer;
+            color: rgba(0,0,0,0.4);
+        }
+        .team-tab:hover {
+            color: rgba(0,0,0,0.7);
+        }
+        .team-tab.active {
+            background: #000;
+            color: #fff;
+        }
+
+        /* Glass panel */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        }
+
+        .glass-panel-inner {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        /* Email item in glass */
+        .glass-email {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 12px;
+            transition: all 0.4s ease;
+        }
+        .glass-email.processing {
+            border-color: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+        .glass-email.completed {
+            border-color: rgba(34, 197, 94, 0.5);
+            opacity: 0.6;
+        }
+
+        /* Agent action step */
+        .agent-action {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .agent-action.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .agent-action.done {
+            opacity: 0.4;
+        }
+
+        /* Action icon container */
+        .action-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .action-icon-read { background: rgba(59, 130, 246, 0.12); color: #3b82f6; }
+        .action-icon-extract { background: rgba(245, 158, 11, 0.12); color: #f59e0b; }
+        .action-icon-lookup, .action-icon-query { background: rgba(99, 102, 241, 0.12); color: #6366f1; }
+        .action-icon-match { background: rgba(139, 92, 246, 0.12); color: #8b5cf6; }
+        .action-icon-verify, .action-icon-validate { background: rgba(236, 72, 153, 0.12); color: #ec4899; }
+        .action-icon-calculate, .action-icon-compare { background: rgba(168, 85, 247, 0.12); color: #a855f7; }
+        .action-icon-create, .action-icon-generate, .action-icon-book { background: rgba(34, 197, 94, 0.12); color: #22c55e; }
+        .action-icon-draft, .action-icon-send { background: rgba(6, 182, 212, 0.12); color: #06b6d4; }
+        .action-icon-done { background: rgba(34, 197, 94, 0.15); color: #22c55e; }
+        .action-icon-trigger, .action-icon-approve, .action-icon-escalate { background: rgba(249, 115, 22, 0.12); color: #f97316; }
+        .action-icon-scan, .action-icon-need, .action-icon-process, .action-icon-reconcile, .action-icon-report { background: rgba(100, 116, 139, 0.12); color: #64748b; }
+        .action-icon-identify, .action-icon-analyze { background: rgba(236, 72, 153, 0.12); color: #ec4899; }
+        .action-icon-status, .action-icon-track { background: rgba(59, 130, 246, 0.12); color: #3b82f6; }
+        .action-icon-update, .action-icon-notify, .action-icon-receive { background: rgba(20, 184, 166, 0.12); color: #14b8a6; }
+        .action-icon-alert, .action-icon-flag { background: rgba(239, 68, 68, 0.12); color: #ef4444; }
+        .action-icon-impact, .action-icon-search, .action-icon-select { background: rgba(234, 179, 8, 0.12); color: #eab308; }
+        .action-icon-assess { background: rgba(245, 158, 11, 0.12); color: #f59e0b; }
+
+        /* Pulse dot */
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            animation: pulse-ring 1.5s ease-out infinite;
+        }
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
+            70% { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+            100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+        }
+
+        /* Status badge */
+        .status-badge {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 99px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            backdrop-filter: blur(4px);
+        }
+
+        /* Progress bar */
+        .flow-progress {
+            height: 2px;
+            background: rgba(0, 0, 0, 0.08);
+            border-radius: 1px;
+            overflow: hidden;
+        }
+        .flow-progress-bar {
+            height: 100%;
+            background: #000;
+            border-radius: 1px;
+            width: 0%;
+            transition: width 0.6s ease;
+        }
+
+        /* Process tab */
+        .process-tab {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        .process-tab:hover {
+            opacity: 0.7;
+        }
+        .process-tab.active {
+            border-bottom-color: #000;
+        }
+    </style>
+    <script src="i18n.js"></script>
+</head>
+<body>
+
+    <!-- ============================================ -->
+    <!-- 1. HERO -->
+    <!-- ============================================ -->
+    <section class="relative min-h-screen flex flex-col overflow-hidden">
+        <div class="absolute inset-0 hero-gradient"></div>
+
+        <!-- Navigation -->
+        <header class="relative z-10 w-full">
+            <div class="max-w-[1794px] mx-auto flex justify-between items-center px-8 py-6">
+                <a href="index.html" class="flex items-center">
+                    <img src="assets/logo.png" alt="SOPHIA" class="h-8 md:h-10">
+                </a>
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="about.html" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">About Us</a>
+                    <a href="product.html" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">Product</a>
+                    <a href="security.html" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">Security</a>
+                    <a href="careers.html" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">Careers</a>
+                </nav>
+                <button class="md:hidden text-white" id="mobile-menu-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <nav id="mobile-menu" class="hidden md:hidden backdrop-blur-[20px] border-b border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.15)]" style="background: rgba(255, 255, 255, 0.2); -webkit-backdrop-filter: blur(20px);">
+                <div class="flex flex-col py-4 px-8">
+                    <a href="about.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">About Us</a>
+                    <a href="product.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Product</a>
+                    <a href="security.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Security</a>
+                    <a href="careers.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Careers</a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Hero content -->
+        <div class="relative z-10 flex-1 flex flex-col items-center justify-center text-white text-center px-6 pb-16">
+            <h1 class="hero-animate text-[40px] sm:text-5xl md:text-7xl lg:text-[110px] font-bold uppercase leading-[0.9] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] max-w-[1700px]">
+                AI that lets your Backoffice Shine
+            </h1>
+            <a href="contact.html" class="hero-animate hero-animate-delay-1 mt-10 md:mt-14 border border-white text-white text-sm px-6 py-3 rounded-full btn-hover hover:bg-white hover:text-black transition-all">
+                Get in touch
+            </a>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 2. INTRO TEXT -->
+    <!-- ============================================ -->
+    <section class="bg-white py-16 md:py-24 fade-in-scroll">
+        <div class="max-w-[1618px] mx-auto px-6 md:px-16">
+            <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] text-center font-normal">
+                Manufacturing is an act of orchestration. We know the pressure of aligning hundreds of moving parts - and the cost when they slip.
+            </h2>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 3. PROCESS TABS -->
+    <!-- ============================================ -->
+    <section class="bg-white pb-16 md:pb-24 fade-in-scroll">
+        <div class="max-w-[1794px] mx-auto px-6 md:px-16">
+            <!-- Team selector -->
+            <div class="flex flex-wrap gap-2 md:gap-4 mb-6">
+                <button class="team-tab text-sm md:text-base px-3 py-1 rounded-full transition-all active" onclick="switchTeam(this, 'inside-sales')">Inside Sales</button>
+                <button class="team-tab text-sm md:text-base px-3 py-1 rounded-full transition-all" onclick="switchTeam(this, 'accounting')">Accounting</button>
+                <button class="team-tab text-sm md:text-base px-3 py-1 rounded-full transition-all" onclick="switchTeam(this, 'procurement')">Operative Procurement</button>
+                <button class="team-tab text-sm md:text-base px-3 py-1 rounded-full transition-all" onclick="switchTeam(this, 'controlling')">Controlling</button>
+                <button class="team-tab text-sm md:text-base px-3 py-1 rounded-full transition-all" onclick="switchTeam(this, 'ceo')">CEO</button>
+            </div>
+            <!-- Tab content area -->
+            <div class="glass-panel rounded-2xl w-full max-w-[1570px] mx-auto overflow-hidden p-3 md:p-4">
+                <!-- Process tabs inside the box -->
+                <div class="px-4 md:px-6 pt-4 md:pt-5 pb-3">
+                    <!-- Inside Sales -->
+                    <div id="tabs-inside-sales" class="process-tabs-group flex gap-3 md:gap-8 overflow-x-auto md:overflow-visible pb-2 md:pb-0 flex-nowrap md:flex-wrap">
+                        <button class="process-tab text-sm md:text-2xl tracking-[-0.5px] md:tracking-[-1px] pb-2 whitespace-nowrap active" onclick="switchTab(this)">RFQ & Quotation</button>
+                        <button class="process-tab text-sm md:text-2xl tracking-[-0.5px] md:tracking-[-1px] pb-2 whitespace-nowrap" onclick="switchTab(this)">Order Processing</button>
+                        <button class="process-tab text-sm md:text-2xl tracking-[-0.5px] md:tracking-[-1px] pb-2 whitespace-nowrap" onclick="switchTab(this)">Customer Support</button>
+                        <button class="process-tab text-sm md:text-2xl tracking-[-0.5px] md:tracking-[-1px] pb-2 whitespace-nowrap" onclick="switchTab(this)">Sales Initiatives</button>
+                    </div>
+                    <!-- Accounting -->
+                    <div id="tabs-accounting" class="process-tabs-group flex gap-3 md:gap-8 overflow-x-auto md:overflow-visible pb-2 md:pb-0 flex-nowrap md:flex-wrap hidden">
+                        <button class="process-tab text-sm md:text-2xl tracking-[-0.5px] md:tracking-[-1px] pb-2 whitespace-nowrap active" onclick="switchTab(this)">Payables Processing</button>
+                        <button class="process-tab text-sm md:text-2xl tracking-[-0.5px] md:tracking-[-1px] pb-2 whitespace-nowrap" onclick="switchTab(this)">Reimbursement</button>
+                        <button class="process-tab text-sm md:text-2xl tracking-[-0.5px] md:tracking-[-1px] pb-2 whitespace-nowrap" onclick="switchTab(this)">Preparatory Accounting</button>
+                    </div>
+                    <!-- Operative Procurement -->
+                    <div id="tabs-procurement" class="process-tabs-group flex gap-3 md:gap-8 overflow-x-auto md:overflow-visible pb-2 md:pb-0 flex-nowrap md:flex-wrap hidden">
+                        <button class="process-tab text-sm md:text-2xl tracking-[-0.5px] md:tracking-[-1px] pb-2 whitespace-nowrap active" onclick="switchTab(this)">POs</button>
+                        <button class="process-tab text-sm md:text-2xl tracking-[-0.5px] md:tracking-[-1px] pb-2 whitespace-nowrap" onclick="switchTab(this)">RFQs Processing</button>
+                        <button class="process-tab text-sm md:text-2xl tracking-[-0.5px] md:tracking-[-1px] pb-2 whitespace-nowrap" onclick="switchTab(this)">Order Confirmation</button>
+                        <button class="process-tab text-sm md:text-2xl tracking-[-0.5px] md:tracking-[-1px] pb-2 whitespace-nowrap" onclick="switchTab(this)">Delay Management</button>
+                        <button class="process-tab text-sm md:text-2xl tracking-[-0.5px] md:tracking-[-1px] pb-2 whitespace-nowrap" onclick="switchTab(this)">On-time Hunting</button>
+                    </div>
+                    <!-- Controlling -->
+                    <div id="tabs-controlling" class="process-tabs-group flex gap-3 md:gap-8 overflow-x-auto md:overflow-visible pb-2 md:pb-0 flex-nowrap md:flex-wrap hidden">
+                        <button class="process-tab text-sm md:text-2xl tracking-[-0.5px] md:tracking-[-1px] pb-2 whitespace-nowrap active" onclick="switchTab(this)">Custom Report</button>
+                    </div>
+                    <!-- CEO -->
+                    <div id="tabs-ceo" class="process-tabs-group flex gap-3 md:gap-8 overflow-x-auto md:overflow-visible pb-2 md:pb-0 flex-nowrap md:flex-wrap hidden">
+                        <button class="process-tab text-sm md:text-2xl tracking-[-0.5px] md:tracking-[-1px] pb-2 whitespace-nowrap active" onclick="switchTab(this)">Overview</button>
+                    </div>
+                </div>
+
+                <!-- Two-panel layout: side-by-side on desktop, stacked story on mobile -->
+                <div class="hidden md:grid md:grid-cols-2 gap-4 h-[700px]">
+                    <!-- LEFT: Trigger / Email (desktop) -->
+                    <div class="glass-panel-inner rounded-xl p-5 md:p-6 flex flex-col">
+                        <div class="flex items-center justify-between mb-5">
+                            <h3 class="text-lg font-bold" id="inbox-label">Inbox</h3>
+                            <span class="text-xs text-black/40" id="email-count"></span>
+                        </div>
+                        <div class="flex flex-col gap-2 flex-1 overflow-y-auto" id="email-list">
+                        </div>
+                    </div>
+                    <!-- RIGHT: Sophia Agent (desktop) -->
+                    <div class="glass-panel-inner rounded-xl p-5 md:p-6 flex flex-col">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-2">
+                                <div class="pulse-dot"></div>
+                                <h3 class="text-lg font-bold" id="agent-label">Sophia Agent</h3>
+                            </div>
+                            <span class="status-badge bg-black/5 text-black/40" id="agent-status">Waiting</span>
+                        </div>
+                        <div class="flow-progress mb-4">
+                            <div class="flow-progress-bar" id="agent-progress-bar"></div>
+                        </div>
+                        <div class="flex flex-col gap-2.5 flex-1 overflow-y-auto" id="agent-feed">
+                        </div>
+                        <div class="mt-4 rounded-full flex items-center px-4 py-3 bg-white border border-black/10 shadow-sm">
+                            <input type="text" id="agent-prompt-input" placeholder="What would you like to do..." class="text-sm text-black/70 flex-1 bg-transparent outline-none placeholder:text-black/30">
+                            <button class="w-8 h-8 rounded-full bg-black flex items-center justify-center ml-2 hover:bg-black/80 transition-colors">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile: single-column story flow -->
+                <div class="md:hidden flex flex-col gap-3">
+                    <!-- Email panel (collapses when agent starts) -->
+                    <div class="glass-panel-inner rounded-xl p-4 flex flex-col overflow-hidden h-[600px] transition-all duration-500" id="mobile-email-panel">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-sm font-bold">Inbox</h3>
+                            <span class="text-[10px] text-black/40" id="mobile-email-count"></span>
+                        </div>
+                        <div class="flex flex-col gap-2 flex-1 overflow-y-auto min-h-0" id="mobile-email-list">
+                        </div>
+                    </div>
+                    <!-- Agent panel (expands as email collapses) -->
+                    <div class="glass-panel-inner rounded-xl p-4 flex flex-col overflow-hidden h-[500px]" id="mobile-agent-panel">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center gap-2">
+                                <div class="pulse-dot"></div>
+                                <h3 class="text-sm font-bold">Sophia Agent</h3>
+                            </div>
+                            <span class="status-badge bg-black/5 text-black/40" id="mobile-agent-status">Waiting</span>
+                        </div>
+                        <div class="flow-progress mb-3">
+                            <div class="flow-progress-bar" id="mobile-agent-progress"></div>
+                        </div>
+                        <div class="flex flex-col gap-2 flex-1 overflow-y-auto min-h-0" id="mobile-agent-feed">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 4. BELIEF TEXT -->
+    <!-- ============================================ -->
+    <section class="bg-white py-16 md:py-24 fade-in-scroll">
+        <div class="max-w-[1618px] mx-auto px-6 md:px-16">
+            <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] text-center font-normal">
+                We make your business 10x stronger.
+            </h2>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 5. MORE REVENUE -->
+    <!-- ============================================ -->
+    <section class="bg-white pb-16 md:pb-24 fade-in-scroll">
+        <div class="max-w-[1794px] mx-auto px-6 md:px-16">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+                <!-- Interactive mini agent - Sales Initiatives -->
+                <div class="order-2 md:order-1 rounded-2xl w-full p-3 md:p-4 flex flex-col overflow-hidden" style="background: linear-gradient(180deg, #1e528e 0%, #728a7c 50%, #e9ce5d 100%);">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 flex-1 h-[700px] sm:h-auto md:min-h-[500px]">
+                        <!-- LEFT: Sent emails -->
+                        <div class="rounded-xl p-3 md:p-4 flex flex-col overflow-hidden" style="background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.2);">
+                            <div class="flex items-center justify-between mb-3">
+                                <h4 class="text-xs font-bold text-white">Inbox</h4>
+                                <span class="text-[9px] text-white/40" id="rev-email-count"></span>
+                            </div>
+                            <div class="flex flex-col gap-1.5 flex-1 overflow-y-auto min-h-0" id="rev-email-list"></div>
+                        </div>
+                        <!-- RIGHT: Agent steps -->
+                        <div class="rounded-xl p-3 md:p-4 flex flex-col overflow-hidden" style="background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.2);">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-1.5">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></div>
+                                    <h4 class="text-xs font-bold text-white">Sophia</h4>
+                                </div>
+                                <span class="text-[9px] px-1.5 py-0.5 rounded-full text-white/60" id="rev-status" style="background:rgba(255,255,255,0.1);">Waiting</span>
+                            </div>
+                            <div class="h-[1px] mb-3 rounded-full overflow-hidden" style="background:rgba(255,255,255,0.1)"><div class="h-full rounded-full transition-all duration-500" id="rev-progress" style="width:0%;background:rgba(255,255,255,0.5)"></div></div>
+                            <div class="flex flex-col gap-1.5 flex-1 overflow-y-auto min-h-0" id="rev-feed"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Text -->
+                <div class="order-1 md:order-2 flex flex-col justify-between self-stretch">
+                    <h3 class="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] font-normal">More Revenue</h3>
+                    <p class="text-lg md:text-xl tracking-[-0.2px] leading-[1.5] text-black/60">Sophia creates quotes in seconds, ensures no email request goes unanswered, and proactively follows up with customers. By identifying opportunities hidden in customer behavior, your team closes more deals without lifting a finger.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 6. BETTER MARGINS -->
+    <!-- ============================================ -->
+    <section class="bg-white pb-16 md:pb-24 fade-in-scroll">
+        <div class="max-w-[1794px] mx-auto px-6 md:px-16">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+                <!-- Text -->
+                <div class="flex flex-col justify-between self-stretch">
+                    <h3 class="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] font-normal">Better Margins</h3>
+                    <p class="text-lg md:text-xl tracking-[-0.2px] leading-[1.5] text-black/60">Sophia automatically compares supplier pricing, sends out RFQs to multiple vendors, and flags cost-saving opportunities across your procurement. Proactive negotiation with competing quotes protects your margins without manual effort.</p>
+                </div>
+                <!-- Interactive mini agent - RFQs Processing -->
+                <div class="rounded-2xl w-full p-3 md:p-4 flex flex-col overflow-hidden" style="background: linear-gradient(180deg, #40405c 0%, #6f71aa 80%, #8a76ab 100%);">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 flex-1 h-[700px] sm:h-auto md:min-h-[500px]">
+                        <!-- LEFT: Sent emails -->
+                        <div class="rounded-xl p-3 md:p-4 flex flex-col overflow-hidden" style="background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.2);">
+                            <div class="flex items-center justify-between mb-3">
+                                <h4 class="text-xs font-bold text-white">Inbox</h4>
+                                <span class="text-[9px] text-white/40" id="margin-email-count"></span>
+                            </div>
+                            <div class="flex flex-col gap-1.5 flex-1 overflow-y-auto min-h-0" id="margin-email-list"></div>
+                        </div>
+                        <!-- RIGHT: Agent steps -->
+                        <div class="rounded-xl p-3 md:p-4 flex flex-col overflow-hidden" style="background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.2);">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-1.5">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></div>
+                                    <h4 class="text-xs font-bold text-white">Sophia</h4>
+                                </div>
+                                <span class="text-[9px] px-1.5 py-0.5 rounded-full text-white/60" id="margin-status" style="background:rgba(255,255,255,0.1);">Waiting</span>
+                            </div>
+                            <div class="h-[1px] mb-3 rounded-full overflow-hidden" style="background:rgba(255,255,255,0.1)"><div class="h-full rounded-full transition-all duration-500" id="margin-progress" style="width:0%;background:rgba(255,255,255,0.5)"></div></div>
+                            <div class="flex flex-col gap-1.5 flex-1 overflow-y-auto min-h-0" id="margin-feed"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 7. OUTSTANDING CUSTOMER SERVICE -->
+    <!-- ============================================ -->
+    <section class="bg-white pb-16 md:pb-24 fade-in-scroll">
+        <div class="max-w-[1794px] mx-auto px-6 md:px-16">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+                <!-- Interactive mini agent - Delay Management -->
+                <div class="order-2 md:order-1 rounded-2xl w-full p-3 md:p-4 flex flex-col overflow-hidden" style="background: linear-gradient(180deg, #2d91c2 0%, #1e528e 100%);">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 flex-1 h-[700px] sm:h-auto md:min-h-[500px]">
+                        <!-- LEFT: Emails -->
+                        <div class="rounded-xl p-3 md:p-4 flex flex-col overflow-hidden" style="background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.2);">
+                            <div class="flex items-center justify-between mb-3">
+                                <h4 class="text-xs font-bold text-white">Inbox</h4>
+                                <span class="text-[9px] text-white/40" id="cs-email-count"></span>
+                            </div>
+                            <div class="flex flex-col gap-1.5 flex-1 overflow-y-auto min-h-0" id="cs-email-list"></div>
+                        </div>
+                        <!-- RIGHT: Agent steps -->
+                        <div class="rounded-xl p-3 md:p-4 flex flex-col overflow-hidden" style="background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.2);">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-1.5">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></div>
+                                    <h4 class="text-xs font-bold text-white">Sophia</h4>
+                                </div>
+                                <span class="text-[9px] px-1.5 py-0.5 rounded-full text-white/60" id="cs-status" style="background:rgba(255,255,255,0.1);">Waiting</span>
+                            </div>
+                            <div class="h-[1px] mb-3 rounded-full overflow-hidden" style="background:rgba(255,255,255,0.1)"><div class="h-full rounded-full transition-all duration-500" id="cs-progress" style="width:0%;background:rgba(255,255,255,0.5)"></div></div>
+                            <div class="flex flex-col gap-1.5 flex-1 overflow-y-auto min-h-0" id="cs-feed"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Text -->
+                <div class="order-1 md:order-2 flex flex-col justify-between self-stretch">
+                    <h3 class="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] font-normal">Outstanding Customer Service</h3>
+                    <p class="text-lg md:text-xl tracking-[-0.2px] leading-[1.5] text-black/60">When a supplier delays, Sophia doesn't wait for your customers to ask. It proactively notifies affected customers, searches for alternatives, and escalates decisions to your team — all before anyone picks up the phone.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 8. CLARITY -->
+    <!-- ============================================ -->
+    <section class="bg-white pb-16 md:pb-24 fade-in-scroll">
+        <div class="max-w-[1794px] mx-auto px-6 md:px-16">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+                <!-- Text -->
+                <div class="flex flex-col justify-between self-stretch">
+                    <h3 class="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] font-normal">Clarity</h3>
+                    <p class="text-lg md:text-xl tracking-[-0.2px] leading-[1.5] text-black/60">Every invoice, claim, order, and request is processed the same day it arrives. Sophia pulls messy data from emails and combines it with your ERP and accounting systems — giving you a single, clean view of what's happening across your business.</p>
+                </div>
+                <!-- Diagram tile - Sky Gradient 9 -->
+                <div class="rounded-2xl aspect-[775/687] w-full p-12 md:p-16 flex flex-col justify-center overflow-hidden" style="background: linear-gradient(180deg, #94c5f8 1%, #a6e6ff 70%, #b1b5ea 100%);">
+                    <div class="max-w-[340px] mx-auto w-full">
+                        <!-- Source icons row -->
+                        <div class="flex justify-center gap-3 mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-white/40 backdrop-blur-sm border border-white/50 flex items-center justify-center shadow-sm">
+                                <svg class="w-6 h-6 text-blue-600/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                            </div>
+                            <div class="w-12 h-12 rounded-xl bg-white/40 backdrop-blur-sm border border-white/50 flex items-center justify-center shadow-sm">
+                                <svg class="w-6 h-6 text-red-500/70" fill="currentColor" viewBox="0 0 24 24"><path d="M7 18H17V16H7V18M7 14H17V12H7V14M7 10H11V8H7V10M5 22C4.45 22 3.979 21.804 3.587 21.413C3.196 21.021 3 20.55 3 20V4C3 3.45 3.196 2.979 3.587 2.587C3.979 2.196 4.45 2 5 2H14L20 8V20C20 20.55 19.804 21.021 19.413 21.413C19.021 21.804 18.55 22 18 22H5ZM13 9V3.5L18.5 9H13Z"/></svg>
+                            </div>
+                            <div class="w-12 h-12 rounded-xl bg-white/40 backdrop-blur-sm border border-white/50 flex items-center justify-center shadow-sm">
+                                <svg class="w-5 h-5 text-red-600/70" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V8L14 2ZM18 20H6V4H13V9H18V20ZM8 15.01L9.41 16.42L11 14.84V19H13V14.84L14.59 16.43L16 15.01L12.01 11L8 15.01Z"/></svg>
+                            </div>
+                            <div class="w-12 h-12 rounded-xl bg-white/40 backdrop-blur-sm border border-white/50 flex items-center justify-center shadow-sm">
+                                <svg class="w-5 h-5 text-purple-600/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"/></svg>
+                            </div>
+                            <div class="w-12 h-12 rounded-xl bg-white/40 backdrop-blur-sm border border-white/50 flex items-center justify-center shadow-sm">
+                                <svg class="w-5 h-5 text-green-700/70" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19ZM7 10H9V17H7V10ZM11 7H13V17H11V7ZM15 13H17V17H15V13Z"/></svg>
+                            </div>
+                            <div class="w-12 h-12 rounded-xl bg-white/40 backdrop-blur-sm border border-white/50 flex items-center justify-center shadow-sm">
+                                <svg class="w-5 h-5 text-black/40" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 18H4V8L12 13L20 8V18ZM12 11L4 6H20L12 11Z"/></svg>
+                            </div>
+                        </div>
+                        <!-- Dashed lines connecting to dashboard -->
+                        <svg viewBox="0 0 360 30" class="w-full mb-2">
+                            <line x1="30" y1="0" x2="90" y2="28" stroke="rgba(0,0,0,0.2)" stroke-width="1.5" stroke-dasharray="4 4"/>
+                            <line x1="90" y1="0" x2="120" y2="28" stroke="rgba(0,0,0,0.2)" stroke-width="1.5" stroke-dasharray="4 4"/>
+                            <line x1="150" y1="0" x2="150" y2="28" stroke="rgba(0,0,0,0.2)" stroke-width="1.5" stroke-dasharray="4 4"/>
+                            <line x1="210" y1="0" x2="180" y2="28" stroke="rgba(0,0,0,0.2)" stroke-width="1.5" stroke-dasharray="4 4"/>
+                            <line x1="270" y1="0" x2="240" y2="28" stroke="rgba(0,0,0,0.2)" stroke-width="1.5" stroke-dasharray="4 4"/>
+                            <line x1="330" y1="0" x2="270" y2="28" stroke="rgba(0,0,0,0.2)" stroke-width="1.5" stroke-dasharray="4 4"/>
+                        </svg>
+                        <!-- Dashboard panel -->
+                        <div class="bg-white/40 backdrop-blur-md border border-white/50 rounded-xl p-4 shadow-sm">
+                            <!-- Search bar -->
+                            <div class="flex items-center gap-2 mb-4">
+                                <div class="flex-1 bg-white/50 rounded-md px-3 py-1.5">
+                                    <span class="text-black/25 text-[10px]">Search...</span>
+                                </div>
+                                <svg class="w-4 h-4 text-black/25" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+                                <svg class="w-4 h-4 text-black/25" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z"/></svg>
+                            </div>
+                            <!-- 2x2 chart grid -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                <!-- Bar chart -->
+                                <div class="bg-white/30 rounded-lg p-3 aspect-[4/3]">
+                                    <svg viewBox="0 0 100 50" class="w-full h-full">
+                                        <rect x="5" y="35" width="4" height="10" rx="1" fill="rgba(0,0,0,0.1)"/><rect x="12" y="25" width="4" height="20" rx="1" fill="rgba(0,0,0,0.13)"/><rect x="19" y="30" width="4" height="15" rx="1" fill="rgba(0,0,0,0.1)"/><rect x="26" y="20" width="4" height="25" rx="1" fill="rgba(0,0,0,0.15)"/><rect x="33" y="15" width="4" height="30" rx="1" fill="rgba(0,0,0,0.13)"/><rect x="40" y="22" width="4" height="23" rx="1" fill="rgba(0,0,0,0.1)"/><rect x="47" y="10" width="4" height="35" rx="1" fill="rgba(0,0,0,0.18)"/><rect x="54" y="18" width="4" height="27" rx="1" fill="rgba(0,0,0,0.13)"/><rect x="61" y="12" width="4" height="33" rx="1" fill="rgba(0,0,0,0.15)"/><rect x="68" y="8" width="4" height="37" rx="1" fill="rgba(0,0,0,0.18)"/><rect x="75" y="14" width="4" height="31" rx="1" fill="rgba(0,0,0,0.13)"/><rect x="82" y="5" width="4" height="40" rx="1" fill="rgba(0,0,0,0.2)"/><rect x="89" y="10" width="4" height="35" rx="1" fill="rgba(0,0,0,0.15)"/>
+                                    </svg>
+                                </div>
+                                <!-- Line chart -->
+                                <div class="bg-white/30 rounded-lg p-3 aspect-[4/3]">
+                                    <svg viewBox="0 0 100 50" class="w-full h-full">
+                                        <polyline points="5,40 15,35 25,30 35,25 45,32 55,20 65,18 75,22 85,12 95,8" stroke="rgba(0,0,0,0.2)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <!-- Horizontal bars -->
+                                <div class="bg-white/30 rounded-lg p-3 aspect-[4/3] flex flex-col justify-center gap-2">
+                                    <div class="h-2 rounded-full bg-black/15" style="width:90%"></div>
+                                    <div class="h-2 rounded-full bg-black/12" style="width:75%"></div>
+                                    <div class="h-2 rounded-full bg-black/10" style="width:60%"></div>
+                                    <div class="h-2 rounded-full bg-black/8" style="width:45%"></div>
+                                </div>
+                                <!-- Donut chart -->
+                                <div class="bg-white/30 rounded-lg p-3 aspect-[4/3] flex items-center justify-center">
+                                    <svg viewBox="0 0 60 60" class="w-3/4">
+                                        <circle cx="30" cy="30" r="22" stroke="rgba(0,0,0,0.06)" stroke-width="8" fill="none"/>
+                                        <circle cx="30" cy="30" r="22" stroke="rgba(0,0,0,0.18)" stroke-width="8" fill="none" stroke-dasharray="100 138" stroke-dashoffset="-20" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- WIN FROM WITHIN -->
+    <!-- ============================================ -->
+    <section class="bg-white py-20 md:py-32">
+        <div class="max-w-[1794px] mx-auto px-6 md:px-16 text-right">
+            <h2 class="text-4xl sm:text-6xl md:text-8xl lg:text-[150px] font-bold uppercase leading-[0.9] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px]">
+                WIN FROM<br>WITHIN.
+            </h2>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- FOOTER -->
+    <!-- ============================================ -->
+    <footer class="bg-black text-white">
+        <div class="max-w-[1200px] mx-auto px-6 pt-[120px] pb-6">
+            <!-- Top section -->
+            <div class="flex flex-col lg:flex-row justify-between gap-16 lg:gap-[320px]">
+                <!-- Left: Logo & Description -->
+                <div class="flex flex-col justify-between">
+                    <div class="flex flex-col gap-4">
+                        <img src="assets/footer-logo.png" alt="SOPHIA" class="h-[30px] w-[115px] object-contain object-left">
+                        <p class="text-[15px] text-white leading-[1.4] tracking-[-0.15px] max-w-[262px]">
+                            Sophia — Operational excellence, straight from your inbox.
+                        </p>
+                    </div>
+                    <!-- Social links -->
+                    <div class="flex items-center gap-4 mt-12 lg:mt-[180px]">
+                        <a href="#" class="hover:opacity-80 transition-opacity">
+                            <img src="assets/linkedin.svg" alt="LinkedIn" class="w-6 h-6">
+                        </a>
+                        <a href="#" class="hover:opacity-80 transition-opacity">
+                            <img src="assets/x.svg" alt="X" class="w-6 h-6">
+                        </a>
+                        <a href="#" class="hover:opacity-80 transition-opacity">
+                            <img src="assets/youtube.svg" alt="YouTube" class="w-6 h-6">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Link columns -->
+                <div class="flex flex-wrap gap-16 lg:gap-[120px]">
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Product</h4>
+                        <a href="product.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Product</a>
+                        <a href="security.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Security</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Company</h4>
+                        <a href="about.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">About Us</a>
+                        <a href="careers.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Careers</a>
+                        <a href="contact.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Contact</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Legal</h4>
+                        <a href="imprint.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Imprint</a>
+                        <a href="privacy.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Privacy</a>
+                        <a href="subprocessors.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Sub-processors</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom bar -->
+            <div class="flex flex-col sm:flex-row justify-between items-center mt-[120px] pt-0 text-white/60 text-[15px] tracking-[-0.15px]">
+                <span>© 2026 Sophia AI GmbH. All Rights Reserved.</span>
+                <div class="flex gap-8 mt-4 sm:mt-0">
+                    <a href="imprint.html" class="hover:text-white transition-colors">Imprint</a>
+                    <a href="terms.html" class="hover:text-white transition-colors">Terms</a>
+                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy</a>
+                    <a href="subprocessors.html" class="hover:text-white transition-colors">Sub-processors</a>
+                    <a href="#" class="hover:text-white transition-colors">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================ -->
+    <!-- SCRIPTS -->
+    <!-- ============================================ -->
+    <script>
+        // =============================================
+        // SVG Icons
+        // =============================================
+        const icons = {
+            read: '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>',
+            extract: '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m.75 12l3 3m0 0l3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>',
+            lookup: '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>',
+            match: '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m9.686-1.122a4.5 4.5 0 00-1.242-7.244l-4.5-4.5a4.5 4.5 0 00-6.364 6.364l1.757 1.757"/></svg>',
+            verify: '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
+            calculate: '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V13.5zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V18zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V13.5zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V18zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zm3.75-6.75A2.25 2.25 0 0119.5 9v10.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V9a2.25 2.25 0 012.25-2.25h10.5z"/></svg>',
+            create: '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.5v15m7.5-7.5h-15"/></svg>',
+            draft: '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125"/></svg>',
+            done: '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>',
+            trigger: '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>',
+            scan: '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 013.75 9.375v-4.5zM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 01-1.125-1.125v-4.5zM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0113.5 9.375v-4.5z"/></svg>',
+            identify: '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0"/></svg>',
+            send: '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/></svg>',
+            track: '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>',
+            alert: '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>',
+            flag: '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3v1.5M3 21v-6m0 0l2.77-.693a9 9 0 016.208.682l.108.054a9 9 0 006.086.71l3.114-.732a48.524 48.524 0 01-.005-10.499l-3.11.732a9 9 0 01-6.085-.711l-.108-.054a9 9 0 00-6.208-.682L3 4.5M3 15V4.5"/></svg>',
+            default: '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"/></svg>'
+        };
+
+        function getIcon(tag) {
+            const t = tag.toLowerCase();
+            if (icons[t]) return icons[t];
+            const aliases = { query:'lookup', validate:'verify', compare:'calculate', generate:'create', book:'create', approve:'trigger', escalate:'trigger', need:'scan', process:'scan', reconcile:'scan', report:'scan', analyze:'identify', status:'track', update:'track', notify:'send', receive:'track', impact:'alert', search:'lookup', select:'lookup', assess:'alert' };
+            if (aliases[t] && icons[aliases[t]]) return icons[aliases[t]];
+            return icons.default;
+        }
+
+        // =============================================
+        // i18n data (from i18n.js)
+        // =============================================
+        var _pd = window.getI18nData('product');
+        var emailTriggers = _pd.emailTriggers;
+        var flows = _pd.flows;
+
+        // Update UI labels
+        document.getElementById('inbox-label').textContent = window.getUILabel('inbox');
+        document.getElementById('agent-label').textContent = window.getUILabel('sophiaAgent');
+        document.getElementById('agent-status').textContent = window.getUILabel('waiting');
+        document.getElementById('agent-prompt-input').placeholder = window.getUILabel('prompt');
+
+
+        // =============================================
+        // Animation engine
+        // =============================================
+        let currentTeam = 'inside-sales';
+        let currentTab = 'RFQ & Quotation';
+        let animationId = 0;
+
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        // Sync desktop panels to mobile panels
+        function syncToMobile() {
+            var ml = document.getElementById('mobile-email-list');
+            var mc = document.getElementById('mobile-email-count');
+            var mf = document.getElementById('mobile-agent-feed');
+            var ms = document.getElementById('mobile-agent-status');
+            var mp = document.getElementById('mobile-agent-progress');
+            var dl = document.getElementById('email-list');
+            var dc = document.getElementById('email-count');
+            var df = document.getElementById('agent-feed');
+            var ds = document.getElementById('agent-status');
+            var dp = document.getElementById('agent-progress-bar');
+            if (ml && dl) {
+                ml.innerHTML = dl.innerHTML;
+                // Strip email bodies on mobile — show compact view only
+                ml.querySelectorAll('.email-body').forEach(function(b) { b.remove(); });
+            }
+            if (mc && dc) mc.textContent = dc.textContent;
+            if (mf && df) mf.innerHTML = df.innerHTML;
+            if (ms && ds) { ms.textContent = ds.textContent; ms.className = ds.className; }
+            if (mp && dp) mp.style.width = dp.style.width;
+        }
+
+        // Collapse mobile email panel - keep compact card visible
+        function collapseMobileEmail() {
+            // No-op: mobile emails are already compact (no body text)
+        }
+
+        // Expand mobile email panel (reset)
+        function expandMobileEmail() {
+            var panel = document.getElementById('mobile-email-panel');
+            if (panel) {
+                panel.style.maxHeight = 'none';
+                panel.style.overflow = 'visible';
+                panel.style.opacity = '1';
+            }
+        }
+
+        function renderEmails(team, tab) {
+            const list = document.getElementById('email-list');
+            const countEl = document.getElementById('email-count');
+            list.innerHTML = '';
+
+            const emails = emailTriggers[team]?.[tab] || [];
+            countEl.textContent = emails.length ? emails.length + ' ' + getUILabel('unread') : getUILabel('noTrigger');
+
+            if (emails.length === 0) {
+                list.innerHTML = '<div id="autonomous-placeholder" class="flex-1 flex items-center justify-center"><p class="text-sm text-black/30 text-center">' + getUILabel('autonomousMode') + '<br>' + getUILabel('noEmailTrigger') + '</p></div>';
+                return;
+            }
+
+            emails.forEach(function(e, i) {
+                var div = document.createElement('div');
+                div.className = 'glass-email p-4';
+                div.id = 'trigger-email-' + i;
+                var bodyHtml = e.body ? '<div class="email-body mt-3 pt-3 border-t border-black/5" style="max-height:500px;opacity:1;transition:max-height 0.4s ease, opacity 0.3s ease;overflow:hidden"><p class="text-sm text-black/50 leading-[1.6] whitespace-pre-line">' + e.body + '</p></div>' : '';
+                div.innerHTML =
+                    '<div class="flex items-center justify-between mb-1">' +
+                        '<span class="text-sm font-bold">' + e.from + '</span>' +
+                        '<span class="text-[10px] text-black/40">' + e.time + '</span>' +
+                    '</div>' +
+                    '<p class="text-sm font-medium text-black/70">' + e.subject + '</p>' +
+                    (e.attachment ? '<div class="flex items-center gap-1 mt-1.5"><svg class="w-3 h-3 text-red-400" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg><span class="text-[10px] text-black/40">' + e.attachment + '</span></div>' : '') +
+                    bodyHtml +
+                    '<div class="mt-2 hidden"><div class="w-full rounded-full h-0.5" style="background:rgba(0,0,0,0.08)"><div class="h-0.5 rounded-full bg-black transition-all duration-1000" style="width:0%" id="email-progress-' + i + '"></div></div></div>';
+                list.appendChild(div);
+            });
+        }
+
+        function showReply(team, tab) {
+            var emails = emailTriggers[team]?.[tab] || [];
+            if (!emails.length || !emails[0].reply) return;
+
+            var reply = emails[0].reply;
+            var list = document.getElementById('email-list');
+
+            // Collapse the original email — keep header, hide body
+            var originalEmail = document.getElementById('trigger-email-0');
+            if (originalEmail) {
+                var bodyDiv = originalEmail.querySelector('.email-body');
+                if (bodyDiv) {
+                    bodyDiv.style.maxHeight = '0px';
+                    bodyDiv.style.opacity = '0';
+                    bodyDiv.style.overflow = 'hidden';
+                    bodyDiv.style.transition = 'max-height 0.4s ease, opacity 0.3s ease';
+                }
+                originalEmail.classList.remove('processing');
+                originalEmail.classList.add('completed');
+            }
+
+            // Create reply email
+            var div = document.createElement('div');
+            div.className = 'glass-email p-4 mt-2 agent-action';
+            div.style.borderColor = 'rgba(34, 197, 94, 0.3)';
+            div.style.background = 'rgba(34, 197, 94, 0.04)';
+
+            div.innerHTML =
+                '<div class="flex items-center gap-1.5 mb-1">' +
+                    '<svg class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"/></svg>' +
+                    '<span class="text-[10px] font-medium text-green-700">' + getUILabel('sophiaReply') + '</span>' +
+                '</div>' +
+                '<div class="flex items-center justify-between mb-1">' +
+                    '<span class="text-sm font-bold">An: ' + reply.to + '</span>' +
+                '</div>' +
+                '<p class="text-sm font-medium text-black/70">' + reply.subject + '</p>' +
+                (reply.attachment ? '<div class="flex items-center gap-1 mt-1.5"><svg class="w-3 h-3 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg><span class="text-[10px] text-green-700">' + reply.attachment + '</span></div>' : '') +
+                '<div class="mt-3 pt-3 border-t border-green-500/10"><p class="text-sm text-black/50 leading-[1.6] whitespace-pre-line">' + reply.body + '</p></div>';
+
+            list.appendChild(div);
+            list.scrollTop = list.scrollHeight;
+            requestAnimationFrame(function() { div.classList.add('visible'); });
+        }
+
+        function showSentEmail(email) {
+            var list = document.getElementById('email-list');
+            // Remove autonomous placeholder if present
+            var placeholder = document.getElementById('autonomous-placeholder');
+            if (placeholder) placeholder.remove();
+
+            // Update count
+            var countEl = document.getElementById('email-count');
+            var sentCount = list.querySelectorAll('.glass-email').length + 1;
+            countEl.textContent = sentCount + ' ' + getUILabel('sentCount');
+
+            var div = document.createElement('div');
+            div.className = 'glass-email p-4 mt-2 agent-action';
+            div.style.borderColor = 'rgba(6, 182, 212, 0.3)';
+            div.style.background = 'rgba(6, 182, 212, 0.04)';
+
+            div.innerHTML =
+                '<div class="flex items-center gap-1.5 mb-1">' +
+                    '<svg class="w-3 h-3 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/></svg>' +
+                    '<span class="text-[10px] font-medium text-cyan-700">' + getUILabel('sent') + '</span>' +
+                '</div>' +
+                '<div class="flex items-center justify-between mb-1">' +
+                    '<span class="text-sm font-bold">An: ' + email.to + '</span>' +
+                '</div>' +
+                '<p class="text-sm font-medium text-black/70">' + email.subject + '</p>' +
+                (email.attachment ? '<div class="flex items-center gap-1 mt-1.5"><svg class="w-3 h-3 text-cyan-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg><span class="text-[10px] text-cyan-700">' + email.attachment + '</span></div>' : '') +
+                '<div class="mt-3 pt-3 border-t border-cyan-500/10"><p class="text-sm text-black/50 leading-[1.6] whitespace-pre-line">' + email.body + '</p></div>';
+
+            list.appendChild(div);
+            list.scrollTop = list.scrollHeight;
+            requestAnimationFrame(function() { div.classList.add('visible'); });
+        }
+
+        function addAction(text, tag) {
+            const feed = document.getElementById('agent-feed');
+            const iconClass = 'action-icon-' + tag.toLowerCase();
+            const icon = getIcon(tag);
+
+            const div = document.createElement('div');
+            div.className = 'agent-action flex items-start gap-2.5';
+            div.innerHTML =
+                '<div class="action-icon ' + iconClass + ' mt-0.5">' + icon + '</div>' +
+                '<div class="flex-1 min-w-0">' +
+                    '<p class="text-sm text-black/70 leading-[1.5]">' + text + '</p>' +
+                '</div>';
+            feed.appendChild(div);
+
+            // Auto-scroll
+            feed.scrollTop = feed.scrollHeight;
+
+            requestAnimationFrame(function() { div.classList.add('visible'); });
+            return div;
+        }
+
+        async function playFlow(team, tab) {
+            const thisAnimation = ++animationId;
+            const flow = flows[team]?.[tab];
+            if (!flow) return;
+
+            const feed = document.getElementById('agent-feed');
+            const progressBar = document.getElementById('agent-progress-bar');
+            const status = document.getElementById('agent-status');
+
+            // Reset
+            feed.innerHTML = '';
+            progressBar.style.width = '0%';
+            status.textContent = getUILabel('waiting');
+            status.className = 'status-badge bg-black/5 text-black/40';
+
+            // Render emails
+            renderEmails(team, tab);
+            expandMobileEmail();
+            syncToMobile();
+
+            await delay(800);
+            if (animationId !== thisAnimation) return;
+
+            // Highlight trigger email
+            const emails = emailTriggers[team]?.[tab] || [];
+            if (emails.length > 0) {
+                const emailEl = document.getElementById('trigger-email-0');
+                if (emailEl) {
+                    emailEl.classList.add('processing');
+                    const progressEl = emailEl.querySelector('.hidden');
+                    if (progressEl) progressEl.classList.remove('hidden');
+                }
+            }
+
+            status.textContent = getUILabel('processing');
+            status.className = 'status-badge bg-yellow-100 text-yellow-700';
+            collapseMobileEmail();
+            syncToMobile();
+
+            let replyShown = false;
+            for (let i = 0; i < flow.steps.length; i++) {
+                if (animationId !== thisAnimation) return;
+
+                const step = flow.steps[i];
+                const actionEl = addAction(step.text, step.tag);
+
+                // Show reply in email panel when DRAFT step fires (for incoming email flows)
+                if (step.tag === 'DRAFT' && !replyShown && !step.sentEmail) {
+                    showReply(team, tab);
+                    replyShown = true;
+                }
+
+                // Show sent email in left panel
+                if (step.sentEmail) {
+                    showSentEmail(step.sentEmail);
+                }
+
+                syncToMobile();
+
+                // Mark previous steps as done
+                const allActions = feed.querySelectorAll('.agent-action');
+                allActions.forEach(function(a, idx) {
+                    if (idx < allActions.length - 1) a.classList.add('done');
+                    else a.classList.remove('done');
+                });
+
+                // Update progress
+                const pct = Math.round(((i + 1) / flow.steps.length) * 100);
+                progressBar.style.width = pct + '%';
+
+                // Update email progress too
+                const emailProgressBar = document.getElementById('email-progress-0');
+                if (emailProgressBar) emailProgressBar.style.width = pct + '%';
+
+                const waitTime = step.tag === 'DONE' ? 3500 : 1800 + Math.random() * 800;
+                await delay(waitTime);
+            }
+
+            if (animationId !== thisAnimation) return;
+
+            // Mark email as completed
+            const emailEl = document.getElementById('trigger-email-0');
+            if (emailEl) {
+                emailEl.classList.remove('processing');
+                emailEl.classList.add('completed');
+            }
+
+            status.textContent = getUILabel('done');
+            status.className = 'status-badge bg-green-100 text-green-700';
+            syncToMobile();
+
+            // Wait and replay
+            await delay(4000);
+            if (animationId !== thisAnimation) return;
+            playFlow(team, tab);
+        }
+
+        // =============================================
+        // Tab / Team switching
+        // =============================================
+        function switchTeam(el, teamId) {
+            document.querySelectorAll('.team-tab').forEach(function(tab) { tab.classList.remove('active'); });
+            el.classList.add('active');
+            document.querySelectorAll('.process-tabs-group').forEach(function(group) { group.classList.add('hidden'); });
+            var tabGroup = document.getElementById('tabs-' + teamId);
+            tabGroup.classList.remove('hidden');
+
+            currentTeam = teamId;
+
+            var firstTab = tabGroup.querySelector('.process-tab');
+            tabGroup.querySelectorAll('.process-tab').forEach(function(t) { t.classList.remove('active'); });
+            firstTab.classList.add('active');
+            currentTab = firstTab.textContent;
+
+            playFlow(currentTeam, currentTab);
+        }
+
+        function switchTab(el) {
+            el.parentElement.querySelectorAll('.process-tab').forEach(function(tab) { tab.classList.remove('active'); });
+            el.classList.add('active');
+            currentTab = el.textContent;
+            playFlow(currentTeam, currentTab);
+        }
+
+        // =============================================
+        // Init
+        // =============================================
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in-scroll').forEach(function(el) { observer.observe(el); });
+
+        document.getElementById('mobile-menu-button')?.addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Start first flow
+        playFlow('inside-sales', 'RFQ & Quotation');
+
+        // =============================================
+        // Mini agent demo for "More revenue" tile
+        // =============================================
+        (function() {
+            var miniSteps = [
+                { tag: 'SCAN', text: 'Scanning 47 accounts for reorder patterns' },
+                { tag: 'IDENTIFY', text: 'Brenner Technik — next order due in 3 days' },
+                { tag: 'IDENTIFY', text: 'AutoParts AG — order volume dropping' },
+                { tag: 'ANALYZE', text: '18% margin potential on premium line' },
+                { tag: 'DRAFT', text: 'Drafting bundle offer to Brenner Technik',
+                  sentEmail: { to: 'einkauf@brenner-technik.de', subject: 'Bundle-Angebot Schneidwerkzeuge', body: 'Basierend auf Ihrem Bestellrhythmus:\n\nNeues Bundle-Angebot Premium-Linie.\n18% Margenpotenzial.\n\nSophia — Inside Sales' } },
+                { tag: 'DRAFT', text: 'Drafting volume discount for AutoParts AG',
+                  sentEmail: { to: 'schmidt@autoparts-ag.de', subject: 'Mengenrabatt Sensoren', body: 'Sensorbestellungen rückläufig.\n\n200+ Stück: -8%\n500+ Stück: -15%\n\nSophia — Inside Sales' } },
+                { tag: 'DONE', text: '2 sales emails queued for review' }
+            ];
+
+            var miniIcons = {
+                SCAN: '<svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>',
+                IDENTIFY: '<svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0"/></svg>',
+                ANALYZE: '<svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5"/></svg>',
+                DRAFT: '<svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931z"/></svg>',
+                DONE: '<svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>'
+            };
+
+            var miniIconColors = {
+                SCAN: 'rgba(100,116,139,0.15)', IDENTIFY: 'rgba(236,72,153,0.15)',
+                ANALYZE: 'rgba(168,85,247,0.15)', DRAFT: 'rgba(6,182,212,0.15)', DONE: 'rgba(34,197,94,0.2)'
+            };
+
+            async function playMiniDemo() {
+                var feed = document.getElementById('rev-feed');
+                var progress = document.getElementById('rev-progress');
+                var status = document.getElementById('rev-status');
+                var emailList = document.getElementById('rev-email-list');
+                var emailCount = document.getElementById('rev-email-count');
+                if (!feed) return;
+
+                while (true) {
+                    feed.innerHTML = '';
+                    emailList.innerHTML = '';
+                    emailCount.textContent = '';
+                    progress.style.width = '0%';
+                    status.textContent = getUILabel('waiting');
+                    status.style.background = 'rgba(255,255,255,0.1)';
+
+                    await delay(1500);
+
+                    status.textContent = getUILabel('processing');
+                    status.style.background = 'rgba(234,179,8,0.2)';
+
+                    var sentCount = 0;
+                    for (var i = 0; i < miniSteps.length; i++) {
+                        var step = miniSteps[i];
+                        var el = document.createElement('div');
+                        el.className = 'flex items-start gap-1.5 agent-action';
+                        el.innerHTML =
+                            '<div class="w-5 h-5 rounded flex items-center justify-center flex-shrink-0 mt-0.5" style="background:' + (miniIconColors[step.tag] || 'rgba(255,255,255,0.1)') + ';color:white">' + (miniIcons[step.tag] || '') + '</div>' +
+                            '<p class="text-[10px] text-white/70 leading-[1.4]">' + step.text + '</p>';
+                        feed.appendChild(el);
+                        feed.scrollTop = feed.scrollHeight;
+
+                        // Mark previous as done
+                        var all = feed.querySelectorAll('.agent-action');
+                        all.forEach(function(a, idx) { if (idx < all.length - 1) a.style.opacity = '0.4'; else a.style.opacity = '1'; });
+
+                        requestAnimationFrame(function() { el.classList.add('visible'); });
+
+                        // Show sent email
+                        if (step.sentEmail) {
+                            sentCount++;
+                            emailCount.textContent = sentCount + ' ' + getUILabel('sentCount');
+                            var emailEl = document.createElement('div');
+                            emailEl.className = 'agent-action rounded-lg p-2.5 mb-1' ;
+                            emailEl.style.cssText = 'background:rgba(6,182,212,0.08);border:1px solid rgba(6,182,212,0.2);border-radius:8px;';
+                            emailEl.innerHTML =
+                                '<div class="flex items-center gap-1 mb-0.5"><svg class="w-2 h-2 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/></svg><span class="text-[8px] text-cyan-300 font-medium">' + getUILabel('sent') + '</span></div>' +
+                                '<p class="text-[9px] text-white/80 font-bold">' + step.sentEmail.to + '</p>' +
+                                '<p class="text-[9px] text-white/50">' + step.sentEmail.subject + '</p>' +
+                                '<p class="text-[8px] text-white/30 mt-1 leading-[1.4] whitespace-pre-line">' + step.sentEmail.body + '</p>';
+                            emailList.appendChild(emailEl);
+                            emailList.scrollTop = emailList.scrollHeight;
+                            requestAnimationFrame(function() { emailEl.classList.add('visible'); });
+                        }
+
+                        progress.style.width = Math.round(((i + 1) / miniSteps.length) * 100) + '%';
+                        var wait = step.tag === 'DONE' ? 3000 : 1800 + Math.random() * 600;
+                        await delay(wait);
+                    }
+
+                    status.textContent = getUILabel('done');
+                    status.style.background = 'rgba(34,197,94,0.2)';
+                    await delay(4000);
+                }
+            }
+
+            playMiniDemo();
+        })();
+
+        // =============================================
+        // Mini agent demo for "Better margins" tile
+        // =============================================
+        (function() {
+            var marginSteps = [
+                { tag: 'NEED', text: '3 custom components — no supplier pricing' },
+                { tag: 'SELECT', text: 'Qualified suppliers from vendor list: 4 matches' },
+                { tag: 'CREATE', text: 'Generating RFQ with specs and quantities' },
+                { tag: 'SEND', text: 'Sending RFQ to 4 suppliers',
+                  sentEmail: { to: 'supplier-a@..., +3', subject: 'Anfrage: 3 Sonderkomponenten', attachment: 'RFQ-Specs.pdf', body: 'Wir benötigen Angebote für 3 kundenspezifische Komponenten.\n\nSpezifikationen im Anhang.\n\nAngebotsfrist: 12. April 2026\n\nSophia — Einkauf' } },
+                { tag: 'TRACK', text: 'Follow-up reminder set — deadline: Apr 12' },
+                { tag: 'DONE', text: 'RFQ sent to 4 suppliers — awaiting quotes' }
+            ];
+
+            var mIcons = {
+                NEED: '<svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg>',
+                SELECT: '<svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>',
+                CREATE: '<svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.5v15m7.5-7.5h-15"/></svg>',
+                SEND: '<svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/></svg>',
+                TRACK: '<svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
+                DONE: '<svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>'
+            };
+
+            var mColors = {
+                NEED: 'rgba(239,68,68,0.15)', SELECT: 'rgba(99,102,241,0.15)',
+                CREATE: 'rgba(34,197,94,0.15)', SEND: 'rgba(6,182,212,0.15)',
+                TRACK: 'rgba(245,158,11,0.15)', DONE: 'rgba(34,197,94,0.2)'
+            };
+
+            async function playMarginDemo() {
+                var feed = document.getElementById('margin-feed');
+                var progress = document.getElementById('margin-progress');
+                var status = document.getElementById('margin-status');
+                var emailList = document.getElementById('margin-email-list');
+                var emailCount = document.getElementById('margin-email-count');
+                if (!feed) return;
+
+                while (true) {
+                    feed.innerHTML = '';
+                    emailList.innerHTML = '';
+                    emailCount.textContent = '';
+                    progress.style.width = '0%';
+                    status.textContent = getUILabel('waiting');
+                    status.style.background = 'rgba(255,255,255,0.1)';
+
+                    await delay(2000);
+
+                    status.textContent = getUILabel('processing');
+                    status.style.background = 'rgba(234,179,8,0.2)';
+
+                    var sentCount = 0;
+                    for (var i = 0; i < marginSteps.length; i++) {
+                        var step = marginSteps[i];
+                        var el = document.createElement('div');
+                        el.className = 'flex items-start gap-1.5 agent-action';
+                        el.innerHTML =
+                            '<div class="w-5 h-5 rounded flex items-center justify-center flex-shrink-0 mt-0.5" style="background:' + (mColors[step.tag] || 'rgba(255,255,255,0.1)') + ';color:white">' + (mIcons[step.tag] || '') + '</div>' +
+                            '<p class="text-[10px] text-white/70 leading-[1.4]">' + step.text + '</p>';
+                        feed.appendChild(el);
+                        feed.scrollTop = feed.scrollHeight;
+
+                        var all = feed.querySelectorAll('.agent-action');
+                        all.forEach(function(a, idx) { if (idx < all.length - 1) a.style.opacity = '0.4'; else a.style.opacity = '1'; });
+
+                        requestAnimationFrame(function() { el.classList.add('visible'); });
+
+                        if (step.sentEmail) {
+                            sentCount++;
+                            emailCount.textContent = sentCount + ' ' + getUILabel('sentCount');
+                            var emailEl = document.createElement('div');
+                            emailEl.className = 'agent-action rounded-lg p-2.5 mb-1';
+                            emailEl.style.cssText = 'background:rgba(6,182,212,0.08);border:1px solid rgba(6,182,212,0.2);border-radius:8px;';
+                            emailEl.innerHTML =
+                                '<div class="flex items-center gap-1 mb-0.5"><svg class="w-2 h-2 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/></svg><span class="text-[8px] text-cyan-300 font-medium">' + getUILabel('sent') + '</span></div>' +
+                                '<p class="text-[9px] text-white/80 font-bold">' + step.sentEmail.to + '</p>' +
+                                '<p class="text-[9px] text-white/50">' + step.sentEmail.subject + '</p>' +
+                                (step.sentEmail.attachment ? '<div class="flex items-center gap-1 mt-0.5"><svg class="w-2 h-2 text-cyan-300/60" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg><span class="text-[8px] text-white/30">' + step.sentEmail.attachment + '</span></div>' : '') +
+                                '<p class="text-[8px] text-white/30 mt-1 leading-[1.4] whitespace-pre-line">' + step.sentEmail.body + '</p>';
+                            emailList.appendChild(emailEl);
+                            emailList.scrollTop = emailList.scrollHeight;
+                            requestAnimationFrame(function() { emailEl.classList.add('visible'); });
+                        }
+
+                        progress.style.width = Math.round(((i + 1) / marginSteps.length) * 100) + '%';
+                        var wait = step.tag === 'DONE' ? 3000 : 1800 + Math.random() * 600;
+                        await delay(wait);
+                    }
+
+                    status.textContent = getUILabel('done');
+                    status.style.background = 'rgba(34,197,94,0.2)';
+                    await delay(4000);
+                }
+            }
+
+            playMarginDemo();
+        })();
+
+        // =============================================
+        // Mini agent demo for "Outstanding customer service" tile
+        // =============================================
+        (function() {
+            var csSteps = [
+                { tag: 'READ', text: 'Delay notification from logistik@bearingworld.de' },
+                { tag: 'ASSESS', text: 'Original: Apr 10, new: Apr 17 — 7 day delay' },
+                { tag: 'IMPACT', text: '2 customer orders affected: SO-1088, SO-1092' },
+                { tag: 'SEARCH', text: 'Alternative supplier found — FastParts, +15% premium' },
+                { tag: 'DRAFT', text: 'Proactive delay notification to customers',
+                  sentEmail: { to: 'kunde-1@..., kunde-2@...', subject: 'Info: Verzögerung Ihrer Bestellung',
+                    body: 'Sehr geehrte Damen und Herren,\n\neine Teillieferung verzögert sich um ca. 7 Tage.\n\nNeuer Termin: 17. April 2026\n\nWir prüfen eine Expresslieferung und melden uns kurzfristig.\n\nSophia — Einkauf' } },
+                { tag: 'ESCALATE', text: 'Flagged for manager: premium order or accept delay?' },
+                { tag: 'DONE', text: 'Customers notified — 2 options prepared' }
+            ];
+
+            var csIcons = {
+                READ: '<svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>',
+                ASSESS: '<svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
+                IMPACT: '<svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>',
+                SEARCH: '<svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>',
+                DRAFT: '<svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931z"/></svg>',
+                ESCALATE: '<svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>',
+                DONE: '<svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>'
+            };
+
+            var csColors = {
+                READ: 'rgba(59,130,246,0.15)', ASSESS: 'rgba(245,158,11,0.15)',
+                IMPACT: 'rgba(239,68,68,0.15)', SEARCH: 'rgba(99,102,241,0.15)',
+                DRAFT: 'rgba(6,182,212,0.15)', ESCALATE: 'rgba(249,115,22,0.15)', DONE: 'rgba(34,197,94,0.2)'
+            };
+
+            var csIncoming = { from: 'logistik@bearingworld.de', subject: 'Lieferverzug PO-2026-0892', time: '14:22',
+                body: 'Lieferung PO-2026-0892 verzögert.\n\nUrsprung: 10. April\nNeu: 17. April\n\nBearingWorld GmbH' };
+
+            async function playCsDemo() {
+                var feed = document.getElementById('cs-feed');
+                var progress = document.getElementById('cs-progress');
+                var status = document.getElementById('cs-status');
+                var emailList = document.getElementById('cs-email-list');
+                var emailCount = document.getElementById('cs-email-count');
+                if (!feed) return;
+
+                while (true) {
+                    feed.innerHTML = '';
+                    emailList.innerHTML = '';
+                    emailCount.textContent = '1 ' + getUILabel('unread');
+                    progress.style.width = '0%';
+                    status.textContent = getUILabel('waiting');
+                    status.style.background = 'rgba(255,255,255,0.1)';
+
+                    // Show incoming email
+                    var inEl = document.createElement('div');
+                    inEl.className = 'rounded-lg p-2.5';
+                    inEl.style.cssText = 'background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:8px;';
+                    inEl.innerHTML =
+                        '<div class="flex items-center justify-between mb-0.5"><span class="text-[9px] text-white/80 font-bold">' + csIncoming.from + '</span><span class="text-[8px] text-white/30">' + csIncoming.time + '</span></div>' +
+                        '<p class="text-[9px] text-white/50">' + csIncoming.subject + '</p>' +
+                        '<p class="text-[8px] text-white/30 mt-1 leading-[1.4] whitespace-pre-line">' + csIncoming.body + '</p>';
+                    emailList.appendChild(inEl);
+
+                    await delay(2000);
+
+                    status.textContent = getUILabel('processing');
+                    status.style.background = 'rgba(234,179,8,0.2)';
+
+                    var sentCount = 0;
+                    for (var i = 0; i < csSteps.length; i++) {
+                        var step = csSteps[i];
+                        var el = document.createElement('div');
+                        el.className = 'flex items-start gap-1.5 agent-action';
+                        el.innerHTML =
+                            '<div class="w-5 h-5 rounded flex items-center justify-center flex-shrink-0 mt-0.5" style="background:' + (csColors[step.tag] || 'rgba(255,255,255,0.1)') + ';color:white">' + (csIcons[step.tag] || '') + '</div>' +
+                            '<p class="text-[10px] text-white/70 leading-[1.4]">' + step.text + '</p>';
+                        feed.appendChild(el);
+                        feed.scrollTop = feed.scrollHeight;
+
+                        var all = feed.querySelectorAll('.agent-action');
+                        all.forEach(function(a, idx) { if (idx < all.length - 1) a.style.opacity = '0.4'; else a.style.opacity = '1'; });
+                        requestAnimationFrame(function() { el.classList.add('visible'); });
+
+                        if (step.sentEmail) {
+                            // Collapse incoming email
+                            inEl.style.opacity = '0.4';
+                            inEl.style.maxHeight = '40px';
+                            inEl.style.overflow = 'hidden';
+                            inEl.style.transition = 'all 0.4s ease';
+
+                            sentCount++;
+                            emailCount.textContent = sentCount + ' ' + getUILabel('sentCount');
+                            var emailEl = document.createElement('div');
+                            emailEl.className = 'agent-action rounded-lg p-2.5 mt-1.5';
+                            emailEl.style.cssText = 'background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);border-radius:8px;';
+                            emailEl.innerHTML =
+                                '<div class="flex items-center gap-1 mb-0.5"><svg class="w-2 h-2 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"/></svg><span class="text-[8px] text-green-300 font-medium">' + getUILabel('sophiaReply') + '</span></div>' +
+                                '<p class="text-[9px] text-white/80 font-bold">' + step.sentEmail.to + '</p>' +
+                                '<p class="text-[9px] text-white/50">' + step.sentEmail.subject + '</p>' +
+                                '<p class="text-[8px] text-white/30 mt-1 leading-[1.4] whitespace-pre-line">' + step.sentEmail.body + '</p>';
+                            emailList.appendChild(emailEl);
+                            emailList.scrollTop = emailList.scrollHeight;
+                            requestAnimationFrame(function() { emailEl.classList.add('visible'); });
+                        }
+
+                        progress.style.width = Math.round(((i + 1) / csSteps.length) * 100) + '%';
+                        var wait = step.tag === 'DONE' ? 3000 : 1800 + Math.random() * 600;
+                        await delay(wait);
+                    }
+
+                    status.textContent = getUILabel('done');
+                    status.style.background = 'rgba(34,197,94,0.2)';
+                    await delay(4000);
+                }
+            }
+
+            playCsDemo();
+        })();
+    </script>
+</body>
+</html>

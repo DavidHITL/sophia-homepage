@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOPHIA - Contact</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="manifest" href="images/site.webmanifest">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-light.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-light.woff') format('woff'); font-weight: 300; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-regular.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-regular.woff') format('woff'); font-weight: 400; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-medium.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-medium.woff') format('woff'); font-weight: 500; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-bold.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-bold.woff') format('woff'); font-weight: 700; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-heavy.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-heavy.woff') format('woff'); font-weight: 800; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'KMR Apparat'; src: url('assets/KMR Apparat/kmr-apparat-black.woff2') format('woff2'), url('assets/KMR Apparat/kmr-apparat-black.woff') format('woff'); font-weight: 900; font-style: normal; font-display: swap; }
+    </style>
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { sans: ['"KMR Apparat"', 'sans-serif'] } } } }
+    </script>
+    <style>
+        body { font-family: 'KMR Apparat', sans-serif; background-color: #ffffff; color: #000000; overflow-x: hidden; }
+        html { scroll-behavior: smooth; }
+        .fade-in-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in-scroll.visible { opacity: 1; transform: translateY(0); }
+        .hero-gradient { background: linear-gradient(180deg, #4a4969 0%, #7072ab 50%, #cd82a0 100%); }
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 0.7s step-end infinite;
+            font-weight: 300;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+    </style>
+    <script src="i18n.js"></script>
+</head>
+<body>
+
+    <!-- ============================================ -->
+    <!-- HERO + CONTACT -->
+    <!-- ============================================ -->
+    <section class="relative overflow-hidden hero-gradient">
+
+        <!-- Navigation -->
+        <header class="relative z-10 w-full">
+            <div class="max-w-[1794px] mx-auto flex justify-between items-center px-8 py-6">
+                <a href="index.html" class="flex items-center">
+                    <img src="assets/logo.png" alt="SOPHIA" class="h-8 md:h-10">
+                </a>
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="about.html" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">About Us</a>
+                    <a href="product.html" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">Product</a>
+                    <a href="security.html" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">Security</a>
+                    <a href="careers.html" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">Careers</a>
+                </nav>
+                <button class="md:hidden text-white" id="mobile-menu-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <nav id="mobile-menu" class="hidden md:hidden backdrop-blur-[20px] border-b border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.15)]" style="background: rgba(255, 255, 255, 0.2); -webkit-backdrop-filter: blur(20px);">
+                <div class="flex flex-col py-4 px-8">
+                    <a href="about.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">About Us</a>
+                    <a href="product.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Product</a>
+                    <a href="security.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Security</a>
+                    <a href="careers.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Careers</a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Content: Text + Embed -->
+        <div class="relative z-10 max-w-[1794px] mx-auto px-8 md:px-16 py-12 md:py-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 xl:gap-16 items-start">
+
+                <!-- Google Calendar / Contact embed (shows first on mobile) -->
+                <div class="lg:sticky lg:top-8 order-1 lg:order-2">
+                    <div class="rounded-2xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl">
+                        <div class="bg-[#4a4969]/80 rounded-t-2xl px-6 py-4">
+                            <p class="text-white/80 text-sm font-medium uppercase tracking-wide">Book a meeting</p>
+                        </div>
+                        <div class="bg-white rounded-b-2xl">
+                            <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3pCTY-0WbrsF4dkBmCUSBY7clTTlIIldfVh8eM9DZ9g2-mMKffqQR04zXFEFrCdHeGOAqf4Rgb?gv=true" style="border: 0" width="100%" height="500" frameborder="0" class="lg:h-[700px]"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Manifesto text (typed) - below calendar on mobile, left on desktop -->
+                <div id="manifesto" class="text-white font-normal text-base md:text-[22px] leading-[1.6] tracking-[-0.3px] min-h-0 md:min-h-[900px] lg:min-h-[1100px] order-2 lg:order-1">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- WIN FROM WITHIN -->
+    <!-- ============================================ -->
+    <section class="bg-white py-20 md:py-32">
+        <div class="max-w-[1794px] mx-auto px-6 md:px-16 text-right">
+            <h2 class="text-6xl sm:text-8xl md:text-9xl lg:text-[150px] font-bold uppercase leading-[0.9] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px]">
+                WIN FROM<br>WITHIN.
+            </h2>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- FOOTER -->
+    <!-- ============================================ -->
+    <footer class="bg-black text-white">
+        <div class="max-w-[1200px] mx-auto px-6 pt-[120px] pb-6">
+            <div class="flex flex-col lg:flex-row justify-between gap-16 lg:gap-[320px]">
+                <div class="flex flex-col justify-between">
+                    <div class="flex flex-col gap-4">
+                        <img src="assets/footer-logo.png" alt="SOPHIA" class="h-[30px] w-[115px] object-contain object-left">
+                        <p class="text-[15px] text-white leading-[1.4] tracking-[-0.15px] max-w-[262px]">Sophia — Operational excellence, straight from your inbox.</p>
+                    </div>
+                    <div class="flex items-center gap-4 mt-12 lg:mt-[180px]">
+                        <a href="#" class="hover:opacity-80 transition-opacity"><img src="assets/linkedin.svg" alt="LinkedIn" class="w-6 h-6"></a>
+                        <a href="#" class="hover:opacity-80 transition-opacity"><img src="assets/x.svg" alt="X" class="w-6 h-6"></a>
+                        <a href="#" class="hover:opacity-80 transition-opacity"><img src="assets/youtube.svg" alt="YouTube" class="w-6 h-6"></a>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-16 lg:gap-[120px]">
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Product</h4>
+                        <a href="product.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Product</a>
+                        <a href="security.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Security</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Company</h4>
+                        <a href="about.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">About Us</a>
+                        <a href="careers.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Careers</a>
+                        <a href="contact.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Contact</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Legal</h4>
+                        <a href="imprint.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Imprint</a>
+                        <a href="privacy.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Privacy</a>
+                        <a href="subprocessors.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Sub-processors</a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row justify-between items-center mt-[120px] pt-0 text-white/60 text-[15px] tracking-[-0.15px]">
+                <span>&copy; 2026 Sophia AI GmbH. All Rights Reserved.</span>
+                <div class="flex gap-8 mt-4 sm:mt-0">
+                    <a href="imprint.html" class="hover:text-white transition-colors">Imprint</a>
+                    <a href="terms.html" class="hover:text-white transition-colors">Terms</a>
+                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy</a>
+                    <a href="subprocessors.html" class="hover:text-white transition-colors">Sub-processors</a>
+                    <a href="#" class="hover:text-white transition-colors">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('mobile-menu-button')?.addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Typing animation
+        var lines = [
+            { text: 'Ein Unternehmen zu führen bedeutet vor allem eins:\nEtwas zu unternehmen.', gap: true },
+            { text: 'Für den Erfolg.\nUm weiter zu kommen.\nUm zu gewinnen.', gap: true },
+            { text: 'Der größte Feind:\nder Status-Quo.', gap: true },
+            { text: '„Reicht doch."\n„Passt schon."\n„Läuft doch."', gap: true },
+            { text: 'Das sind die Abrissbirnen\ndes Fortschritts.', gap: true },
+            { text: 'Also unternehmen wir endlich was.', gap: true },
+            { text: 'Gegen die übersehenen E-Mails.\nDie endlosen Excel-Tabellen.\nDie Engpässe, die immer enger werden.\nUnd die Workarounds, die wir Workflows nennen.', gap: true },
+            { text: 'Hören wir auf, Möglichkeiten zu verschenken.\nUnd unser Potenzial in Zettelwirtschaft zu begraben.', gap: true },
+            { text: 'Sophia.', gap: true },
+            { text: 'Agenten, die operativen Flow schaffen — ohne bestehende Abläufe zu unterbrechen. KI, die Intelligenz genau dort freisetzt, wo Entscheidungen fallen: direkt in der Inbox.', gap: true },
+            { text: 'Damit jedes Unternehmen das unternehmen kann, wofür es da ist.', gap: false }
+        ];
+
+        var manifesto = document.getElementById('manifesto');
+        var charDelay = 25;
+        var lineDelay = 400;
+
+        async function typeManifesto() {
+            for (var l = 0; l < lines.length; l++) {
+                var p = document.createElement('p');
+                p.classList.add('typing-cursor');
+                if (lines[l].gap) p.classList.add('mb-6');
+                p.style.whiteSpace = 'pre-line';
+                manifesto.appendChild(p);
+
+                var text = lines[l].text;
+                for (var c = 0; c < text.length; c++) {
+                    p.textContent += text[c];
+                    manifesto.scrollTop = manifesto.scrollHeight;
+                    await new Promise(function(r) { setTimeout(r, charDelay); });
+                }
+
+                p.classList.remove('typing-cursor');
+                await new Promise(function(r) { setTimeout(r, lineDelay); });
+            }
+        }
+
+        typeManifesto();
+    </script>
+</body>
+</html>
