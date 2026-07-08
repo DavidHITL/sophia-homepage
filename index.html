@@ -160,13 +160,35 @@
             transform: scale(1.02);
         }
 
-        /* Alternierende Tint-Zonen: weiche Bahn, blendet oben/unten ueber 80px ins Weiss.
-           Sektionen darin werden transparent, damit die Bahn durchscheint (Gradient-Karten behalten ihre inline-Gradients). */
+        /* Rhythmus-Zonen: klare Tonwert-Baender statt weichem Verlauf.
+           Eine helle Grau-Bahn (Proof, Win) und eine dunkle Bahn (Security) setzen den Takt,
+           die weissen Sektionen dazwischen atmen. Harte Haarlinien-Kanten statt weicher Uebergang,
+           damit die Sektionen klar als Kapitel lesbar sind. Sektionen werden transparent, damit die
+           Bahn durchscheint (Gradient-Karten behalten ihre inline-Gradients). */
         .zone-tint {
-            background: linear-gradient(180deg, #ffffff 0, #f6f7f9 80px, #f6f7f9 calc(100% - 80px), #ffffff 100%);
+            background: #eaecf0;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
         }
         .zone-tint section { background-color: transparent; }
-        /* Security cards: weiss schwebend auf der Tint-Bahn */
+
+        /* Dunkle Bahn (Security = Tresor): staerkster Kontrast-Beat, nimmt den dunklen
+           Ausklang des Hero-Gradients und den schwarzen Footer auf. */
+        .zone-dark {
+            background: #0d0d0f;
+            color: #ffffff;
+        }
+        .zone-dark section { background-color: transparent; }
+        /* Utility-Text im Dunkeln invertieren (hoehere Spezifitaet schlaegt die Tailwind-Klasse) */
+        .zone-dark .text-black\/60 { color: rgba(255,255,255,0.66); }
+        .zone-dark .text-black\/50 { color: rgba(255,255,255,0.55); }
+        .zone-dark .text-black\/40 { color: rgba(255,255,255,0.45); }
+        .zone-dark .text-black\/30 { color: rgba(255,255,255,0.40); }
+        .zone-dark .text-green-600 { color: #4ade80; }
+        .zone-dark .bg-black\/5 { background: rgba(255,255,255,0.08); }
+        .zone-dark .bg-green-100 { background: rgba(34,197,94,0.16); }
+
+        /* Security cards: auf heller Bahn weiss schwebend, auf dunkler Bahn als Glas */
         .security-card {
             background: #ffffff;
             border: 1px solid rgba(0,0,0,0.05);
@@ -175,6 +197,14 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .security-card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(0,0,0,0.06); }
+        .zone-dark .security-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.10);
+        }
+        .zone-dark .security-card:hover {
+            background: rgba(255,255,255,0.06);
+            box-shadow: 0 14px 34px rgba(0,0,0,0.45);
+        }
         /* Einheitliches monochromes Icon-Chip (an Spark-Mark und Compliance-Badges angelehnt) */
         .icon-chip {
             width: 3rem;
@@ -188,6 +218,11 @@
             margin-bottom: 1.5rem;
             color: #1a1a1a;
         }
+        .zone-dark .icon-chip {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.14);
+            color: #ffffff;
+        }
         .compliance-badge {
             border: 1px solid #e0e0e0;
             border-radius: 12px;
@@ -197,6 +232,8 @@
         }
         .compliance-badge.completed { border-color: #22c55e; background: rgba(34, 197, 94, 0.04); }
         .compliance-badge.pending { border-color: #e0e0e0; background: #fafafa; }
+        .zone-dark .compliance-badge.completed { border-color: rgba(34,197,94,0.55); background: rgba(34,197,94,0.10); }
+        .zone-dark .compliance-badge.pending { border-color: rgba(255,255,255,0.16); background: rgba(255,255,255,0.03); }
 
         /* Feature card */
         .feature-card {
@@ -778,6 +815,7 @@
     <!-- ============================================ -->
     <section id="product" class="bg-white pb-10 md:pb-16 fade-in-scroll" style="scroll-margin-top: 32px;">
         <div class="max-w-[1794px] mx-auto px-6 md:px-16">
+            <p class="text-sm md:text-base uppercase tracking-[2px] text-black/40 text-center mb-6 md:mb-8">Product</p>
             <h2 id="product-teaser-h2" class="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] text-center font-normal">
                 See Sophia at work
             </h2>
@@ -898,16 +936,16 @@
     </section>
 
     <!-- ============================================ -->
-    <!-- 5c. SECURITY + COMPLIANCE (Trust-Zone auf der Landingpage) -->
+    <!-- 5c. SECURITY + COMPLIANCE (dunkle Tresor-Bahn auf der Landingpage) -->
     <!-- ============================================ -->
-    <div class="zone-tint">
+    <div class="zone-dark">
     <section id="security" class="pt-16 md:pt-28 pb-8 md:pb-12 fade-in-scroll" style="scroll-margin-top: 32px;">
         <div class="max-w-[1794px] mx-auto px-6 md:px-16 text-center">
             <p class="text-sm md:text-base uppercase tracking-[2px] text-black/40 mb-6 md:mb-8">Security &amp; compliance</p>
             <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] font-normal text-center">
                 European Security
             </h2>
-            <a href="contact.html" class="inline-block mt-8 md:mt-10 bg-black text-white text-sm px-6 py-3 rounded-full btn-hover transition-all hover:opacity-90">
+            <a href="contact.html" class="inline-block mt-8 md:mt-10 bg-white text-black text-sm px-6 py-3 rounded-full btn-hover transition-all hover:opacity-90">
                 Get in touch
             </a>
         </div>
@@ -1011,13 +1049,14 @@
         </div>
     </section>
     </div>
-    <!-- /zone-trust -->
+    <!-- /zone-dark Security -->
 
     <!-- ============================================ -->
     <!-- 4. BELIEF TEXT -->
     <!-- ============================================ -->
     <section class="bg-white py-16 md:py-24 fade-in-scroll">
         <div class="max-w-[1618px] mx-auto px-6 md:px-16">
+            <p class="text-sm md:text-base uppercase tracking-[2px] text-black/40 text-center mb-6 md:mb-8">What you gain</p>
             <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] text-center font-normal">
                 We make your business 10x stronger.
             </h2>
@@ -1362,6 +1401,7 @@
                     'Security': 'Sicherheit',
                     'Careers': 'Karriere',
                     'Security & compliance': 'Sicherheit & Compliance',
+                    'What you gain': 'Was Sie gewinnen',
                     'Connects everything': 'Verbindet alles',
                     'Sophia integrates with your ERP, CRM, DMS, and inbox, letting agents operate across your entire business, not just one tool.': 'Sophia integriert sich in Ihr ERP, CRM, DMS und Postfach, sodass Agenten in Ihrem gesamten Unternehmen arbeiten, nicht nur in einem Tool.',
                     'Email Centric': 'Rund um die E-Mail',
