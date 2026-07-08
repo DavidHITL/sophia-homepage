@@ -172,10 +172,11 @@
         }
         .zone-tint section { background-color: transparent; }
 
-        /* Dunkle Bahn (Security = Tresor): staerkster Kontrast-Beat, nimmt den dunklen
-           Ausklang des Hero-Gradients und den schwarzen Footer auf. */
+        /* Dunkle Bahn (Security = Tresor): staerkster Kontrast-Beat, aber warm statt kaltschwarz.
+           Nimmt den Bogen des Hero-Gradients auf (kuehles Anthrazit oben in warmes Rostbraun),
+           dunkel genug fuer weisse Schrift ueber die ganze Hoehe. */
         .zone-dark {
-            background: #0d0d0f;
+            background: linear-gradient(168deg, #1f2731 0%, #2c1d13 52%, #17100b 100%);
             color: #ffffff;
         }
         .zone-dark section { background-color: transparent; }
@@ -813,7 +814,7 @@
     <!-- ============================================ -->
     <!-- 5b. PRODUCT ON THE LANDING PAGE -->
     <!-- ============================================ -->
-    <section id="product" class="bg-white pb-10 md:pb-16 fade-in-scroll" style="scroll-margin-top: 32px;">
+    <section id="product" class="bg-white pt-20 md:pt-32 pb-10 md:pb-16 fade-in-scroll" style="scroll-margin-top: 32px;">
         <div class="max-w-[1794px] mx-auto px-6 md:px-16">
             <p class="text-sm md:text-base uppercase tracking-[2px] text-black/40 text-center mb-6 md:mb-8">Product</p>
             <h2 id="product-teaser-h2" class="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] text-center font-normal">
