@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auf die Warteliste — Sophia</title>
+    <meta name="description" content="Frühzugang zu Sophia sichern — Warteliste für den Mittelstand.">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="manifest" href="images/site.webmanifest">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @font-face { font-family:'KMR Apparat'; src:url('assets/KMR Apparat/kmr-apparat-light.woff2') format('woff2'),url('assets/KMR Apparat/kmr-apparat-light.woff') format('woff'); font-weight:300; font-style:normal; font-display:swap; }
+        @font-face { font-family:'KMR Apparat'; src:url('assets/KMR Apparat/kmr-apparat-book.woff2') format('woff2'),url('assets/KMR Apparat/kmr-apparat-book.woff') format('woff'); font-weight:350; font-style:normal; font-display:swap; }
+        @font-face { font-family:'KMR Apparat'; src:url('assets/KMR Apparat/kmr-apparat-regular.woff2') format('woff2'),url('assets/KMR Apparat/kmr-apparat-regular.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+        @font-face { font-family:'KMR Apparat'; src:url('assets/KMR Apparat/kmr-apparat-medium.woff2') format('woff2'),url('assets/KMR Apparat/kmr-apparat-medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+        @font-face { font-family:'KMR Apparat'; src:url('assets/KMR Apparat/kmr-apparat-bold.woff2') format('woff2'),url('assets/KMR Apparat/kmr-apparat-bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+        @font-face { font-family:'KMR Apparat'; src:url('assets/KMR Apparat/kmr-apparat-heavy.woff2') format('woff2'),url('assets/KMR Apparat/kmr-apparat-heavy.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+        @font-face { font-family:'KMR Apparat'; src:url('assets/KMR Apparat/kmr-apparat-black.woff2') format('woff2'),url('assets/KMR Apparat/kmr-apparat-black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+    </style>
+    <script>
+        tailwind.config = { theme: { extend: {
+            fontFamily: { sans: ['"KMR Apparat"', 'sans-serif'] },
+            fontSize: {
+                'xs':['14px','1.45'], 'sm':['16px','1.5'], 'base':['19px','1.55'],
+                'lg':['22px','1.4'], 'xl':['26px','1.25'], '2xl':['34px','1.15'], '3xl':['44px','1.05']
+            }
+        } } }
+    </script>
+    <style>
+        html, body { margin:0; min-height:100%; font-family:'KMR Apparat', sans-serif; }
+        .tt-1 { letter-spacing:-0.5px; } .tt-2 { letter-spacing:-1px; }
+        .tt-3 { letter-spacing:-2px; } .tt-4 { letter-spacing:-3px; }
+        /* Same closing-slide gradient as the deck */
+        .wl-bg { background: linear-gradient(180deg, #1E528E 0%, #265889 50%, #9DA671 100%); }
+        .logo { height: 30px; filter: brightness(0) invert(1); }
+    </style>
+</head>
+<body class="wl-bg text-white">
+    <div class="min-h-screen flex flex-col px-6 sm:px-10 lg:px-16 py-8 lg:py-10">
+
+        <!-- Top bar -->
+        <header class="flex items-center justify-between">
+            <img src="assets/logo.png" alt="SOPHIA" class="logo">
+            <div class="text-xs sm:text-sm uppercase tracking-[0.18em] text-white/55">Frühzugang</div>
+        </header>
+
+        <!-- Main -->
+        <main class="flex-1 flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-16 py-12 lg:py-0 max-w-[1700px] mx-auto w-full">
+
+            <!-- Waitlist form -->
+            <form id="waitlistForm" class="w-full lg:w-[620px] shrink-0">
+                <div class="text-sm uppercase tracking-[0.2em] text-white/60">Frühzugang sichern</div>
+                <div class="mt-3 text-3xl md:text-[clamp(44px,6vw,80px)] font-bold tt-1 leading-[1.02]">Auf die Warteliste</div>
+                <div data-wl-body>
+                    <p class="mt-4 text-base md:text-lg text-white/70 leading-snug max-w-[560px]">Begrenzte Plätze für die ersten Mittelständler. Tragen Sie sich ein — wir melden uns persönlich.</p>
+                    <div class="mt-7 flex flex-col sm:flex-row gap-4">
+                        <input type="email" name="email" required autocomplete="email" placeholder="ihre@firma.de"
+                               class="flex-1 min-w-0 w-full px-7 py-5 rounded-full bg-white/10 border-2 border-white/35 text-lg md:text-xl text-white placeholder-white/45 outline-none focus:border-white focus:bg-white/15" />
+                        <button type="submit" class="shrink-0 px-10 py-5 rounded-full bg-white text-black font-bold tt-1 text-lg md:text-xl whitespace-nowrap cursor-pointer hover:bg-white/90 transition">Eintragen</button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Hero statement -->
+            <h1 class="flex-1 text-left lg:text-right text-6xl sm:text-7xl md:text-8xl lg:text-[clamp(96px,12vw,200px)] font-bold uppercase leading-[0.85] tt-4">
+                Win from<br>within.
+            </h1>
+        </main>
+
+        <!-- Contact -->
+        <footer class="grid grid-cols-3 gap-6 sm:gap-12 max-w-[820px]">
+            <div>
+                <div class="text-xs uppercase tracking-[0.15em] text-white/55">Sprechen wir</div>
+                <a href="mailto:st@gosophia.ai" class="mt-2 block text-base sm:text-xl tt-1 text-white no-underline break-all">st@gosophia.ai</a>
+            </div>
+            <div>
+                <div class="text-xs uppercase tracking-[0.15em] text-white/55">Web</div>
+                <a href="https://gosophia.ai" class="mt-2 block text-base sm:text-xl tt-1 text-white no-underline">gosophia.ai</a>
+            </div>
+            <div>
+                <div class="text-xs uppercase tracking-[0.15em] text-white/55">LinkedIn</div>
+                <a href="https://www.linkedin.com/in/simtue" target="_blank" rel="noopener" class="mt-2 block text-base sm:text-xl tt-1 text-white no-underline">/in/simtue</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Waitlist → Google Form "Email-Adresse" question (same as the deck slide).
+         Submissions land in that form's responses (Google Sheet). -->
+    <script>
+    (function () {
+        var WL_FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSe6OcQiU4SZ_m41x7haY_IKNoP39AahOP7hqpWMZnqtVz33mg/formResponse";
+        var WL_ENTRY_ID    = "entry.959199534";
+        var f = document.getElementById('waitlistForm');
+        if (!f) return;
+        f.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var v = (f.email && f.email.value || '').trim();
+            if (!v) return;
+            var done = function () {
+                var b = f.querySelector('[data-wl-body]');
+                if (b) b.innerHTML =
+                    '<div class="mt-6 text-3xl md:text-[clamp(40px,5vw,64px)] font-bold tt-1 text-white">Danke!</div>' +
+                    '<div class="mt-4 text-lg md:text-xl text-white/70 leading-snug">Sie stehen auf der Warteliste — wir melden uns persönlich.</div>';
+            };
+            fetch(WL_FORM_ACTION, {
+                method: 'POST', mode: 'no-cors',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: WL_ENTRY_ID + '=' + encodeURIComponent(v)
+            }).finally(done);
+        });
+    })();
+    </script>
+</body>
+</html>

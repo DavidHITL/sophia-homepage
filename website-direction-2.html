@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOPHIA - The Autonomous BackOffice For Manufacturing</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="manifest" href="images/site.webmanifest">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @font-face {
+            font-family: 'KMR Apparat';
+            src: url('assets/KMR Apparat/kmr-apparat-light.woff2') format('woff2'),
+                 url('assets/KMR Apparat/kmr-apparat-light.woff') format('woff');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'KMR Apparat';
+            src: url('assets/KMR Apparat/kmr-apparat-book.woff2') format('woff2'),
+                 url('assets/KMR Apparat/kmr-apparat-book.woff') format('woff');
+            font-weight: 350;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'KMR Apparat';
+            src: url('assets/KMR Apparat/kmr-apparat-regular.woff2') format('woff2'),
+                 url('assets/KMR Apparat/kmr-apparat-regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'KMR Apparat';
+            src: url('assets/KMR Apparat/kmr-apparat-medium.woff2') format('woff2'),
+                 url('assets/KMR Apparat/kmr-apparat-medium.woff') format('woff');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'KMR Apparat';
+            src: url('assets/KMR Apparat/kmr-apparat-bold.woff2') format('woff2'),
+                 url('assets/KMR Apparat/kmr-apparat-bold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'KMR Apparat';
+            src: url('assets/KMR Apparat/kmr-apparat-heavy.woff2') format('woff2'),
+                 url('assets/KMR Apparat/kmr-apparat-heavy.woff') format('woff');
+            font-weight: 800;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'KMR Apparat';
+            src: url('assets/KMR Apparat/kmr-apparat-black.woff2') format('woff2'),
+                 url('assets/KMR Apparat/kmr-apparat-black.woff') format('woff');
+            font-weight: 900;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"KMR Apparat"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'KMR Apparat', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Scroll fade-in */
+        .fade-in-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero gradient */
+        .hero-gradient {
+            background: linear-gradient(180deg,
+                #3c66a9 0%,
+                #6a7a9a 30%,
+                #c5752d 60%,
+                #b7490f 80%,
+                #4a1a08 100%);
+        }
+
+
+        /* CTA gradient background */
+        .cta-gradient {
+            background: linear-gradient(180deg,
+                rgb(22, 60, 82) 6.25%,
+                rgb(79, 79, 71) 30%,
+                rgb(197, 117, 45) 60%,
+                rgb(183, 73, 15) 80%,
+                rgb(47, 17, 7) 96.154%,
+                rgb(0, 0, 0) 100%);
+        }
+
+        /* Button hover */
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        .btn-hover:hover {
+            opacity: 0.85;
+            transform: scale(1.02);
+        }
+
+        /* Feature card */
+        .feature-card {
+            background-color: #e3e3e3;
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Connection diagram node */
+        .connection-node {
+            background: #fff;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -1.5px;
+        }
+
+        /* Glass panel */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        }
+        .glass-panel-inner {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        /* Glass email */
+        .glass-email {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 12px;
+            transition: all 0.4s ease;
+        }
+        .glass-email.processing {
+            border-color: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+        .glass-email.completed {
+            border-color: rgba(34, 197, 94, 0.5);
+            opacity: 0.6;
+        }
+
+        /* Agent action step */
+        .agent-action {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .agent-action.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .agent-action.done {
+            opacity: 0.4;
+        }
+
+        /* Action icon */
+        .action-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .action-icon-extract { background: rgba(245, 158, 11, 0.12); color: #f59e0b; }
+        .action-icon-identify { background: rgba(236, 72, 153, 0.12); color: #ec4899; }
+        .action-icon-create { background: rgba(34, 197, 94, 0.12); color: #22c55e; }
+        .action-icon-done { background: rgba(34, 197, 94, 0.15); color: #22c55e; }
+        .action-icon-scan { background: rgba(100, 116, 139, 0.12); color: #64748b; }
+
+        /* Progress bar */
+        .flow-progress {
+            height: 2px;
+            background: rgba(0, 0, 0, 0.08);
+            border-radius: 1px;
+            overflow: hidden;
+        }
+        .flow-progress-bar {
+            height: 100%;
+            background: #000;
+            border-radius: 1px;
+            width: 0%;
+            transition: width 0.6s ease;
+        }
+
+        /* Pulse dot */
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            animation: pulse-ring 1.5s ease-out infinite;
+        }
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
+            70% { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+            100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+        }
+
+        /* Status badge */
+        .status-badge {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 99px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            backdrop-filter: blur(4px);
+        }
+    </style>
+    <script src="i18n.js"></script>
+</head>
+<body>
+
+    <!-- ============================================ -->
+    <!-- 1. HERO - Full-bleed gradient -->
+    <!-- ============================================ -->
+    <section class="relative min-h-screen flex flex-col overflow-hidden">
+        <div class="absolute inset-0 hero-gradient"></div>
+
+        <!-- Navigation -->
+        <header class="relative z-10 w-full">
+            <div class="max-w-[1794px] mx-auto flex justify-between items-center px-8 py-6">
+                <a href="index.html" class="flex items-center">
+                    <img src="assets/logo.png" alt="SOPHIA" class="h-8 md:h-10">
+                </a>
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="about.html" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">About Us</a>
+                    <a href="product.html" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">Product</a>
+                    <a href="security.html" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">Security</a>
+                    <a href="careers.html" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">Careers</a>
+                </nav>
+                <button class="md:hidden text-white" id="mobile-menu-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <nav id="mobile-menu" class="hidden md:hidden backdrop-blur-[20px] border-b border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.15)]" style="background: rgba(255, 255, 255, 0.2); -webkit-backdrop-filter: blur(20px);">
+                <div class="flex flex-col py-4 px-8">
+                    <a href="about.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">About Us</a>
+                    <a href="product.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Product</a>
+                    <a href="security.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Security</a>
+                    <a href="careers.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Careers</a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Centered hero content -->
+        <div class="relative z-10 flex-1 flex flex-col items-center justify-center text-white text-center px-6 pb-24">
+            <h1 class="text-[40px] sm:text-5xl md:text-7xl lg:text-[110px] font-bold uppercase leading-[0.9] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] max-w-[1700px]">
+                The Autonomous BackOffice<br>For Manufacturing
+            </h1>
+            <p class="text-lg md:text-[32px] leading-[1.3] mt-10 md:mt-14 max-w-[894px]">
+                AI Agents built for the modern manufacturer. We empower SMEs to maximize revenue, defend margins, and deliver flawless customer service — autonomously.
+            </p>
+            <a href="contact.html" class="mt-10 md:mt-14 text-white text-sm px-6 py-3 rounded-full btn-hover transition-all" style="background: rgba(255,255,255,0.12); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.25); box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 4px 16px rgba(0,0,0,0.1);">
+                Get in touch
+            </a>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 2. STATEMENT TEXT - Two-color -->
+    <!-- ============================================ -->
+    <section class="bg-white py-20 md:py-32 fade-in-scroll">
+        <div class="max-w-[1618px] mx-auto px-6 md:px-16">
+            <h2 class="text-2xl sm:text-3xl md:text-5xl lg:text-[80px] leading-[1.1] tracking-[-0.5px] sm:tracking-[-1px] md:tracking-[-2px] lg:tracking-[-4px] text-center">
+                <span class="text-black/30">Work happens between systems - searching, updating and constantly copy &amp; pasting</span>
+                <span class="text-black"> — Sophia does this for you so your team can do what actually matters.</span>
+            </h2>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 3. AGENTIC ACTION - Email List + Agent -->
+    <!-- ============================================ -->
+    <section class="bg-white pb-20 md:pb-32 fade-in-scroll">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="glass-panel rounded-2xl p-3 md:p-4">
+                <div class="grid md:grid-cols-2 gap-3 md:gap-4 h-auto md:h-[700px]">
+
+                    <!-- LEFT: Email List -->
+                    <div class="glass-panel-inner rounded-xl p-5 md:p-6 flex flex-col">
+                        <div class="flex items-center justify-between mb-5">
+                            <h3 class="text-lg font-bold" id="inbox-label">Inbox</h3>
+                            <span class="text-xs text-black/40" id="email-count">4 unread</span>
+                        </div>
+                        <div class="flex flex-col gap-2 flex-1 overflow-y-auto" id="email-list">
+                            <!-- Email items get populated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- RIGHT: Agentic Action -->
+                    <div class="glass-panel-inner rounded-xl p-5 md:p-6 flex flex-col">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-2">
+                                <div class="pulse-dot"></div>
+                                <h3 class="text-lg font-bold" id="agent-label">Sophia Agent</h3>
+                            </div>
+                            <span class="status-badge bg-black/5 text-black/40" id="agent-status">Waiting</span>
+                        </div>
+
+                        <!-- Progress bar -->
+                        <div class="flow-progress mb-4">
+                            <div class="flow-progress-bar" id="agent-progress-bar"></div>
+                        </div>
+
+                        <!-- Agent action feed -->
+                        <div class="flex flex-col gap-2.5 flex-1 overflow-y-auto" id="agent-feed">
+                            <!-- Actions get populated by JS -->
+                        </div>
+
+                        <!-- Prompt bar -->
+                        <div class="mt-4 rounded-full flex items-center px-4 py-3 bg-white border border-black/10 shadow-sm">
+                            <input type="text" id="agent-prompt-input" placeholder="What would you like to do..." class="text-sm text-black/70 flex-1 bg-transparent outline-none placeholder:text-black/30">
+                            <button class="w-8 h-8 rounded-full bg-black flex items-center justify-center ml-2 hover:bg-black/80 transition-colors">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 4. INTEGRATION TEXT -->
+    <!-- ============================================ -->
+    <section class="bg-white py-16 md:py-24 fade-in-scroll">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-16">
+            <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] text-center font-normal">
+                Designed to seamlessly integrate into your processes. No disruption.
+            </h2>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 5. FEATURE CARDS - Connect + Email-Centric -->
+    <!-- ============================================ -->
+    <section class="bg-white pb-20 md:pb-32 fade-in-scroll">
+        <div class="max-w-[1794px] mx-auto px-6 md:px-16">
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+
+                <!-- Card 1: Connect -->
+                <div class="rounded-lg min-h-[400px] md:min-h-[550px] flex flex-col overflow-hidden" style="background: linear-gradient(180deg, #1e528e 0%, #728a7c 50%, #e9ce5d 100%);">
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-2xl md:text-[36px] leading-[1.1] tracking-[-0.4px] text-white">Connects everything</h3>
+                        <p class="text-sm md:text-base leading-[1.5] text-white/80 mt-4 max-w-[500px]">
+                            Sophia integrates with your ERP, CRM, DMS, and inbox — letting agents operate across your entire business, not just one tool.
+                        </p>
+                    </div>
+                    <!-- Connection diagram -->
+                    <div class="flex items-center justify-center py-2">
+                        <div class="relative w-full max-w-[320px] aspect-square">
+                            <!-- Connecting lines from center to corners -->
+                            <svg class="absolute inset-0 w-full h-full" viewBox="0 0 420 420" fill="none">
+                                <line x1="210" y1="210" x2="70" y2="55" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-dasharray="6 4"/>
+                                <line x1="210" y1="210" x2="350" y2="55" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-dasharray="6 4"/>
+                                <line x1="210" y1="210" x2="70" y2="365" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-dasharray="6 4"/>
+                                <line x1="210" y1="210" x2="350" y2="365" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-dasharray="6 4"/>
+                            </svg>
+                            <!-- Center icon (Sophia logo) -->
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[72px] h-[72px] md:w-[96px] md:h-[96px] bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-lg flex items-center justify-center p-3">
+                                <img src="assets/sophia-icon.png" alt="Sophia" class="w-full h-full object-contain" style="filter: invert(1);">
+                            </div>
+                            <!-- Corner nodes -->
+                            <div class="absolute top-[4%] left-[2%] px-4 py-2.5 rounded-xl shadow-md text-lg md:text-2xl tracking-[-1px] bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold uppercase">EMAIL</div>
+                            <div class="absolute top-[4%] right-[2%] px-4 py-2.5 rounded-xl shadow-md text-lg md:text-2xl tracking-[-1px] bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold uppercase">ERP</div>
+                            <div class="absolute bottom-[4%] left-[2%] px-4 py-2.5 rounded-xl shadow-md text-lg md:text-2xl tracking-[-1px] bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold uppercase">CRM</div>
+                            <div class="absolute bottom-[4%] right-[2%] px-4 py-2.5 rounded-xl shadow-md text-lg md:text-2xl tracking-[-1px] bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold uppercase">DMS</div>
+                        </div>
+                    </div>
+                    <!-- Integration tiles -->
+                    <div class="px-8 md:px-12 pb-8 md:pb-12">
+                        <div class="flex flex-wrap gap-2 md:gap-3">
+                            <span class="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm md:text-base">SAP</span>
+                            <span class="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm md:text-base">Shopify</span>
+                            <span class="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm md:text-base">Datev</span>
+                            <span class="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm md:text-base">Lexware</span>
+                            <span class="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm md:text-base">Applus</span>
+                            <span class="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm md:text-base">Outlook</span>
+                            <span class="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm md:text-base">Google</span>
+                            <span class="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm md:text-base">Navision</span>
+                            <span class="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm md:text-base">Dynamics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Email-Centric -->
+                <div class="rounded-lg min-h-[400px] md:min-h-[550px] flex flex-col overflow-hidden" style="background: linear-gradient(180deg, #1e528e 0%, #728a7c 50%, #e9ce5d 100%);">
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-2xl md:text-[36px] leading-[1.1] tracking-[-0.4px] text-white">Email Centric</h3>
+                        <p class="text-sm md:text-base leading-[1.5] text-white/80 mt-4 max-w-[500px]">
+                            Sophia lives inside Email Clients — reading emails, drafting replies, checking material prices and availability and updating your ERP. No new tools to learn, no workflows to change.
+                        </p>
+                    </div>
+                    <!-- Floating app icons -->
+                    <div class="flex-1 flex items-center justify-center pb-12">
+                        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-3 flex items-center gap-3 shadow-2xl">
+                            <!-- Outlook icon -->
+                            <div class="w-16 h-16 md:w-20 md:h-20 rounded-xl flex items-center justify-center shadow-lg overflow-hidden">
+                                <img src="assets/outlook-icon.png" alt="Outlook" class="w-full h-full object-contain">
+                            </div>
+                            <!-- Sophia icon -->
+                            <div class="w-16 h-16 md:w-20 md:h-20 bg-[#1a1a1a] rounded-xl flex items-center justify-center shadow-lg p-3">
+                                <img src="assets/sophia-icon.png" alt="Sophia" class="w-full h-full object-contain" style="filter: invert(1);">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- IMPACT FROM DAY 1 -->
+    <!-- ============================================ -->
+    <section class="bg-white py-16 md:py-24 fade-in-scroll">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-16 text-center">
+            <h2 class="text-4xl sm:text-6xl md:text-8xl lg:text-[150px] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] font-bold mb-12 md:mb-16">Impact from Day 1</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-24">
+                <div>
+                    <p class="text-3xl md:text-5xl lg:text-[56px] tracking-[-0.5px] sm:tracking-[-1px] md:tracking-[-2px] font-normal">Zero day</p>
+                    <p class="text-xl md:text-2xl tracking-[-1px] text-black/70">implementation</p>
+                </div>
+                <div>
+                    <p class="text-3xl md:text-5xl lg:text-[56px] tracking-[-0.5px] sm:tracking-[-1px] md:tracking-[-2px] font-normal">3x</p>
+                    <p class="text-xl md:text-2xl tracking-[-1px] text-black/70">ROI</p>
+                </div>
+                <div>
+                    <p class="text-3xl md:text-5xl lg:text-[56px] tracking-[-0.5px] sm:tracking-[-1px] md:tracking-[-2px] font-normal">100%</p>
+                    <p class="text-xl md:text-2xl tracking-[-1px] text-black/70">flow</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- WIN FROM WITHIN -->
+    <!-- ============================================ -->
+    <section class="bg-white py-20 md:py-32">
+        <div class="max-w-[1794px] mx-auto px-6 md:px-16 text-right">
+            <h2 class="text-4xl sm:text-6xl md:text-8xl lg:text-[150px] font-bold uppercase leading-[0.9] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px]">
+                WIN FROM<br>WITHIN.
+            </h2>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 6. FOOTER -->
+    <!-- ============================================ -->
+    <footer class="bg-black text-white">
+        <div class="max-w-[1200px] mx-auto px-6 pt-[120px] pb-6">
+            <!-- Top section -->
+            <div class="flex flex-col lg:flex-row justify-between gap-16 lg:gap-[320px]">
+                <!-- Left: Logo & Description -->
+                <div class="flex flex-col justify-between">
+                    <div class="flex flex-col gap-4">
+                        <img src="assets/footer-logo.png" alt="SOPHIA" class="h-[30px] w-[115px] object-contain object-left">
+                        <p class="text-[15px] text-white leading-[1.4] tracking-[-0.15px] max-w-[262px]">
+                            Sophia — Operational excellence, straight from your inbox.
+                        </p>
+                    </div>
+                    <!-- Social links -->
+                    <div class="flex items-center gap-4 mt-12 lg:mt-[180px]">
+                        <a href="#" class="hover:opacity-80 transition-opacity">
+                            <img src="assets/linkedin.svg" alt="LinkedIn" class="w-6 h-6">
+                        </a>
+                        <a href="#" class="hover:opacity-80 transition-opacity">
+                            <img src="assets/x.svg" alt="X" class="w-6 h-6">
+                        </a>
+                        <a href="#" class="hover:opacity-80 transition-opacity">
+                            <img src="assets/youtube.svg" alt="YouTube" class="w-6 h-6">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Link columns -->
+                <div class="flex flex-wrap gap-16 lg:gap-[120px]">
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Product</h4>
+                        <a href="product.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Product</a>
+                        <a href="security.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Security</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Company</h4>
+                        <a href="about.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">About Us</a>
+                        <a href="careers.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Careers</a>
+                        <a href="contact.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Contact</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Legal</h4>
+                        <a href="imprint.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Imprint</a>
+                        <a href="privacy.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Privacy</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom bar -->
+            <div class="flex flex-col sm:flex-row justify-between items-center mt-[120px] pt-0 text-white/60 text-[15px] tracking-[-0.15px]">
+                <span>© 2026 Sophia AI GmbH. All Rights Reserved.</span>
+                <div class="flex gap-8 mt-4 sm:mt-0">
+                    <a href="imprint.html" class="hover:text-white transition-colors">Imprint</a>
+                    <a href="terms.html" class="hover:text-white transition-colors">Terms</a>
+                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy</a>
+                    <a href="#" class="hover:text-white transition-colors">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll fade-in
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.fade-in-scroll').forEach(el => observer.observe(el));
+
+            // Mobile menu toggle
+            const btn = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+            if (btn) {
+                btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+                menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+            }
+
+            // Agent animation
+            startAgentDemo();
+        });
+
+        // i18n data
+        var _d2 = window.getI18nData('direction2');
+        var emails = _d2.emails;
+        var actions = _d2.actions;
+
+        // Update UI labels
+        document.getElementById('inbox-label').textContent = window.getUILabel('inbox');
+        document.getElementById('agent-label').textContent = window.getUILabel('sophiaAgent');
+        document.getElementById('agent-status').textContent = window.getUILabel('waiting');
+        document.getElementById('agent-prompt-input').placeholder = window.getUILabel('prompt');
+
+        function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+        function renderEmails() {
+            const list = document.getElementById('email-list');
+            list.innerHTML = '';
+            emails.forEach((e, i) => {
+                const div = document.createElement('div');
+                div.className = 'glass-email p-4';
+                div.id = 'email-' + i;
+                div.innerHTML =
+                    '<div class="flex items-center justify-between mb-1">' +
+                        '<span class="text-sm font-bold">' + e.from + '</span>' +
+                        '<span class="text-[10px] text-black/40">' + e.time + '</span>' +
+                    '</div>' +
+                    '<p class="text-sm text-black/60">' + e.subject + '</p>' +
+                    (e.attachment ? '<div class="flex items-center gap-1 mt-1.5"><svg class="w-3 h-3 text-red-400" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg><span class="text-[10px] text-black/40">' + e.attachment + '</span></div>' : '') +
+                    '<div class="hidden mt-2"><div class="w-full rounded-full h-0.5" style="background:rgba(0,0,0,0.08)"><div class="h-0.5 rounded-full bg-black transition-all duration-1000" style="width:0%" id="email-progress-' + i + '"></div></div></div>';
+                list.appendChild(div);
+            });
+        }
+
+        const iconsSvg = {
+            extract: '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m.75 12l3 3m0 0l3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>',
+            identify: '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0"/></svg>',
+            create: '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.5v15m7.5-7.5h-15"/></svg>',
+            done: '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>',
+            scan: '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>'
+        };
+
+        function addAction(text, type, extra) {
+            const feed = document.getElementById('agent-feed');
+            const iconClass = 'action-icon-' + type;
+            const icon = iconsSvg[type] || iconsSvg.scan;
+
+            const div = document.createElement('div');
+            div.className = 'agent-action flex items-start gap-2.5';
+
+            let extraHtml = '';
+            if (extra && extra.file) extraHtml += '<div class="flex items-center gap-1.5 mt-1.5 bg-white/50 rounded px-2 py-1 w-fit"><svg class="w-3.5 h-3.5 text-red-400" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg><span class="text-xs text-black/50">' + extra.file + '</span></div>';
+            if (extra && extra.tags) extraHtml += '<div class="flex gap-1.5 mt-1.5 flex-wrap">' + extra.tags.map(function(t) { return '<span class="text-[11px] bg-white/50 rounded-full px-2 py-0.5 font-medium text-black/60">' + t + '</span>'; }).join('') + '</div>';
+            if (extra && extra.ref) extraHtml += '<div class="flex items-center gap-1.5 mt-1.5 bg-white/50 rounded px-2 py-1 w-fit"><span class="text-xs font-bold text-blue-700">' + extra.ref + '</span></div>';
+
+            div.innerHTML =
+                '<div class="action-icon ' + iconClass + ' mt-0.5">' + icon + '</div>' +
+                '<div class="flex-1 min-w-0">' +
+                    '<p class="text-sm text-black/70 leading-[1.5]">' + text + '</p>' +
+                    extraHtml +
+                '</div>';
+            feed.appendChild(div);
+            feed.scrollTop = feed.scrollHeight;
+            requestAnimationFrame(function() { div.classList.add('visible'); });
+        }
+
+        async function processEmail(index) {
+            const emailEl = document.getElementById('email-' + index);
+            const progressEl = document.getElementById('email-progress-' + index);
+            const status = document.getElementById('agent-status');
+            const progressBar = document.getElementById('agent-progress-bar');
+            const feed = document.getElementById('agent-feed');
+
+            // Clear previous actions, show only this email's actions
+            feed.innerHTML = '';
+
+            // Highlight active email
+            emailEl.classList.add('processing');
+            var hiddenEl = emailEl.querySelector('.hidden');
+            if (hiddenEl) hiddenEl.classList.remove('hidden');
+            status.textContent = getUILabel('processing');
+            status.className = 'status-badge bg-yellow-100 text-yellow-700';
+            progressBar.style.width = '0%';
+
+            const steps = actions[index];
+            for (let s = 0; s < steps.length; s++) {
+                const pct = Math.round(((s + 1) / steps.length) * 100);
+                progressEl.style.width = pct + '%';
+                progressBar.style.width = pct + '%';
+                addAction(steps[s].text, steps[s].type, steps[s]);
+                await delay(1800 + Math.random() * 800);
+            }
+
+            // Mark email done
+            emailEl.classList.remove('processing');
+            emailEl.classList.add('completed');
+            status.textContent = getUILabel('done');
+            status.className = 'status-badge bg-green-100 text-green-700';
+            await delay(1500);
+        }
+
+        async function startAgentDemo() {
+            renderEmails();
+            await delay(2000);
+
+            while (true) {
+                // Reset
+                renderEmails();
+                document.getElementById('agent-feed').innerHTML = '';
+                document.getElementById('agent-progress-bar').style.width = '0%';
+
+                for (let i = 0; i < emails.length; i++) {
+                    await processEmail(i);
+                    await delay(800);
+                }
+
+                // Bonus round: autonomous follow-ups
+                const feed = document.getElementById('agent-feed');
+                const progressBar = document.getElementById('agent-progress-bar');
+                const status = document.getElementById('agent-status');
+
+                feed.innerHTML = '';
+                status.textContent = getUILabel('autonomous');
+                status.className = 'status-badge bg-blue-100 text-blue-700';
+                progressBar.style.width = '0%';
+
+                const followUps = window.getI18nData('direction2').followUps;
+
+                for (let s = 0; s < followUps.length; s++) {
+                    progressBar.style.width = Math.round(((s + 1) / followUps.length) * 100) + '%';
+                    addAction(followUps[s].text, followUps[s].type, followUps[s]);
+                    await delay(1800 + Math.random() * 800);
+                }
+
+                status.textContent = getUILabel('allDone');
+                status.className = 'status-badge bg-green-100 text-green-700';
+                await delay(6000);
+            }
+        }
+    </script>
+</body>
+</html>

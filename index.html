@@ -129,14 +129,13 @@
             transform: translateY(0);
         }
 
-        /* Hero gradient: diagonal (Blau oben links in Rost unten rechts) */
+        /* Hero gradient: der kanonische Sunrise aus dem Styleguide (--grad-sunrise),
+           Blau oben links ueber Amber in Ember unten rechts */
         .hero-gradient {
-            background: linear-gradient(135deg,
+            background: linear-gradient(145deg,
                 #3c66a9 0%,
-                #6a7a9a 30%,
                 #c5752d 60%,
-                #b7490f 80%,
-                #4a1a08 100%);
+                #b7490f 80%);
         }
 
 
@@ -172,13 +171,13 @@
         }
         .zone-tint section { background-color: transparent; }
 
-        /* Dunkle Bahn (Security = Tresor): der echte Hero-Gradient (Blau ueber Orange in Rost),
-           mit einem sanften dunklen Scrim darueber (am staerksten ueber der hellen Orange-Mitte),
-           damit die Marken-Farbreise erkennbar bleibt und weisse Schrift trotzdem sitzt. */
+        /* Dunkle Bahn (Security): der Dusk-Gradient aus dem Styleguide (--grad-dusk),
+           Indigo ueber Dusk-Blau in Mauve, mit einem Scrim, der zum hellen Mauve-Ende
+           hin schwerer wird, damit weisse Schrift ueberall sitzt. */
         .zone-dark {
             background:
-                linear-gradient(135deg, rgba(0,0,0,0.24) 0%, rgba(0,0,0,0.40) 58%, rgba(0,0,0,0.30) 100%),
-                linear-gradient(135deg, #3c66a9 0%, #6a7a9a 30%, #c5752d 60%, #b7490f 80%, #4a1a08 100%);
+                linear-gradient(145deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.30) 50%, rgba(0,0,0,0.44) 100%),
+                linear-gradient(145deg, #4a4a69 0%, #7072ab 50%, #cd82a0 100%);
             color: #ffffff;
         }
         .zone-dark section { background-color: transparent; }
@@ -201,13 +200,13 @@
         }
         .security-card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(0,0,0,0.06); }
         .zone-dark .security-card {
-            background: rgba(15,12,14,0.34);
+            background: rgba(16,14,24,0.34);
             border: 1px solid rgba(255,255,255,0.12);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
         }
         .zone-dark .security-card:hover {
-            background: rgba(15,12,14,0.46);
+            background: rgba(16,14,24,0.46);
             box-shadow: 0 14px 34px rgba(0,0,0,0.45);
         }
         /* Einheitliches monochromes Icon-Chip (an Spark-Mark und Compliance-Badges angelehnt) */
