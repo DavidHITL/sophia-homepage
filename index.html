@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -93,10 +93,9 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="css/sophia.css">
     <style>
         body {
-            font-family: var(--font-sans, 'KMR Apparat', sans-serif);
+            font-family: 'KMR Apparat', sans-serif;
             background-color: #ffffff;
             color: #000000;
             overflow-x: hidden;
@@ -105,83 +104,200 @@
         html {
             scroll-behavior: smooth;
         }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+        }
+        a:focus-visible, button:focus-visible {
+            outline: 1px solid #000;
+            outline-offset: 2px;
+        }
+        .text-white:focus-visible, footer a:focus-visible, .zone-dark a:focus-visible {
+            outline-color: #fff;
+        }
 
-        /* Dunkle Bahn (Security): --grad-dusk aus dem Styleguide, mit einem Scrim,
-           der zum hellen Mauve-Ende hin schwerer wird, damit weisse Schrift sitzt. */
+        /* Hero entrance animation */
+        .hero-animate {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: heroFadeUp 1s ease-out forwards;
+        }
+        .hero-animate-delay-1 { animation-delay: 0.2s; }
+        .hero-animate-delay-2 { animation-delay: 0.5s; }
+        .hero-animate-delay-3 { animation-delay: 0.8s; }
+        @keyframes heroFadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Scroll fade-in */
+        .fade-in-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero gradient: der kanonische Sunrise aus dem Styleguide (--grad-sunrise),
+           Blau oben links ueber Amber in Ember unten rechts */
+        .hero-gradient {
+            background: linear-gradient(145deg,
+                #3c66a9 0%,
+                #c5752d 60%,
+                #b7490f 80%);
+        }
+
+
+        /* CTA gradient background */
+        .cta-gradient {
+            background: linear-gradient(180deg,
+                rgb(22, 60, 82) 6.25%,
+                rgb(79, 79, 71) 30%,
+                rgb(197, 117, 45) 60%,
+                rgb(183, 73, 15) 80%,
+                rgb(47, 17, 7) 96.154%,
+                rgb(0, 0, 0) 100%);
+        }
+
+        /* Button hover */
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        .btn-hover:hover {
+            opacity: 0.85;
+            transform: scale(1.02);
+        }
+
+        /* Rhythmus-Zonen: klare Tonwert-Baender statt weichem Verlauf.
+           Eine helle Grau-Bahn (Proof, Win) und eine dunkle Bahn (Security) setzen den Takt,
+           die weissen Sektionen dazwischen atmen. Harte Haarlinien-Kanten statt weicher Uebergang,
+           damit die Sektionen klar als Kapitel lesbar sind. Sektionen werden transparent, damit die
+           Bahn durchscheint (Gradient-Karten behalten ihre inline-Gradients). */
+        .zone-tint {
+            background: #eaecf0;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .zone-tint section { background-color: transparent; }
+
+        /* Dunkle Bahn (Security): der Dusk-Gradient aus dem Styleguide (--grad-dusk),
+           Indigo ueber Dusk-Blau in Mauve, mit einem Scrim, der zum hellen Mauve-Ende
+           hin schwerer wird, damit weisse Schrift ueberall sitzt. */
         .zone-dark {
             background:
                 linear-gradient(145deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.30) 50%, rgba(0,0,0,0.44) 100%),
-                var(--grad-dusk);
+                linear-gradient(145deg, #4a4a69 0%, #7072ab 50%, #cd82a0 100%);
             color: #ffffff;
         }
         .zone-dark section { background-color: transparent; }
         /* Utility-Text im Dunkeln invertieren (hoehere Spezifitaet schlaegt die Tailwind-Klasse) */
-        .zone-dark .text-black\/60 { color: rgba(255,255,255,0.7); }
+        .zone-dark .text-black\/60 { color: rgba(255,255,255,0.66); }
         .zone-dark .text-black\/50 { color: rgba(255,255,255,0.55); }
         .zone-dark .text-black\/40 { color: rgba(255,255,255,0.62); }
         .zone-dark .text-black\/30 { color: rgba(255,255,255,0.40); }
+        .zone-dark .text-green-600 { color: #4ade80; }
         .zone-dark .bg-black\/5 { background: rgba(255,255,255,0.08); }
+        .zone-dark .bg-green-100 { background: rgba(34,197,94,0.16); }
 
-        /* Security cards: dunkles Glas auf der Dusk-Bahn, Radius aus dem Token-Set */
+        /* Security cards: auf heller Bahn weiss schwebend, auf dunkler Bahn als Glas */
         .security-card {
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 15px;
+            padding: 32px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .security-card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(0,0,0,0.06); }
+        .zone-dark .security-card {
             background: rgba(16,14,24,0.34);
             border: 1px solid rgba(255,255,255,0.12);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border-radius: var(--radius-md);
-            padding: 32px;
-            transition: background var(--duration-base) var(--ease-standard);
         }
-        .security-card:hover {
+        .zone-dark .security-card:hover {
             background: rgba(16,14,24,0.46);
+            box-shadow: 0 14px 34px rgba(0,0,0,0.45);
         }
-        /* Einheitliches monochromes Icon-Chip */
+        /* Einheitliches monochromes Icon-Chip (an Spark-Mark und Compliance-Badges angelehnt) */
         .icon-chip {
-            width: 44px;
-            height: 44px;
-            border-radius: var(--radius-sm);
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.14);
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.75rem;
+            background: rgba(0,0,0,0.035);
+            border: 1px solid rgba(0,0,0,0.08);
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+        .zone-dark .icon-chip {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.14);
             color: #ffffff;
         }
-        .icon-chip svg { width: 20px; height: 20px; }
         .compliance-badge {
-            border: 1px solid rgba(255,255,255,0.18);
-            background: rgba(12,11,13,0.52);
-            border-radius: var(--radius-sm);
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
             padding: 24px 32px;
             text-align: center;
             min-width: 160px;
         }
+        .compliance-badge.completed { border-color: #22c55e; background: rgba(34, 197, 94, 0.04); }
+        .compliance-badge.pending { border-color: #e0e0e0; background: #fafafa; }
+        .zone-dark .compliance-badge.completed { border-color: rgba(34,197,94,0.55); background: rgba(13,20,15,0.55); }
+        .zone-dark .compliance-badge.pending { border-color: rgba(255,255,255,0.18); background: rgba(12,11,13,0.52); }
 
-        /* Demo-Panel-Chrome: flache Flaechen statt Glas (Styleguide: keine Schatten) */
+        /* Feature card */
+        .feature-card {
+            background-color: #e3e3e3;
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Connection diagram node */
+        .connection-node {
+            background: #fff;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -1.5px;
+        }
+
+        /* Glass panel */
         .glass-panel {
-            background: var(--grey-50);
-            border: 1px solid var(--grey-200);
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.6);
         }
         .glass-panel-inner {
-            background: #ffffff;
-            border: 1px solid var(--grey-200);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
         }
 
-        /* E-Mail-Karten im Demo-Fenster */
+        /* Glass email */
         .glass-email {
-            background: #ffffff;
-            border: 1px solid var(--grey-200);
-            border-radius: var(--radius-sm);
-            transition: border-color 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 12px;
+            transition: all 0.4s ease;
         }
         .glass-email.processing {
-            border-color: rgba(0, 0, 0, 0.4);
-            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+            border-color: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.08);
         }
         .glass-email.completed {
-            border-color: var(--grey-200);
-            opacity: 0.55;
+            border-color: rgba(34, 197, 94, 0.5);
+            opacity: 0.6;
         }
 
         /* Agent action step */
@@ -283,6 +399,10 @@
             opacity: 0.55;
             transition: filter 0.3s ease, opacity 0.3s ease;
         }
+        .logo-marquee-item img:hover {
+            filter: grayscale(0);
+            opacity: 1;
+        }
         @keyframes logo-scroll {
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
@@ -303,9 +423,9 @@
         .hx-stage{ width:100%; min-width:0; }
         .hx-app{
             width:980px; height:660px; transform-origin:top left;
-            background:#fff; border-radius:var(--radius-md); overflow:hidden;
+            background:#fff; border-radius:15px; overflow:hidden;
             border:1px solid rgba(0,0,0,0.08);
-            box-shadow:var(--shadow-float);
+            box-shadow:0 40px 90px rgba(0,0,0,0.32);
             display:flex; flex-direction:column; color:#111; text-align:left;
         }
         .hx-bar{ height:54px; flex:0 0 54px; display:flex; align-items:center; gap:14px;
@@ -398,10 +518,7 @@
         /* Team tab */
         .team-tab {
             cursor: pointer;
-            color: var(--text-muted);
-            display: inline-flex;
-            align-items: center;
-            min-height: 44px;
+            color: rgba(0,0,0,0.4);
         }
         .team-tab:hover {
             color: rgba(0,0,0,0.7);
@@ -431,7 +548,6 @@
             cursor: pointer;
             transition: all 0.3s ease;
             border-bottom: 2px solid transparent;
-            min-height: 44px;
         }
         .process-tab:hover {
             opacity: 0.7;
@@ -441,57 +557,55 @@
         }
     </style>
 
-    <!-- ============================================ -->
-    <!-- HEADER — weiss, sticky (Styleguide §6.1) -->
-    <!-- ============================================ -->
-    <header class="site-header">
-        <div class="wrap bar">
-            <a href="index.html" class="logo-lockup" aria-label="Sophia">
-                <svg viewBox="0 0 182 182" height="26" aria-hidden="true"><path fill="currentColor" fill-rule="nonzero" d="M 67.347 65.528 L 72.843 60.425 L 72.843 60.425 L 67.347 65.528 Z M 116.472 67.347 L 111.369 61.851 L 111.369 61.851 L 116.472 67.347 Z M 114.653 116.472 L 120.149 111.369 L 120.149 111.368 L 114.653 116.472 Z M 65.528 114.653 L 70.631 120.149 L 70.631 120.149 L 65.528 114.653 Z M 91 0 L 83.5 0 L 83.5 56.24 L 91 56.24 L 98.5 56.24 L 98.5 0 L 91 0 Z M 91 56.24 L 83.5 56.24 C 83.5 61.829 76.647 64.521 72.843 60.425 L 67.347 65.528 L 61.851 70.631 C 74.931 84.717 98.5 75.462 98.5 56.24 L 91 56.24 Z M 67.347 65.528 L 72.843 60.425 L 37.346 22.197 L 31.85 27.3 L 26.354 32.403 L 61.851 70.631 L 67.347 65.528 Z M 182 91 L 182 83.5 L 125.76 83.5 L 125.76 91 L 125.76 98.5 L 182 98.5 L 182 91 Z M 125.76 91 L 125.76 83.5 C 120.171 83.5 117.479 76.647 121.575 72.843 L 116.472 67.347 L 111.369 61.851 C 97.283 74.931 106.537 98.5 125.76 98.5 L 125.76 91 Z M 116.472 67.347 L 121.575 72.843 L 159.803 37.346 L 154.7 31.85 L 149.597 26.354 L 111.369 61.851 L 116.472 67.347 Z M 91 182 L 98.5 182 L 98.5 125.76 L 91 125.76 L 83.5 125.76 L 83.5 182 L 91 182 Z M 91 125.76 L 98.5 125.76 C 98.5 120.171 105.353 117.479 109.157 121.576 L 114.653 116.472 L 120.149 111.368 C 107.069 97.283 83.5 106.537 83.5 125.76 L 91 125.76 Z M 114.653 116.472 L 109.157 121.575 L 144.654 159.803 L 150.15 154.7 L 155.646 149.597 L 120.149 111.369 L 114.653 116.472 Z M 0 91 L 0 98.5 L 56.24 98.5 L 56.24 91 L 56.24 83.5 L 0 83.5 L 0 91 Z M 56.24 91 L 56.24 98.5 C 61.829 98.5 64.521 105.353 60.424 109.157 L 65.528 114.653 L 70.631 120.149 C 84.717 107.069 75.463 83.5 56.24 83.5 L 56.24 91 Z M 65.528 114.653 L 60.425 109.157 L 22.197 144.654 L 27.3 150.15 L 32.403 155.646 L 70.631 120.149 L 65.528 114.653 Z"/></svg>
-                <svg viewBox="0 0 397.249 80.016" height="13" aria-hidden="true"><path fill="currentColor" fill-rule="nonzero" d="M 33.084 80.016 C 12.42 80.016 0.11 70.124 0 54.407 L 17.366 54.407 C 17.696 63.2 21.433 66.937 32.864 66.937 C 43.525 66.937 47.482 64.519 47.482 57.704 C 47.482 52.208 45.064 50.23 37.48 48.581 L 23.301 45.614 C 8.793 42.646 1.099 35.392 1.099 24.401 C 1.099 10.222 13.299 0 32.314 0 C 51.109 0 63.969 9.782 64.079 24.95 L 46.713 24.95 C 46.163 16.157 42.206 13.08 31.985 13.08 C 21.982 13.08 18.355 15.498 18.245 22.312 C 18.245 27.038 20.224 29.566 28.467 31.215 L 41.986 33.853 C 57.484 36.821 65.508 44.185 65.508 55.286 C 65.508 69.575 53.417 80.016 33.084 80.016 Z M 108.744 80.016 C 83.354 80.016 69.175 63.749 69.175 39.898 C 69.175 16.267 83.684 0 109.183 0 C 134.463 0 148.642 16.267 148.642 40.118 C 148.642 63.749 134.243 80.016 108.744 80.016 Z M 109.073 65.288 C 126.44 65.288 129.737 61.771 129.737 40.118 C 129.737 18.465 126.44 14.728 109.073 14.728 C 91.707 14.728 88.08 18.465 88.08 40.118 C 88.08 61.771 91.707 65.288 109.073 65.288 Z M 173.374 78.477 L 156.667 78.477 L 156.667 1.539 L 193.268 1.539 C 208.216 1.539 219.977 9.892 219.977 25.829 C 219.977 41.877 208.106 50.23 193.378 50.23 L 173.374 50.23 L 173.374 78.477 Z M 173.374 14.948 L 173.374 37.04 L 191.509 37.04 C 199.423 37.04 201.621 35.502 201.621 25.939 C 201.621 16.377 199.423 14.948 191.509 14.948 L 173.374 14.948 Z M 241.994 78.477 L 225.178 78.477 L 225.178 1.539 L 241.994 1.539 L 241.994 31.215 L 273.429 31.215 L 273.429 1.539 L 290.136 1.539 L 290.136 78.477 L 273.429 78.477 L 273.429 46.053 L 241.994 46.053 L 241.994 78.477 Z M 318.77 78.477 L 301.953 78.477 L 301.953 1.539 L 318.77 1.539 L 318.77 78.477 Z M 397.249 78.477 L 379.223 78.477 L 373.838 62.21 L 345.7 62.21 L 340.205 78.477 L 322.729 78.477 L 350.317 1.539 L 369.771 1.539 L 397.249 78.477 Z M 353.284 38.579 L 349.657 49.57 L 369.991 49.57 L 366.474 38.579 C 363.946 30.775 362.517 24.62 361.967 20.004 L 357.791 20.004 C 357.131 24.62 355.812 30.775 353.284 38.579 Z"/></svg>
-            </a>
-            <nav class="hidden md:flex items-center gap-8">
-                <a href="#product" class="navlink text-black">Product</a>
-                <a href="#security" class="navlink text-black">Security</a>
-                <a href="about.html" class="navlink text-black">About Us</a>
-                <a href="careers.html" class="navlink text-black">Careers</a>
-                <a href="contact.html" class="btn btn-solid btn-sm">Get in touch</a>
+    <section class="relative min-h-screen flex flex-col overflow-hidden">
+        <div class="absolute inset-0 hero-gradient"></div>
+
+        <!-- Navigation -->
+        <header class="relative z-10 w-full">
+            <div class="max-w-[1794px] mx-auto flex justify-between items-center px-8 py-6">
+                <a href="index.html" class="flex items-center text-white" aria-label="Sophia">
+                    <span class="inline-flex items-center" style="gap:12px; color:currentColor;"><svg viewBox="0 0 182 182" height="30" aria-hidden="true"><path fill="currentColor" fill-rule="nonzero" d="M 67.347 65.528 L 72.843 60.425 L 72.843 60.425 L 67.347 65.528 Z M 116.472 67.347 L 111.369 61.851 L 111.369 61.851 L 116.472 67.347 Z M 114.653 116.472 L 120.149 111.369 L 120.149 111.368 L 114.653 116.472 Z M 65.528 114.653 L 70.631 120.149 L 70.631 120.149 L 65.528 114.653 Z M 91 0 L 83.5 0 L 83.5 56.24 L 91 56.24 L 98.5 56.24 L 98.5 0 L 91 0 Z M 91 56.24 L 83.5 56.24 C 83.5 61.829 76.647 64.521 72.843 60.425 L 67.347 65.528 L 61.851 70.631 C 74.931 84.717 98.5 75.462 98.5 56.24 L 91 56.24 Z M 67.347 65.528 L 72.843 60.425 L 37.346 22.197 L 31.85 27.3 L 26.354 32.403 L 61.851 70.631 L 67.347 65.528 Z M 182 91 L 182 83.5 L 125.76 83.5 L 125.76 91 L 125.76 98.5 L 182 98.5 L 182 91 Z M 125.76 91 L 125.76 83.5 C 120.171 83.5 117.479 76.647 121.575 72.843 L 116.472 67.347 L 111.369 61.851 C 97.283 74.931 106.537 98.5 125.76 98.5 L 125.76 91 Z M 116.472 67.347 L 121.575 72.843 L 159.803 37.346 L 154.7 31.85 L 149.597 26.354 L 111.369 61.851 L 116.472 67.347 Z M 91 182 L 98.5 182 L 98.5 125.76 L 91 125.76 L 83.5 125.76 L 83.5 182 L 91 182 Z M 91 125.76 L 98.5 125.76 C 98.5 120.171 105.353 117.479 109.157 121.576 L 114.653 116.472 L 120.149 111.368 C 107.069 97.283 83.5 106.537 83.5 125.76 L 91 125.76 Z M 114.653 116.472 L 109.157 121.575 L 144.654 159.803 L 150.15 154.7 L 155.646 149.597 L 120.149 111.369 L 114.653 116.472 Z M 0 91 L 0 98.5 L 56.24 98.5 L 56.24 91 L 56.24 83.5 L 0 83.5 L 0 91 Z M 56.24 91 L 56.24 98.5 C 61.829 98.5 64.521 105.353 60.424 109.157 L 65.528 114.653 L 70.631 120.149 C 84.717 107.069 75.463 83.5 56.24 83.5 L 56.24 91 Z M 65.528 114.653 L 60.425 109.157 L 22.197 144.654 L 27.3 150.15 L 32.403 155.646 L 70.631 120.149 L 65.528 114.653 Z"/></svg><svg viewBox="0 0 397.249 80.016" height="15" aria-hidden="true"><path fill="currentColor" fill-rule="nonzero" d="M 33.084 80.016 C 12.42 80.016 0.11 70.124 0 54.407 L 17.366 54.407 C 17.696 63.2 21.433 66.937 32.864 66.937 C 43.525 66.937 47.482 64.519 47.482 57.704 C 47.482 52.208 45.064 50.23 37.48 48.581 L 23.301 45.614 C 8.793 42.646 1.099 35.392 1.099 24.401 C 1.099 10.222 13.299 0 32.314 0 C 51.109 0 63.969 9.782 64.079 24.95 L 46.713 24.95 C 46.163 16.157 42.206 13.08 31.985 13.08 C 21.982 13.08 18.355 15.498 18.245 22.312 C 18.245 27.038 20.224 29.566 28.467 31.215 L 41.986 33.853 C 57.484 36.821 65.508 44.185 65.508 55.286 C 65.508 69.575 53.417 80.016 33.084 80.016 Z M 108.744 80.016 C 83.354 80.016 69.175 63.749 69.175 39.898 C 69.175 16.267 83.684 0 109.183 0 C 134.463 0 148.642 16.267 148.642 40.118 C 148.642 63.749 134.243 80.016 108.744 80.016 Z M 109.073 65.288 C 126.44 65.288 129.737 61.771 129.737 40.118 C 129.737 18.465 126.44 14.728 109.073 14.728 C 91.707 14.728 88.08 18.465 88.08 40.118 C 88.08 61.771 91.707 65.288 109.073 65.288 Z M 173.374 78.477 L 156.667 78.477 L 156.667 1.539 L 193.268 1.539 C 208.216 1.539 219.977 9.892 219.977 25.829 C 219.977 41.877 208.106 50.23 193.378 50.23 L 173.374 50.23 L 173.374 78.477 Z M 173.374 14.948 L 173.374 37.04 L 191.509 37.04 C 199.423 37.04 201.621 35.502 201.621 25.939 C 201.621 16.377 199.423 14.948 191.509 14.948 L 173.374 14.948 Z M 241.994 78.477 L 225.178 78.477 L 225.178 1.539 L 241.994 1.539 L 241.994 31.215 L 273.429 31.215 L 273.429 1.539 L 290.136 1.539 L 290.136 78.477 L 273.429 78.477 L 273.429 46.053 L 241.994 46.053 L 241.994 78.477 Z M 318.77 78.477 L 301.953 78.477 L 301.953 1.539 L 318.77 1.539 L 318.77 78.477 Z M 397.249 78.477 L 379.223 78.477 L 373.838 62.21 L 345.7 62.21 L 340.205 78.477 L 322.729 78.477 L 350.317 1.539 L 369.771 1.539 L 397.249 78.477 Z M 353.284 38.579 L 349.657 49.57 L 369.991 49.57 L 366.474 38.579 C 363.946 30.775 362.517 24.62 361.967 20.004 L 357.791 20.004 C 357.131 24.62 355.812 30.775 353.284 38.579 Z"/></svg></span>
+                </a>
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="about.html" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">About Us</a>
+                    <a href="#product" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">Product</a>
+                    <a href="#security" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">Security</a>
+                    <a href="careers.html" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">Careers</a>
+                </nav>
+                <button class="md:hidden text-white" id="mobile-menu-button" aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <nav id="mobile-menu" class="hidden md:hidden backdrop-blur-[20px] border-b border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.15)]" style="background: rgba(255, 255, 255, 0.2); -webkit-backdrop-filter: blur(20px);">
+                <div class="flex flex-col py-4 px-8">
+                    <a href="about.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">About Us</a>
+                    <a href="#product" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Product</a>
+                    <a href="#security" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Security</a>
+                    <a href="careers.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Careers</a>
+                </div>
             </nav>
-            <button class="nav-toggle md:hidden" id="mobile-menu-button" aria-label="Menu">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>
-            </button>
-        </div>
-        <nav id="mobile-menu" class="hidden md:hidden nav-mobile">
-            <div class="flex flex-col py-4 px-8">
-                <a href="#product">Product</a>
-                <a href="#security">Security</a>
-                <a href="about.html">About Us</a>
-                <a href="careers.html">Careers</a>
-                <a href="contact.html" class="btn btn-solid btn-sm">Get in touch</a>
-            </div>
-        </nav>
-    </header>
-    <main>
+        </header>
 
-    <!-- ============================================ -->
-    <!-- 1. HERO — Sunrise-Gradient (Styleguide §6.2) -->
-    <!-- ============================================ -->
-    <section class="hero">
-        <div class="wrap hero-inner">
-            <span class="eyebrow chip light hero-animate">Your autonomous back office</span>
-            <h1 id="hero-h1" class="type-hero-h1 hero-animate hero-animate-delay-1">
-                The autonomous operations platform
-            </h1>
-            <p id="hero-sub" class="type-lead hero-lead hero-animate hero-animate-delay-2">
-                AI agents that work straight from your inbox, reading mails, checking your ERP, and acting autonomously. No new systems, no data migration.
-            </p>
-            <div class="cta-row hero-animate hero-animate-delay-2">
-                <a id="hero-cta" href="contact.html" class="btn btn-inverse btn-lg">Get in touch</a>
-                <a href="#product" class="pill pill-light">See Sophia at work</a>
-            </div>
+        <!-- Hero content: copy + live inbox demo -->
+        <div class="relative z-10 flex-1 flex items-center text-white px-6 md:px-8 pb-16 pt-8">
+            <div class="max-w-[1794px] mx-auto w-full grid grid-cols-1 lg:grid-cols-[0.72fr_1.28fr] gap-6 xl:gap-10 items-center lg:items-start">
+                <!-- Left: copy -->
+                <div class="text-center lg:text-left">
+                    <h1 id="hero-h1" class="hero-animate text-[40px] sm:text-5xl md:text-7xl lg:text-[54px] xl:text-[70px] font-bold uppercase leading-[0.92] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px]">
+                        The Autonomous Operations Platform
+                    </h1>
+                    <p id="hero-sub" class="hero-animate hero-animate-delay-1 text-lg md:text-2xl lg:text-[24px] leading-[1.35] mt-7 md:mt-9 max-w-[560px] mx-auto lg:mx-0 text-white/90">
+                        AI agents that work straight from your inbox, reading mails, checking your ERP, and acting autonomously. No new systems, no data migration.
+                    </p>
+                    <a id="hero-cta" href="contact.html" class="hero-animate hero-animate-delay-2 inline-block mt-9 md:mt-12 text-white text-sm px-6 py-3 rounded-full btn-hover transition-all" style="background: rgba(255,255,255,0.12); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.25); box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 4px 16px rgba(0,0,0,0.1);">
+                        Get in touch
+                    </a>
+                </div>
 
-            <!-- Live inbox demo (Signature-Element, ab md sichtbar) -->
-            <div class="hero-app hero-animate hero-animate-delay-3 hidden md:block hx-stage" id="hx-stage" aria-hidden="true">
+                <!-- Right: live inbox demo (desktop only) -->
+                <div class="hero-animate hero-animate-delay-3 hidden lg:block hx-stage" id="hx-stage" aria-hidden="true">
                     <div class="hx-app" id="hx-app">
                         <div class="hx-bar">
                             <div class="hx-dots"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div>
@@ -545,114 +659,55 @@
                             </div>
                         </div>
                     </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!-- 2. TRUSTED STRIP (Styleguide §6.3) -->
-    <!-- ============================================ -->
-    <div class="trusted">
-        <div class="wrap trusted-row">
-            <span class="trusted-label">Built for European industry</span>
-            <span class="trusted-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>GDPR compliant</span></span>
-            <span class="trusted-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>EU-hosted</span></span>
-            <span class="trusted-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>German-engineered</span></span>
-            <span class="trusted-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>20+ ERP integrations</span></span>
-        </div>
-    </div>
-
-    <!-- ============================================ -->
-    <!-- 3. MISSION (Styleguide §6.4) -->
-    <!-- ============================================ -->
-    <section class="mission fade-in-scroll">
-        <div class="wrap">
-            <span class="eyebrow muted">Our mission</span>
-            <p class="type-mission" data-de="Die Energie Ihres Teams gehört Ihren Kunden, nicht Ihrem Posteingang. Sophia arbeitet in den Systemen, die Sie schon haben, und gibt Ihnen <strong>10x mehr Zeit für Ihre Kunden</strong>.">Your team's energy belongs with your customers, not your inbox. Sophia works in the systems you already run and makes your business <strong>10x&nbsp;stronger</strong>.</p>
-        </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!-- 4. STATS BAND (Styleguide §6.5) -->
-    <!-- ============================================ -->
-    <section class="stats fade-in-scroll">
-        <div class="wrap stats-inner">
-            <span class="eyebrow muted">Impact from day one</span>
-            <div class="stats-grid">
-                <div>
-                    <div class="stat">
-                        <span class="stat-value">70h</span>
-                        <span class="stat-label" data-de="eingespart pro Monat, je Backoffice-Mitarbeiter">saved per month, per back-office employee</span>
-                    </div>
-                </div>
-                <div>
-                    <div class="stat">
-                        <span class="stat-value">80%</span>
-                        <span class="stat-label" data-de="der Routine-E-Mails von Sophia bearbeitet">of routine emails handled by Sophia</span>
-                    </div>
-                </div>
-                <div>
-                    <div class="stat">
-                        <span class="stat-value">2&times;</span>
-                        <span class="stat-label" data-de="schnellere Antworten, die mehr Umsatz bringen">faster responses that drive more revenue</span>
-                    </div>
-                </div>
-                <div>
-                    <div class="stat">
-                        <span class="stat-value">20+</span>
-                        <span class="stat-label" data-de="ERP-Systeme nativ angebunden">ERP systems with native integrations</span>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ============================================ -->
-    <!-- 5. IMAGE BAND (Styleguide §6.6, First-Light-Fotografie) -->
+    <!-- ZONE Proof (Metriken + Integration + Feature-Cards): Tint-Bahn -->
     <!-- ============================================ -->
-    <section class="image-band">
-        <div class="band-bg" style="background-image:url('assets/imagery/hero-sunrise-1.jpg');" aria-hidden="true"></div>
-        <div class="band-scrim" aria-hidden="true"></div>
-        <div class="wrap band-content">
-            <p class="type-statement" data-de="Nahtlos in Ihre Prozesse integriert. Ohne Umstellung.">Designed to seamlessly integrate into your processes. No disruption.</p>
-        </div>
-    </section>
-
+    <div class="zone-tint">
     <!-- ============================================ -->
-    <!-- 6. FEATURES (Styleguide §6.7) -->
+    <!-- 2. RESULTS BAND - Outcome metrics -->
     <!-- ============================================ -->
-    <section class="features fade-in-scroll">
-        <div class="wrap">
-            <div class="features-head">
-                <h2 class="type-section-h2" data-de="Von der Inbox zu Impact.">From the inbox to impact.</h2>
-                <a href="#product" class="pill pill-ink"><span>See it live</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-            </div>
-            <div class="features-grid">
-                <div class="feature-tile">
-                    <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect width="20" height="16" x="2" y="4" rx="2"/></svg></div>
-                    <h3>Email centric</h3>
-                    <p>Sophia is your new Email client, reading emails, drafting replies, checking material prices and availability and updating your ERP. No new tools to learn, no workflows to change.</p>
+    <section class="bg-white py-20 md:py-32 fade-in-scroll">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-16">
+            <p class="text-sm md:text-base uppercase tracking-[2px] text-black/40 text-center mb-14 md:mb-20">Impact from day one</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-14 md:gap-0 text-center md:divide-x divide-black/10">
+                <div class="px-6">
+                    <p class="text-7xl lg:text-[120px] leading-[0.85] tracking-[-3px] lg:tracking-[-5px] font-medium">70h</p>
+                    <p class="text-lg md:text-xl tracking-[-0.5px] text-black/60 mt-5" data-de="eingespart pro Monat<br>je Backoffice-Mitarbeiter">saved per month<br>per back-office employee</p>
                 </div>
-                <div class="feature-tile">
-                    <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6.3 20.3a2.4 2.4 0 0 0 3.4 0L12 18l-6-6-2.3 2.3a2.4 2.4 0 0 0 0 3.4Z"/><path d="m2 22 3-3"/><path d="M7.5 13.5 10 11"/><path d="M10.5 16.5 13 14"/><path d="m18 3-4 4h6l-4 4"/></svg></div>
-                    <h3>Connects everything</h3>
-                    <p>Sophia integrates with your ERP, CRM, DMS, and inbox, letting agents operate across your entire business, not just one tool.</p>
+                <div class="px-6">
+                    <p class="text-7xl lg:text-[120px] leading-[0.85] tracking-[-3px] lg:tracking-[-5px] font-medium">80%</p>
+                    <p class="text-lg md:text-xl tracking-[-0.5px] text-black/60 mt-5" data-de="der Routine-E-Mails<br>von Sophia bearbeitet">of routine emails<br>handled by Sophia</p>
                 </div>
-                <div class="feature-tile">
-                    <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg></div>
-                    <h3>Nothing to migrate</h3>
-                    <p>Sophia works inside the tools you already run. No new systems to roll out, no data to migrate, impact from day one.</p>
+                <div class="px-6">
+                    <p class="text-7xl lg:text-[120px] leading-[0.85] tracking-[-3px] lg:tracking-[-5px] font-medium">2&times;</p>
+                    <p class="text-lg md:text-xl tracking-[-0.5px] text-black/60 mt-5" data-de="schnellere Antworten<br><span class='text-black/35'>die mehr Umsatz bringen</span>">faster responses<br><span class="text-black/35">that drive more revenue</span></p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ============================================ -->
-    <!-- 6b. INTEGRATION LOGO BANNER -->
+    <!-- 4. INTEGRATION TEXT -->
     <!-- ============================================ -->
-    <section class="integrations fade-in-scroll">
+    <section class="bg-white py-16 md:py-24 fade-in-scroll">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-16">
+            <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] text-center font-normal">
+                Designed to seamlessly integrate into your processes. No disruption.
+            </h2>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 4b. INTEGRATION LOGO BANNER -->
+    <!-- ============================================ -->
+    <section class="bg-white pb-20 md:pb-28 fade-in-scroll">
         <div class="max-w-[1400px] mx-auto">
-            <span class="trusted-label">Native integrations with 20+ ERP systems</span>
+            <p class="text-sm md:text-base uppercase tracking-[2px] text-black/40 text-center mb-12 md:mb-16 px-6">Native integrations with 20+ ERP systems</p>
             <div class="logo-marquee">
                 <div class="logo-marquee-track">
                     <!-- set 1 -->
@@ -688,24 +743,104 @@
         </div>
     </section>
 
+    <!-- ============================================ -->
+    <!-- 5. FEATURE CARDS - Connect + Email-Centric -->
+    <!-- ============================================ -->
+    <section class="bg-white pb-20 md:pb-32 fade-in-scroll">
+        <div class="max-w-[1794px] mx-auto px-6 md:px-16">
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+
+                <!-- Card 1: Connect -->
+                <div class="rounded-lg min-h-[400px] md:min-h-[550px] flex flex-col overflow-hidden" style="background: linear-gradient(145deg, #1e528e 0%, #728a7c 50%, #e9ce5d 100%);">
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-2xl md:text-[36px] leading-[1.1] tracking-[-0.4px] font-medium text-white">Connects everything</h3>
+                        <p class="text-sm md:text-base leading-[1.5] text-white/80 mt-4 max-w-[500px]">
+                            Sophia integrates with your ERP, CRM, DMS, and inbox, letting agents operate across your entire business, not just one tool.
+                        </p>
+                    </div>
+                    <!-- Connection diagram -->
+                    <div class="flex items-center justify-center py-2">
+                        <div class="relative w-full max-w-[320px] aspect-square">
+                            <!-- Connecting lines from center to corners -->
+                            <svg class="absolute inset-0 w-full h-full" viewBox="0 0 420 420" fill="none">
+                                <line x1="210" y1="210" x2="70" y2="55" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-dasharray="6 4"/>
+                                <line x1="210" y1="210" x2="350" y2="55" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-dasharray="6 4"/>
+                                <line x1="210" y1="210" x2="70" y2="365" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-dasharray="6 4"/>
+                                <line x1="210" y1="210" x2="350" y2="365" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-dasharray="6 4"/>
+                            </svg>
+                            <!-- Center icon (Sophia logo) -->
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[72px] h-[72px] md:w-[96px] md:h-[96px] bg-white/10 backdrop-blur-md border border-white/20 rounded-[15px] shadow-lg flex items-center justify-center p-3">
+                                <img src="assets/sophia-icon.png" alt="Sophia" class="w-full h-full object-contain" style="filter: invert(1);">
+                            </div>
+                            <!-- Corner nodes -->
+                            <div class="absolute top-[4%] left-[2%] px-4 py-2.5 rounded-xl shadow-md text-lg md:text-2xl tracking-[-1px] bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold uppercase">EMAIL</div>
+                            <div class="absolute top-[4%] right-[2%] px-4 py-2.5 rounded-xl shadow-md text-lg md:text-2xl tracking-[-1px] bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold uppercase">ERP</div>
+                            <div class="absolute bottom-[4%] left-[2%] px-4 py-2.5 rounded-xl shadow-md text-lg md:text-2xl tracking-[-1px] bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold uppercase">CRM</div>
+                            <div class="absolute bottom-[4%] right-[2%] px-4 py-2.5 rounded-xl shadow-md text-lg md:text-2xl tracking-[-1px] bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold uppercase">DMS</div>
+                        </div>
+                    </div>
+                    <!-- Integration tiles -->
+                    <div class="px-8 md:px-12 pb-8 md:pb-12">
+                        <div class="flex flex-wrap gap-2 md:gap-3">
+                            <span class="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm md:text-base">SAP</span>
+                            <span class="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm md:text-base">Shopify</span>
+                            <span class="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm md:text-base">Datev</span>
+                            <span class="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm md:text-base">Lexware</span>
+                            <span class="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm md:text-base">Applus</span>
+                            <span class="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm md:text-base">Outlook</span>
+                            <span class="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm md:text-base">Google</span>
+                            <span class="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm md:text-base">Navision</span>
+                            <span class="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm md:text-base">Dynamics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Email-Centric -->
+                <div class="rounded-lg min-h-[400px] md:min-h-[550px] flex flex-col overflow-hidden" style="background: linear-gradient(145deg, #1e528e 0%, #728a7c 50%, #e9ce5d 100%);">
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-2xl md:text-[36px] leading-[1.1] tracking-[-0.4px] font-medium text-white">Email Centric</h3>
+                        <p id="email-centric-sub" class="text-sm md:text-base leading-[1.5] text-white/80 mt-4 max-w-[500px]">
+                            Sophia is your new Email client, reading emails, drafting replies, checking material prices and availability and updating your ERP. No new tools to learn, no workflows to change.
+                        </p>
+                    </div>
+                    <!-- Floating app icons -->
+                    <div class="flex-1 flex items-center justify-center pb-12">
+                        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-[15px] p-3 flex items-center gap-3 shadow-2xl">
+                            <!-- Outlook icon -->
+                            <div class="w-16 h-16 md:w-20 md:h-20 rounded-xl flex items-center justify-center shadow-lg overflow-hidden">
+                                <img src="assets/outlook-icon.png" alt="Outlook" class="w-full h-full object-contain">
+                            </div>
+                            <!-- Sophia icon -->
+                            <div class="w-16 h-16 md:w-20 md:h-20 bg-[#1a1a1a] rounded-xl flex items-center justify-center shadow-lg p-3">
+                                <img src="assets/sophia-icon.png" alt="Sophia" class="w-full h-full object-contain" style="filter: invert(1);">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    </div>
+    <!-- /zone-tint Proof -->
 
     <!-- ============================================ -->
-    <!-- 7. PRODUCT (Kapitel-Kopf) -->
+    <!-- 5b. PRODUCT ON THE LANDING PAGE -->
     <!-- ============================================ -->
-    <section id="product" class="product-head fade-in-scroll" style="scroll-margin-top: 88px;">
-        <div class="wrap">
-            <span class="eyebrow muted">Product</span>
-            <h2 id="product-teaser-h2" class="type-section-h2" style="margin-top: 24px;">
+    <section id="product" class="bg-white pt-20 md:pt-32 pb-10 md:pb-16 fade-in-scroll" style="scroll-margin-top: 32px;">
+        <div class="max-w-[1794px] mx-auto px-6 md:px-16">
+            <p class="text-sm md:text-base uppercase tracking-[2px] text-black/40 text-center mb-6 md:mb-8">Product</p>
+            <h2 id="product-teaser-h2" class="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] text-center font-normal">
                 See Sophia at work
             </h2>
         </div>
     </section>
 
     <!-- ============================================ -->
-    <!-- 7a. PROCESS TABS (interaktives Demo) -->
+    <!-- 3. PROCESS TABS -->
     <!-- ============================================ -->
     <section class="bg-white pb-16 md:pb-24 fade-in-scroll">
-        <div class="wrap-wide">
+        <div class="max-w-[1794px] mx-auto px-6 md:px-16">
             <!-- Team selector -->
             <div class="flex flex-wrap gap-2 md:gap-4 mb-6">
                 <button class="team-tab text-sm md:text-base px-3 py-1 rounded-full transition-all active" onclick="switchTeam(this, 'inside-sales')">Inside Sales</button>
@@ -775,8 +910,8 @@
                         <div class="flex flex-col gap-2.5 flex-1 overflow-y-auto" id="agent-feed">
                         </div>
                         <div class="mt-4 rounded-full flex items-center px-4 py-3 bg-white border border-black/10 shadow-sm">
-                            <input type="text" id="agent-prompt-input" placeholder="What would you like to do..." aria-label="What would you like to do" class="text-sm text-black/70 flex-1 bg-transparent placeholder:text-black/30">
-                            <button class="w-8 h-8 rounded-full bg-black flex items-center justify-center ml-2 hover:bg-black/80 transition-colors" aria-label="Send">
+                            <input type="text" id="agent-prompt-input" placeholder="What would you like to do..." class="text-sm text-black/70 flex-1 bg-transparent outline-none placeholder:text-black/30">
+                            <button class="w-8 h-8 rounded-full bg-black flex items-center justify-center ml-2 hover:bg-black/80 transition-colors">
                                 <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
                             </button>
                         </div>
@@ -786,7 +921,7 @@
                 <!-- Mobile: single-column story flow -->
                 <div class="md:hidden flex flex-col gap-3">
                     <!-- Email panel (collapses when agent starts) -->
-                    <div class="glass-panel-inner rounded-lg p-4 flex flex-col overflow-hidden h-[420px] transition-all duration-500" id="mobile-email-panel">
+                    <div class="glass-panel-inner rounded-lg p-4 flex flex-col overflow-hidden h-[600px] transition-all duration-500" id="mobile-email-panel">
                         <div class="flex items-center justify-between mb-3">
                             <h3 class="text-sm font-bold">Inbox</h3>
                             <span class="text-[10px] text-black/40" id="mobile-email-count"></span>
@@ -795,7 +930,7 @@
                         </div>
                     </div>
                     <!-- Agent panel (expands as email collapses) -->
-                    <div class="glass-panel-inner rounded-lg p-4 flex flex-col overflow-hidden h-[440px]" id="mobile-agent-panel">
+                    <div class="glass-panel-inner rounded-lg p-4 flex flex-col overflow-hidden h-[500px]" id="mobile-agent-panel">
                         <div class="flex items-center justify-between mb-3">
                             <div class="flex items-center gap-2">
                                 <div class="pulse-dot"></div>
@@ -815,23 +950,142 @@
     </section>
 
     <!-- ============================================ -->
-    <!-- 7b. WHAT YOU GAIN (Kapitel-Kopf der Value-Sektionen) -->
+    <!-- 5c. SECURITY + COMPLIANCE (dunkle Tresor-Bahn auf der Landingpage) -->
     <!-- ============================================ -->
-    <section class="bg-white pt-4 pb-16 md:pb-20 fade-in-scroll">
-        <div class="wrap text-center">
-            <span class="eyebrow muted">What you gain</span>
+    <div class="zone-dark">
+    <section id="security" class="pt-16 md:pt-28 pb-8 md:pb-12 fade-in-scroll" style="scroll-margin-top: 32px;">
+        <div class="max-w-[1794px] mx-auto px-6 md:px-16 text-center">
+            <p class="text-sm md:text-base uppercase tracking-[2px] text-black/40 mb-6 md:mb-8">Security &amp; compliance</p>
+            <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] font-normal text-center">
+                European Security
+            </h2>
+            <a href="contact.html" class="inline-block mt-8 md:mt-10 bg-white text-black text-sm px-6 py-3 rounded-full btn-hover transition-all hover:opacity-90">
+                Get in touch
+            </a>
+        </div>
+    </section>
+
+    <!-- Security features -->
+    <section class="pb-16 md:pb-20 fade-in-scroll">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-16">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Card 1: Privacy (lock) -->
+                <div class="security-card">
+                    <div class="icon-chip">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Privacy at the core</h3>
+                    <p class="text-base text-black/60 leading-[1.6]">Your business data belongs to you. Sophia is architected so that sensitive information never leaves your control or gets used for model training.</p>
+                </div>
+
+                <!-- Card 2: EU-hosted (globe) -->
+                <div class="security-card">
+                    <div class="icon-chip">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">German-engineered. EU-hosted.</h3>
+                    <p class="text-base text-black/60 leading-[1.6]">All data processing and storage stays within European borders. GDPR-compliant from day one, because manufacturing data deserves sovereign infrastructure.</p>
+                </div>
+
+                <!-- Card 3: Protection (shield-check) -->
+                <div class="security-card">
+                    <div class="icon-chip">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Industrial-strength protection</h3>
+                    <p class="text-base text-black/60 leading-[1.6]">End-to-end encryption, role-based access, and audit logging at every layer. The same rigour you expect from your ERP, applied to your AI.</p>
+                </div>
+
+                <!-- Card 4: Verified (check-badge) -->
+                <div class="security-card">
+                    <div class="icon-chip">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Independently verified</h3>
+                    <p class="text-base text-black/60 leading-[1.6]">Regular third-party penetration testing and security audits. We don't ask you to take our word for it, we prove it.</p>
+                </div>
+
+                <!-- Card 5: Reliability (arrow-path) -->
+                <div class="security-card">
+                    <div class="icon-chip">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Always-on reliability</h3>
+                    <p class="text-base text-black/60 leading-[1.6]">Redundant infrastructure with automatic failover. Your back-office agents keep running, even when things go wrong upstream.</p>
+                </div>
+
+                <!-- Card 6: Control (adjustments) -->
+                <div class="security-card">
+                    <div class="icon-chip">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5H3"/><path d="M12 19H3"/><path d="M14 3v4"/><path d="M16 17v4"/><path d="M21 12h-9"/><path d="M21 19h-5"/><path d="M21 5h-7"/><path d="M8 10v4"/><path d="M8 12H3"/></svg>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">You stay in control</h3>
+                    <p class="text-base text-black/60 leading-[1.6]">Every agent action can be reviewed, approved, or overridden. You decide how much autonomy to give, Sophia adapts to your comfort level.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Compliance -->
+    <section class="pb-20 md:pb-28 fade-in-scroll">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-16 text-center">
+            <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] font-normal mb-16">
+                Compliance you can count on.
+            </h2>
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8">
+                <!-- GDPR -->
+                <div class="compliance-badge pending">
+                    <div class="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-5 h-5 text-black/30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                    </div>
+                    <h4 class="text-xl font-bold tracking-[-0.5px] mb-1">GDPR</h4>
+                    <p class="text-sm text-black/40 font-medium">Compliant</p>
+                </div>
+                <!-- ISO -->
+                <div class="compliance-badge pending">
+                    <div class="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-5 h-5 text-black/30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                    </div>
+                    <h4 class="text-xl font-bold tracking-[-0.5px] mb-1">ISO 27001</h4>
+                    <p class="text-sm text-black/40 font-medium">In progress</p>
+                </div>
+                <!-- AI Act -->
+                <div class="compliance-badge pending">
+                    <div class="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-5 h-5 text-black/30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                    </div>
+                    <h4 class="text-xl font-bold tracking-[-0.5px] mb-1">AI Act</h4>
+                    <p class="text-sm text-black/40 font-medium">In progress</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+    <!-- /zone-dark Security -->
+
+    <!-- ============================================ -->
+    <!-- 4. BELIEF TEXT -->
+    <!-- ============================================ -->
+    <section class="bg-white py-16 md:py-24 fade-in-scroll">
+        <div class="max-w-[1618px] mx-auto px-6 md:px-16">
+            <p class="text-sm md:text-base uppercase tracking-[2px] text-black/40 text-center mb-6 md:mb-8">What you gain</p>
+            <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] text-center font-normal">
+                We make your business 10x stronger.
+            </h2>
         </div>
     </section>
 
     <!-- ============================================ -->
-    <!-- 7c. MORE REVENUE -->
+    <!-- 5. MORE REVENUE -->
     <!-- ============================================ -->
-    <section class="value-section fade-in-scroll">
-        <div class="wrap-wide">
-            <div class="value-grid">
-                <!-- Interactive mini agent - Sales Initiatives (Daybreak als Grafikblock) -->
-                <div class="order-2 md:order-1 demo-tile w-full flex flex-col" style="background: var(--grad-daybreak);">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 flex-1 min-h-[560px] md:min-h-[500px]">
+    <section class="bg-white pb-16 md:pb-24 fade-in-scroll">
+        <div class="max-w-[1794px] mx-auto px-6 md:px-16">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+                <!-- Interactive mini agent - Sales Initiatives -->
+                <div class="order-2 md:order-1 rounded-[15px] w-full p-3 md:p-4 flex flex-col overflow-hidden" style="background: linear-gradient(145deg, #1e528e 0%, #728a7c 50%, #e9ce5d 100%);">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 flex-1 h-[700px] sm:h-auto md:min-h-[500px]">
                         <!-- LEFT: Sent emails -->
                         <div class="rounded-xl p-3 md:p-4 flex flex-col overflow-hidden" style="background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.2);">
                             <div class="flex items-center justify-between mb-3">
@@ -855,28 +1109,28 @@
                     </div>
                 </div>
                 <!-- Text -->
-                <div class="order-1 md:order-2 value-copy">
-                    <h3 class="type-sub-h3">More revenue</h3>
-                    <p class="value-body">Sophia creates quotes in seconds, ensures no email request goes unanswered, and proactively follows up with customers. By identifying opportunities hidden in customer behavior, your team closes more deals without lifting a finger.</p>
+                <div class="order-1 md:order-2 flex flex-col justify-between self-stretch">
+                    <h3 class="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] leading-[0.95] tracking-[-0.5px] sm:tracking-[-1px] md:tracking-[-2px] font-normal">More Revenue</h3>
+                    <p class="text-lg md:text-xl tracking-[-0.2px] leading-[1.5] text-black/60">Sophia creates quotes in seconds, ensures no email request goes unanswered, and proactively follows up with customers. By identifying opportunities hidden in customer behavior, your team closes more deals without lifting a finger.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ============================================ -->
-    <!-- 7d. BETTER MARGINS -->
+    <!-- 6. BETTER MARGINS -->
     <!-- ============================================ -->
-    <section class="value-section fade-in-scroll">
-        <div class="wrap-wide">
-            <div class="value-grid">
+    <section class="bg-white pb-16 md:pb-24 fade-in-scroll">
+        <div class="max-w-[1794px] mx-auto px-6 md:px-16">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
                 <!-- Text -->
-                <div class="value-copy">
-                    <h3 class="type-sub-h3">Better margins</h3>
-                    <p class="value-body">Sophia automatically compares supplier pricing, sends out RFQs to multiple vendors, and flags cost-saving opportunities across your procurement. Proactive negotiation with competing quotes protects your margins without manual effort.</p>
+                <div class="flex flex-col justify-between self-stretch">
+                    <h3 class="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] leading-[0.95] tracking-[-0.5px] sm:tracking-[-1px] md:tracking-[-2px] font-normal">Better Margins</h3>
+                    <p class="text-lg md:text-xl tracking-[-0.2px] leading-[1.5] text-black/60">Sophia automatically compares supplier pricing, sends out RFQs to multiple vendors, and flags cost-saving opportunities across your procurement. Proactive negotiation with competing quotes protects your margins without manual effort.</p>
                 </div>
-                <!-- Interactive mini agent - RFQs Processing (Twilight als Grafikblock) -->
-                <div class="demo-tile w-full flex flex-col" style="background: var(--grad-twilight);">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 flex-1 min-h-[560px] md:min-h-[500px]">
+                <!-- Interactive mini agent - RFQs Processing -->
+                <div class="rounded-[15px] w-full p-3 md:p-4 flex flex-col overflow-hidden" style="background: linear-gradient(145deg, #40405c 0%, #6f71aa 80%, #8a76ab 100%);">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 flex-1 h-[700px] sm:h-auto md:min-h-[500px]">
                         <!-- LEFT: Sent emails -->
                         <div class="rounded-xl p-3 md:p-4 flex flex-col overflow-hidden" style="background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.2);">
                             <div class="flex items-center justify-between mb-3">
@@ -904,14 +1158,14 @@
     </section>
 
     <!-- ============================================ -->
-    <!-- 7e. OUTSTANDING CUSTOMER SERVICE -->
+    <!-- 7. OUTSTANDING CUSTOMER SERVICE -->
     <!-- ============================================ -->
-    <section class="value-section fade-in-scroll">
-        <div class="wrap-wide">
-            <div class="value-grid">
-                <!-- Interactive mini agent - Delay Management (Sky-full als Grafikblock) -->
-                <div class="order-2 md:order-1 demo-tile w-full flex flex-col" style="background: var(--grad-sky-full);">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 flex-1 min-h-[560px] md:min-h-[500px]">
+    <section class="bg-white pb-16 md:pb-24 fade-in-scroll">
+        <div class="max-w-[1794px] mx-auto px-6 md:px-16">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+                <!-- Interactive mini agent - Delay Management -->
+                <div class="order-2 md:order-1 rounded-[15px] w-full p-3 md:p-4 flex flex-col overflow-hidden" style="background: linear-gradient(145deg, #2d91c2 0%, #1e528e 100%);">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 flex-1 h-[700px] sm:h-auto md:min-h-[500px]">
                         <!-- LEFT: Emails -->
                         <div class="rounded-xl p-3 md:p-4 flex flex-col overflow-hidden" style="background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.2);">
                             <div class="flex items-center justify-between mb-3">
@@ -935,46 +1189,46 @@
                     </div>
                 </div>
                 <!-- Text -->
-                <div class="order-1 md:order-2 value-copy">
-                    <h3 class="type-sub-h3">Outstanding customer service</h3>
-                    <p class="value-body">When a supplier delays, Sophia doesn't wait for your customers to ask. It proactively notifies affected customers, searches for alternatives, and escalates decisions to your team, all before anyone picks up the phone.</p>
+                <div class="order-1 md:order-2 flex flex-col justify-between self-stretch">
+                    <h3 class="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] leading-[0.95] tracking-[-0.5px] sm:tracking-[-1px] md:tracking-[-2px] font-normal">Outstanding Customer Service</h3>
+                    <p class="text-lg md:text-xl tracking-[-0.2px] leading-[1.5] text-black/60">When a supplier delays, Sophia doesn't wait for your customers to ask. It proactively notifies affected customers, searches for alternatives, and escalates decisions to your team, all before anyone picks up the phone.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ============================================ -->
-    <!-- 7f. CLARITY -->
+    <!-- 8. CLARITY -->
     <!-- ============================================ -->
-    <section class="value-section fade-in-scroll">
-        <div class="wrap-wide">
-            <div class="value-grid">
+    <section class="bg-white pb-16 md:pb-24 fade-in-scroll">
+        <div class="max-w-[1794px] mx-auto px-6 md:px-16">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
                 <!-- Text -->
-                <div class="value-copy">
-                    <h3 class="type-sub-h3">Clarity</h3>
-                    <p class="value-body">Every invoice, claim, order, and request is processed the same day it arrives. Sophia pulls messy data from emails and combines it with your ERP and accounting systems, giving you a single, clean view of what's happening across your business.</p>
+                <div class="flex flex-col justify-between self-stretch">
+                    <h3 class="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] leading-[0.95] tracking-[-0.5px] sm:tracking-[-1px] md:tracking-[-2px] font-normal">Clarity</h3>
+                    <p class="text-lg md:text-xl tracking-[-0.2px] leading-[1.5] text-black/60">Every invoice, claim, order, and request is processed the same day it arrives. Sophia pulls messy data from emails and combines it with your ERP and accounting systems, giving you a single, clean view of what's happening across your business.</p>
                 </div>
-                <!-- Diagram tile (Firstlight als Grafikblock) -->
-                <div class="demo-tile aspect-[775/687] w-full p-12 md:p-16 flex flex-col justify-center" style="background: var(--grad-firstlight);">
+                <!-- Diagram tile - Sky Gradient 9 -->
+                <div class="rounded-[15px] aspect-[775/687] w-full p-12 md:p-16 flex flex-col justify-center overflow-hidden" style="background: linear-gradient(145deg, #94c5f8 1%, #a6e6ff 70%, #b1b5ea 100%);">
                     <div class="max-w-[340px] mx-auto w-full">
                         <!-- Source icons row -->
                         <div class="flex justify-center gap-3 mb-4">
-                            <div class="w-12 h-12 rounded-lg bg-white/40 backdrop-blur-sm border border-white/50 flex items-center justify-center">
-                                <svg class="w-6 h-6 text-black/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                            <div class="w-12 h-12 rounded-xl bg-white/40 backdrop-blur-sm border border-white/50 flex items-center justify-center shadow-sm">
+                                <svg class="w-6 h-6 text-blue-600/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
                             </div>
-                            <div class="w-12 h-12 rounded-lg bg-white/40 backdrop-blur-sm border border-white/50 flex items-center justify-center">
-                                <svg class="w-6 h-6 text-black/50" fill="currentColor" viewBox="0 0 24 24"><path d="M7 18H17V16H7V18M7 14H17V12H7V14M7 10H11V8H7V10M5 22C4.45 22 3.979 21.804 3.587 21.413C3.196 21.021 3 20.55 3 20V4C3 3.45 3.196 2.979 3.587 2.587C3.979 2.196 4.45 2 5 2H14L20 8V20C20 20.55 19.804 21.021 19.413 21.413C19.021 21.804 18.55 22 18 22H5ZM13 9V3.5L18.5 9H13Z"/></svg>
+                            <div class="w-12 h-12 rounded-xl bg-white/40 backdrop-blur-sm border border-white/50 flex items-center justify-center shadow-sm">
+                                <svg class="w-6 h-6 text-red-500/70" fill="currentColor" viewBox="0 0 24 24"><path d="M7 18H17V16H7V18M7 14H17V12H7V14M7 10H11V8H7V10M5 22C4.45 22 3.979 21.804 3.587 21.413C3.196 21.021 3 20.55 3 20V4C3 3.45 3.196 2.979 3.587 2.587C3.979 2.196 4.45 2 5 2H14L20 8V20C20 20.55 19.804 21.021 19.413 21.413C19.021 21.804 18.55 22 18 22H5ZM13 9V3.5L18.5 9H13Z"/></svg>
                             </div>
-                            <div class="w-12 h-12 rounded-lg bg-white/40 backdrop-blur-sm border border-white/50 flex items-center justify-center">
-                                <svg class="w-5 h-5 text-black/50" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V8L14 2ZM18 20H6V4H13V9H18V20ZM8 15.01L9.41 16.42L11 14.84V19H13V14.84L14.59 16.43L16 15.01L12.01 11L8 15.01Z"/></svg>
+                            <div class="w-12 h-12 rounded-xl bg-white/40 backdrop-blur-sm border border-white/50 flex items-center justify-center shadow-sm">
+                                <svg class="w-5 h-5 text-red-600/70" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V8L14 2ZM18 20H6V4H13V9H18V20ZM8 15.01L9.41 16.42L11 14.84V19H13V14.84L14.59 16.43L16 15.01L12.01 11L8 15.01Z"/></svg>
                             </div>
-                            <div class="w-12 h-12 rounded-lg bg-white/40 backdrop-blur-sm border border-white/50 flex items-center justify-center">
-                                <svg class="w-5 h-5 text-black/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"/></svg>
+                            <div class="w-12 h-12 rounded-xl bg-white/40 backdrop-blur-sm border border-white/50 flex items-center justify-center shadow-sm">
+                                <svg class="w-5 h-5 text-purple-600/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"/></svg>
                             </div>
-                            <div class="w-12 h-12 rounded-lg bg-white/40 backdrop-blur-sm border border-white/50 flex items-center justify-center">
-                                <svg class="w-5 h-5 text-black/50" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19ZM7 10H9V17H7V10ZM11 7H13V17H11V7ZM15 13H17V17H15V13Z"/></svg>
+                            <div class="w-12 h-12 rounded-xl bg-white/40 backdrop-blur-sm border border-white/50 flex items-center justify-center shadow-sm">
+                                <svg class="w-5 h-5 text-green-700/70" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19ZM7 10H9V17H7V10ZM11 7H13V17H11V7ZM15 13H17V17H15V13Z"/></svg>
                             </div>
-                            <div class="w-12 h-12 rounded-lg bg-white/40 backdrop-blur-sm border border-white/50 flex items-center justify-center">
+                            <div class="w-12 h-12 rounded-xl bg-white/40 backdrop-blur-sm border border-white/50 flex items-center justify-center shadow-sm">
                                 <svg class="w-5 h-5 text-black/40" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 18H4V8L12 13L20 8V18ZM12 11L4 6H20L12 11Z"/></svg>
                             </div>
                         </div>
@@ -988,10 +1242,10 @@
                             <line x1="330" y1="0" x2="270" y2="28" stroke="rgba(0,0,0,0.2)" stroke-width="1.5" stroke-dasharray="4 4"/>
                         </svg>
                         <!-- Dashboard panel -->
-                        <div class="bg-white/40 backdrop-blur-md border border-white/50 rounded-lg p-4">
+                        <div class="bg-white/40 backdrop-blur-md border border-white/50 rounded-xl p-4 shadow-sm">
                             <!-- Search bar -->
                             <div class="flex items-center gap-2 mb-4">
-                                <div class="flex-1 bg-white/50 rounded px-3 py-1.5">
+                                <div class="flex-1 bg-white/50 rounded-md px-3 py-1.5">
                                     <span class="text-black/25 text-[10px]">Search...</span>
                                 </div>
                                 <svg class="w-4 h-4 text-black/25" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
@@ -1034,206 +1288,83 @@
     </section>
 
     <!-- ============================================ -->
-    <!-- 8. SECURITY + COMPLIANCE (Dusk-Bahn, Davids Steer) -->
+    <!-- ZONE Close (WIN FROM WITHIN): Tint-Bahn -->
     <!-- ============================================ -->
-    <div class="zone-dark">
-    <section id="security" class="pt-16 md:pt-28 pb-8 md:pb-12 fade-in-scroll" style="scroll-margin-top: 88px;">
-        <div class="wrap text-center">
-            <span class="eyebrow chip light">Security &amp; compliance</span>
-            <h2 class="type-section-h2" style="margin-top: 28px;">
-                European security
+    <div class="zone-tint">
+    <!-- ============================================ -->
+    <!-- WIN FROM WITHIN -->
+    <!-- ============================================ -->
+    <section class="bg-white py-20 md:py-32">
+        <div class="max-w-[1794px] mx-auto px-6 md:px-16 text-right">
+            <h2 class="text-4xl sm:text-6xl md:text-8xl lg:text-[150px] font-bold uppercase leading-[0.9] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px]">
+                WIN FROM<br>WITHIN.
             </h2>
-            <a href="contact.html" class="btn btn-inverse" style="margin-top: 36px;">
-                Get in touch
-            </a>
-        </div>
-    </section>
-
-    <!-- Security features -->
-    <section class="pb-16 md:pb-20 fade-in-scroll">
-        <div class="wrap">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-
-                <!-- Card 1: Privacy (lock) -->
-                <div class="security-card">
-                    <div class="icon-chip">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                    </div>
-                    <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Privacy at the core</h3>
-                    <p class="text-base text-black/60 leading-[1.6]">Your business data belongs to you. Sophia is architected so that sensitive information never leaves your control or gets used for model training.</p>
-                </div>
-
-                <!-- Card 2: EU-hosted (globe) -->
-                <div class="security-card">
-                    <div class="icon-chip">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-                    </div>
-                    <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">German-engineered. EU-hosted.</h3>
-                    <p class="text-base text-black/60 leading-[1.6]">All data processing and storage stays within European borders. GDPR-compliant from day one, because manufacturing data deserves sovereign infrastructure.</p>
-                </div>
-
-                <!-- Card 3: Protection (shield-check) -->
-                <div class="security-card">
-                    <div class="icon-chip">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
-                    </div>
-                    <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Industrial-strength protection</h3>
-                    <p class="text-base text-black/60 leading-[1.6]">End-to-end encryption, role-based access, and audit logging at every layer. The same rigour you expect from your ERP, applied to your AI.</p>
-                </div>
-
-                <!-- Card 4: Verified (check-badge) -->
-                <div class="security-card">
-                    <div class="icon-chip">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg>
-                    </div>
-                    <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Independently verified</h3>
-                    <p class="text-base text-black/60 leading-[1.6]">Regular third-party penetration testing and security audits. We don't ask you to take our word for it, we prove it.</p>
-                </div>
-
-                <!-- Card 5: Reliability (arrow-path) -->
-                <div class="security-card">
-                    <div class="icon-chip">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
-                    </div>
-                    <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Always-on reliability</h3>
-                    <p class="text-base text-black/60 leading-[1.6]">Redundant infrastructure with automatic failover. Your back-office agents keep running, even when things go wrong upstream.</p>
-                </div>
-
-                <!-- Card 6: Control (adjustments) -->
-                <div class="security-card">
-                    <div class="icon-chip">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5H3"/><path d="M12 19H3"/><path d="M14 3v4"/><path d="M16 17v4"/><path d="M21 12h-9"/><path d="M21 19h-5"/><path d="M21 5h-7"/><path d="M8 10v4"/><path d="M8 12H3"/></svg>
-                    </div>
-                    <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">You stay in control</h3>
-                    <p class="text-base text-black/60 leading-[1.6]">Every agent action can be reviewed, approved, or overridden. You decide how much autonomy to give, Sophia adapts to your comfort level.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Compliance -->
-    <section class="pb-20 md:pb-28 fade-in-scroll">
-        <div class="wrap text-center">
-            <h2 class="type-section-h2" style="margin-bottom: 64px;">
-                Compliance you can count on.
-            </h2>
-            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8">
-                <!-- GDPR -->
-                <div class="compliance-badge pending">
-                    <div class="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center mx-auto mb-3">
-                        <svg class="w-5 h-5 text-black/30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                    </div>
-                    <h3 class="text-xl font-bold tracking-[-0.5px] mb-1">GDPR</h3>
-                    <p class="text-sm text-black/40 font-medium">Compliant</p>
-                </div>
-                <!-- ISO -->
-                <div class="compliance-badge pending">
-                    <div class="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center mx-auto mb-3">
-                        <svg class="w-5 h-5 text-black/30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                    </div>
-                    <h3 class="text-xl font-bold tracking-[-0.5px] mb-1">ISO 27001</h3>
-                    <p class="text-sm text-black/40 font-medium">In progress</p>
-                </div>
-                <!-- AI Act -->
-                <div class="compliance-badge pending">
-                    <div class="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center mx-auto mb-3">
-                        <svg class="w-5 h-5 text-black/30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                    </div>
-                    <h3 class="text-xl font-bold tracking-[-0.5px] mb-1">AI Act</h3>
-                    <p class="text-sm text-black/40 font-medium">In progress</p>
-                </div>
-            </div>
         </div>
     </section>
     </div>
-    <!-- /zone-dark Security -->
+    <!-- /zone-tint Close -->
 
     <!-- ============================================ -->
-    <!-- 9. FOUNDER (Styleguide §6.8) -->
+    <!-- 6. FOOTER -->
     <!-- ============================================ -->
-    <section class="founder fade-in-scroll">
-        <div class="wrap founder-grid">
-            <div class="founder-photo" style="background-image:url('assets/founders.jpg');" role="img" aria-label="Simon Tüchelmann"></div>
-            <div>
-                <span class="eyebrow muted">Founder and CEO</span>
-                <h2 class="founder-name">Simon Tüchelmann</h2>
-                <p class="founder-bio">A serial entrepreneur and technology founder, Simon brings over 14 years of deep-rooted experience in the manufacturing sector. With the launch of Sophia, he is on a mission to revitalize European manufacturing. By putting AI to work he aims to initiate a new era of industrial growth and competitiveness across Europe.</p>
-            </div>
-        </div>
-    </section>
+    <footer class="bg-black text-white">
+        <div class="max-w-[1200px] mx-auto px-6 pt-[120px] pb-6">
+            <!-- Top section -->
+            <div class="flex flex-col lg:flex-row justify-between gap-16 lg:gap-[80px]">
+                <!-- Left: Logo & Description -->
+                <div class="flex flex-col justify-between">
+                    <div class="flex flex-col gap-4">
+                        <span class="text-white" role="img" aria-label="Sophia"><span class="inline-flex items-center" style="gap:11px; color:currentColor;"><svg viewBox="0 0 182 182" height="26" aria-hidden="true"><path fill="currentColor" fill-rule="nonzero" d="M 67.347 65.528 L 72.843 60.425 L 72.843 60.425 L 67.347 65.528 Z M 116.472 67.347 L 111.369 61.851 L 111.369 61.851 L 116.472 67.347 Z M 114.653 116.472 L 120.149 111.369 L 120.149 111.368 L 114.653 116.472 Z M 65.528 114.653 L 70.631 120.149 L 70.631 120.149 L 65.528 114.653 Z M 91 0 L 83.5 0 L 83.5 56.24 L 91 56.24 L 98.5 56.24 L 98.5 0 L 91 0 Z M 91 56.24 L 83.5 56.24 C 83.5 61.829 76.647 64.521 72.843 60.425 L 67.347 65.528 L 61.851 70.631 C 74.931 84.717 98.5 75.462 98.5 56.24 L 91 56.24 Z M 67.347 65.528 L 72.843 60.425 L 37.346 22.197 L 31.85 27.3 L 26.354 32.403 L 61.851 70.631 L 67.347 65.528 Z M 182 91 L 182 83.5 L 125.76 83.5 L 125.76 91 L 125.76 98.5 L 182 98.5 L 182 91 Z M 125.76 91 L 125.76 83.5 C 120.171 83.5 117.479 76.647 121.575 72.843 L 116.472 67.347 L 111.369 61.851 C 97.283 74.931 106.537 98.5 125.76 98.5 L 125.76 91 Z M 116.472 67.347 L 121.575 72.843 L 159.803 37.346 L 154.7 31.85 L 149.597 26.354 L 111.369 61.851 L 116.472 67.347 Z M 91 182 L 98.5 182 L 98.5 125.76 L 91 125.76 L 83.5 125.76 L 83.5 182 L 91 182 Z M 91 125.76 L 98.5 125.76 C 98.5 120.171 105.353 117.479 109.157 121.576 L 114.653 116.472 L 120.149 111.368 C 107.069 97.283 83.5 106.537 83.5 125.76 L 91 125.76 Z M 114.653 116.472 L 109.157 121.575 L 144.654 159.803 L 150.15 154.7 L 155.646 149.597 L 120.149 111.369 L 114.653 116.472 Z M 0 91 L 0 98.5 L 56.24 98.5 L 56.24 91 L 56.24 83.5 L 0 83.5 L 0 91 Z M 56.24 91 L 56.24 98.5 C 61.829 98.5 64.521 105.353 60.424 109.157 L 65.528 114.653 L 70.631 120.149 C 84.717 107.069 75.463 83.5 56.24 83.5 L 56.24 91 Z M 65.528 114.653 L 60.425 109.157 L 22.197 144.654 L 27.3 150.15 L 32.403 155.646 L 70.631 120.149 L 65.528 114.653 Z"/></svg><svg viewBox="0 0 397.249 80.016" height="13" aria-hidden="true"><path fill="currentColor" fill-rule="nonzero" d="M 33.084 80.016 C 12.42 80.016 0.11 70.124 0 54.407 L 17.366 54.407 C 17.696 63.2 21.433 66.937 32.864 66.937 C 43.525 66.937 47.482 64.519 47.482 57.704 C 47.482 52.208 45.064 50.23 37.48 48.581 L 23.301 45.614 C 8.793 42.646 1.099 35.392 1.099 24.401 C 1.099 10.222 13.299 0 32.314 0 C 51.109 0 63.969 9.782 64.079 24.95 L 46.713 24.95 C 46.163 16.157 42.206 13.08 31.985 13.08 C 21.982 13.08 18.355 15.498 18.245 22.312 C 18.245 27.038 20.224 29.566 28.467 31.215 L 41.986 33.853 C 57.484 36.821 65.508 44.185 65.508 55.286 C 65.508 69.575 53.417 80.016 33.084 80.016 Z M 108.744 80.016 C 83.354 80.016 69.175 63.749 69.175 39.898 C 69.175 16.267 83.684 0 109.183 0 C 134.463 0 148.642 16.267 148.642 40.118 C 148.642 63.749 134.243 80.016 108.744 80.016 Z M 109.073 65.288 C 126.44 65.288 129.737 61.771 129.737 40.118 C 129.737 18.465 126.44 14.728 109.073 14.728 C 91.707 14.728 88.08 18.465 88.08 40.118 C 88.08 61.771 91.707 65.288 109.073 65.288 Z M 173.374 78.477 L 156.667 78.477 L 156.667 1.539 L 193.268 1.539 C 208.216 1.539 219.977 9.892 219.977 25.829 C 219.977 41.877 208.106 50.23 193.378 50.23 L 173.374 50.23 L 173.374 78.477 Z M 173.374 14.948 L 173.374 37.04 L 191.509 37.04 C 199.423 37.04 201.621 35.502 201.621 25.939 C 201.621 16.377 199.423 14.948 191.509 14.948 L 173.374 14.948 Z M 241.994 78.477 L 225.178 78.477 L 225.178 1.539 L 241.994 1.539 L 241.994 31.215 L 273.429 31.215 L 273.429 1.539 L 290.136 1.539 L 290.136 78.477 L 273.429 78.477 L 273.429 46.053 L 241.994 46.053 L 241.994 78.477 Z M 318.77 78.477 L 301.953 78.477 L 301.953 1.539 L 318.77 1.539 L 318.77 78.477 Z M 397.249 78.477 L 379.223 78.477 L 373.838 62.21 L 345.7 62.21 L 340.205 78.477 L 322.729 78.477 L 350.317 1.539 L 369.771 1.539 L 397.249 78.477 Z M 353.284 38.579 L 349.657 49.57 L 369.991 49.57 L 366.474 38.579 C 363.946 30.775 362.517 24.62 361.967 20.004 L 357.791 20.004 C 357.131 24.62 355.812 30.775 353.284 38.579 Z"/></svg></span></span>
+                        <p class="text-[15px] text-white leading-[1.4] tracking-[-0.15px] max-w-[262px]">
+                            Sophia. Operational excellence, straight from your inbox.
+                        </p>
+                    </div>
+                    <!-- Social links -->
+                    <div class="flex items-center gap-4 mt-12 lg:mt-[180px]">
+                        <a href="#" class="hover:opacity-80 transition-opacity">
+                            <img src="assets/linkedin.svg" alt="LinkedIn" class="w-6 h-6">
+                        </a>
+                        <a href="#" class="hover:opacity-80 transition-opacity">
+                            <img src="assets/x.svg" alt="X" class="w-6 h-6">
+                        </a>
+                        <a href="#" class="hover:opacity-80 transition-opacity">
+                            <img src="assets/youtube.svg" alt="YouTube" class="w-6 h-6">
+                        </a>
+                    </div>
+                </div>
 
-    <!-- ============================================ -->
-    <!-- 10. CTA-BAND — Sunrise (Styleguide §6.9), Tagline als Lockup -->
-    <!-- ============================================ -->
-    <section class="cta-band">
-        <div class="wrap cta-inner">
-            <span class="eyebrow chip light">Get started</span>
-            <h2 class="type-cta-h2">Win from<br>within.</h2>
-            <div class="cta-row">
-                <a href="contact.html" class="btn btn-inverse btn-lg">Get in touch</a>
+                <!-- Right: Link columns -->
+                <div class="flex flex-wrap gap-16 lg:gap-[120px]">
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Product</h4>
+                        <a href="#product" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Product</a>
+                        <a href="#security" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Security</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Company</h4>
+                        <a href="about.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">About Us</a>
+                        <a href="careers.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Careers</a>
+                        <a href="contact.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Contact</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Legal</h4>
+                        <a href="imprint.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Imprint</a>
+                        <a href="terms.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Terms</a>
+                        <a href="privacy.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Privacy</a>
+                        <a href="subprocessors.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Sub-processors</a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
 
-    </main>
-
-    <!-- ============================================ -->
-    <!-- 11. FOOTER (Styleguide §6.10) -->
-    <!-- ============================================ -->
-    <footer class="site-footer">
-        <div class="wrap footer-grid">
-            <div>
-                <span class="logo-lockup light" role="img" aria-label="Sophia">
-                    <svg viewBox="0 0 182 182" height="26" aria-hidden="true"><path fill="currentColor" fill-rule="nonzero" d="M 67.347 65.528 L 72.843 60.425 L 72.843 60.425 L 67.347 65.528 Z M 116.472 67.347 L 111.369 61.851 L 111.369 61.851 L 116.472 67.347 Z M 114.653 116.472 L 120.149 111.369 L 120.149 111.368 L 114.653 116.472 Z M 65.528 114.653 L 70.631 120.149 L 70.631 120.149 L 65.528 114.653 Z M 91 0 L 83.5 0 L 83.5 56.24 L 91 56.24 L 98.5 56.24 L 98.5 0 L 91 0 Z M 91 56.24 L 83.5 56.24 C 83.5 61.829 76.647 64.521 72.843 60.425 L 67.347 65.528 L 61.851 70.631 C 74.931 84.717 98.5 75.462 98.5 56.24 L 91 56.24 Z M 67.347 65.528 L 72.843 60.425 L 37.346 22.197 L 31.85 27.3 L 26.354 32.403 L 61.851 70.631 L 67.347 65.528 Z M 182 91 L 182 83.5 L 125.76 83.5 L 125.76 91 L 125.76 98.5 L 182 98.5 L 182 91 Z M 125.76 91 L 125.76 83.5 C 120.171 83.5 117.479 76.647 121.575 72.843 L 116.472 67.347 L 111.369 61.851 C 97.283 74.931 106.537 98.5 125.76 98.5 L 125.76 91 Z M 116.472 67.347 L 121.575 72.843 L 159.803 37.346 L 154.7 31.85 L 149.597 26.354 L 111.369 61.851 L 116.472 67.347 Z M 91 182 L 98.5 182 L 98.5 125.76 L 91 125.76 L 83.5 125.76 L 83.5 182 L 91 182 Z M 91 125.76 L 98.5 125.76 C 98.5 120.171 105.353 117.479 109.157 121.576 L 114.653 116.472 L 120.149 111.368 C 107.069 97.283 83.5 106.537 83.5 125.76 L 91 125.76 Z M 114.653 116.472 L 109.157 121.575 L 144.654 159.803 L 150.15 154.7 L 155.646 149.597 L 120.149 111.369 L 114.653 116.472 Z M 0 91 L 0 98.5 L 56.24 98.5 L 56.24 91 L 56.24 83.5 L 0 83.5 L 0 91 Z M 56.24 91 L 56.24 98.5 C 61.829 98.5 64.521 105.353 60.424 109.157 L 65.528 114.653 L 70.631 120.149 C 84.717 107.069 75.463 83.5 56.24 83.5 L 56.24 91 Z M 65.528 114.653 L 60.425 109.157 L 22.197 144.654 L 27.3 150.15 L 32.403 155.646 L 70.631 120.149 L 65.528 114.653 Z"/></svg>
-                    <svg viewBox="0 0 397.249 80.016" height="13" aria-hidden="true"><path fill="currentColor" fill-rule="nonzero" d="M 33.084 80.016 C 12.42 80.016 0.11 70.124 0 54.407 L 17.366 54.407 C 17.696 63.2 21.433 66.937 32.864 66.937 C 43.525 66.937 47.482 64.519 47.482 57.704 C 47.482 52.208 45.064 50.23 37.48 48.581 L 23.301 45.614 C 8.793 42.646 1.099 35.392 1.099 24.401 C 1.099 10.222 13.299 0 32.314 0 C 51.109 0 63.969 9.782 64.079 24.95 L 46.713 24.95 C 46.163 16.157 42.206 13.08 31.985 13.08 C 21.982 13.08 18.355 15.498 18.245 22.312 C 18.245 27.038 20.224 29.566 28.467 31.215 L 41.986 33.853 C 57.484 36.821 65.508 44.185 65.508 55.286 C 65.508 69.575 53.417 80.016 33.084 80.016 Z M 108.744 80.016 C 83.354 80.016 69.175 63.749 69.175 39.898 C 69.175 16.267 83.684 0 109.183 0 C 134.463 0 148.642 16.267 148.642 40.118 C 148.642 63.749 134.243 80.016 108.744 80.016 Z M 109.073 65.288 C 126.44 65.288 129.737 61.771 129.737 40.118 C 129.737 18.465 126.44 14.728 109.073 14.728 C 91.707 14.728 88.08 18.465 88.08 40.118 C 88.08 61.771 91.707 65.288 109.073 65.288 Z M 173.374 78.477 L 156.667 78.477 L 156.667 1.539 L 193.268 1.539 C 208.216 1.539 219.977 9.892 219.977 25.829 C 219.977 41.877 208.106 50.23 193.378 50.23 L 173.374 50.23 L 173.374 78.477 Z M 173.374 14.948 L 173.374 37.04 L 191.509 37.04 C 199.423 37.04 201.621 35.502 201.621 25.939 C 201.621 16.377 199.423 14.948 191.509 14.948 L 173.374 14.948 Z M 241.994 78.477 L 225.178 78.477 L 225.178 1.539 L 241.994 1.539 L 241.994 31.215 L 273.429 31.215 L 273.429 1.539 L 290.136 1.539 L 290.136 78.477 L 273.429 78.477 L 273.429 46.053 L 241.994 46.053 L 241.994 78.477 Z M 318.77 78.477 L 301.953 78.477 L 301.953 1.539 L 318.77 1.539 L 318.77 78.477 Z M 397.249 78.477 L 379.223 78.477 L 373.838 62.21 L 345.7 62.21 L 340.205 78.477 L 322.729 78.477 L 350.317 1.539 L 369.771 1.539 L 397.249 78.477 Z M 353.284 38.579 L 349.657 49.57 L 369.991 49.57 L 366.474 38.579 C 363.946 30.775 362.517 24.62 361.967 20.004 L 357.791 20.004 C 357.131 24.62 355.812 30.775 353.284 38.579 Z"/></svg>
-                </span>
-                <p class="footer-desc">Sophia. Operational excellence, straight from your inbox.</p>
-                <div class="footer-social">
-                    <a href="#" class="hover:opacity-80 transition-opacity">
-                        <img src="assets/linkedin.svg" alt="LinkedIn" class="w-6 h-6">
-                    </a>
-                    <a href="#" class="hover:opacity-80 transition-opacity">
-                        <img src="assets/x.svg" alt="X" class="w-6 h-6">
-                    </a>
-                    <a href="#" class="hover:opacity-80 transition-opacity">
-                        <img src="assets/youtube.svg" alt="YouTube" class="w-6 h-6">
-                    </a>
-                </div>
-            </div>
-            <div>
-                <p class="footer-colh">Product</p>
-                <div class="footer-links">
-                    <a href="#product">Product</a>
-                    <a href="#security">Security</a>
-                </div>
-            </div>
-            <div>
-                <p class="footer-colh">Company</p>
-                <div class="footer-links">
-                    <a href="about.html">About Us</a>
-                    <a href="careers.html">Careers</a>
-                    <a href="contact.html">Contact</a>
-                </div>
-            </div>
-            <div>
-                <p class="footer-colh">Legal</p>
-                <div class="footer-links">
-                    <a href="imprint.html">Imprint</a>
-                    <a href="terms.html">Terms</a>
-                    <a href="privacy.html">Privacy</a>
-                    <a href="subprocessors.html">Sub-processors</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-legal-wrap">
-            <div class="wrap footer-legal">
+            <!-- Bottom bar -->
+            <div class="flex flex-col sm:flex-row justify-between items-center mt-[120px] pt-0 text-white/60 text-[15px] tracking-[-0.15px]">
                 <span>© 2026 Sophia AI GmbH. All Rights Reserved.</span>
-                <div class="legal-links">
-                    <a href="imprint.html">Imprint</a>
-                    <a href="terms.html">Terms</a>
-                    <a href="privacy.html">Privacy</a>
-                    <a href="subprocessors.html">Sub-processors</a>
+                <div class="flex gap-8 mt-4 sm:mt-0">
+                    <a href="imprint.html" class="hover:text-white transition-colors">Imprint</a>
+                    <a href="terms.html" class="hover:text-white transition-colors">Terms</a>
+                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy</a>
+                    <a href="subprocessors.html" class="hover:text-white transition-colors">Sub-processors</a>
+                    <a href="#" class="hover:text-white transition-colors">Cookies</a>
                 </div>
             </div>
         </div>
@@ -1256,12 +1387,8 @@
             const btn = document.getElementById('mobile-menu-button');
             const menu = document.getElementById('mobile-menu');
             if (btn) {
-                btn.setAttribute('aria-expanded', 'false');
-                btn.addEventListener('click', () => {
-                    menu.classList.toggle('hidden');
-                    btn.setAttribute('aria-expanded', menu.classList.contains('hidden') ? 'false' : 'true');
-                });
-                menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { menu.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }));
+                btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+                menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
             }
 
             // Hero copy: German when DE is selected
@@ -1272,8 +1399,8 @@
                 if (sub) sub.textContent = 'KI-Agenten, die direkt aus Ihrem Posteingang arbeiten. Sie lesen E-Mails, prüfen Daten im ERP und handeln eigenständig. Keine neuen Systeme. Keine Datenmigration.';
                 const cta = document.getElementById('hero-cta');
                 if (cta) cta.textContent = 'Kontakt aufnehmen';
-                const menuBtn = document.getElementById('mobile-menu-button');
-                if (menuBtn) menuBtn.setAttribute('aria-label', 'Menü');
+                const ecSub = document.getElementById('email-centric-sub');
+                if (ecSub) ecSub.textContent = 'Sophia ist Ihr neuer E-Mail-Client: liest E-Mails, entwirft Antworten, prüft Materialpreise und Verfügbarkeiten und aktualisiert Ihr ERP. Keine neuen Tools, keine geänderten Abläufe.';
                 const ptH2 = document.getElementById('product-teaser-h2');
                 if (ptH2) ptH2.textContent = 'Sophia bei der Arbeit';
 
@@ -1287,34 +1414,20 @@
                     'Product': 'Produkt',
                     'Security': 'Sicherheit',
                     'Careers': 'Karriere',
-                    'Get in touch': 'Kontakt aufnehmen',
-                    'Your autonomous back office': 'Ihr autonomes Backoffice',
-                    'See Sophia at work': 'Sophia bei der Arbeit',
-                    'Built for European industry': 'Für die europäische Industrie gebaut',
-                    'GDPR compliant': 'DSGVO-konform',
-                    'EU-hosted': 'In der EU gehostet',
-                    'German-engineered': 'Entwickelt in Deutschland',
-                    '20+ ERP integrations': 'Über 20 ERP-Integrationen',
-                    'Our mission': 'Unsere Mission',
                     'Security & compliance': 'Sicherheit & Compliance',
                     'What you gain': 'Was Sie gewinnen',
                     'Connects everything': 'Verbindet alles',
                     'Sophia integrates with your ERP, CRM, DMS, and inbox, letting agents operate across your entire business, not just one tool.': 'Sophia integriert sich in Ihr ERP, CRM, DMS und Postfach, sodass Agenten in Ihrem gesamten Unternehmen arbeiten, nicht nur in einem Tool.',
-                    'Email centric': 'Rund um die E-Mail',
-                    'Sophia is your new Email client, reading emails, drafting replies, checking material prices and availability and updating your ERP. No new tools to learn, no workflows to change.': 'Sophia ist Ihr neuer E-Mail-Client: liest E-Mails, entwirft Antworten, prüft Materialpreise und Verfügbarkeiten und aktualisiert Ihr ERP. Keine neuen Tools, keine geänderten Abläufe.',
-                    'Nothing to migrate': 'Nichts zu migrieren',
-                    'Sophia works inside the tools you already run. No new systems to roll out, no data to migrate, impact from day one.': 'Sophia arbeitet in den Tools, die Sie schon nutzen. Keine neuen Systeme, keine Datenmigration, Wirkung ab dem ersten Tag.',
-                    'See it live': 'Live sehen',
+                    'Email Centric': 'Rund um die E-Mail',
                     'Impact from day one': 'Wirkung ab dem ersten Tag',
+                    'Designed to seamlessly integrate into your processes. No disruption.': 'Nahtlos in Ihre Prozesse integriert. Ohne Umstellung.',
                     'Native integrations with 20+ ERP systems': 'Native Integrationen mit über 20 ERP-Systemen',
-                    'More revenue': 'Mehr Umsatz',
+                    'We make your business 10x stronger.': '10x mehr Zeit für Ihre Kunden.',
+                    'More Revenue': 'Mehr Umsatz',
                     'Sophia creates quotes in seconds, ensures no email request goes unanswered, and proactively follows up with customers. By identifying opportunities hidden in customer behavior, your team closes more deals without lifting a finger.': 'Sophia erstellt Angebote in Sekunden, sorgt dafür, dass keine E-Mail-Anfrage unbeantwortet bleibt, und fasst proaktiv bei Kunden nach. Indem sie im Kundenverhalten verborgene Chancen erkennt, schließt Ihr Team mehr Geschäfte ab, ohne zusätzlichen Aufwand.',
-                    'Better margins': 'Bessere Margen',
+                    'Better Margins': 'Bessere Margen',
                     'Sophia automatically compares supplier pricing, sends out RFQs to multiple vendors, and flags cost-saving opportunities across your procurement. Proactive negotiation with competing quotes protects your margins without manual effort.': 'Sophia vergleicht automatisch Lieferantenpreise, versendet Anfragen an mehrere Lieferanten und weist auf Einsparpotenziale in Ihrem gesamten Einkauf hin. Proaktive Verhandlung mit konkurrierenden Angeboten schützt Ihre Margen ohne manuellen Aufwand.',
-                    'Outstanding customer service': 'Herausragender Kundenservice',
-                    'Founder and CEO': 'Gründer und CEO',
-                    'A serial entrepreneur and technology founder, Simon brings over 14 years of deep-rooted experience in the manufacturing sector. With the launch of Sophia, he is on a mission to revitalize European manufacturing. By putting AI to work he aims to initiate a new era of industrial growth and competitiveness across Europe.': 'Als Serienunternehmer und Technologiegründer bringt Simon über 14 Jahre fundierte Erfahrung in der Fertigungsbranche mit. Mit dem Start von Sophia hat er sich vorgenommen, die europäische Fertigung neu zu beleben. Indem er KI zum Einsatz bringt, will er eine neue Ära industriellen Wachstums und industrieller Wettbewerbsfähigkeit in ganz Europa einleiten.',
-                    'Get started': 'Jetzt starten',
+                    'Outstanding Customer Service': 'Herausragender Kundenservice',
                     "When a supplier delays, Sophia doesn't wait for your customers to ask. It proactively notifies affected customers, searches for alternatives, and escalates decisions to your team, all before anyone picks up the phone.": 'Wenn ein Lieferant sich verspätet, wartet Sophia nicht, bis Ihre Kunden nachfragen. Sie benachrichtigt proaktiv betroffene Kunden, sucht nach Alternativen und eskaliert Entscheidungen an Ihr Team, alles noch bevor jemand zum Hörer greift.',
                     'Clarity': 'Klarheit',
                     "Every invoice, claim, order, and request is processed the same day it arrives. Sophia pulls messy data from emails and combines it with your ERP and accounting systems, giving you a single, clean view of what's happening across your business.": 'Jede Rechnung, Reklamation, Bestellung und Anfrage wird noch am selben Tag bearbeitet, an dem sie eintrifft. Sophia zieht unstrukturierte Daten aus E-Mails und kombiniert sie mit Ihrem ERP und Ihren Buchhaltungssystemen und gibt Ihnen so einen klaren, einheitlichen Überblick über alles, was in Ihrem Unternehmen passiert.',
@@ -1344,7 +1457,8 @@
                     'On-time Hunting': 'Liefertermin-Nachverfolgung',
                     'Custom Report': 'Individueller Bericht',
                     'Overview': 'Übersicht',
-                    'European security': 'Europäische Sicherheit',
+                    'European Security': 'Europäische Sicherheit',
+                    'Get in touch': 'Kontakt aufnehmen',
                     'Privacy at the core': 'Datenschutz im Zentrum',
                     'German-engineered. EU-hosted.': 'In Deutschland entwickelt. In der EU gehostet.',
                     'Industrial-strength protection': 'Schutz auf Industrieniveau',
@@ -1772,7 +1886,7 @@
                     '<span class="text-[10px] font-medium text-green-700">' + getUILabel('sophiaReply') + '</span>' +
                 '</div>' +
                 '<div class="flex items-center justify-between mb-1">' +
-                    '<span class="text-sm font-bold">' + (window.SOPHIA_LANG === 'de' ? 'An: ' : 'To: ') + reply.to + '</span>' +
+                    '<span class="text-sm font-bold">An: ' + reply.to + '</span>' +
                 '</div>' +
                 '<p class="text-sm font-medium text-black/70">' + reply.subject + '</p>' +
                 (reply.attachment ? '<div class="flex items-center gap-1 mt-1.5"><svg class="w-3 h-3 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg><span class="text-[10px] text-green-700">' + reply.attachment + '</span></div>' : '') +
@@ -1805,7 +1919,7 @@
                     '<span class="text-[10px] font-medium text-cyan-700">' + getUILabel('sent') + '</span>' +
                 '</div>' +
                 '<div class="flex items-center justify-between mb-1">' +
-                    '<span class="text-sm font-bold">' + (window.SOPHIA_LANG === 'de' ? 'An: ' : 'To: ') + email.to + '</span>' +
+                    '<span class="text-sm font-bold">An: ' + email.to + '</span>' +
                 '</div>' +
                 '<p class="text-sm font-medium text-black/70">' + email.subject + '</p>' +
                 (email.attachment ? '<div class="flex items-center gap-1 mt-1.5"><svg class="w-3 h-3 text-cyan-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg><span class="text-[10px] text-cyan-700">' + email.attachment + '</span></div>' : '') +
