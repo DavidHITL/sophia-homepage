@@ -426,94 +426,109 @@
             background:#fff; border-radius:15px; overflow:hidden;
             border:1px solid rgba(0,0,0,0.08);
             box-shadow:0 40px 90px rgba(0,0,0,0.32);
-            display:flex; flex-direction:column; color:#111; text-align:left;
+            display:flex; flex-direction:column; color:#141414; text-align:left;
+            font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
-        .hx-bar{ height:54px; flex:0 0 54px; display:flex; align-items:center; gap:14px;
-            padding:0 20px; border-bottom:1px solid rgba(0,0,0,0.07); background:#fafafa; }
+        .hx-bar{ height:56px; flex:0 0 56px; display:flex; align-items:center; gap:14px;
+            padding:0 18px; border-bottom:1px solid rgba(0,0,0,0.07); background:#fff; }
         .hx-dots{ display:flex; gap:8px; }
-        .hx-dots i{ width:12px; height:12px; border-radius:50%; display:block; }
-        .hx-title{ font-size:16px; font-weight:700; letter-spacing:-.2px; }
-        .hx-conn{ margin-left:auto; display:inline-flex; align-items:center; gap:8px;
-            font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
-            color:#1e528e; background:#e7eef7; padding:6px 13px; border-radius:999px; }
-        .hx-conn .d{ width:8px; height:8px; border-radius:50%; background:#34d399; animation:hx-pulse 1.6s ease-out infinite; }
-        @keyframes hx-pulse{ 0%{box-shadow:0 0 0 0 rgba(52,211,153,.55);} 70%{box-shadow:0 0 0 8px rgba(52,211,153,0);} 100%{box-shadow:0 0 0 0 rgba(52,211,153,0);} }
+        .hx-dots i{ width:11px; height:11px; border-radius:50%; display:block; }
+        .hx-logo{ display:inline-flex; align-items:center; gap:7px; color:#141414; margin-left:2px; }
+        .hx-logo svg{ display:block; flex:none; }
+        .hx-search{ flex:1; max-width:400px; margin:0 auto; background:#f4f4f2;
+            border:1px solid rgba(0,0,0,0.05); border-radius:999px; padding:8px 8px 8px 14px;
+            font-size:13px; color:rgba(0,0,0,0.42); display:flex; align-items:center; gap:9px; }
+        .hx-kbd{ margin-left:auto; font-size:11px; color:rgba(0,0,0,0.4); background:#fff;
+            border:1px solid rgba(0,0,0,0.08); border-radius:6px; padding:2px 6px; line-height:1.2; }
+        .hx-conn{ display:inline-flex; align-items:center; gap:7px;
+            font-size:11px; font-weight:600; letter-spacing:.05em; text-transform:uppercase;
+            color:rgba(0,0,0,0.6); background:#f4f4f2; border:1px solid rgba(0,0,0,0.05);
+            padding:6px 12px; border-radius:999px; white-space:nowrap; }
+        .hx-conn .d{ width:7px; height:7px; border-radius:50%; background:#34d399; animation:hx-pulse 1.6s ease-out infinite; }
+        .hx-avatar{ width:30px; height:30px; flex:0 0 30px; border-radius:50%; background:#232323;
+            color:#fff; font-size:12px; font-weight:600; display:flex; align-items:center; justify-content:center; }
+        @keyframes hx-pulse{ 0%{box-shadow:0 0 0 0 rgba(52,211,153,.45);} 70%{box-shadow:0 0 0 7px rgba(52,211,153,0);} 100%{box-shadow:0 0 0 0 rgba(52,211,153,0);} }
 
         .hx-body{ flex:1; display:flex; min-height:0; }
+        /* Modul-Rail (abstrakt, nur Icons) */
+        .hx-rail{ flex:0 0 56px; border-right:1px solid rgba(0,0,0,0.07); background:#fafafa;
+            display:flex; flex-direction:column; align-items:center; gap:6px; padding:14px 0; }
+        .hx-rail .ri{ width:36px; height:36px; border-radius:9px; display:flex; align-items:center;
+            justify-content:center; color:rgba(0,0,0,0.35); }
+        .hx-rail .ri svg{ width:18px; height:18px; }
+        .hx-rail .ri.active{ background:#ececea; color:#141414; }
         /* list */
-        .hx-list-col{ flex:0 0 322px; min-width:0; border-right:1px solid rgba(0,0,0,0.07);
-            background:#fafafa; display:flex; flex-direction:column; }
-        .hx-list-head{ padding:18px 18px 12px; }
-        .hx-list-title{ font-size:19px; font-weight:700; letter-spacing:-.3px; }
-        .hx-search{ margin-top:12px; background:#fff; border:1px solid rgba(0,0,0,0.10);
-            border-radius:10px; padding:9px 13px; font-size:14px; color:rgba(0,0,0,0.40);
-            display:flex; align-items:center; gap:9px; }
+        .hx-list-col{ flex:0 0 288px; min-width:0; border-right:1px solid rgba(0,0,0,0.07);
+            background:#fff; display:flex; flex-direction:column; }
+        .hx-list-head{ padding:16px 16px 8px; }
+        .hx-list-title{ font-size:17px; font-weight:700; letter-spacing:-.2px; }
         .hx-list{ flex:1; overflow:hidden; padding:2px 8px 10px; display:flex; flex-direction:column; gap:1px; }
-        .hx-row{ border-radius:10px; padding:10px 12px; display:flex; gap:12px; align-items:center;
+        .hx-row{ border-radius:9px; padding:10px 10px; display:flex; gap:10px; align-items:flex-start;
             opacity:0; transform:translateY(-6px);
             transition:opacity .4s ease, transform .4s ease, background-color .25s ease; }
         .hx-row.in{ opacity:1; transform:translateY(0); }
-        .hx-row.active{ background:#eef3fa; }
-        .hx-av{ width:36px; height:36px; flex:0 0 36px; border-radius:9px; color:#fff; font-weight:700;
-            display:flex; align-items:center; justify-content:center; font-size:14px; }
+        .hx-row.active{ background:#f2f1ed; }
+        .hx-av{ width:8px; height:8px; flex:0 0 8px; border-radius:50%; margin-top:6px;
+            background:#232323 !important; font-size:0; color:transparent; overflow:hidden; }
         .hx-rb{ flex:1; min-width:0; }
         .hx-r1{ display:flex; align-items:center; gap:8px; }
-        .hx-from{ font-weight:700; font-size:15px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex:1; min-width:0; }
-        .hx-r2{ display:flex; align-items:center; gap:8px; margin-top:2px; }
-        .hx-subj{ font-size:13px; color:rgba(0,0,0,0.5); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex:1; min-width:0; }
+        .hx-from{ font-weight:600; font-size:13.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex:1; min-width:0; }
+        .hx-r2{ display:flex; align-items:center; gap:8px; margin-top:3px; }
         .hx-meta{ flex:0 0 auto; display:flex; align-items:center; gap:5px; }
-        .hx-time{ font-size:12px; color:rgba(0,0,0,0.36); }
+        .hx-time{ font-size:11.5px; color:rgba(0,0,0,0.38); }
         .hx-clip{ width:12px; height:12px; color:rgba(0,0,0,0.3); }
-        .hx-stat{ font-size:11px; font-weight:700; padding:2px 8px; border-radius:999px; display:inline-flex; align-items:center; gap:5px; white-space:nowrap; flex:0 0 auto; }
+        .hx-subj{ font-size:12.5px; color:rgba(0,0,0,0.5); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex:1; min-width:0; }
+        .hx-stat{ font-size:10.5px; font-weight:600; letter-spacing:.02em; padding:3px 8px; border-radius:6px;
+            display:inline-flex; align-items:center; gap:5px; white-space:nowrap; flex:0 0 auto;
+            background:#f4f4f2; border:1px solid rgba(0,0,0,0.05); color:rgba(0,0,0,0.65); }
         .hx-stat .pd{ width:6px; height:6px; border-radius:50%; background:currentColor; }
-        .hx-stat.new{ background:#e7eef7; color:#1e528e; }
-        .hx-stat.check{ background:#fdf0e0; color:#b9701f; }
-        .hx-stat.check .pd{ animation:hx-pulse2 1.2s ease-out infinite; }
-        @keyframes hx-pulse2{ 0%{box-shadow:0 0 0 0 rgba(185,112,31,.5);} 70%{box-shadow:0 0 0 6px rgba(185,112,31,0);} 100%{box-shadow:0 0 0 0 rgba(185,112,31,0);} }
-        .hx-stat.done{ background:#e6f6ec; color:#1f8a4c; }
-        .hx-stat.flag{ background:#fdecec; color:#c0392b; }
+        .hx-stat.new .pd{ background:#141414; }
+        .hx-stat.check .pd{ background:#d97706; animation:hx-pulse2 1.2s ease-out infinite; }
+        @keyframes hx-pulse2{ 0%{box-shadow:0 0 0 0 rgba(217,119,6,.4);} 70%{box-shadow:0 0 0 6px rgba(217,119,6,0);} 100%{box-shadow:0 0 0 0 rgba(217,119,6,0);} }
+        .hx-stat.done .pd{ background:#16a34a; }
+        .hx-stat.flag .pd{ background:#dc2626; }
         /* working pane */
         .hx-read{ flex:1; display:flex; flex-direction:column; min-width:0; }
         .hx-rhead{ padding:18px 24px 16px; border-bottom:1px solid rgba(0,0,0,0.07); }
-        .hx-rfrom{ display:flex; align-items:center; gap:11px; }
-        .hx-rav{ width:34px; height:34px; flex:0 0 34px; border-radius:9px; color:#fff; font-weight:700;
-            display:flex; align-items:center; justify-content:center; font-size:14px; transition:background .3s; }
-        .hx-rname{ font-weight:700; font-size:15px; }
-        .hx-raddr{ font-size:13px; color:rgba(0,0,0,0.45); }
+        .hx-rfrom{ display:flex; align-items:center; gap:10px; }
+        .hx-rav{ width:9px; height:9px; flex:0 0 9px; border-radius:50%; background:#232323 !important;
+            font-size:0; color:transparent; overflow:hidden; }
+        .hx-rname{ font-weight:650; font-size:14.5px; }
+        .hx-raddr{ font-size:12.5px; color:rgba(0,0,0,0.45); }
         .hx-rtime{ margin-left:auto; font-size:12px; color:rgba(0,0,0,0.38); }
-        .hx-rsubj{ margin-top:13px; font-size:23px; font-weight:700; letter-spacing:-.4px; line-height:1.1; }
-        .hx-rbody{ margin-top:9px; font-size:15px; color:rgba(0,0,0,0.6); line-height:1.45; }
+        .hx-rsubj{ margin-top:13px; font-size:22px; font-weight:700; letter-spacing:-.3px; line-height:1.12; }
+        .hx-rbody{ margin-top:9px; font-size:14px; color:rgba(0,0,0,0.55); line-height:1.5; }
         .hx-att{ display:flex; gap:9px; margin-top:12px; flex-wrap:wrap; }
         .hx-att:empty{ display:none; }
-        .hx-file{ display:inline-flex; align-items:center; gap:9px; background:#fff; border:1px solid rgba(0,0,0,0.12); border-radius:9px; padding:7px 12px; }
-        .hx-file .fi{ width:24px; height:30px; flex:0 0 24px; border-radius:5px; color:#fff; font-size:10px; font-weight:800; display:flex; align-items:center; justify-content:center; }
-        .hx-file .fn{ font-size:14px; font-weight:600; color:rgba(0,0,0,0.8); }
-        .hx-file .fs{ font-size:12px; color:rgba(0,0,0,0.42); }
+        .hx-file{ display:inline-flex; align-items:center; gap:9px; background:#fff; border:1px solid rgba(0,0,0,0.09); border-radius:8px; padding:7px 12px; }
+        .hx-file .fi{ width:24px; height:30px; flex:0 0 24px; border-radius:5px; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+        .hx-file .fn{ font-size:13px; font-weight:600; color:rgba(0,0,0,0.8); }
+        .hx-file .fs{ font-size:11.5px; color:rgba(0,0,0,0.42); }
         /* copilot */
-        .hx-cop{ flex:1; display:flex; flex-direction:column; padding:16px 24px 20px; background:#f7f8fb; min-height:0; }
-        .hx-cop-head{ display:flex; align-items:center; gap:10px; font-size:14px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:#1e528e; }
-        .hx-cop-dot{ width:9px; height:9px; border-radius:50%; background:#34d399; animation:hx-pulse 1.6s ease-out infinite; }
+        .hx-cop{ flex:1; display:flex; flex-direction:column; padding:16px 24px 20px; background:#fafafa; min-height:0; }
+        .hx-cop-head{ display:flex; align-items:center; gap:9px; font-size:12px; font-weight:650; letter-spacing:.06em; text-transform:uppercase; color:#141414; }
+        .hx-cop-dot{ width:8px; height:8px; border-radius:50%; background:#34d399; animation:hx-pulse 1.6s ease-out infinite; }
         .hx-feed{ flex:0 0 auto; overflow:hidden; margin-top:13px; display:flex; flex-direction:column; gap:9px; }
         .hx-line{ display:flex; align-items:flex-start; gap:11px; opacity:0; transform:translateY(10px); transition:opacity .4s, transform .4s; }
         .hx-line.in{ opacity:1; transform:translateY(0); }
-        .hx-tag{ flex:0 0 auto; min-width:104px; text-align:center; font-weight:700; font-size:12px; letter-spacing:.05em; text-transform:uppercase; padding:5px 10px; border-radius:7px; }
-        .hx-tag.read,.hx-tag.check{ background:#eef2f7; color:#475569; }
-        .hx-tag.extract,.hx-tag.calc{ background:#fdf0e0; color:#b9701f; }
-        .hx-tag.flag{ background:#fdecec; color:#c0392b; }
-        .hx-tag.act{ background:#e7eef7; color:#1e528e; }
-        .hx-tag.done{ background:#e6f6ec; color:#1f8a4c; }
-        .hx-txt{ font-size:15px; color:rgba(0,0,0,0.78); line-height:1.3; padding-top:2px; }
-        .hx-erp{ margin-top:9px; background:#fff; border:1px solid rgba(0,0,0,0.07); border-radius:11px; padding:10px 14px; box-shadow:0 1px 2px rgba(0,0,0,0.04); opacity:0; transform:translateY(10px); transition:opacity .45s, transform .45s; }
+        .hx-tag{ flex:0 0 auto; min-width:96px; text-align:center; font-weight:650; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; padding:5px 10px; border-radius:6px; }
+        .hx-tag.read,.hx-tag.check{ background:#f1f1ef; border:1px solid rgba(0,0,0,0.05); color:rgba(0,0,0,0.6); }
+        .hx-tag.extract,.hx-tag.calc{ background:#f9f2e7; border:1px solid rgba(0,0,0,0.03); color:#8a5a10; }
+        .hx-tag.flag{ background:#fceeee; border:1px solid rgba(0,0,0,0.03); color:#b3261e; }
+        .hx-tag.act{ background:#141414; border:1px solid #141414; color:#fff; }
+        .hx-tag.done{ background:#e9f4ec; border:1px solid rgba(0,0,0,0.03); color:#157347; }
+        .hx-txt{ font-size:14px; color:rgba(0,0,0,0.72); line-height:1.35; padding-top:3px; }
+        .hx-erp{ margin-top:9px; background:#fff; border:1px solid rgba(0,0,0,0.07); border-radius:10px; padding:10px 14px; opacity:0; transform:translateY(10px); transition:opacity .45s, transform .45s; }
         .hx-erp.in{ opacity:1; transform:translateY(0); }
-        .hx-eh{ display:flex; align-items:center; gap:8px; font-size:11.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:#1e528e; }
-        .hx-eh svg{ width:14px; height:14px; }
-        .hx-egrow{ margin-left:auto; display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; color:#1f8a4c; text-transform:none; letter-spacing:0; }
-        .hx-egrow .d{ width:6px; height:6px; border-radius:50%; background:#1f8a4c; }
-        .hx-erec{ margin-top:4px; font-size:13.5px; font-weight:600; color:rgba(0,0,0,0.82); }
-        .hx-reply{ margin-top:9px; background:#fff; border:1px solid rgba(0,0,0,0.07); border-radius:11px; padding:10px 14px; box-shadow:0 1px 2px rgba(0,0,0,0.04); opacity:0; transform:translateY(10px); transition:opacity .45s, transform .45s; }
+        .hx-eh{ display:flex; align-items:center; gap:8px; font-size:11px; font-weight:650; letter-spacing:.05em; text-transform:uppercase; color:rgba(0,0,0,0.55); }
+        .hx-eh svg{ width:13px; height:13px; }
+        .hx-egrow{ margin-left:auto; display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:650; color:#157347; text-transform:none; letter-spacing:0; }
+        .hx-egrow .d{ width:6px; height:6px; border-radius:50%; background:#157347; }
+        .hx-erec{ margin-top:5px; font-size:13.5px; font-weight:550; color:rgba(0,0,0,0.82); }
+        .hx-reply{ margin-top:9px; background:#fff; border:1px solid rgba(0,0,0,0.07); border-radius:10px; padding:10px 14px; opacity:0; transform:translateY(10px); transition:opacity .45s, transform .45s; }
         .hx-reply.in{ opacity:1; transform:translateY(0); }
-        .hx-rlab{ font-size:11.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:#1f8a4c; display:flex; align-items:center; gap:8px; }
-        .hx-rtxt{ margin-top:4px; font-size:13.5px; color:rgba(0,0,0,0.8); line-height:1.35; }
+        .hx-rlab{ font-size:11px; font-weight:650; letter-spacing:.05em; text-transform:uppercase; color:#157347; display:flex; align-items:center; gap:8px; }
+        .hx-rtxt{ margin-top:5px; font-size:13.5px; color:rgba(0,0,0,0.78); line-height:1.4; }
     
         /* Team tab */
         .team-tab {
@@ -609,17 +624,27 @@
                     <div class="hx-app" id="hx-app">
                         <div class="hx-bar">
                             <div class="hx-dots"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div>
-                            <div class="hx-title" id="hx-title">Sophia · Inbox</div>
+                            <span class="hx-logo" aria-hidden="true"><svg viewBox="0 0 182 182" height="17"><path fill="currentColor" fill-rule="nonzero" d="M 67.347 65.528 L 72.843 60.425 L 72.843 60.425 L 67.347 65.528 Z M 116.472 67.347 L 111.369 61.851 L 111.369 61.851 L 116.472 67.347 Z M 114.653 116.472 L 120.149 111.369 L 120.149 111.368 L 114.653 116.472 Z M 65.528 114.653 L 70.631 120.149 L 70.631 120.149 L 65.528 114.653 Z M 91 0 L 83.5 0 L 83.5 56.24 L 91 56.24 L 98.5 56.24 L 98.5 0 L 91 0 Z M 91 56.24 L 83.5 56.24 C 83.5 61.829 76.647 64.521 72.843 60.425 L 67.347 65.528 L 61.851 70.631 C 74.931 84.717 98.5 75.462 98.5 56.24 L 91 56.24 Z M 67.347 65.528 L 72.843 60.425 L 37.346 22.197 L 31.85 27.3 L 26.354 32.403 L 61.851 70.631 L 67.347 65.528 Z M 182 91 L 182 83.5 L 125.76 83.5 L 125.76 91 L 125.76 98.5 L 182 98.5 L 182 91 Z M 125.76 91 L 125.76 83.5 C 120.171 83.5 117.479 76.647 121.575 72.843 L 116.472 67.347 L 111.369 61.851 C 97.283 74.931 106.537 98.5 125.76 98.5 L 125.76 91 Z M 116.472 67.347 L 121.575 72.843 L 159.803 37.346 L 154.7 31.85 L 149.597 26.354 L 111.369 61.851 L 116.472 67.347 Z M 91 182 L 98.5 182 L 98.5 125.76 L 91 125.76 L 83.5 125.76 L 83.5 182 L 91 182 Z M 91 125.76 L 98.5 125.76 C 98.5 120.171 105.353 117.479 109.157 121.576 L 114.653 116.472 L 120.149 111.368 C 107.069 97.283 83.5 106.537 83.5 125.76 L 91 125.76 Z M 114.653 116.472 L 109.157 121.575 L 144.654 159.803 L 150.15 154.7 L 155.646 149.597 L 120.149 111.369 L 114.653 116.472 Z M 0 91 L 0 98.5 L 56.24 98.5 L 56.24 91 L 56.24 83.5 L 0 83.5 L 0 91 Z M 56.24 91 L 56.24 98.5 C 61.829 98.5 64.521 105.353 60.424 109.157 L 65.528 114.653 L 70.631 120.149 C 84.717 107.069 75.463 83.5 56.24 83.5 L 56.24 91 Z M 65.528 114.653 L 60.425 109.157 L 22.197 144.654 L 27.3 150.15 L 32.403 155.646 L 70.631 120.149 L 65.528 114.653 Z"/></svg><svg viewBox="0 0 397.249 80.016" height="9"><path fill="currentColor" fill-rule="nonzero" d="M 33.084 80.016 C 12.42 80.016 0.11 70.124 0 54.407 L 17.366 54.407 C 17.696 63.2 21.433 66.937 32.864 66.937 C 43.525 66.937 47.482 64.519 47.482 57.704 C 47.482 52.208 45.064 50.23 37.48 48.581 L 23.301 45.614 C 8.793 42.646 1.099 35.392 1.099 24.401 C 1.099 10.222 13.299 0 32.314 0 C 51.109 0 63.969 9.782 64.079 24.95 L 46.713 24.95 C 46.163 16.157 42.206 13.08 31.985 13.08 C 21.982 13.08 18.355 15.498 18.245 22.312 C 18.245 27.038 20.224 29.566 28.467 31.215 L 41.986 33.853 C 57.484 36.821 65.508 44.185 65.508 55.286 C 65.508 69.575 53.417 80.016 33.084 80.016 Z M 108.744 80.016 C 83.354 80.016 69.175 63.749 69.175 39.898 C 69.175 16.267 83.684 0 109.183 0 C 134.463 0 148.642 16.267 148.642 40.118 C 148.642 63.749 134.243 80.016 108.744 80.016 Z M 109.073 65.288 C 126.44 65.288 129.737 61.771 129.737 40.118 C 129.737 18.465 126.44 14.728 109.073 14.728 C 91.707 14.728 88.08 18.465 88.08 40.118 C 88.08 61.771 91.707 65.288 109.073 65.288 Z M 173.374 78.477 L 156.667 78.477 L 156.667 1.539 L 193.268 1.539 C 208.216 1.539 219.977 9.892 219.977 25.829 C 219.977 41.877 208.106 50.23 193.378 50.23 L 173.374 50.23 L 173.374 78.477 Z M 173.374 14.948 L 173.374 37.04 L 191.509 37.04 C 199.423 37.04 201.621 35.502 201.621 25.939 C 201.621 16.377 199.423 14.948 191.509 14.948 L 173.374 14.948 Z M 241.994 78.477 L 225.178 78.477 L 225.178 1.539 L 241.994 1.539 L 241.994 31.215 L 273.429 31.215 L 273.429 1.539 L 290.136 1.539 L 290.136 78.477 L 273.429 78.477 L 273.429 46.053 L 241.994 46.053 L 241.994 78.477 Z M 318.77 78.477 L 301.953 78.477 L 301.953 1.539 L 318.77 1.539 L 318.77 78.477 Z M 397.249 78.477 L 379.223 78.477 L 373.838 62.21 L 345.7 62.21 L 340.205 78.477 L 322.729 78.477 L 350.317 1.539 L 369.771 1.539 L 397.249 78.477 Z M 353.284 38.579 L 349.657 49.57 L 369.991 49.57 L 366.474 38.579 C 363.946 30.775 362.517 24.62 361.967 20.004 L 357.791 20.004 C 357.131 24.62 355.812 30.775 353.284 38.579 Z"/></svg></span>
+                            <div class="hx-search">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+                                <span id="hx-searchtxt">Search inbox</span>
+                                <span class="hx-kbd">&#8984;K</span>
+                            </div>
                             <div class="hx-conn" id="hx-conn"><span class="d"></span>ERP connected</div>
+                            <div class="hx-avatar">D</div>
                         </div>
                         <div class="hx-body">
+                            <div class="hx-rail" aria-hidden="true">
+                                <span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
+                                <span class="ri active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></span>
+                                <span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/></svg></span>
+                                <span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9 12 2 2 4-4"/></svg></span>
+                                <span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></span>
+                                <span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+                            </div>
                             <div class="hx-list-col">
                                 <div class="hx-list-head">
                                     <div class="hx-list-title" id="hx-listtitle">Inbox</div>
-                                    <div class="hx-search">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
-                                        <span id="hx-searchtxt">Search inbox</span>
-                                    </div>
                                 </div>
                                 <div class="hx-list" id="hx-list"></div>
                             </div>
