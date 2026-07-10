@@ -693,6 +693,7 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.setItem('sophia-lang', newLang);
             var url = new URL(window.location);
             url.searchParams.set('lang', newLang);
+            url.hash = '';
             window.location.href = url.toString();
         });
     }
