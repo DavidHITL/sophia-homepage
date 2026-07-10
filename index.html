@@ -94,11 +94,14 @@
         }
     </script>
     <style>
+        html, body {
+            overflow-x: hidden;
+            overflow-x: clip;
+        }
         body {
             font-family: 'KMR Apparat', sans-serif;
             background-color: #ffffff;
             color: #000000;
-            overflow-x: hidden;
         }
 
         html {
@@ -420,7 +423,7 @@
     <!-- ============================================ -->
     <style>
         /* ===== Hero live inbox demo ===== */
-        .hx-stage{ width:100%; min-width:0; }
+        .hx-stage{ width:100%; min-width:0; overflow:hidden; }
         .hx-app{
             width:980px; height:660px; transform-origin:top left;
             background:#fff; border-radius:15px; overflow:hidden;
@@ -1384,7 +1387,7 @@
             <!-- Bottom bar -->
             <div class="flex flex-col sm:flex-row justify-between items-center mt-[120px] pt-0 text-white/60 text-[15px] tracking-[-0.15px]">
                 <span>© 2026 Sophia AI GmbH. All Rights Reserved.</span>
-                <div class="flex gap-8 mt-4 sm:mt-0">
+                <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 mt-4 sm:mt-0">
                     <a href="imprint.html" class="hover:text-white transition-colors">Imprint</a>
                     <a href="terms.html" class="hover:text-white transition-colors">Terms</a>
                     <a href="privacy.html" class="hover:text-white transition-colors">Privacy</a>
