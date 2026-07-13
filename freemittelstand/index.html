@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeit, den Mittelstand zu befreien. Ein Manifest von Sophia</title>
+    <meta name="description" content="Ihr ERP-Anbieter lebt davon, dass ein Wechsel zu teuer wäre. Sophia baut KI-Agenten auf Ihren bestehenden Systemen, ohne Migration und ohne neue Abhängigkeit.">
+    <!-- Social preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.gosophia.ai/freemittelstand">
+    <meta property="og:site_name" content="SOPHIA">
+    <meta property="og:title" content="Zeit, den Mittelstand zu befreien. Ein Manifest von Sophia">
+    <meta property="og:description" content="Ihr ERP-Anbieter lebt davon, dass ein Wechsel zu teuer wäre. Sophia baut KI-Agenten auf Ihren bestehenden Systemen, ohne Migration und ohne neue Abhängigkeit.">
+    <meta property="og:image" content="https://www.gosophia.ai/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Zeit, den Mittelstand zu befreien. Ein Manifest von Sophia">
+    <meta name="twitter:description" content="Ihr ERP-Anbieter lebt davon, dass ein Wechsel zu teuer wäre. Sophia baut KI-Agenten auf Ihren bestehenden Systemen, ohne Migration und ohne neue Abhängigkeit.">
+    <meta name="twitter:image" content="https://www.gosophia.ai/assets/og-image.png">
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+    <link rel="manifest" href="../images/site.webmanifest">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @font-face {
+            font-family: 'KMR Apparat';
+            src: url('../assets/KMR Apparat/kmr-apparat-light.woff2') format('woff2'),
+                 url('../assets/KMR Apparat/kmr-apparat-light.woff') format('woff');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'KMR Apparat';
+            src: url('../assets/KMR Apparat/kmr-apparat-book.woff2') format('woff2'),
+                 url('../assets/KMR Apparat/kmr-apparat-book.woff') format('woff');
+            font-weight: 350;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'KMR Apparat';
+            src: url('../assets/KMR Apparat/kmr-apparat-regular.woff2') format('woff2'),
+                 url('../assets/KMR Apparat/kmr-apparat-regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'KMR Apparat';
+            src: url('../assets/KMR Apparat/kmr-apparat-medium.woff2') format('woff2'),
+                 url('../assets/KMR Apparat/kmr-apparat-medium.woff') format('woff');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'KMR Apparat';
+            src: url('../assets/KMR Apparat/kmr-apparat-bold.woff2') format('woff2'),
+                 url('../assets/KMR Apparat/kmr-apparat-bold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'KMR Apparat';
+            src: url('../assets/KMR Apparat/kmr-apparat-heavy.woff2') format('woff2'),
+                 url('../assets/KMR Apparat/kmr-apparat-heavy.woff') format('woff');
+            font-weight: 800;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'KMR Apparat';
+            src: url('../assets/KMR Apparat/kmr-apparat-black.woff2') format('woff2'),
+                 url('../assets/KMR Apparat/kmr-apparat-black.woff') format('woff');
+            font-weight: 900;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"KMR Apparat"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        html, body {
+            overflow-x: hidden;
+            overflow-x: clip;
+        }
+        body {
+            font-family: 'KMR Apparat', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+        }
+        a:focus-visible, button:focus-visible {
+            outline: 1px solid #000;
+            outline-offset: 2px;
+        }
+        .text-white:focus-visible, footer a:focus-visible, .zone-dark a:focus-visible {
+            outline-color: #fff;
+        }
+
+        /* Hero entrance animation */
+        .hero-animate {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: heroFadeUp 1s ease-out forwards;
+        }
+        .hero-animate-delay-1 { animation-delay: 0.2s; }
+        .hero-animate-delay-2 { animation-delay: 0.5s; }
+        .hero-animate-delay-3 { animation-delay: 0.8s; }
+        @keyframes heroFadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Scroll fade-in */
+        .fade-in-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero gradient: der kanonische Sunrise aus dem Styleguide (--grad-sunrise),
+           Blau oben links ueber Amber in Ember unten rechts */
+        .hero-gradient {
+            background: linear-gradient(145deg,
+                #3c66a9 0%,
+                #c5752d 60%,
+                #b7490f 80%);
+        }
+
+        /* Button hover */
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        .btn-hover:hover {
+            opacity: 0.85;
+            transform: scale(1.02);
+        }
+
+        /* Rhythmus-Zonen: klare Tonwert-Baender statt weichem Verlauf. */
+        .zone-tint {
+            background: #eaecf0;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .zone-tint section { background-color: transparent; }
+
+        /* Dunkle Bahn: der Dusk-Gradient aus dem Styleguide (--grad-dusk),
+           Indigo ueber Dusk-Blau in Mauve, mit einem Scrim, der zum hellen Mauve-Ende
+           hin schwerer wird, damit weisse Schrift ueberall sitzt. */
+        .zone-dark {
+            background:
+                linear-gradient(145deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.30) 50%, rgba(0,0,0,0.44) 100%),
+                linear-gradient(145deg, #4a4a69 0%, #7072ab 50%, #cd82a0 100%);
+            color: #ffffff;
+        }
+        .zone-dark section { background-color: transparent; }
+        .zone-dark .text-black\/60 { color: rgba(255,255,255,0.66); }
+        .zone-dark .text-black\/50 { color: rgba(255,255,255,0.55); }
+        .zone-dark .text-black\/40 { color: rgba(255,255,255,0.62); }
+        .zone-dark .text-black\/30 { color: rgba(255,255,255,0.40); }
+        .zone-dark .bg-black\/5 { background: rgba(255,255,255,0.08); }
+
+        /* Security cards: auf heller Bahn weiss schwebend, auf dunkler Bahn als Glas */
+        .security-card {
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 15px;
+            padding: 32px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .security-card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(0,0,0,0.06); }
+        .zone-dark .security-card {
+            background: rgba(16,14,24,0.34);
+            border: 1px solid rgba(255,255,255,0.12);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .zone-dark .security-card:hover {
+            background: rgba(16,14,24,0.46);
+            box-shadow: 0 14px 34px rgba(0,0,0,0.45);
+        }
+
+        /* KMR Apparat Book fuer die Thesen-Zeilen */
+        .fw-book { font-weight: 350; }
+
+        /* Kapitel-Leiste: 1px-Haarlinie mit fuenf Stopps im linken Gutter,
+           der gelesene Anteil fuellt sich in Rost (#b7490f), der aktive Stopp ist gefuellt.
+           Rost ausschliesslich als grafische Fuellung, nie als Textfarbe.
+           Auf dunklen Bahnen (Hero, Kapitel 02, Footer) wechselt die Leiste auf Weiss.
+           Lebt ausserhalb der 1200px-Contentspalte, verschwindet unter 1100px. */
+        .chapter-rail { display: none; }
+        @media (min-width: 1100px) {
+            .chapter-rail {
+                display: block;
+                position: fixed;
+                left: 18px;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 40;
+            }
+        }
+        .rail-track {
+            position: relative;
+            width: 1px;
+            height: 300px;
+            background: rgba(0,0,0,0.15);
+        }
+        .rail-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1px;
+            height: 0%;
+            background: #b7490f;
+            transition: height 0.35s ease-out;
+        }
+        .rail-stop {
+            position: absolute;
+            left: 0.5px;
+            transform: translate(-50%, -50%);
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .rail-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.35);
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+        .rail-stop.passed .rail-dot,
+        .rail-stop.active .rail-dot {
+            background: #b7490f;
+            border-color: #b7490f;
+        }
+        .rail-num {
+            position: absolute;
+            left: 27px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 10px;
+            letter-spacing: 1px;
+            color: rgba(0,0,0,0.55);
+        }
+        .rail-stop.active .rail-num {
+            color: #000000;
+            font-weight: 700;
+        }
+        .chapter-rail.on-dark .rail-track { background: rgba(255,255,255,0.4); }
+        .chapter-rail.on-dark .rail-fill { background: #ffffff; }
+        .chapter-rail.on-dark .rail-dot { background: rgba(255,255,255,0.4); border-color: transparent; }
+        .chapter-rail.on-dark .rail-stop.passed .rail-dot,
+        .chapter-rail.on-dark .rail-stop.active .rail-dot { background: #ffffff; border-color: #ffffff; }
+        .chapter-rail.on-dark .rail-num { color: rgba(255,255,255,0.7); }
+        .chapter-rail.on-dark .rail-stop.active .rail-num { color: #ffffff; }
+        .chapter-rail.on-dark a:focus-visible { outline-color: #fff; }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-animate { animation: none; opacity: 1; transform: none; }
+            .fade-in-scroll { opacity: 1; transform: none; transition: none; }
+            .rail-fill, .rail-dot { transition: none; }
+            .security-card, .btn-hover { transition: none; }
+        }
+    </style>
+    <script>(function () { var p = new URLSearchParams(window.location.search); if (['de','en'].indexOf(p.get('lang')) === -1 && !localStorage.getItem('sophia-lang')) { localStorage.setItem('sophia-lang', 'de'); } })();</script>
+    <script src="../i18n.js"></script>
+</head>
+<body>
+
+    <!-- Kapitel-Leiste (Desktop ab 1100px, mobil uebernehmen die Kapitel-Header mit 01/05) -->
+    <nav id="chapter-rail" class="chapter-rail" aria-label="Kapitel">
+        <div class="rail-track">
+            <div class="rail-fill" id="rail-fill"></div>
+            <a href="#der-befund" class="rail-stop" style="top: 0%;"><span class="rail-dot" aria-hidden="true"></span><span class="rail-num" aria-hidden="true">01</span><span class="sr-only">Der Befund</span></a>
+            <a href="#warum-sich-nichts-bewegt" class="rail-stop" style="top: 25%;"><span class="rail-dot" aria-hidden="true"></span><span class="rail-num" aria-hidden="true">02</span><span class="sr-only">Warum sich nichts bewegt</span></a>
+            <a href="#der-ausweg" class="rail-stop" style="top: 50%;"><span class="rail-dot" aria-hidden="true"></span><span class="rail-num" aria-hidden="true">03</span><span class="sr-only">Der Ausweg</span></a>
+            <a href="#sechs-grundsaetze" class="rail-stop" style="top: 75%;"><span class="rail-dot" aria-hidden="true"></span><span class="rail-num" aria-hidden="true">04</span><span class="sr-only">Sechs Grundsätze</span></a>
+            <a href="#der-erste-schritt" class="rail-stop" style="top: 100%;"><span class="rail-dot" aria-hidden="true"></span><span class="rail-num" aria-hidden="true">05</span><span class="sr-only">Der erste Schritt</span></a>
+        </div>
+    </nav>
+
+    <!-- HERO: Sunrise-Gradient, Wortmarke, Absender-Unterzeile, Argument-Index als Signature -->
+    <section class="relative min-h-screen flex flex-col overflow-hidden" data-rail-dark>
+        <div class="absolute inset-0 hero-gradient"></div>
+
+        <header class="relative z-10 w-full">
+            <div class="max-w-[1794px] mx-auto flex justify-between items-center px-8 py-6">
+                <a href="../index.html" class="flex items-center text-white" aria-label="Sophia">
+                    <span class="inline-flex items-center" style="gap:12px; color:currentColor;"><svg viewBox="0 0 182 182" height="30" aria-hidden="true"><path fill="currentColor" fill-rule="nonzero" d="M 67.347 65.528 L 72.843 60.425 L 72.843 60.425 L 67.347 65.528 Z M 116.472 67.347 L 111.369 61.851 L 111.369 61.851 L 116.472 67.347 Z M 114.653 116.472 L 120.149 111.369 L 120.149 111.368 L 114.653 116.472 Z M 65.528 114.653 L 70.631 120.149 L 70.631 120.149 L 65.528 114.653 Z M 91 0 L 83.5 0 L 83.5 56.24 L 91 56.24 L 98.5 56.24 L 98.5 0 L 91 0 Z M 91 56.24 L 83.5 56.24 C 83.5 61.829 76.647 64.521 72.843 60.425 L 67.347 65.528 L 61.851 70.631 C 74.931 84.717 98.5 75.462 98.5 56.24 L 91 56.24 Z M 67.347 65.528 L 72.843 60.425 L 37.346 22.197 L 31.85 27.3 L 26.354 32.403 L 61.851 70.631 L 67.347 65.528 Z M 182 91 L 182 83.5 L 125.76 83.5 L 125.76 91 L 125.76 98.5 L 182 98.5 L 182 91 Z M 125.76 91 L 125.76 83.5 C 120.171 83.5 117.479 76.647 121.575 72.843 L 116.472 67.347 L 111.369 61.851 C 97.283 74.931 106.537 98.5 125.76 98.5 L 125.76 91 Z M 116.472 67.347 L 121.575 72.843 L 159.803 37.346 L 154.7 31.85 L 149.597 26.354 L 111.369 61.851 L 116.472 67.347 Z M 91 182 L 98.5 182 L 98.5 125.76 L 91 125.76 L 83.5 125.76 L 83.5 182 L 91 182 Z M 91 125.76 L 98.5 125.76 C 98.5 120.171 105.353 117.479 109.157 121.576 L 114.653 116.472 L 120.149 111.368 C 107.069 97.283 83.5 106.537 83.5 125.76 L 91 125.76 Z M 114.653 116.472 L 109.157 121.575 L 144.654 159.803 L 150.15 154.7 L 155.646 149.597 L 120.149 111.369 L 114.653 116.472 Z M 0 91 L 0 98.5 L 56.24 98.5 L 56.24 91 L 56.24 83.5 L 0 83.5 L 0 91 Z M 56.24 91 L 56.24 98.5 C 61.829 98.5 64.521 105.353 60.424 109.157 L 65.528 114.653 L 70.631 120.149 C 84.717 107.069 75.463 83.5 56.24 83.5 L 56.24 91 Z M 65.528 114.653 L 60.425 109.157 L 22.197 144.654 L 27.3 150.15 L 32.403 155.646 L 70.631 120.149 L 65.528 114.653 Z"/></svg><svg viewBox="0 0 397.249 80.016" height="15" aria-hidden="true"><path fill="currentColor" fill-rule="nonzero" d="M 33.084 80.016 C 12.42 80.016 0.11 70.124 0 54.407 L 17.366 54.407 C 17.696 63.2 21.433 66.937 32.864 66.937 C 43.525 66.937 47.482 64.519 47.482 57.704 C 47.482 52.208 45.064 50.23 37.48 48.581 L 23.301 45.614 C 8.793 42.646 1.099 35.392 1.099 24.401 C 1.099 10.222 13.299 0 32.314 0 C 51.109 0 63.969 9.782 64.079 24.95 L 46.713 24.95 C 46.163 16.157 42.206 13.08 31.985 13.08 C 21.982 13.08 18.355 15.498 18.245 22.312 C 18.245 27.038 20.224 29.566 28.467 31.215 L 41.986 33.853 C 57.484 36.821 65.508 44.185 65.508 55.286 C 65.508 69.575 53.417 80.016 33.084 80.016 Z M 108.744 80.016 C 83.354 80.016 69.175 63.749 69.175 39.898 C 69.175 16.267 83.684 0 109.183 0 C 134.463 0 148.642 16.267 148.642 40.118 C 148.642 63.749 134.243 80.016 108.744 80.016 Z M 109.073 65.288 C 126.44 65.288 129.737 61.771 129.737 40.118 C 129.737 18.465 126.44 14.728 109.073 14.728 C 91.707 14.728 88.08 18.465 88.08 40.118 C 88.08 61.771 91.707 65.288 109.073 65.288 Z M 173.374 78.477 L 156.667 78.477 L 156.667 1.539 L 193.268 1.539 C 208.216 1.539 219.977 9.892 219.977 25.829 C 219.977 41.877 208.106 50.23 193.378 50.23 L 173.374 50.23 L 173.374 78.477 Z M 173.374 14.948 L 173.374 37.04 L 191.509 37.04 C 199.423 37.04 201.621 35.502 201.621 25.939 C 201.621 16.377 199.423 14.948 191.509 14.948 L 173.374 14.948 Z M 241.994 78.477 L 225.178 78.477 L 225.178 1.539 L 241.994 1.539 L 241.994 31.215 L 273.429 31.215 L 273.429 1.539 L 290.136 1.539 L 290.136 78.477 L 273.429 78.477 L 273.429 46.053 L 241.994 46.053 L 241.994 78.477 Z M 318.77 78.477 L 301.953 78.477 L 301.953 1.539 L 318.77 1.539 L 318.77 78.477 Z M 397.249 78.477 L 379.223 78.477 L 373.838 62.21 L 345.7 62.21 L 340.205 78.477 L 322.729 78.477 L 350.317 1.539 L 369.771 1.539 L 397.249 78.477 Z M 353.284 38.579 L 349.657 49.57 L 369.991 49.57 L 366.474 38.579 C 363.946 30.775 362.517 24.62 361.967 20.004 L 357.791 20.004 C 357.131 24.62 355.812 30.775 353.284 38.579 Z"/></svg></span>
+                </a>
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="../about.html" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">About Us</a>
+                    <a href="../index.html#product" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">Product</a>
+                    <a href="../index.html#security" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">Security</a>
+                    <a href="../careers.html" class="text-white text-sm tracking-wide hover:opacity-80 transition-opacity">Careers</a>
+                </nav>
+                <button class="md:hidden text-white" id="mobile-menu-button" aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <nav id="mobile-menu" class="hidden md:hidden backdrop-blur-[20px] border-b border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.15)]" style="background: rgba(255, 255, 255, 0.2); -webkit-backdrop-filter: blur(20px);">
+                <div class="flex flex-col py-4 px-8">
+                    <a href="../about.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">About Us</a>
+                    <a href="../index.html#product" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Product</a>
+                    <a href="../index.html#security" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Security</a>
+                    <a href="../careers.html" class="text-white/80 py-3 text-sm hover:text-white transition-colors">Careers</a>
+                </div>
+            </nav>
+        </header>
+
+        <div class="relative z-10 flex-1 flex items-center text-white px-6 md:px-16 pb-10 pt-4">
+            <div class="max-w-[1200px] mx-auto w-full">
+                <p class="hero-animate text-sm md:text-base uppercase tracking-[2px] text-white/80">Ein Manifest für den Mittelstand</p>
+                <h1 id="hero-h1" class="hero-animate mt-4 text-[40px] sm:text-5xl md:text-6xl lg:text-[64px] 2xl:text-[70px] font-bold uppercase leading-[0.92] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px]">Zeit, den Mittelstand zu befreien.</h1>
+                <p id="hero-sub" class="hero-animate hero-animate-delay-1 text-lg md:text-2xl lg:text-[24px] leading-[1.35] mt-5 md:mt-6 max-w-[900px] text-white/90">Von Sophia aus Freiburg. Wir bauen KI-Agenten, die im Back-Office von Fertigungsbetrieben mitarbeiten, auf dem ERP und dem Postfach, die schon da sind.</p>
+
+                <!-- Argument-Index: das komplette Argument in fuenf Zeilen, klickbar -->
+                <nav id="argument-index" class="hero-animate hero-animate-delay-2 mt-5 md:mt-6" aria-label="Inhaltsverzeichnis">
+                    <ol class="max-w-[1000px] border-t border-white/25 list-none">
+                        <li class="border-b border-white/25">
+                            <a href="#der-befund" class="flex items-baseline gap-4 md:gap-6 py-3 px-2 md:px-3 text-white transition-colors hover:bg-white/[0.08]">
+                                <span class="shrink-0 w-8 md:w-11 text-lg md:text-2xl font-bold tracking-[-0.5px]">01</span>
+                                <span class="min-w-0">
+                                    <span class="block text-xl md:text-[28px] font-bold tracking-[-0.5px] leading-tight">Der Befund</span>
+                                    <span class="index-thesis hidden md:block mt-1 text-[15px] lg:text-base leading-[1.45] text-white/80 fw-book max-w-[780px]">Offene Tickets, wechselnde Ansprechpartner, fünfstellige Angebote für kleine Schnittstellen: das hören wir quer durch den Mittelstand.</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="border-b border-white/25">
+                            <a href="#warum-sich-nichts-bewegt" class="flex items-baseline gap-4 md:gap-6 py-3 px-2 md:px-3 text-white transition-colors hover:bg-white/[0.08]">
+                                <span class="shrink-0 w-8 md:w-11 text-lg md:text-2xl font-bold tracking-[-0.5px]">02</span>
+                                <span class="min-w-0">
+                                    <span class="block text-xl md:text-[28px] font-bold tracking-[-0.5px] leading-tight">Warum sich nichts bewegt</span>
+                                    <span class="index-thesis hidden md:block mt-1 text-[15px] lg:text-base leading-[1.45] text-white/80 fw-book max-w-[780px]">Ihr Anbieter verdient daran, dass ein Wechsel zu teuer wäre, also muss er sich nicht anstrengen.</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="border-b border-white/25">
+                            <a href="#der-ausweg" class="flex items-baseline gap-4 md:gap-6 py-3 px-2 md:px-3 text-white transition-colors hover:bg-white/[0.08]">
+                                <span class="shrink-0 w-8 md:w-11 text-lg md:text-2xl font-bold tracking-[-0.5px]">03</span>
+                                <span class="min-w-0">
+                                    <span class="block text-xl md:text-[28px] font-bold tracking-[-0.5px] leading-tight">Der Ausweg</span>
+                                    <span class="index-thesis hidden md:block mt-1 text-[15px] lg:text-base leading-[1.45] text-white/80 fw-book max-w-[780px]">Eine Intelligenz-Schicht auf Ihren bestehenden Systemen, ohne Migration und ohne neue Abhängigkeit.</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="border-b border-white/25">
+                            <a href="#sechs-grundsaetze" class="flex items-baseline gap-4 md:gap-6 py-3 px-2 md:px-3 text-white transition-colors hover:bg-white/[0.08]">
+                                <span class="shrink-0 w-8 md:w-11 text-lg md:text-2xl font-bold tracking-[-0.5px]">04</span>
+                                <span class="min-w-0">
+                                    <span class="block text-xl md:text-[28px] font-bold tracking-[-0.5px] leading-tight">Sechs Grundsätze</span>
+                                    <span class="index-thesis hidden md:block mt-1 text-[15px] lg:text-base leading-[1.45] text-white/80 fw-book max-w-[780px]">Keine Versprechen ohne Prüfstein: zu jedem Grundsatz sagen wir, woran Sie merken, ob er gilt.</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="border-b border-white/25">
+                            <a href="#der-erste-schritt" class="flex items-baseline gap-4 md:gap-6 py-3 px-2 md:px-3 text-white transition-colors hover:bg-white/[0.08]">
+                                <span class="shrink-0 w-8 md:w-11 text-lg md:text-2xl font-bold tracking-[-0.5px]">05</span>
+                                <span class="min-w-0">
+                                    <span class="block text-xl md:text-[28px] font-bold tracking-[-0.5px] leading-tight">Der erste Schritt</span>
+                                    <span class="index-thesis hidden md:block mt-1 text-[15px] lg:text-base leading-[1.45] text-white/80 fw-book max-w-[780px]">Ein Gespräch von 30 Minuten, ein klar umrissener erster Fall, produktiv in Wochen, dann entscheiden Sie.</span>
+                                </span>
+                            </a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- 01 DER BEFUND (weiss) -->
+    <section id="der-befund" class="bg-white py-20 md:py-32 fade-in-scroll" style="scroll-margin-top: 32px;">
+        <div class="max-w-[1200px] mx-auto px-6 md:px-16">
+            <header>
+                <p class="text-sm md:text-base uppercase tracking-[2px] text-black/60">01/05</p>
+                <h2 class="mt-4 md:mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-[64px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] font-bold">Der Befund</h2>
+                <p class="mt-5 md:mt-6 text-xl md:text-2xl leading-[1.4] text-black/60 fw-book max-w-[900px]">Offene Tickets, wechselnde Ansprechpartner, fünfstellige Angebote für kleine Schnittstellen: das hören wir quer durch den Mittelstand.</p>
+            </header>
+            <div class="mt-10 md:mt-14 space-y-6 max-w-[840px]">
+                <p class="text-lg md:text-xl leading-[1.6] text-black/60">Sie kennen das. Das Ticket ist seit vier Monaten offen. Der Ansprechpartner hat wieder gewechselt. Das Angebot für eine kleine Schnittstelle liegt auf dem Tisch: fünfstellig, Lieferzeit unklar.</p>
+                <p class="text-lg md:text-xl leading-[1.6] text-black/60">Und im Alltag tippen Ihre Leute ab, was längst digital vorliegt. Bestellungen aus dem Postfach ins ERP, Auftragsdaten aus dem ERP in die Excel-Liste. Jeden Tag, seit Jahren.</p>
+                <p class="text-lg md:text-xl leading-[1.6] text-black/60">Das hören wir quer durch den Mittelstand, vom Zulieferer bis zum Maschinenbauer. Die Details unterscheiden sich, das Muster nicht. Sie sind nicht allein, und an Ihren Leuten liegt es nicht.</p>
+            </div>
+            <div class="mt-14 md:mt-20 max-w-[840px] border-b border-black/10 pb-6">
+                <p class="text-lg md:text-xl leading-[1.5] text-black/60">Das ist der Befund. Warum ändert sich trotzdem nichts?</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 02 WARUM SICH NICHTS BEWEGT (dunkle Bahn) -->
+    <div class="zone-dark" data-rail-dark>
+        <section id="warum-sich-nichts-bewegt" class="py-20 md:py-32 fade-in-scroll" style="scroll-margin-top: 32px;">
+            <div class="max-w-[1200px] mx-auto px-6 md:px-16">
+                <header>
+                    <p class="text-sm md:text-base uppercase tracking-[2px] text-white/70">02/05</p>
+                    <h2 class="mt-4 md:mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-[64px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] font-bold">Warum sich nichts bewegt</h2>
+                    <p class="mt-5 md:mt-6 text-xl md:text-2xl leading-[1.4] text-white/80 fw-book max-w-[900px]">Ihr Anbieter verdient daran, dass ein Wechsel zu teuer wäre, also muss er sich nicht anstrengen.</p>
+                </header>
+                <div class="mt-10 md:mt-14 space-y-6 max-w-[840px]">
+                    <p class="text-lg md:text-xl leading-[1.6] text-white/80">Das ERP ist das Herz eines Fertigungsbetriebs. Jeder Auftrag, jede Stückliste, jede Rechnung läuft hindurch. Wer dieses Herz kontrolliert, bestimmt das Tempo des ganzen Unternehmens.</p>
+                    <p class="text-lg md:text-xl leading-[1.6] text-white/80">Veraltete Datenbanken. Geschlossene Schnittstellen. Tickets, die monatelang liegen bleiben. Das ist keine Nachlässigkeit. Der Anbieter weiß, dass ein Wechsel teuer und riskant ist. Also muss er sich nicht anstrengen.</p>
+                    <p class="text-lg md:text-xl leading-[1.6] text-white/80">Der Lock-in wirkt vor allem im Kopf. Man richtet sich ein, baut Hilfslösungen um die Lücken herum, exportiert nach Excel, tippt ab. So arbeiten zu viele Betriebe heute noch wie 1998.</p>
+                    <p class="text-lg md:text-xl leading-[1.6] text-white/80">Das ist kein Naturgesetz. Das ist ein Geschäftsmodell auf Kosten der Betriebe.</p>
+                    <p class="text-xl md:text-2xl leading-[1.5] text-white font-medium">Der Mittelstand kann frei werden. Von der Wartezeit, von der Abhängigkeit, von der Angst vor dem eigenen System.</p>
+                </div>
+                <div class="mt-14 md:mt-20 max-w-[840px] border-b border-white/25 pb-6">
+                    <p class="text-lg md:text-xl leading-[1.5] text-white/80">So weit der Appell. Ab hier wird es nüchtern: wie der Ausweg konkret aussieht.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- /zone-dark -->
+
+    <!-- 03 DER AUSWEG (weiss) -->
+    <section id="der-ausweg" class="bg-white py-20 md:py-32 fade-in-scroll" style="scroll-margin-top: 32px;">
+        <div class="max-w-[1200px] mx-auto px-6 md:px-16">
+            <header>
+                <p class="text-sm md:text-base uppercase tracking-[2px] text-black/60">03/05</p>
+                <h2 class="mt-4 md:mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-[64px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] font-bold">Der Ausweg</h2>
+                <p class="mt-5 md:mt-6 text-xl md:text-2xl leading-[1.4] text-black/60 fw-book max-w-[900px]">Eine Intelligenz-Schicht auf Ihren bestehenden Systemen, ohne Migration und ohne neue Abhängigkeit.</p>
+            </header>
+            <div class="mt-10 md:mt-14 max-w-[840px]">
+                <p class="text-lg md:text-xl leading-[1.6] text-black/60">Der Ausweg ist keine Migration. Niemand muss sein ERP wechseln, um besser zu arbeiten. Wir legen eine Intelligenz-Schicht auf die Systeme, die Sie schon haben: KI-Agenten, die Vorgänge lesen, gegen Ihre Daten prüfen und ins System zurückschreiben.</p>
+                <ul class="mt-8 md:mt-10 border-t border-black/10 list-none">
+                    <li class="py-5 md:py-6 border-b border-black/10"><p class="text-lg md:text-xl leading-[1.6] text-black/60">Erstens: Die Agenten lesen und schreiben über Schnittstellen. Kein Systemwechsel, keine Datenmigration, das ERP bleibt, was es ist.</p></li>
+                    <li class="py-5 md:py-6 border-b border-black/10"><p class="text-lg md:text-xl leading-[1.6] text-black/60">Zweitens: Ihre Leute arbeiten weiter, wo sie heute arbeiten, im Postfach und im ERP. Es gibt kein neues Programm, das jemand lernen muss.</p></li>
+                    <li class="py-5 md:py-6 border-b border-black/10"><p class="text-lg md:text-xl leading-[1.6] text-black/60">Drittens: Was wir für Sie bauen, gehört Ihrem Unternehmen. Keine neue Abhängigkeit, die die alte ersetzt.</p></li>
+                </ul>
+                <!-- Gespiegelte Szene aus Kapitel 01: das fuenfstellige Schnittstellen-Angebot, als Ablauf -->
+                <div class="mt-10 md:mt-14 rounded-[15px] border border-black/10 p-6 md:p-10 space-y-6">
+                    <p class="text-lg md:text-xl leading-[1.6] text-black/60">Zurück zum Angebot aus dem ersten Kapitel: die kleine Schnittstelle für fünfstelliges Geld. Derselbe Vorgang mit einem Agenten sieht so aus: Die Bestellung kommt wie bisher als PDF ins Postfach. Der Agent liest sie, gleicht Artikel, Mengen und Preise mit dem ERP ab und legt den Auftrag als Entwurf an. Jemand aus Ihrem Team prüft und gibt frei. Erst dann wird ins System geschrieben.</p>
+                    <p class="text-lg md:text-xl leading-[1.6] text-black">Keine Migration, kein Projektteam, kein Jahr Wartezeit. Nur der Vorgang, der vorher liegen blieb und jetzt läuft.</p>
+                </div>
+            </div>
+            <div class="mt-14 md:mt-20 max-w-[840px] border-b border-black/10 pb-6">
+                <p class="text-lg md:text-xl leading-[1.5] text-black/60">Das ist das Prinzip. Woran merken Sie, dass wir es ernst meinen?</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 04 SECHS GRUNDSAETZE (graues Tint-Band mit Karten) -->
+    <div class="zone-tint">
+        <section id="sechs-grundsaetze" class="py-20 md:py-32 fade-in-scroll" style="scroll-margin-top: 32px;">
+            <div class="max-w-[1200px] mx-auto px-6 md:px-16">
+                <header>
+                    <p class="text-sm md:text-base uppercase tracking-[2px] text-black/60">04/05</p>
+                    <h2 class="mt-4 md:mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-[64px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] font-bold">Sechs Grundsätze</h2>
+                    <p class="mt-5 md:mt-6 text-xl md:text-2xl leading-[1.4] text-black/60 fw-book max-w-[900px]">Keine Versprechen ohne Prüfstein: zu jedem Grundsatz sagen wir, woran Sie merken, ob er gilt.</p>
+                </header>
+                <p class="mt-10 md:mt-14 text-lg md:text-xl leading-[1.6] text-black/60 max-w-[840px]">Sechs Grundsätze tragen unsere Arbeit. Damit sie mehr sind als Marketing, steht unter jedem, woran Sie merken, ob er gilt. Keine Zahlenversprechen, nur Beobachtungen, die Sie selbst machen können.</p>
+                <div class="mt-10 md:mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="security-card flex flex-col">
+                        <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Ihre Daten bleiben bei Ihnen</h3>
+                        <p class="text-base text-black/60 leading-[1.6] mb-5">Ihre Daten liegen in Ihren Systemen und bleiben dort. Die Agenten greifen über Schnittstellen zu. Sie entscheiden, welche Modelle welche Daten sehen und was das Haus nicht verlässt.</p>
+                        <p class="mt-auto pt-5 border-t border-black/10 text-[15px] text-black/60 leading-[1.6]">Woran Sie es merken: Zum ersten Anwendungsfall gehört ein Vertrag zur Auftragsverarbeitung, in dem steht, wer worauf zugreift.</p>
+                    </div>
+                    <div class="security-card flex flex-col">
+                        <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Automatisierung, die sich rechnet</h3>
+                        <p class="text-base text-black/60 leading-[1.6] mb-5">Eine Automatisierung, die ihre Kosten nicht wieder einspielt, bauen wir nicht. Vor jedem Fall steht die einfache Rechnung: Was kostet der Vorgang heute, was kostet er mit Agent.</p>
+                        <p class="mt-auto pt-5 border-t border-black/10 text-[15px] text-black/60 leading-[1.6]">Woran Sie es merken: Rechnet sich ein Fall nicht, sagen wir es Ihnen vor dem Start und raten ab.</p>
+                    </div>
+                    <div class="security-card flex flex-col">
+                        <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Auf den bestehenden Systemen</h3>
+                        <p class="text-base text-black/60 leading-[1.6] mb-5">Kein Rip-and-Replace. Die Agenten arbeiten auf dem ERP, dem CRM und dem Postfach, die bei Ihnen schon laufen.</p>
+                        <p class="mt-auto pt-5 border-t border-black/10 text-[15px] text-black/60 leading-[1.6]">Woran Sie es merken: Wir schlagen Ihnen nie einen Systemwechsel vor.</p>
+                    </div>
+                    <div class="security-card flex flex-col">
+                        <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Erste Ergebnisse in Wochen, nicht Monaten</h3>
+                        <p class="text-base text-black/60 leading-[1.6] mb-5">Der erste Anwendungsfall ist klar umrissen und geht in Wochen produktiv, nicht nach einem Jahr Konzeptphase.</p>
+                        <p class="mt-auto pt-5 border-t border-black/10 text-[15px] text-black/60 leading-[1.6]">Woran Sie es merken: Sie sehen den ersten Fall produktiv laufen, bevor Sie über den nächsten Schritt entscheiden.</p>
+                    </div>
+                    <div class="security-card flex flex-col">
+                        <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Klein anfangen, systematisch wachsen</h3>
+                        <p class="text-base text-black/60 leading-[1.6] mb-5">Ein Vorgang nach dem anderen, in Ihrer Reihenfolge. Tempo und Budget bleiben bei Ihnen.</p>
+                        <p class="mt-auto pt-5 border-t border-black/10 text-[15px] text-black/60 leading-[1.6]">Woran Sie es merken: Jeder weitere Anwendungsfall ist ein eigenes Angebot, das Sie annehmen oder ablehnen können.</p>
+                    </div>
+                    <div class="security-card flex flex-col">
+                        <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Unabhängig von Ihrem ERP- und CRM-Anbieter</h3>
+                        <p class="text-base text-black/60 leading-[1.6] mb-5">Wir verdienen nicht an Ihrem Lock-in. Was wir bauen, gehört Ihrem Unternehmen und arbeitet weiter, falls Sie das System darunter eines Tages doch wechseln.</p>
+                        <p class="mt-auto pt-5 border-t border-black/10 text-[15px] text-black/60 leading-[1.6]">Woran Sie es merken: In keinem unserer Angebote steht, dass Sie ein System kaufen, behalten oder verlängern müssen.</p>
+                    </div>
+                </div>
+                <div class="mt-14 md:mt-20 max-w-[840px] border-b border-black/10 pb-6">
+                    <p class="text-lg md:text-xl leading-[1.5] text-black/60">An diesen sechs Punkten können Sie uns messen. Bleibt die Frage, wie man anfängt, ohne ins Risiko zu gehen.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- /zone-tint -->
+
+    <!-- 05 DER ERSTE SCHRITT (weiss) -->
+    <section id="der-erste-schritt" class="bg-white py-20 md:py-32 fade-in-scroll" style="scroll-margin-top: 32px;">
+        <div class="max-w-[1200px] mx-auto px-6 md:px-16">
+            <header>
+                <p class="text-sm md:text-base uppercase tracking-[2px] text-black/60">05/05</p>
+                <h2 class="mt-4 md:mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-[64px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] font-bold">Der erste Schritt</h2>
+                <p class="mt-5 md:mt-6 text-xl md:text-2xl leading-[1.4] text-black/60 fw-book max-w-[900px]">Ein Gespräch von 30 Minuten, ein klar umrissener erster Fall, produktiv in Wochen, dann entscheiden Sie.</p>
+            </header>
+            <div class="mt-10 md:mt-14 max-w-[840px]">
+                <p class="text-lg md:text-xl leading-[1.6] text-black/60">Der Einstieg ist bewusst klein gehalten. Drei Stationen, und nach jeder können Sie aufhören.</p>
+                <ol class="mt-8 md:mt-12 border-t border-black/10 list-none">
+                    <li class="grid grid-cols-[44px_1fr] md:grid-cols-[64px_1fr] gap-x-4 md:gap-x-8 py-8 md:py-10 border-b border-black/10">
+                        <span class="text-2xl md:text-3xl font-bold tracking-[-0.5px] leading-none pt-1" aria-hidden="true">1</span>
+                        <div class="min-w-0">
+                            <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px]">Ein Gespräch, 30 Minuten</h3>
+                            <p class="mt-3 text-base md:text-lg leading-[1.6] text-black/60">Direkt mit den Gründern, kein Verkaufscall, kein Foliensatz. Wir schauen uns gemeinsam einen Ihrer Vorgänge an. Mitbringen müssen Sie nur einen Vorgang, der nervt. Danach kann Schluss sein: Sie haben 30 Minuten investiert, mehr nicht.</p>
+                        </div>
+                    </li>
+                    <li class="grid grid-cols-[44px_1fr] md:grid-cols-[64px_1fr] gap-x-4 md:gap-x-8 py-8 md:py-10 border-b border-black/10">
+                        <span class="text-2xl md:text-3xl font-bold tracking-[-0.5px] leading-none pt-1" aria-hidden="true">2</span>
+                        <div class="min-w-0">
+                            <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px]">Ein erster Anwendungsfall</h3>
+                            <p class="mt-3 text-base md:text-lg leading-[1.6] text-black/60">Aus dem Gespräch wird ein klar umrissener erster Fall. Vor dem Start bekommen Sie ein Angebot mit festem Rahmen, kein Rahmenvertrag, kein Abo. Auch hier kann Schluss sein: Sie beauftragen genau diesen einen Fall oder gar nichts.</p>
+                        </div>
+                    </li>
+                    <li class="grid grid-cols-[44px_1fr] md:grid-cols-[64px_1fr] gap-x-4 md:gap-x-8 py-8 md:py-10 border-b border-black/10">
+                        <span class="text-2xl md:text-3xl font-bold tracking-[-0.5px] leading-none pt-1" aria-hidden="true">3</span>
+                        <div class="min-w-0">
+                            <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px]">Produktiv in Wochen, dann entscheiden Sie</h3>
+                            <p class="mt-3 text-base md:text-lg leading-[1.6] text-black/60">Der Fall geht produktiv, Ihre Leute arbeiten damit, Sie sehen, was er im Alltag leistet. Erst dann entscheiden Sie über den nächsten Schritt. Und wenn Sie aufhören: Das Gebaute gehört Ihrem Unternehmen.</p>
+                        </div>
+                    </li>
+                </ol>
+
+                <!-- Drei Fragen, nuechtern beantwortet, kein Akkordeon -->
+                <div class="mt-14 md:mt-20">
+                    <h3 class="text-2xl md:text-3xl font-bold tracking-[-0.5px]">Drei Fragen, die an dieser Stelle jeder stellt.</h3>
+                    <div class="mt-6 md:mt-8 border-t border-black/10">
+                        <div class="py-6 md:py-8 border-b border-black/10">
+                            <p class="text-lg md:text-xl font-bold tracking-[-0.3px]">Wo landen unsere Daten?</p>
+                            <p class="mt-2 text-base md:text-lg leading-[1.6] text-black/60">In Ihren Systemen, und dort bleiben sie. Der Zugriff läuft über Schnittstellen. Ein Vertrag zur Auftragsverarbeitung gehört zum ersten Anwendungsfall, Ihr Vertragspartner ist die Krops GmbH, die deutsche Gesellschaft hinter Sophia.</p>
+                        </div>
+                        <div class="py-6 md:py-8 border-b border-black/10">
+                            <p class="text-lg md:text-xl font-bold tracking-[-0.3px]">Was kostet der erste Schritt?</p>
+                            <p class="mt-2 text-base md:text-lg leading-[1.6] text-black/60">Das Gespräch kostet 30 Minuten Ihrer Zeit und sonst nichts. Für den ersten Anwendungsfall bekommen Sie vor dem Start ein Angebot mit festem Rahmen.</p>
+                        </div>
+                        <div class="py-6 md:py-8 border-b border-black/10">
+                            <p class="text-lg md:text-xl font-bold tracking-[-0.3px]">Wie viel Zeit bindet das bei uns?</p>
+                            <p class="mt-2 text-base md:text-lg leading-[1.6] text-black/60">Wenig. Einen Ansprechpartner aus dem Fachbereich, der den Vorgang kennt. Kein internes Projektteam, kein IT-Projekt.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Die eine Conversion-Aktion der Seite -->
+                <div class="mt-14 md:mt-20">
+                    <a href="../contact.html" class="bg-black text-white text-lg font-medium px-8 py-4 rounded-full hover:bg-black/80 transition-colors inline-block">Gespräch vereinbaren</a>
+                    <p class="mt-5 text-base md:text-lg leading-[1.6] text-black/60 max-w-[560px]">30 Minuten, direkt mit den Gründern, ohne Foliensatz. Bringen Sie einen Vorgang mit, der nervt.</p>
+                </div>
+
+                <!-- Absender-Block -->
+                <div class="mt-16 md:mt-24 pt-8 border-t border-black/10">
+                    <p class="text-sm md:text-[15px] leading-[1.6] text-black/60 max-w-[640px]">Hinter diesem Aufruf steht Sophia (gosophia.ai), ein Team aus Freiburg. Ihr Vertragspartner ist die Krops GmbH mit Sitz in Berlin. Wir bauen KI-Agenten für das Back-Office mittelständischer Fertigungsbetriebe, auf den Systemen, die dort schon laufen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black text-white" data-rail-dark>
+        <div class="max-w-[1200px] mx-auto px-6 pt-[120px] pb-6">
+            <!-- Top section -->
+            <div class="flex flex-col lg:flex-row justify-between gap-16 lg:gap-[80px]">
+                <!-- Left: Logo & Description -->
+                <div class="flex flex-col justify-between">
+                    <div class="flex flex-col gap-4">
+                        <span class="text-white" role="img" aria-label="Sophia"><span class="inline-flex items-center" style="gap:11px; color:currentColor;"><svg viewBox="0 0 182 182" height="26" aria-hidden="true"><path fill="currentColor" fill-rule="nonzero" d="M 67.347 65.528 L 72.843 60.425 L 72.843 60.425 L 67.347 65.528 Z M 116.472 67.347 L 111.369 61.851 L 111.369 61.851 L 116.472 67.347 Z M 114.653 116.472 L 120.149 111.369 L 120.149 111.368 L 114.653 116.472 Z M 65.528 114.653 L 70.631 120.149 L 70.631 120.149 L 65.528 114.653 Z M 91 0 L 83.5 0 L 83.5 56.24 L 91 56.24 L 98.5 56.24 L 98.5 0 L 91 0 Z M 91 56.24 L 83.5 56.24 C 83.5 61.829 76.647 64.521 72.843 60.425 L 67.347 65.528 L 61.851 70.631 C 74.931 84.717 98.5 75.462 98.5 56.24 L 91 56.24 Z M 67.347 65.528 L 72.843 60.425 L 37.346 22.197 L 31.85 27.3 L 26.354 32.403 L 61.851 70.631 L 67.347 65.528 Z M 182 91 L 182 83.5 L 125.76 83.5 L 125.76 91 L 125.76 98.5 L 182 98.5 L 182 91 Z M 125.76 91 L 125.76 83.5 C 120.171 83.5 117.479 76.647 121.575 72.843 L 116.472 67.347 L 111.369 61.851 C 97.283 74.931 106.537 98.5 125.76 98.5 L 125.76 91 Z M 116.472 67.347 L 121.575 72.843 L 159.803 37.346 L 154.7 31.85 L 149.597 26.354 L 111.369 61.851 L 116.472 67.347 Z M 91 182 L 98.5 182 L 98.5 125.76 L 91 125.76 L 83.5 125.76 L 83.5 182 L 91 182 Z M 91 125.76 L 98.5 125.76 C 98.5 120.171 105.353 117.479 109.157 121.576 L 114.653 116.472 L 120.149 111.368 C 107.069 97.283 83.5 106.537 83.5 125.76 L 91 125.76 Z M 114.653 116.472 L 109.157 121.575 L 144.654 159.803 L 150.15 154.7 L 155.646 149.597 L 120.149 111.369 L 114.653 116.472 Z M 0 91 L 0 98.5 L 56.24 98.5 L 56.24 91 L 56.24 83.5 L 0 83.5 L 0 91 Z M 56.24 91 L 56.24 98.5 C 61.829 98.5 64.521 105.353 60.424 109.157 L 65.528 114.653 L 70.631 120.149 C 84.717 107.069 75.463 83.5 56.24 83.5 L 56.24 91 Z M 65.528 114.653 L 60.425 109.157 L 22.197 144.654 L 27.3 150.15 L 32.403 155.646 L 70.631 120.149 L 65.528 114.653 Z"/></svg><svg viewBox="0 0 397.249 80.016" height="13" aria-hidden="true"><path fill="currentColor" fill-rule="nonzero" d="M 33.084 80.016 C 12.42 80.016 0.11 70.124 0 54.407 L 17.366 54.407 C 17.696 63.2 21.433 66.937 32.864 66.937 C 43.525 66.937 47.482 64.519 47.482 57.704 C 47.482 52.208 45.064 50.23 37.48 48.581 L 23.301 45.614 C 8.793 42.646 1.099 35.392 1.099 24.401 C 1.099 10.222 13.299 0 32.314 0 C 51.109 0 63.969 9.782 64.079 24.95 L 46.713 24.95 C 46.163 16.157 42.206 13.08 31.985 13.08 C 21.982 13.08 18.355 15.498 18.245 22.312 C 18.245 27.038 20.224 29.566 28.467 31.215 L 41.986 33.853 C 57.484 36.821 65.508 44.185 65.508 55.286 C 65.508 69.575 53.417 80.016 33.084 80.016 Z M 108.744 80.016 C 83.354 80.016 69.175 63.749 69.175 39.898 C 69.175 16.267 83.684 0 109.183 0 C 134.463 0 148.642 16.267 148.642 40.118 C 148.642 63.749 134.243 80.016 108.744 80.016 Z M 109.073 65.288 C 126.44 65.288 129.737 61.771 129.737 40.118 C 129.737 18.465 126.44 14.728 109.073 14.728 C 91.707 14.728 88.08 18.465 88.08 40.118 C 88.08 61.771 91.707 65.288 109.073 65.288 Z M 173.374 78.477 L 156.667 78.477 L 156.667 1.539 L 193.268 1.539 C 208.216 1.539 219.977 9.892 219.977 25.829 C 219.977 41.877 208.106 50.23 193.378 50.23 L 173.374 50.23 L 173.374 78.477 Z M 173.374 14.948 L 173.374 37.04 L 191.509 37.04 C 199.423 37.04 201.621 35.502 201.621 25.939 C 201.621 16.377 199.423 14.948 191.509 14.948 L 173.374 14.948 Z M 241.994 78.477 L 225.178 78.477 L 225.178 1.539 L 241.994 1.539 L 241.994 31.215 L 273.429 31.215 L 273.429 1.539 L 290.136 1.539 L 290.136 78.477 L 273.429 78.477 L 273.429 46.053 L 241.994 46.053 L 241.994 78.477 Z M 318.77 78.477 L 301.953 78.477 L 301.953 1.539 L 318.77 1.539 L 318.77 78.477 Z M 397.249 78.477 L 379.223 78.477 L 373.838 62.21 L 345.7 62.21 L 340.205 78.477 L 322.729 78.477 L 350.317 1.539 L 369.771 1.539 L 397.249 78.477 Z M 353.284 38.579 L 349.657 49.57 L 369.991 49.57 L 366.474 38.579 C 363.946 30.775 362.517 24.62 361.967 20.004 L 357.791 20.004 C 357.131 24.62 355.812 30.775 353.284 38.579 Z"/></svg></span></span>
+                        <p class="text-[15px] text-white leading-[1.4] tracking-[-0.15px] max-w-[262px]">
+                            Sophia. Operational excellence, straight from your inbox.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right: Link columns -->
+                <div class="flex flex-wrap gap-16 lg:gap-[120px]">
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Product</h4>
+                        <a href="../index.html#product" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Product</a>
+                        <a href="../index.html#security" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Security</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Company</h4>
+                        <a href="../about.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">About Us</a>
+                        <a href="../careers.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Careers</a>
+                        <a href="../contact.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Contact</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-[17px] font-medium leading-[1.2] tracking-[-0.17px]">Legal</h4>
+                        <a href="../imprint.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Imprint</a>
+                        <a href="../terms.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Terms</a>
+                        <a href="../privacy.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Privacy</a>
+                        <a href="../subprocessors.html" class="text-[15px] leading-[1.4] tracking-[-0.15px] hover:opacity-80 transition-opacity">Sub-processors</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom bar -->
+            <div class="flex flex-col sm:flex-row justify-between items-center mt-[120px] pt-0 text-white/60 text-[15px] tracking-[-0.15px]">
+                <span>© 2026 Krops GmbH. All Rights Reserved.</span>
+                <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 mt-4 sm:mt-0">
+                    <a href="../imprint.html" class="hover:text-white transition-colors">Imprint</a>
+                    <a href="../terms.html" class="hover:text-white transition-colors">Terms</a>
+                    <a href="../privacy.html" class="hover:text-white transition-colors">Privacy</a>
+                    <a href="../subprocessors.html" class="hover:text-white transition-colors">Sub-processors</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll fade-in
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.fade-in-scroll').forEach(el => observer.observe(el));
+
+            // Anker-Sprünge: Ziel-Sektion vor dem nativen Scroll aufdecken,
+            // sonst verschiebt das fade-in-Transform (translateY 30px) das Sprungziel.
+            // Transition dabei kurz abschalten, damit das Transform sofort weg ist,
+            // bevor der Browser die Sprungposition berechnet.
+            document.querySelectorAll('a[href^="#"]').forEach(a => {
+                a.addEventListener('click', () => {
+                    const t = document.getElementById(a.getAttribute('href').slice(1));
+                    if (t && !t.classList.contains('visible')) {
+                        t.style.transition = 'none';
+                        t.classList.add('visible');
+                        void t.offsetHeight;
+                        t.style.transition = '';
+                    }
+                });
+            });
+
+            // Mobile menu toggle
+            const btn = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+            if (btn) {
+                btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+                menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+            }
+        });
+
+        // Kapitel-Leiste: Fuellstand und aktiver Stopp aus der Scroll-Position,
+        // Farbwechsel auf dunklen Bahnen (Hero, Kapitel 02, Footer)
+        (function () {
+            var rail = document.getElementById('chapter-rail');
+            if (!rail) return;
+            var fill = document.getElementById('rail-fill');
+            var stops = Array.prototype.slice.call(rail.querySelectorAll('.rail-stop'));
+            var ids = ['der-befund', 'warum-sich-nichts-bewegt', 'der-ausweg', 'sechs-grundsaetze', 'der-erste-schritt'];
+            var ticking = false;
+
+            function docTop(el) { return el.getBoundingClientRect().top + window.pageYOffset; }
+
+            function update() {
+                ticking = false;
+                var chapters = ids.map(function (id) { return document.getElementById(id); });
+                if (chapters.some(function (c) { return !c; })) return;
+                var footer = document.querySelector('footer');
+                var marker = window.pageYOffset + window.innerHeight * 0.4;
+                var tops = chapters.map(docTop);
+                var endLast = footer ? docTop(footer) : tops[4] + chapters[4].offsetHeight;
+                var active = -1;
+                for (var i = 0; i < tops.length; i++) { if (marker >= tops[i]) active = i; }
+                var frac = 0;
+                if (active >= 0) {
+                    var start = tops[active];
+                    var end = active < 4 ? tops[active + 1] : endLast;
+                    var within = (marker - start) / Math.max(1, end - start);
+                    within = Math.max(0, Math.min(1, within));
+                    frac = Math.min(1, (active + within) / 4);
+                }
+                fill.style.height = (frac * 100) + '%';
+                stops.forEach(function (s, i) {
+                    s.classList.toggle('passed', i < active);
+                    s.classList.toggle('active', i === active);
+                    if (i === active) { s.setAttribute('aria-current', 'true'); } else { s.removeAttribute('aria-current'); }
+                });
+                // Dunkel-Erkennung: liegt die Leisten-Mitte ueber einer dunklen Bahn?
+                var mid = window.pageYOffset + window.innerHeight / 2;
+                var onDark = Array.prototype.slice.call(document.querySelectorAll('[data-rail-dark]')).some(function (el) {
+                    var t = docTop(el);
+                    return mid >= t && mid < t + el.offsetHeight;
+                });
+                rail.classList.toggle('on-dark', onDark);
+            }
+
+            function request() { if (!ticking) { ticking = true; window.requestAnimationFrame(update); } }
+            window.addEventListener('scroll', request, { passive: true });
+            window.addEventListener('resize', request);
+            document.addEventListener('DOMContentLoaded', update);
+            update();
+        })();
+    </script>
+
+    <script>
+        // Zweisprachigkeit nach dem Site-Muster, de-first: Deutsch ist eingebacken,
+        // Englisch wird bei window.SOPHIA_LANG === 'en' per flachem Dictionary eingewechselt.
+        // Header/Footer sind woertlich von der Site uebernommen (englisch eingebacken)
+        // und werden bei 'de' mit den DE_STATIC-Werten der Site eingedeutscht.
+        (function () {
+            function swap(map) {
+                document.querySelectorAll('a, p, h1, h2, h3, h4, h5, h6, span, li, button').forEach(function (el) {
+                    if (el.children.length) return;
+                    var key = el.textContent.trim().replace(/’/g, "'");
+                    if (Object.prototype.hasOwnProperty.call(map, key)) el.textContent = map[key];
+                });
+            }
+
+            if (window.SOPHIA_LANG === 'de') {
+                var DE_CHROME = {
+                    "About Us": "Über uns",
+                    "Product": "Produkt",
+                    "Security": "Sicherheit",
+                    "Careers": "Karriere",
+                    "Company": "Unternehmen",
+                    "Contact": "Kontakt",
+                    "Legal": "Rechtliches",
+                    "Imprint": "Impressum",
+                    "Terms": "AGB",
+                    "Privacy": "Datenschutz",
+                    "Sub-processors": "Unterauftragsverarbeiter",
+                    "Sophia. Operational excellence, straight from your inbox.": "Sophia. Operative Exzellenz, direkt aus Ihrem Postfach.",
+                    "© 2026 Krops GmbH. All Rights Reserved.": "© 2026 Krops GmbH. Alle Rechte vorbehalten."
+                };
+                swap(DE_CHROME);
+            }
+
+            if (window.SOPHIA_LANG === 'en') {
+                var EN = {
+                    "Ein Manifest für den Mittelstand": "A manifesto for the Mittelstand",
+                    "Zeit, den Mittelstand zu befreien.": "Time to free the Mittelstand.",
+                    "Von Sophia aus Freiburg. Wir bauen KI-Agenten, die im Back-Office von Fertigungsbetrieben mitarbeiten, auf dem ERP und dem Postfach, die schon da sind.": "From Sophia in Freiburg. We build AI agents that work inside the back office of manufacturing companies, on the ERP and the inbox already in place.",
+                    "Der Befund": "The Diagnosis",
+                    "Warum sich nichts bewegt": "Why Nothing Changes",
+                    "Der Ausweg": "The Way Out",
+                    "Sechs Grundsätze": "Six Principles",
+                    "Der erste Schritt": "The First Step",
+                    "Offene Tickets, wechselnde Ansprechpartner, fünfstellige Angebote für kleine Schnittstellen: das hören wir quer durch den Mittelstand.": "Open tickets, a revolving door of contacts, five-figure quotes for small interfaces: we hear this across the Mittelstand.",
+                    "Ihr Anbieter verdient daran, dass ein Wechsel zu teuer wäre, also muss er sich nicht anstrengen.": "Your vendor profits because switching would cost you too much, so it does not have to try.",
+                    "Eine Intelligenz-Schicht auf Ihren bestehenden Systemen, ohne Migration und ohne neue Abhängigkeit.": "An intelligence layer on top of the systems you already run, with no migration and no new dependency.",
+                    "Keine Versprechen ohne Prüfstein: zu jedem Grundsatz sagen wir, woran Sie merken, ob er gilt.": "No promise without a test: for each principle, we tell you how to check that it holds.",
+                    "Ein Gespräch von 30 Minuten, ein klar umrissener erster Fall, produktiv in Wochen, dann entscheiden Sie.": "A 30-minute conversation, one clearly defined first case, live within weeks, then you decide.",
+                    "Sie kennen das. Das Ticket ist seit vier Monaten offen. Der Ansprechpartner hat wieder gewechselt. Das Angebot für eine kleine Schnittstelle liegt auf dem Tisch: fünfstellig, Lieferzeit unklar.": "You know moments like these. The ticket has been open for four months. Your contact at the vendor has changed again. The quote for one small interface is on the table: five figures, delivery date unclear.",
+                    "Und im Alltag tippen Ihre Leute ab, was längst digital vorliegt. Bestellungen aus dem Postfach ins ERP, Auftragsdaten aus dem ERP in die Excel-Liste. Jeden Tag, seit Jahren.": "Meanwhile, your people retype what already exists digitally. Purchase orders from the inbox into the ERP, order data from the ERP into a spreadsheet. Every day, for years.",
+                    "Das hören wir quer durch den Mittelstand, vom Zulieferer bis zum Maschinenbauer. Die Details unterscheiden sich, das Muster nicht. Sie sind nicht allein, und an Ihren Leuten liegt es nicht.": "We hear this across the Mittelstand, from suppliers to machine builders. The details differ, the pattern does not. You are not alone, and it is not your people's fault.",
+                    "Das ist der Befund. Warum ändert sich trotzdem nichts?": "That is the diagnosis. So why does nothing change?",
+                    "Das ERP ist das Herz eines Fertigungsbetriebs. Jeder Auftrag, jede Stückliste, jede Rechnung läuft hindurch. Wer dieses Herz kontrolliert, bestimmt das Tempo des ganzen Unternehmens.": "The ERP is the heart of a manufacturing company. Every order, every bill of materials, every invoice runs through it. Whoever controls that heart sets the pace for the entire company.",
+                    "Veraltete Datenbanken. Geschlossene Schnittstellen. Tickets, die monatelang liegen bleiben. Das ist keine Nachlässigkeit. Der Anbieter weiß, dass ein Wechsel teuer und riskant ist. Also muss er sich nicht anstrengen.": "Outdated databases. Closed interfaces. Tickets that sit for months. This is not carelessness. The vendor knows that switching is expensive and risky. So it does not have to try.",
+                    "Der Lock-in wirkt vor allem im Kopf. Man richtet sich ein, baut Hilfslösungen um die Lücken herum, exportiert nach Excel, tippt ab. So arbeiten zu viele Betriebe heute noch wie 1998.": "Most of the lock-in is psychological. You settle in, build workarounds around the gaps, export to Excel, retype by hand. Too many companies still work the way they did in 1998.",
+                    "Das ist kein Naturgesetz. Das ist ein Geschäftsmodell auf Kosten der Betriebe.": "This is not a law of nature. It is a business model built at the companies' expense.",
+                    "Der Mittelstand kann frei werden. Von der Wartezeit, von der Abhängigkeit, von der Angst vor dem eigenen System.": "The Mittelstand can be free. Free of the waiting, the dependency, the fear of its own system.",
+                    "So weit der Appell. Ab hier wird es nüchtern: wie der Ausweg konkret aussieht.": "That was the rallying cry. From here on, plain mechanics: how the way out actually works.",
+                    "Der Ausweg ist keine Migration. Niemand muss sein ERP wechseln, um besser zu arbeiten. Wir legen eine Intelligenz-Schicht auf die Systeme, die Sie schon haben: KI-Agenten, die Vorgänge lesen, gegen Ihre Daten prüfen und ins System zurückschreiben.": "The way out is not a migration. Nobody has to replace their ERP to work better. We put an intelligence layer on top of the systems you already have: AI agents that read your transactions, check them against your data, and write back into the system.",
+                    "Erstens: Die Agenten lesen und schreiben über Schnittstellen. Kein Systemwechsel, keine Datenmigration, das ERP bleibt, was es ist.": "First, the agents read and write through interfaces. No system change, no data migration. Your ERP stays as it is.",
+                    "Zweitens: Ihre Leute arbeiten weiter, wo sie heute arbeiten, im Postfach und im ERP. Es gibt kein neues Programm, das jemand lernen muss.": "Second, your people keep working where they work today: in the inbox and in the ERP. There is no new tool to learn.",
+                    "Drittens: Was wir für Sie bauen, gehört Ihrem Unternehmen. Keine neue Abhängigkeit, die die alte ersetzt.": "Third, what we build for you belongs to your company. No trading one dependency for another.",
+                    "Zurück zum Angebot aus dem ersten Kapitel: die kleine Schnittstelle für fünfstelliges Geld. Derselbe Vorgang mit einem Agenten sieht so aus: Die Bestellung kommt wie bisher als PDF ins Postfach. Der Agent liest sie, gleicht Artikel, Mengen und Preise mit dem ERP ab und legt den Auftrag als Entwurf an. Jemand aus Ihrem Team prüft und gibt frei. Erst dann wird ins System geschrieben.": "Back to the quote from chapter one, the small interface for five figures. The same process with an agent looks like this: the purchase order arrives in the inbox as a PDF, just as before. The agent reads it, checks items, quantities, and prices against the ERP, and creates the order as a draft. Someone on your team reviews and approves. Only then is anything written to the system.",
+                    "Keine Migration, kein Projektteam, kein Jahr Wartezeit. Nur der Vorgang, der vorher liegen blieb und jetzt läuft.": "No migration, no project team, no year of waiting. Just the process that used to sit in a ticket queue, now running.",
+                    "Das ist das Prinzip. Woran merken Sie, dass wir es ernst meinen?": "That is the principle. How can you tell we mean it?",
+                    "Sechs Grundsätze tragen unsere Arbeit. Damit sie mehr sind als Marketing, steht unter jedem, woran Sie merken, ob er gilt. Keine Zahlenversprechen, nur Beobachtungen, die Sie selbst machen können.": "Six principles guide our work. To keep them from being just marketing, each one comes with a way to check that it holds. We promise no numbers, only things you can observe for yourself.",
+                    "Ihre Daten bleiben bei Ihnen": "Your data stays with you",
+                    "Ihre Daten liegen in Ihren Systemen und bleiben dort. Die Agenten greifen über Schnittstellen zu. Sie entscheiden, welche Modelle welche Daten sehen und was das Haus nicht verlässt.": "Your data lives in your systems and stays there. The agents access it through interfaces. You decide which models see which data and what never leaves your company.",
+                    "Woran Sie es merken: Zum ersten Anwendungsfall gehört ein Vertrag zur Auftragsverarbeitung, in dem steht, wer worauf zugreift.": "How you can tell: the first use case comes with a data processing agreement that spells out who accesses what.",
+                    "Automatisierung, die sich rechnet": "Automation that pays for itself",
+                    "Eine Automatisierung, die ihre Kosten nicht wieder einspielt, bauen wir nicht. Vor jedem Fall steht die einfache Rechnung: Was kostet der Vorgang heute, was kostet er mit Agent.": "If an automation does not earn back its cost, we do not build it. Every case starts with simple math: what the process costs today, and what it costs with an agent.",
+                    "Woran Sie es merken: Rechnet sich ein Fall nicht, sagen wir es Ihnen vor dem Start und raten ab.": "How you can tell: if a case will not pay off, we say so up front and advise against it.",
+                    "Auf den bestehenden Systemen": "On the systems you already run",
+                    "Kein Rip-and-Replace. Die Agenten arbeiten auf dem ERP, dem CRM und dem Postfach, die bei Ihnen schon laufen.": "No rip and replace. The agents work on the ERP, the CRM, and the inbox you already use.",
+                    "Woran Sie es merken: Wir schlagen Ihnen nie einen Systemwechsel vor.": "How you can tell: we will never suggest that you switch systems.",
+                    "Erste Ergebnisse in Wochen, nicht Monaten": "First results in weeks, not months",
+                    "Der erste Anwendungsfall ist klar umrissen und geht in Wochen produktiv, nicht nach einem Jahr Konzeptphase.": "The first use case is clearly defined and goes live within weeks, not after a year of planning.",
+                    "Woran Sie es merken: Sie sehen den ersten Fall produktiv laufen, bevor Sie über den nächsten Schritt entscheiden.": "How you can tell: you see the first case running in production before you decide on the next step.",
+                    "Klein anfangen, systematisch wachsen": "Start small, grow systematically",
+                    "Ein Vorgang nach dem anderen, in Ihrer Reihenfolge. Tempo und Budget bleiben bei Ihnen.": "One process at a time, in the order you choose. You control the pace and the budget.",
+                    "Woran Sie es merken: Jeder weitere Anwendungsfall ist ein eigenes Angebot, das Sie annehmen oder ablehnen können.": "How you can tell: every additional use case is a separate proposal you can accept or decline.",
+                    "Unabhängig von Ihrem ERP- und CRM-Anbieter": "Independent of your ERP and CRM vendor",
+                    "Wir verdienen nicht an Ihrem Lock-in. Was wir bauen, gehört Ihrem Unternehmen und arbeitet weiter, falls Sie das System darunter eines Tages doch wechseln.": "We do not make money on your lock-in. What we build belongs to your company and keeps working if you ever do switch the system underneath.",
+                    "Woran Sie es merken: In keinem unserer Angebote steht, dass Sie ein System kaufen, behalten oder verlängern müssen.": "How you can tell: none of our proposals requires you to buy, keep, or renew any system.",
+                    "An diesen sechs Punkten können Sie uns messen. Bleibt die Frage, wie man anfängt, ohne ins Risiko zu gehen.": "These six points are what you can hold us to. That leaves one question: how to start without taking on risk.",
+                    "Der Einstieg ist bewusst klein gehalten. Drei Stationen, und nach jeder können Sie aufhören.": "The starting point is deliberately small. Three stages, and you can stop after any one of them.",
+                    "Ein Gespräch, 30 Minuten": "A 30-minute conversation",
+                    "Direkt mit den Gründern, kein Verkaufscall, kein Foliensatz. Wir schauen uns gemeinsam einen Ihrer Vorgänge an. Mitbringen müssen Sie nur einen Vorgang, der nervt. Danach kann Schluss sein: Sie haben 30 Minuten investiert, mehr nicht.": "You talk directly with the founders, no sales call, no slide deck. Bring one process that annoys you, nothing else, and we look at it together. This can be the end of it: you have spent 30 minutes, nothing more.",
+                    "Ein erster Anwendungsfall": "A first use case",
+                    "Aus dem Gespräch wird ein klar umrissener erster Fall. Vor dem Start bekommen Sie ein Angebot mit festem Rahmen, kein Rahmenvertrag, kein Abo. Auch hier kann Schluss sein: Sie beauftragen genau diesen einen Fall oder gar nichts.": "The conversation turns into one clearly defined first case. Before anything starts, you receive a fixed-scope proposal, no framework agreement, no subscription. This too can be the end of it: you commission exactly this one case, or nothing at all.",
+                    "Produktiv in Wochen, dann entscheiden Sie": "Live within weeks, then you decide",
+                    "Der Fall geht produktiv, Ihre Leute arbeiten damit, Sie sehen, was er im Alltag leistet. Erst dann entscheiden Sie über den nächsten Schritt. Und wenn Sie aufhören: Das Gebaute gehört Ihrem Unternehmen.": "The case goes into production, your people work with it, you see what it delivers day to day. Only then do you decide on the next step. And if you stop, everything that was built belongs to your company.",
+                    "Drei Fragen, die an dieser Stelle jeder stellt.": "Three questions everyone asks at this point.",
+                    "Wo landen unsere Daten?": "Where does our data end up?",
+                    "In Ihren Systemen, und dort bleiben sie. Der Zugriff läuft über Schnittstellen. Ein Vertrag zur Auftragsverarbeitung gehört zum ersten Anwendungsfall, Ihr Vertragspartner ist die Krops GmbH, die deutsche Gesellschaft hinter Sophia.": "In your systems, and it stays there. The agents access it through interfaces. A data processing agreement is part of the first use case, and your contract is with Krops GmbH, the German company behind Sophia.",
+                    "Was kostet der erste Schritt?": "What does the first step cost?",
+                    "Das Gespräch kostet 30 Minuten Ihrer Zeit und sonst nichts. Für den ersten Anwendungsfall bekommen Sie vor dem Start ein Angebot mit festem Rahmen.": "The conversation costs 30 minutes of your time and nothing else. For the first use case, you receive a fixed-scope proposal before anything starts.",
+                    "Wie viel Zeit bindet das bei uns?": "How much of our team's time does this take?",
+                    "Wenig. Einen Ansprechpartner aus dem Fachbereich, der den Vorgang kennt. Kein internes Projektteam, kein IT-Projekt.": "Very little. One person on your side who knows the process. No internal project team, no IT project.",
+                    "Gespräch vereinbaren": "Book a conversation",
+                    "30 Minuten, direkt mit den Gründern, ohne Foliensatz. Bringen Sie einen Vorgang mit, der nervt.": "30 minutes, directly with the founders, no slide deck. Bring one process that annoys you.",
+                    "Hinter diesem Aufruf steht Sophia (gosophia.ai), ein Team aus Freiburg. Ihr Vertragspartner ist die Krops GmbH mit Sitz in Berlin. Wir bauen KI-Agenten für das Back-Office mittelständischer Fertigungsbetriebe, auf den Systemen, die dort schon laufen.": "This manifesto comes from Sophia (gosophia.ai), a team based in Freiburg, Germany. Your contract partner is Krops GmbH, registered in Berlin. We build AI agents for the back office of manufacturing SMEs, on the systems already running there."
+                };
+                swap(EN);
+                document.title = "Time to free the Mittelstand. A manifesto by Sophia";
+                var desc = document.querySelector('meta[name="description"]');
+                if (desc) desc.setAttribute('content', "Your ERP vendor profits when switching is too expensive. Sophia builds AI agents on the systems you already run, with no migration and no new dependency.");
+                var argIndex = document.getElementById('argument-index');
+                if (argIndex) argIndex.setAttribute('aria-label', 'Table of contents');
+                var railNav = document.getElementById('chapter-rail');
+                if (railNav) railNav.setAttribute('aria-label', 'Chapters');
+            }
+        })();
+    </script>
+</body>
+</html>
