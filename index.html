@@ -105,10 +105,7 @@
         }
 
         html {
-            scroll-behavior: smooth;
-        }
-        @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
+            scroll-behavior: auto;
         }
         a:focus-visible, button:focus-visible {
             outline: 1px solid #000;
@@ -1418,6 +1415,71 @@
                 btn.addEventListener('click', () => menu.classList.toggle('hidden'));
                 menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
             }
+
+            // Smooth in-page navigation: controlled easing, slower feel, exact landing.
+            // Replaces native scroll-behavior:smooth so we control speed and the final
+            // position (the target section sits flush at the top; its own top padding
+            // gives the breathing room, so the previous section never peeks in).
+            (function () {
+                const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                const easeInOutCubic = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+                const targetTop = el => Math.max(0, Math.round(el.getBoundingClientRect().top + window.pageYOffset));
+
+                function scrollToSection(el, onDone) {
+                    if (reduceMotion) {
+                        window.scrollTo(0, targetTop(el));
+                        if (onDone) onDone();
+                        return;
+                    }
+                    const start = window.pageYOffset;
+                    const initialDistance = targetTop(el) - start;
+                    if (Math.abs(initialDistance) < 2) { if (onDone) onDone(); return; }
+                    // Duration scales with distance so short and long jumps both feel smooth.
+                    const duration = Math.min(1100, Math.max(650, Math.abs(initialDistance) * 0.6));
+                    let startTime = null;
+                    function step(now) {
+                        if (startTime === null) startTime = now;
+                        const t = Math.min(1, (now - startTime) / duration);
+                        // Re-read the target each frame: fade-in sections settle from a
+                        // translateY offset as they become visible, so the goal can move.
+                        const end = targetTop(el);
+                        window.scrollTo(0, start + (end - start) * easeInOutCubic(t));
+                        if (t < 1) {
+                            requestAnimationFrame(step);
+                        } else {
+                            window.scrollTo(0, targetTop(el)); // snap to the exact final position
+                            if (onDone) onDone();
+                        }
+                    }
+                    requestAnimationFrame(step);
+                }
+
+                document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+                    const href = link.getAttribute('href');
+                    if (!href || href === '#') return;
+                    let target;
+                    try { target = document.querySelector(href); } catch (e) { return; }
+                    if (!target) return;
+                    link.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        scrollToSection(target, function () {
+                            if (history.replaceState) history.replaceState(null, '', href);
+                            else window.location.hash = href;
+                        });
+                    });
+                });
+
+                // Direct load with a hash (e.g. /#product): land exactly once laid out.
+                if (window.location.hash.length > 1) {
+                    let initial;
+                    try { initial = document.querySelector(window.location.hash); } catch (e) { initial = null; }
+                    if (initial) {
+                        window.addEventListener('load', function () {
+                            setTimeout(function () { window.scrollTo(0, targetTop(initial)); }, 60);
+                        });
+                    }
+                }
+            })();
 
             // Hero copy: German when DE is selected
             if (window.SOPHIA_LANG === 'de') {
