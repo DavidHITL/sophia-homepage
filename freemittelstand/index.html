@@ -207,98 +207,9 @@
         /* KMR Apparat Book fuer Litanei- und Unterzeilen */
         .fw-book { font-weight: 350; }
 
-        /* Kapitel-Leiste: 1px-Haarlinie mit fuenf Stopps im linken Gutter,
-           der gelesene Anteil fuellt sich in Rost (#b7490f), der aktive Stopp ist gefuellt.
-           Rost ausschliesslich als grafische Fuellung, nie als Textfarbe.
-           Auf dunklen Bahnen (Hero, Kapitel 02, Footer) wechselt die Leiste auf Weiss.
-           Lebt ausserhalb der 1200px-Contentspalte, verschwindet unter 1100px. */
-        .chapter-rail { display: none; }
-        @media (min-width: 1100px) {
-            .chapter-rail {
-                display: block;
-                position: fixed;
-                left: 18px;
-                top: 50%;
-                transform: translateY(-50%);
-                z-index: 40;
-            }
-        }
-        .rail-track {
-            position: relative;
-            width: 1px;
-            height: 300px;
-            background: rgba(0,0,0,0.15);
-        }
-        .rail-fill {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 1px;
-            height: 0%;
-            background: #b7490f;
-            transition: height 0.35s ease-out;
-        }
-        .rail-stop {
-            position: absolute;
-            left: 0.5px;
-            transform: translate(-50%, -50%);
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .rail-dot {
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background: #ffffff;
-            border: 1px solid rgba(0,0,0,0.35);
-            transition: background 0.3s ease, border-color 0.3s ease;
-        }
-        .rail-stop.passed .rail-dot,
-        .rail-stop.active .rail-dot {
-            background: #b7490f;
-            border-color: #b7490f;
-        }
-        .rail-num {
-            position: absolute;
-            left: 27px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 10px;
-            letter-spacing: 1px;
-            color: rgba(0,0,0,0.55);
-        }
-        .rail-stop.active .rail-num {
-            color: #000000;
-            font-weight: 700;
-        }
-        .chapter-rail.on-dark .rail-track { background: rgba(255,255,255,0.4); }
-        .chapter-rail.on-dark .rail-fill { background: #ffffff; }
-        .chapter-rail.on-dark .rail-dot { background: rgba(255,255,255,0.4); border-color: transparent; }
-        .chapter-rail.on-dark .rail-stop.passed .rail-dot,
-        .chapter-rail.on-dark .rail-stop.active .rail-dot { background: #ffffff; border-color: #ffffff; }
-        .chapter-rail.on-dark .rail-num { color: rgba(255,255,255,0.7); }
-        .chapter-rail.on-dark .rail-stop.active .rail-num { color: #ffffff; }
-        .chapter-rail.on-dark a:focus-visible { outline-color: #fff; }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
         @media (prefers-reduced-motion: reduce) {
             .hero-animate { animation: none; opacity: 1; transform: none; }
             .fade-in-scroll { opacity: 1; transform: none; transition: none; }
-            .rail-fill, .rail-dot { transition: none; }
             .security-card, .btn-hover { transition: none; }
         }
     </style>
@@ -308,20 +219,8 @@
 </head>
 <body>
 
-    <!-- Kapitel-Leiste (Desktop ab 1100px, mobil uebernehmen die Kapitel-Header mit 01/05) -->
-    <nav id="chapter-rail" class="chapter-rail" aria-label="Kapitel">
-        <div class="rail-track">
-            <div class="rail-fill" id="rail-fill"></div>
-            <a href="#der-befund" class="rail-stop" style="top: 0%;" title="Der Befund"><span class="rail-dot" aria-hidden="true"></span><span class="rail-num" aria-hidden="true">01</span><span class="sr-only">Der Befund</span></a>
-            <a href="#warum-sich-nichts-bewegt" class="rail-stop" style="top: 25%;" title="Warum sich nichts bewegt"><span class="rail-dot" aria-hidden="true"></span><span class="rail-num" aria-hidden="true">02</span><span class="sr-only">Warum sich nichts bewegt</span></a>
-            <a href="#der-ausweg" class="rail-stop" style="top: 50%;" title="Der Ausweg"><span class="rail-dot" aria-hidden="true"></span><span class="rail-num" aria-hidden="true">03</span><span class="sr-only">Der Ausweg</span></a>
-            <a href="#sechs-grundsaetze" class="rail-stop" style="top: 75%;" title="Sechs Grundsätze"><span class="rail-dot" aria-hidden="true"></span><span class="rail-num" aria-hidden="true">04</span><span class="sr-only">Sechs Grundsätze</span></a>
-            <a href="#der-erste-schritt" class="rail-stop" style="top: 100%;" title="Der erste Schritt"><span class="rail-dot" aria-hidden="true"></span><span class="rail-num" aria-hidden="true">05</span><span class="sr-only">Der erste Schritt</span></a>
-        </div>
-    </nav>
-
-    <!-- HERO: Sunrise-Gradient, Wortmarke, Absender-Unterzeile, der Befund als Litanei mit KI-Pointe -->
-    <section class="relative min-h-screen flex flex-col overflow-hidden" data-rail-dark>
+    <!-- HERO: Sunrise-Gradient, ERP-Diagnose als Litanei mit KI-Pointe, CTA ueber dem Falz -->
+    <section class="relative min-h-screen flex flex-col overflow-hidden">
         <div class="absolute inset-0 hero-gradient"></div>
 
         <header class="relative z-10 w-full">
@@ -355,184 +254,137 @@
             <div class="max-w-[1200px] mx-auto w-full">
                 <p class="hero-animate text-sm md:text-base uppercase tracking-[2px] text-white/80">Ein Manifest für den Mittelstand</p>
                 <h1 id="hero-h1" class="hero-animate mt-4 text-[40px] sm:text-5xl md:text-6xl lg:text-[64px] 2xl:text-[70px] font-bold uppercase leading-[0.92] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px]">Es ist Zeit. Free the Mittelstand.</h1>
-                <p id="hero-sub" class="hero-animate hero-animate-delay-1 text-lg md:text-2xl lg:text-[24px] leading-[1.35] mt-5 md:mt-6 max-w-[900px] text-white/90">Von Sophia aus Freiburg. Wir bauen KI-Agenten, die im Back-Office von Fertigungsbetrieben mitarbeiten, auf dem ERP und dem Postfach, die schon da sind.</p>
+                <p id="hero-sub" class="hero-animate hero-animate-delay-1 text-base md:text-lg leading-[1.5] mt-4 md:mt-5 max-w-[760px] text-white/85">Von Sophia aus Freiburg. Wir bauen KI-Agenten für das Back-Office des Mittelstands, auf ERP und Postfach, die schon da sind.</p>
 
                 <!-- Der Befund als Litanei: der Stillstand Zeile fuer Zeile, dann die KI-Pointe -->
                 <div id="befund-litanei" class="hero-animate hero-animate-delay-2 mt-6 md:mt-8">
-                    <p class="text-xl md:text-2xl font-bold tracking-[-0.5px] [text-wrap:balance]">Zu oft Realität: Stillstand in der Mittelstands-IT.</p>
-                    <ul class="mt-4 max-w-[900px] border-t border-white/25 list-none">
-                        <li class="border-b border-white/25 py-3">
+                    <p class="text-xl md:text-2xl font-bold tracking-[-0.5px] [text-wrap:balance]">Das ERP hält den Mittelstand zurück.</p>
+                    <ul class="mt-4 max-w-[1000px] border-t border-white/25 list-none">
+                        <li class="border-b border-white/25 py-2.5">
                             <p class="text-base md:text-lg leading-[1.45] text-white/90 fw-book">Gewöhnt an Systemanpassungen in Quartalen, nicht in Tagen.</p>
                         </li>
-                        <li class="border-b border-white/25 py-3">
+                        <li class="border-b border-white/25 py-2.5">
                             <p class="text-base md:text-lg leading-[1.45] text-white/90 fw-book">Standardprozesse, gestützt von Exceltabellen und Kopfwissen, weil man längst aufgegeben hat, alles in einem Guss abzuwickeln.</p>
                         </li>
-                        <li class="border-b border-white/25 py-3">
+                        <li class="border-b border-white/25 py-2.5">
                             <p class="text-base md:text-lg leading-[1.45] text-white/90 fw-book">Workarounds für die eigens angepassten Systeme.</p>
                         </li>
-                        <li class="border-b border-white/25 py-3">
+                        <li class="border-b border-white/25 py-2.5">
                             <p class="text-base md:text-lg leading-[1.45] text-white/90 fw-book">Und ein Lock-in, so tief, dass die Dienstleister sich ausruhen, statt wettbewerbsfähigen Service zu leisten.</p>
                         </li>
                     </ul>
                 </div>
-                <div class="hero-animate hero-animate-delay-3 mt-5 md:mt-7 max-w-[900px]">
+                <div class="hero-animate hero-animate-delay-3 mt-4 md:mt-6 max-w-[1000px]">
                     <p class="text-2xl md:text-[32px] font-bold tracking-[-0.5px] leading-tight">Und jetzt kommt KI.</p>
                     <p class="mt-2 text-base md:text-lg leading-[1.45] text-white/90 fw-book">Also plant man das nächste Sechs-Monats-Projekt. Mit denselben Anbietern, von denen man das Tempo bereits kennt.</p>
                 </div>
+                <div class="hero-animate hero-animate-delay-3 mt-5 md:mt-6 flex flex-wrap items-center gap-x-6 gap-y-4">
+                    <a href="../contact.html" class="btn-hover bg-white text-black text-base md:text-lg font-medium px-8 py-4 rounded-full inline-block">Gespräch vereinbaren</a>
+                    <p class="text-sm md:text-base text-white/80">30 Minuten, direkt mit den Gründern. Kein Foliensatz.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 01 DER BEFUND (weiss) -->
-    <section id="der-befund" class="bg-white py-20 md:py-32 fade-in-scroll" style="scroll-margin-top: 32px;">
-        <div class="max-w-[1200px] mx-auto px-6 md:px-16">
-            <header>
-                <p class="text-sm md:text-base uppercase tracking-[2px] text-black/60">01/05</p>
-                <h2 class="mt-4 md:mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-[64px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] font-bold">Der Befund</h2>
-                <p class="mt-5 md:mt-6 text-xl md:text-2xl leading-[1.4] text-black/60 fw-book max-w-[900px]">So sieht der Stillstand aus der Nähe aus: offene Tickets, wechselnde Ansprechpartner, fünfstellige Angebote für kleine Schnittstellen.</p>
-            </header>
-            <div class="mt-10 md:mt-14 space-y-6 max-w-[840px]">
-                <p class="text-lg md:text-xl leading-[1.6] text-black/60">Sie kennen das. Das Ticket ist seit vier Monaten offen. Der Ansprechpartner hat wieder gewechselt. Das Angebot für eine kleine Schnittstelle liegt auf dem Tisch: fünfstellig, Lieferzeit unklar.</p>
-                <p class="text-lg md:text-xl leading-[1.6] text-black/60">Und im Alltag tippen Ihre Leute ab, was längst digital vorliegt. Bestellungen aus dem Postfach ins ERP, Auftragsdaten aus dem ERP in die Excel-Liste. Jeden Tag, seit Jahren.</p>
-                <p class="text-lg md:text-xl leading-[1.6] text-black/60">Das hören wir quer durch den Mittelstand, vom Zulieferer bis zum Maschinenbauer. Die Details unterscheiden sich, das Muster nicht. Sie sind nicht allein, und an Ihren Leuten liegt es nicht.</p>
-            </div>
-            <div class="mt-14 md:mt-20 max-w-[840px] border-b border-black/10 pb-6">
-                <p class="text-lg md:text-xl leading-[1.5] text-black/60">Das ist der Befund. Warum ändert sich trotzdem nichts?</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 02 WARUM SICH NICHTS BEWEGT (dunkle Bahn) -->
-    <div class="zone-dark" data-rail-dark>
-        <section id="warum-sich-nichts-bewegt" class="py-20 md:py-32 fade-in-scroll" style="scroll-margin-top: 32px;">
-            <div class="max-w-[1200px] mx-auto px-6 md:px-16">
-                <header>
-                    <p class="text-sm md:text-base uppercase tracking-[2px] text-white/70">02/05</p>
-                    <h2 class="mt-4 md:mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-[64px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] font-bold">Warum sich nichts bewegt</h2>
-                    <p class="mt-5 md:mt-6 text-xl md:text-2xl leading-[1.4] text-white/80 fw-book max-w-[900px]">Ihr Anbieter verdient daran, dass ein Wechsel zu teuer wäre, also muss er sich nicht anstrengen.</p>
-                </header>
-                <div class="mt-10 md:mt-14 space-y-6 max-w-[840px]">
-                    <p class="text-lg md:text-xl leading-[1.6] text-white/80">Das ERP ist das Herz eines Fertigungsbetriebs. Jeder Auftrag, jede Stückliste, jede Rechnung läuft hindurch. Wer dieses Herz kontrolliert, bestimmt das Tempo des ganzen Unternehmens.</p>
-                    <p class="text-lg md:text-xl leading-[1.6] text-white/80">Veraltete Datenbanken. Geschlossene Schnittstellen. Tickets, die monatelang liegen bleiben. Das ist keine Nachlässigkeit. Der Anbieter weiß, dass ein Wechsel teuer und riskant ist. Also muss er sich nicht anstrengen.</p>
-                    <p class="text-lg md:text-xl leading-[1.6] text-white/80">Der Lock-in wirkt vor allem im Kopf. Man richtet sich ein, baut Hilfslösungen um die Lücken herum, exportiert nach Excel, tippt ab. So arbeiten zu viele Betriebe heute noch wie 1998.</p>
-                    <p class="text-lg md:text-xl leading-[1.6] text-white/80">Das ist kein Naturgesetz. Das ist ein Geschäftsmodell auf Kosten der Betriebe.</p>
-                    <p class="text-xl md:text-2xl leading-[1.5] text-white font-medium">Der Mittelstand kann frei werden. Von der Wartezeit, von der Abhängigkeit, von der Angst vor dem eigenen System.</p>
-                </div>
-                <div class="mt-14 md:mt-20 max-w-[840px] border-b border-white/25 pb-6">
-                    <p class="text-lg md:text-xl leading-[1.5] text-white/80">So weit der Appell. Ab hier wird es nüchtern: wie der Ausweg konkret aussieht.</p>
-                </div>
-            </div>
-        </section>
-    </div>
-    <!-- /zone-dark -->
-
-    <!-- 03 DER AUSWEG (weiss) -->
-    <section id="der-ausweg" class="bg-white py-20 md:py-32 fade-in-scroll" style="scroll-margin-top: 32px;">
-        <div class="max-w-[1200px] mx-auto px-6 md:px-16">
-            <header>
-                <p class="text-sm md:text-base uppercase tracking-[2px] text-black/60">03/05</p>
-                <h2 class="mt-4 md:mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-[64px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] font-bold">Der Ausweg</h2>
-                <p class="mt-5 md:mt-6 text-xl md:text-2xl leading-[1.4] text-black/60 fw-book max-w-[900px]">Eine Intelligenz-Schicht auf Ihren bestehenden Systemen, ohne Migration und ohne neue Abhängigkeit.</p>
-            </header>
-            <div class="mt-10 md:mt-14 max-w-[840px]">
-                <p class="text-lg md:text-xl leading-[1.6] text-black/60">Der Ausweg ist keine Migration, und er ist kein Sechs-Monats-Projekt. Niemand muss sein ERP wechseln, um besser zu arbeiten. Wir legen eine Intelligenz-Schicht auf die Systeme, die Sie schon haben: KI-Agenten, die Vorgänge lesen, gegen Ihre Daten prüfen und ins System zurückschreiben.</p>
-                <ul class="mt-8 md:mt-10 border-t border-black/10 list-none">
-                    <li class="py-5 md:py-6 border-b border-black/10"><p class="text-lg md:text-xl leading-[1.6] text-black/60">Erstens: Die Agenten lesen und schreiben über Schnittstellen. Kein Systemwechsel, keine Datenmigration, das ERP bleibt, was es ist.</p></li>
-                    <li class="py-5 md:py-6 border-b border-black/10"><p class="text-lg md:text-xl leading-[1.6] text-black/60">Zweitens: Ihre Leute arbeiten weiter, wo sie heute arbeiten, im Postfach und im ERP. Es gibt kein neues Programm, das jemand lernen muss.</p></li>
-                    <li class="py-5 md:py-6 border-b border-black/10"><p class="text-lg md:text-xl leading-[1.6] text-black/60">Drittens: Was wir für Sie bauen, gehört Ihrem Unternehmen. Keine neue Abhängigkeit, die die alte ersetzt.</p></li>
-                </ul>
-                <!-- Gespiegelte Szene aus Kapitel 01: das fuenfstellige Schnittstellen-Angebot, als Ablauf -->
-                <div class="mt-10 md:mt-14 rounded-[15px] border border-black/10 p-6 md:p-10 space-y-6">
-                    <p class="text-lg md:text-xl leading-[1.6] text-black/60">Zurück zum Angebot aus dem ersten Kapitel: die kleine Schnittstelle für fünfstelliges Geld. Derselbe Vorgang mit einem Agenten sieht so aus: Die Bestellung kommt wie bisher als PDF ins Postfach. Der Agent liest sie, gleicht Artikel, Mengen und Preise mit dem ERP ab und legt den Auftrag als Entwurf an. Jemand aus Ihrem Team prüft und gibt frei. Erst dann wird ins System geschrieben.</p>
-                    <p class="text-lg md:text-xl leading-[1.6] text-black">Keine Migration, kein Projektteam, kein Jahr Wartezeit. Nur der Vorgang, der vorher liegen blieb und jetzt läuft.</p>
-                </div>
-            </div>
-            <div class="mt-14 md:mt-20 max-w-[840px] border-b border-black/10 pb-6">
-                <p class="text-lg md:text-xl leading-[1.5] text-black/60">Das ist das Prinzip. Woran merken Sie, dass wir es ernst meinen?</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 04 SECHS GRUNDSAETZE (graues Tint-Band mit Karten) -->
+    <!-- WAS WIR ANDERS MACHEN (graues Tint-Band mit Punchline-Karten) -->
     <div class="zone-tint">
-        <section id="sechs-grundsaetze" class="py-20 md:py-32 fade-in-scroll" style="scroll-margin-top: 32px;">
+        <section id="was-wir-anders-machen" class="py-20 md:py-28 fade-in-scroll">
             <div class="max-w-[1200px] mx-auto px-6 md:px-16">
                 <header>
-                    <p class="text-sm md:text-base uppercase tracking-[2px] text-black/60">04/05</p>
-                    <h2 class="mt-4 md:mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-[64px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] font-bold">Sechs Grundsätze</h2>
-                    <p class="mt-5 md:mt-6 text-xl md:text-2xl leading-[1.4] text-black/60 fw-book max-w-[900px]">Keine Versprechen ohne Prüfstein: zu jedem Grundsatz sagen wir, woran Sie merken, ob er gilt.</p>
+                    <p class="text-sm md:text-base uppercase tracking-[2px] text-black/60">Was wir anders machen</p>
+                    <h2 class="mt-4 md:mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-[64px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] font-bold">Kein neues System. Keine Migration. Kein Jahresprojekt.</h2>
+                    <p class="mt-5 md:mt-6 text-xl md:text-2xl leading-[1.4] text-black/60 fw-book max-w-[900px]">KI-Agenten, die auf Ihren bestehenden Systemen mitarbeiten. Sechs Punkte, an denen Sie uns messen können.</p>
                 </header>
-                <p class="mt-10 md:mt-14 text-lg md:text-xl leading-[1.6] text-black/60 max-w-[840px]">Sechs Grundsätze tragen unsere Arbeit. Damit sie mehr sind als Marketing, steht unter jedem, woran Sie merken, ob er gilt. Keine Zahlenversprechen, nur Beobachtungen, die Sie selbst machen können.</p>
                 <div class="mt-10 md:mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="security-card flex flex-col">
-                        <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Ihre Daten bleiben bei Ihnen</h3>
-                        <p class="text-base text-black/60 leading-[1.6] mb-5">Ihre Daten liegen in Ihren Systemen und bleiben dort. Die Agenten greifen über Schnittstellen zu. Sie entscheiden, welche Modelle welche Daten sehen und was das Haus nicht verlässt.</p>
-                        <p class="mt-auto pt-5 border-t border-black/10 text-[15px] text-black/60 leading-[1.6]">Woran Sie es merken: Zum ersten Anwendungsfall gehört ein Vertrag zur Auftragsverarbeitung, in dem steht, wer worauf zugreift.</p>
+                    <div class="security-card">
+                        <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Souveräne Intelligenz</h3>
+                        <p class="text-base text-black/60 leading-[1.6]">Frontier-Modelle, in Deutschland gehostet. Ihre Daten bleiben Ihre.</p>
                     </div>
-                    <div class="security-card flex flex-col">
-                        <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Automatisierung, die sich rechnet</h3>
-                        <p class="text-base text-black/60 leading-[1.6] mb-5">Eine Automatisierung, die ihre Kosten nicht wieder einspielt, bauen wir nicht. Vor jedem Fall steht die einfache Rechnung: Was kostet der Vorgang heute, was kostet er mit Agent.</p>
-                        <p class="mt-auto pt-5 border-t border-black/10 text-[15px] text-black/60 leading-[1.6]">Woran Sie es merken: Rechnet sich ein Fall nicht, sagen wir es Ihnen vor dem Start und raten ab.</p>
+                    <div class="security-card">
+                        <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Rechnet sich nicht? Bauen wir nicht.</h3>
+                        <p class="text-base text-black/60 leading-[1.6]">Vor jedem Fall steht die Rechnung: was der Vorgang heute kostet, was er mit Agent kostet.</p>
                     </div>
-                    <div class="security-card flex flex-col">
-                        <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Auf den bestehenden Systemen</h3>
-                        <p class="text-base text-black/60 leading-[1.6] mb-5">Kein Rip-and-Replace. Die Agenten arbeiten auf dem ERP, dem CRM und dem Postfach, die bei Ihnen schon laufen.</p>
-                        <p class="mt-auto pt-5 border-t border-black/10 text-[15px] text-black/60 leading-[1.6]">Woran Sie es merken: Wir schlagen Ihnen nie einen Systemwechsel vor.</p>
+                    <div class="security-card">
+                        <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Läuft auf dem, was Sie haben.</h3>
+                        <p class="text-base text-black/60 leading-[1.6]">ERP, CRM, Postfach: die Agenten arbeiten auf Ihren Systemen, nicht auf einem neuen.</p>
                     </div>
-                    <div class="security-card flex flex-col">
-                        <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Erste Ergebnisse in Wochen, nicht Monaten</h3>
-                        <p class="text-base text-black/60 leading-[1.6] mb-5">Der erste Anwendungsfall ist klar umrissen und geht in Wochen produktiv, nicht nach einem Jahr Konzeptphase.</p>
-                        <p class="mt-auto pt-5 border-t border-black/10 text-[15px] text-black/60 leading-[1.6]">Woran Sie es merken: Sie sehen den ersten Fall produktiv laufen, bevor Sie über den nächsten Schritt entscheiden.</p>
+                    <div class="security-card">
+                        <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Wochen, nicht Monate.</h3>
+                        <p class="text-base text-black/60 leading-[1.6]">Der erste Anwendungsfall geht in Wochen produktiv, nicht nach einem Jahr Konzeptphase.</p>
                     </div>
-                    <div class="security-card flex flex-col">
-                        <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Klein anfangen, systematisch wachsen</h3>
-                        <p class="text-base text-black/60 leading-[1.6] mb-5">Ein Vorgang nach dem anderen, in Ihrer Reihenfolge. Tempo und Budget bleiben bei Ihnen.</p>
-                        <p class="mt-auto pt-5 border-t border-black/10 text-[15px] text-black/60 leading-[1.6]">Woran Sie es merken: Jeder weitere Anwendungsfall ist ein eigenes Angebot, das Sie annehmen oder ablehnen können.</p>
+                    <div class="security-card">
+                        <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Klein anfangen. Systematisch wachsen.</h3>
+                        <p class="text-base text-black/60 leading-[1.6]">Ein Vorgang nach dem anderen, in Ihrer Reihenfolge. Tempo und Budget bleiben bei Ihnen.</p>
                     </div>
-                    <div class="security-card flex flex-col">
-                        <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Unabhängig von Ihrem ERP- und CRM-Anbieter</h3>
-                        <p class="text-base text-black/60 leading-[1.6] mb-5">Wir verdienen nicht an Ihrem Lock-in. Was wir bauen, gehört Ihrem Unternehmen und arbeitet weiter, falls Sie das System darunter eines Tages doch wechseln.</p>
-                        <p class="mt-auto pt-5 border-t border-black/10 text-[15px] text-black/60 leading-[1.6]">Woran Sie es merken: In keinem unserer Angebote steht, dass Sie ein System kaufen, behalten oder verlängern müssen.</p>
+                    <div class="security-card">
+                        <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Ihr Lock-in ist nicht unser Geschäftsmodell.</h3>
+                        <p class="text-base text-black/60 leading-[1.6]">Was wir bauen, gehört Ihrem Unternehmen. Und arbeitet weiter, falls Sie das System darunter wechseln.</p>
                     </div>
                 </div>
-                <div class="mt-14 md:mt-20 max-w-[840px] border-b border-black/10 pb-6">
-                    <p class="text-lg md:text-xl leading-[1.5] text-black/60">An diesen sechs Punkten können Sie uns messen. Bleibt die Frage, wie man anfängt, ohne ins Risiko zu gehen.</p>
+                <div class="mt-12 md:mt-16 flex flex-wrap items-center gap-x-6 gap-y-4">
+                    <a href="../contact.html" class="btn-hover bg-black text-white text-lg font-medium px-8 py-4 rounded-full inline-block">Gespräch vereinbaren</a>
+                    <p class="text-base md:text-lg text-black/60">Der schnellste Weg, uns zu prüfen.</p>
                 </div>
             </div>
         </section>
     </div>
     <!-- /zone-tint -->
 
-    <!-- 05 DER ERSTE SCHRITT (weiss) -->
-    <section id="der-erste-schritt" class="bg-white py-20 md:py-32 fade-in-scroll" style="scroll-margin-top: 32px;">
+    <!-- SOUVERAENE INTELLIGENZ (dunkle Bahn) -->
+    <div class="zone-dark">
+        <section id="souveraene-intelligenz" class="py-20 md:py-28 fade-in-scroll">
+            <div class="max-w-[1200px] mx-auto px-6 md:px-16">
+                <header>
+                    <p class="text-sm md:text-base uppercase tracking-[2px] text-white/70">Souveräne Intelligenz</p>
+                    <h2 class="mt-4 md:mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-[64px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] font-bold">Die beste KI. Zu Ihren Bedingungen.</h2>
+                </header>
+                <ul class="mt-10 md:mt-14 max-w-[900px] border-t border-white/25 list-none">
+                    <li class="border-b border-white/25 py-6 md:py-8">
+                        <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px]">In Deutschland gehostet.</h3>
+                        <p class="mt-2 text-base md:text-lg leading-[1.5] text-white/80 fw-book">Sophia arbeitet mit Frontier-Modellen, die in Deutschland gehostet werden. Souveränität heißt nicht, sich mit schwächerer KI zufriedenzugeben.</p>
+                    </li>
+                    <li class="border-b border-white/25 py-6 md:py-8">
+                        <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px]">An kein Modell gebunden.</h3>
+                        <p class="mt-2 text-base md:text-lg leading-[1.5] text-white/80 fw-book">Sophia ist modell-agnostisch. Jeder Vorgang läuft auf dem Modell, das ihn am besten kann, und wechselt, wenn ein besseres kommt.</p>
+                    </li>
+                    <li class="border-b border-white/25 py-6 md:py-8">
+                        <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px]">Ihre Daten bleiben bei Ihnen.</h3>
+                        <p class="mt-2 text-base md:text-lg leading-[1.5] text-white/80 fw-book">In Ihren Systemen, unter Ihren Verträgen. Sie entscheiden, welches Modell welche Daten sieht und was das Haus nie verlässt.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- /zone-dark -->
+
+    <!-- DER ERSTE SCHRITT (weiss) -->
+    <section id="der-erste-schritt" class="bg-white py-20 md:py-28 fade-in-scroll">
         <div class="max-w-[1200px] mx-auto px-6 md:px-16">
             <header>
-                <p class="text-sm md:text-base uppercase tracking-[2px] text-black/60">05/05</p>
-                <h2 class="mt-4 md:mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-[64px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] font-bold">Der erste Schritt</h2>
-                <p class="mt-5 md:mt-6 text-xl md:text-2xl leading-[1.4] text-black/60 fw-book max-w-[900px]">Ein Gespräch von 30 Minuten, ein klar umrissener erster Fall, produktiv in Wochen, dann entscheiden Sie.</p>
+                <p class="text-sm md:text-base uppercase tracking-[2px] text-black/60">Der erste Schritt</p>
+                <h2 class="mt-4 md:mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-[64px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] font-bold">Drei Stationen. Nach jeder können Sie aufhören.</h2>
             </header>
             <div class="mt-10 md:mt-14 max-w-[840px]">
-                <p class="text-lg md:text-xl leading-[1.6] text-black/60">Der Einstieg ist bewusst klein gehalten. Drei Stationen, und nach jeder können Sie aufhören.</p>
-                <ol class="mt-8 md:mt-12 border-t border-black/10 list-none">
-                    <li class="grid grid-cols-[44px_1fr] md:grid-cols-[64px_1fr] gap-x-4 md:gap-x-8 py-8 md:py-10 border-b border-black/10">
+                <ol class="border-t border-black/10 list-none">
+                    <li class="grid grid-cols-[44px_1fr] md:grid-cols-[64px_1fr] gap-x-4 md:gap-x-8 py-7 md:py-8 border-b border-black/10">
                         <span class="text-2xl md:text-3xl font-bold tracking-[-0.5px] leading-none pt-1" aria-hidden="true">1</span>
                         <div class="min-w-0">
-                            <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px]">Ein Gespräch, 30 Minuten</h3>
-                            <p class="mt-3 text-base md:text-lg leading-[1.6] text-black/60">Direkt mit den Gründern, kein Verkaufscall, kein Foliensatz. Wir schauen uns gemeinsam einen Ihrer Vorgänge an. Mitbringen müssen Sie nur einen Vorgang, der nervt. Danach kann Schluss sein: Sie haben 30 Minuten investiert, mehr nicht.</p>
+                            <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px]">Ein Gespräch. 30 Minuten.</h3>
+                            <p class="mt-3 text-base md:text-lg leading-[1.6] text-black/60">Direkt mit den Gründern, kein Verkaufscall. Bringen Sie einen Vorgang mit, der nervt.</p>
                         </div>
                     </li>
-                    <li class="grid grid-cols-[44px_1fr] md:grid-cols-[64px_1fr] gap-x-4 md:gap-x-8 py-8 md:py-10 border-b border-black/10">
+                    <li class="grid grid-cols-[44px_1fr] md:grid-cols-[64px_1fr] gap-x-4 md:gap-x-8 py-7 md:py-8 border-b border-black/10">
                         <span class="text-2xl md:text-3xl font-bold tracking-[-0.5px] leading-none pt-1" aria-hidden="true">2</span>
                         <div class="min-w-0">
-                            <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px]">Ein erster Anwendungsfall</h3>
-                            <p class="mt-3 text-base md:text-lg leading-[1.6] text-black/60">Aus dem Gespräch wird ein klar umrissener erster Fall. Vor dem Start bekommen Sie ein Angebot mit festem Rahmen, kein Rahmenvertrag, kein Abo. Auch hier kann Schluss sein: Sie beauftragen genau diesen einen Fall oder gar nichts.</p>
+                            <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px]">Ein Fall. Festes Angebot.</h3>
+                            <p class="mt-3 text-base md:text-lg leading-[1.6] text-black/60">Klar umrissen, Preis vor dem Start. Kein Abo, kein Rahmenvertrag.</p>
                         </div>
                     </li>
-                    <li class="grid grid-cols-[44px_1fr] md:grid-cols-[64px_1fr] gap-x-4 md:gap-x-8 py-8 md:py-10 border-b border-black/10">
+                    <li class="grid grid-cols-[44px_1fr] md:grid-cols-[64px_1fr] gap-x-4 md:gap-x-8 py-7 md:py-8 border-b border-black/10">
                         <span class="text-2xl md:text-3xl font-bold tracking-[-0.5px] leading-none pt-1" aria-hidden="true">3</span>
                         <div class="min-w-0">
-                            <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px]">Produktiv in Wochen, dann entscheiden Sie</h3>
-                            <p class="mt-3 text-base md:text-lg leading-[1.6] text-black/60">Der Fall geht produktiv, Ihre Leute arbeiten damit, Sie sehen, was er im Alltag leistet. Erst dann entscheiden Sie über den nächsten Schritt. Und wenn Sie aufhören: Das Gebaute gehört Ihrem Unternehmen.</p>
+                            <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px]">Produktiv in Wochen.</h3>
+                            <p class="mt-3 text-base md:text-lg leading-[1.6] text-black/60">Ihre Leute arbeiten damit, Sie sehen, was es bringt. Dann erst entscheiden Sie weiter. Das Gebaute gehört Ihnen.</p>
                         </div>
                     </li>
                 </ol>
@@ -543,15 +395,15 @@
                     <div class="mt-6 md:mt-8 border-t border-black/10">
                         <div class="py-6 md:py-8 border-b border-black/10">
                             <p class="text-lg md:text-xl font-bold tracking-[-0.3px]">Wo landen unsere Daten?</p>
-                            <p class="mt-2 text-base md:text-lg leading-[1.6] text-black/60">In Ihren Systemen, und dort bleiben sie. Der Zugriff läuft über Schnittstellen. Ein Vertrag zur Auftragsverarbeitung gehört zum ersten Anwendungsfall, Ihr Vertragspartner ist die Krops GmbH, die deutsche Gesellschaft hinter Sophia.</p>
+                            <p class="mt-2 text-base md:text-lg leading-[1.6] text-black/60">In Ihren Systemen, und dort bleiben sie. Zum ersten Fall gehört ein Vertrag zur Auftragsverarbeitung. Ihr Vertragspartner ist die Krops GmbH, die deutsche Gesellschaft hinter Sophia.</p>
                         </div>
                         <div class="py-6 md:py-8 border-b border-black/10">
                             <p class="text-lg md:text-xl font-bold tracking-[-0.3px]">Was kostet der erste Schritt?</p>
-                            <p class="mt-2 text-base md:text-lg leading-[1.6] text-black/60">Das Gespräch kostet 30 Minuten Ihrer Zeit und sonst nichts. Für den ersten Anwendungsfall bekommen Sie vor dem Start ein Angebot mit festem Rahmen.</p>
+                            <p class="mt-2 text-base md:text-lg leading-[1.6] text-black/60">Das Gespräch: 30 Minuten Ihrer Zeit. Der erste Fall: ein Angebot mit festem Rahmen, bevor irgendetwas startet.</p>
                         </div>
                         <div class="py-6 md:py-8 border-b border-black/10">
                             <p class="text-lg md:text-xl font-bold tracking-[-0.3px]">Wie viel Zeit bindet das bei uns?</p>
-                            <p class="mt-2 text-base md:text-lg leading-[1.6] text-black/60">Wenig. Einen Ansprechpartner aus dem Fachbereich, der den Vorgang kennt. Kein internes Projektteam, kein IT-Projekt.</p>
+                            <p class="mt-2 text-base md:text-lg leading-[1.6] text-black/60">Ein Ansprechpartner, der den Vorgang kennt. Kein Projektteam, kein IT-Projekt.</p>
                         </div>
                     </div>
                 </div>
@@ -559,18 +411,18 @@
                 <!-- Die eine Conversion-Aktion der Seite -->
                 <div class="mt-14 md:mt-20">
                     <a href="../contact.html" class="bg-black text-white text-lg font-medium px-8 py-4 rounded-full hover:bg-black/80 transition-colors inline-block">Gespräch vereinbaren</a>
-                    <p class="mt-5 text-base md:text-lg leading-[1.6] text-black/60 max-w-[560px]">30 Minuten, direkt mit den Gründern, ohne Foliensatz. Bringen Sie einen Vorgang mit, der nervt.</p>
+                    <p class="mt-5 text-base md:text-lg leading-[1.6] text-black/60 max-w-[560px]">Bringen Sie einen Vorgang mit, der nervt.</p>
                 </div>
 
                 <!-- Absender-Block -->
                 <div class="mt-16 md:mt-24 pt-8 border-t border-black/10">
-                    <p class="text-sm md:text-[15px] leading-[1.6] text-black/60 max-w-[640px]">Hinter diesem Aufruf steht Sophia (gosophia.ai), ein Team aus Freiburg. Ihr Vertragspartner ist die Krops GmbH mit Sitz in Berlin. Wir bauen KI-Agenten für das Back-Office mittelständischer Fertigungsbetriebe, auf den Systemen, die dort schon laufen.</p>
+                    <p class="text-sm md:text-[15px] leading-[1.6] text-black/60 max-w-[640px]">Hinter dieser Seite steht Sophia (gosophia.ai), ein Team aus Freiburg. Ihr Vertragspartner ist die Krops GmbH mit Sitz in Berlin.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-black text-white" data-rail-dark>
+    <footer class="bg-black text-white">
         <div class="max-w-[1200px] mx-auto px-6 pt-[120px] pb-6">
             <!-- Top section -->
             <div class="flex flex-col lg:flex-row justify-between gap-16 lg:gap-[80px]">
@@ -633,22 +485,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.fade-in-scroll').forEach(el => observer.observe(el));
 
-            // Anker-Sprünge: Ziel-Sektion vor dem nativen Scroll aufdecken,
-            // sonst verschiebt das fade-in-Transform (translateY 30px) das Sprungziel.
-            // Transition dabei kurz abschalten, damit das Transform sofort weg ist,
-            // bevor der Browser die Sprungposition berechnet.
-            document.querySelectorAll('a[href^="#"]').forEach(a => {
-                a.addEventListener('click', () => {
-                    const t = document.getElementById(a.getAttribute('href').slice(1));
-                    if (t && !t.classList.contains('visible')) {
-                        t.style.transition = 'none';
-                        t.classList.add('visible');
-                        void t.offsetHeight;
-                        t.style.transition = '';
-                    }
-                });
-            });
-
             // Mobile menu toggle
             const btn = document.getElementById('mobile-menu-button');
             const menu = document.getElementById('mobile-menu');
@@ -658,57 +494,6 @@
             }
         });
 
-        // Kapitel-Leiste: Fuellstand und aktiver Stopp aus der Scroll-Position,
-        // Farbwechsel auf dunklen Bahnen (Hero, Kapitel 02, Footer)
-        (function () {
-            var rail = document.getElementById('chapter-rail');
-            if (!rail) return;
-            var fill = document.getElementById('rail-fill');
-            var stops = Array.prototype.slice.call(rail.querySelectorAll('.rail-stop'));
-            var ids = ['der-befund', 'warum-sich-nichts-bewegt', 'der-ausweg', 'sechs-grundsaetze', 'der-erste-schritt'];
-            var ticking = false;
-
-            function docTop(el) { return el.getBoundingClientRect().top + window.pageYOffset; }
-
-            function update() {
-                ticking = false;
-                var chapters = ids.map(function (id) { return document.getElementById(id); });
-                if (chapters.some(function (c) { return !c; })) return;
-                var footer = document.querySelector('footer');
-                var marker = window.pageYOffset + window.innerHeight * 0.4;
-                var tops = chapters.map(docTop);
-                var endLast = footer ? docTop(footer) : tops[4] + chapters[4].offsetHeight;
-                var active = -1;
-                for (var i = 0; i < tops.length; i++) { if (marker >= tops[i]) active = i; }
-                var frac = 0;
-                if (active >= 0) {
-                    var start = tops[active];
-                    var end = active < 4 ? tops[active + 1] : endLast;
-                    var within = (marker - start) / Math.max(1, end - start);
-                    within = Math.max(0, Math.min(1, within));
-                    frac = Math.min(1, (active + within) / 4);
-                }
-                fill.style.height = (frac * 100) + '%';
-                stops.forEach(function (s, i) {
-                    s.classList.toggle('passed', i < active);
-                    s.classList.toggle('active', i === active);
-                    if (i === active) { s.setAttribute('aria-current', 'true'); } else { s.removeAttribute('aria-current'); }
-                });
-                // Dunkel-Erkennung: liegt die Leisten-Mitte ueber einer dunklen Bahn?
-                var mid = window.pageYOffset + window.innerHeight / 2;
-                var onDark = Array.prototype.slice.call(document.querySelectorAll('[data-rail-dark]')).some(function (el) {
-                    var t = docTop(el);
-                    return mid >= t && mid < t + el.offsetHeight;
-                });
-                rail.classList.toggle('on-dark', onDark);
-            }
-
-            function request() { if (!ticking) { ticking = true; window.requestAnimationFrame(update); } }
-            window.addEventListener('scroll', request, { passive: true });
-            window.addEventListener('resize', request);
-            document.addEventListener('DOMContentLoaded', update);
-            update();
-        })();
     </script>
 
     <script>
@@ -716,6 +501,8 @@
         // Englisch wird bei window.SOPHIA_LANG === 'en' per flachem Dictionary eingewechselt.
         // Header/Footer sind woertlich von der Site uebernommen (englisch eingebacken)
         // und werden bei 'de' mit den DE_STATIC-Werten der Site eingedeutscht.
+        // Die EN-Werte sind eine Arbeitsuebersetzung, Feinschliff folgt nach dem
+        // Freeze der deutschen Fassung.
         (function () {
             function swap(map) {
                 document.querySelectorAll('a, p, h1, h2, h3, h4, h5, h6, span, li, button').forEach(function (el) {
@@ -748,93 +535,61 @@
                 var EN = {
                     "Ein Manifest für den Mittelstand": "A manifesto for the Mittelstand",
                     "Es ist Zeit. Free the Mittelstand.": "Time to free the Mittelstand.",
-                    "Von Sophia aus Freiburg. Wir bauen KI-Agenten, die im Back-Office von Fertigungsbetrieben mitarbeiten, auf dem ERP und dem Postfach, die schon da sind.": "From Sophia in Freiburg. We build AI agents that work inside the back office of manufacturing companies, on the ERP and the inbox already in place.",
-                    "Zu oft Realität: Stillstand in der Mittelstands-IT.": "Too often the reality: standstill in Mittelstand IT.",
+                    "Von Sophia aus Freiburg. Wir bauen KI-Agenten für das Back-Office des Mittelstands, auf ERP und Postfach, die schon da sind.": "From Sophia in Freiburg. We build AI agents for the Mittelstand back office, on the ERP and inbox already in place.",
+                    "Das ERP hält den Mittelstand zurück.": "ERP is holding the Mittelstand back.",
                     "Gewöhnt an Systemanpassungen in Quartalen, nicht in Tagen.": "Accustomed to system changes that take quarters, not days.",
                     "Standardprozesse, gestützt von Exceltabellen und Kopfwissen, weil man längst aufgegeben hat, alles in einem Guss abzuwickeln.": "Standard processes propped up by Excel sheets and tribal knowledge, because everyone gave up long ago on handling things end to end.",
                     "Workarounds für die eigens angepassten Systeme.": "Workarounds for the very systems that were customized to fit.",
                     "Und ein Lock-in, so tief, dass die Dienstleister sich ausruhen, statt wettbewerbsfähigen Service zu leisten.": "And a lock-in so deep that the service providers can afford to coast instead of delivering competitive service.",
                     "Und jetzt kommt KI.": "And now comes AI.",
                     "Also plant man das nächste Sechs-Monats-Projekt. Mit denselben Anbietern, von denen man das Tempo bereits kennt.": "So the next six-month project gets planned. With the same vendors whose pace everyone already knows.",
-                    "Der Befund": "The Diagnosis",
-                    "Warum sich nichts bewegt": "Why Nothing Changes",
-                    "Der Ausweg": "The Way Out",
-                    "Sechs Grundsätze": "Six Principles",
-                    "Der erste Schritt": "The First Step",
-                    "So sieht der Stillstand aus der Nähe aus: offene Tickets, wechselnde Ansprechpartner, fünfstellige Angebote für kleine Schnittstellen.": "This is what the standstill looks like up close: open tickets, a revolving door of contacts, five-figure quotes for small interfaces.",
-                    "Ihr Anbieter verdient daran, dass ein Wechsel zu teuer wäre, also muss er sich nicht anstrengen.": "Your vendor profits because switching would cost you too much, so it does not have to try.",
-                    "Eine Intelligenz-Schicht auf Ihren bestehenden Systemen, ohne Migration und ohne neue Abhängigkeit.": "An intelligence layer on top of the systems you already run, with no migration and no new dependency.",
-                    "Keine Versprechen ohne Prüfstein: zu jedem Grundsatz sagen wir, woran Sie merken, ob er gilt.": "No promise without a test: for each principle, we tell you how to check that it holds.",
-                    "Ein Gespräch von 30 Minuten, ein klar umrissener erster Fall, produktiv in Wochen, dann entscheiden Sie.": "A 30-minute conversation, one clearly defined first case, live within weeks, then you decide.",
-                    "Sie kennen das. Das Ticket ist seit vier Monaten offen. Der Ansprechpartner hat wieder gewechselt. Das Angebot für eine kleine Schnittstelle liegt auf dem Tisch: fünfstellig, Lieferzeit unklar.": "You know moments like these. The ticket has been open for four months. Your contact at the vendor has changed again. The quote for one small interface is on the table: five figures, delivery date unclear.",
-                    "Und im Alltag tippen Ihre Leute ab, was längst digital vorliegt. Bestellungen aus dem Postfach ins ERP, Auftragsdaten aus dem ERP in die Excel-Liste. Jeden Tag, seit Jahren.": "Meanwhile, your people retype what already exists digitally. Purchase orders from the inbox into the ERP, order data from the ERP into a spreadsheet. Every day, for years.",
-                    "Das hören wir quer durch den Mittelstand, vom Zulieferer bis zum Maschinenbauer. Die Details unterscheiden sich, das Muster nicht. Sie sind nicht allein, und an Ihren Leuten liegt es nicht.": "We hear this across the Mittelstand, from suppliers to machine builders. The details differ, the pattern does not. You are not alone, and it is not your people's fault.",
-                    "Das ist der Befund. Warum ändert sich trotzdem nichts?": "That is the diagnosis. So why does nothing change?",
-                    "Das ERP ist das Herz eines Fertigungsbetriebs. Jeder Auftrag, jede Stückliste, jede Rechnung läuft hindurch. Wer dieses Herz kontrolliert, bestimmt das Tempo des ganzen Unternehmens.": "The ERP is the heart of a manufacturing company. Every order, every bill of materials, every invoice runs through it. Whoever controls that heart sets the pace for the entire company.",
-                    "Veraltete Datenbanken. Geschlossene Schnittstellen. Tickets, die monatelang liegen bleiben. Das ist keine Nachlässigkeit. Der Anbieter weiß, dass ein Wechsel teuer und riskant ist. Also muss er sich nicht anstrengen.": "Outdated databases. Closed interfaces. Tickets that sit for months. This is not carelessness. The vendor knows that switching is expensive and risky. So it does not have to try.",
-                    "Der Lock-in wirkt vor allem im Kopf. Man richtet sich ein, baut Hilfslösungen um die Lücken herum, exportiert nach Excel, tippt ab. So arbeiten zu viele Betriebe heute noch wie 1998.": "Most of the lock-in is psychological. You settle in, build workarounds around the gaps, export to Excel, retype by hand. Too many companies still work the way they did in 1998.",
-                    "Das ist kein Naturgesetz. Das ist ein Geschäftsmodell auf Kosten der Betriebe.": "This is not a law of nature. It is a business model built at the companies' expense.",
-                    "Der Mittelstand kann frei werden. Von der Wartezeit, von der Abhängigkeit, von der Angst vor dem eigenen System.": "The Mittelstand can be free. Free of the waiting, the dependency, the fear of its own system.",
-                    "So weit der Appell. Ab hier wird es nüchtern: wie der Ausweg konkret aussieht.": "That was the rallying cry. From here on, plain mechanics: how the way out actually works.",
-                    "Der Ausweg ist keine Migration, und er ist kein Sechs-Monats-Projekt. Niemand muss sein ERP wechseln, um besser zu arbeiten. Wir legen eine Intelligenz-Schicht auf die Systeme, die Sie schon haben: KI-Agenten, die Vorgänge lesen, gegen Ihre Daten prüfen und ins System zurückschreiben.": "The way out is not a migration, and it is not another six-month project. Nobody has to replace their ERP to work better. We put an intelligence layer on top of the systems you already have: AI agents that read your transactions, check them against your data, and write back into the system.",
-                    "Erstens: Die Agenten lesen und schreiben über Schnittstellen. Kein Systemwechsel, keine Datenmigration, das ERP bleibt, was es ist.": "First, the agents read and write through interfaces. No system change, no data migration. Your ERP stays as it is.",
-                    "Zweitens: Ihre Leute arbeiten weiter, wo sie heute arbeiten, im Postfach und im ERP. Es gibt kein neues Programm, das jemand lernen muss.": "Second, your people keep working where they work today: in the inbox and in the ERP. There is no new tool to learn.",
-                    "Drittens: Was wir für Sie bauen, gehört Ihrem Unternehmen. Keine neue Abhängigkeit, die die alte ersetzt.": "Third, what we build for you belongs to your company. No trading one dependency for another.",
-                    "Zurück zum Angebot aus dem ersten Kapitel: die kleine Schnittstelle für fünfstelliges Geld. Derselbe Vorgang mit einem Agenten sieht so aus: Die Bestellung kommt wie bisher als PDF ins Postfach. Der Agent liest sie, gleicht Artikel, Mengen und Preise mit dem ERP ab und legt den Auftrag als Entwurf an. Jemand aus Ihrem Team prüft und gibt frei. Erst dann wird ins System geschrieben.": "Back to the quote from chapter one, the small interface for five figures. The same process with an agent looks like this: the purchase order arrives in the inbox as a PDF, just as before. The agent reads it, checks items, quantities, and prices against the ERP, and creates the order as a draft. Someone on your team reviews and approves. Only then is anything written to the system.",
-                    "Keine Migration, kein Projektteam, kein Jahr Wartezeit. Nur der Vorgang, der vorher liegen blieb und jetzt läuft.": "No migration, no project team, no year of waiting. Just the process that used to sit in a ticket queue, now running.",
-                    "Das ist das Prinzip. Woran merken Sie, dass wir es ernst meinen?": "That is the principle. How can you tell we mean it?",
-                    "Sechs Grundsätze tragen unsere Arbeit. Damit sie mehr sind als Marketing, steht unter jedem, woran Sie merken, ob er gilt. Keine Zahlenversprechen, nur Beobachtungen, die Sie selbst machen können.": "Six principles guide our work. To keep them from being just marketing, each one comes with a way to check that it holds. We promise no numbers, only things you can observe for yourself.",
-                    "Ihre Daten bleiben bei Ihnen": "Your data stays with you",
-                    "Ihre Daten liegen in Ihren Systemen und bleiben dort. Die Agenten greifen über Schnittstellen zu. Sie entscheiden, welche Modelle welche Daten sehen und was das Haus nicht verlässt.": "Your data lives in your systems and stays there. The agents access it through interfaces. You decide which models see which data and what never leaves your company.",
-                    "Woran Sie es merken: Zum ersten Anwendungsfall gehört ein Vertrag zur Auftragsverarbeitung, in dem steht, wer worauf zugreift.": "How you can tell: the first use case comes with a data processing agreement that spells out who accesses what.",
-                    "Automatisierung, die sich rechnet": "Automation that pays for itself",
-                    "Eine Automatisierung, die ihre Kosten nicht wieder einspielt, bauen wir nicht. Vor jedem Fall steht die einfache Rechnung: Was kostet der Vorgang heute, was kostet er mit Agent.": "If an automation does not earn back its cost, we do not build it. Every case starts with simple math: what the process costs today, and what it costs with an agent.",
-                    "Woran Sie es merken: Rechnet sich ein Fall nicht, sagen wir es Ihnen vor dem Start und raten ab.": "How you can tell: if a case will not pay off, we say so up front and advise against it.",
-                    "Auf den bestehenden Systemen": "On the systems you already run",
-                    "Kein Rip-and-Replace. Die Agenten arbeiten auf dem ERP, dem CRM und dem Postfach, die bei Ihnen schon laufen.": "No rip and replace. The agents work on the ERP, the CRM, and the inbox you already use.",
-                    "Woran Sie es merken: Wir schlagen Ihnen nie einen Systemwechsel vor.": "How you can tell: we will never suggest that you switch systems.",
-                    "Erste Ergebnisse in Wochen, nicht Monaten": "First results in weeks, not months",
-                    "Der erste Anwendungsfall ist klar umrissen und geht in Wochen produktiv, nicht nach einem Jahr Konzeptphase.": "The first use case is clearly defined and goes live within weeks, not after a year of planning.",
-                    "Woran Sie es merken: Sie sehen den ersten Fall produktiv laufen, bevor Sie über den nächsten Schritt entscheiden.": "How you can tell: you see the first case running in production before you decide on the next step.",
-                    "Klein anfangen, systematisch wachsen": "Start small, grow systematically",
+                    "Gespräch vereinbaren": "Book a conversation",
+                    "30 Minuten, direkt mit den Gründern. Kein Foliensatz.": "30 minutes, directly with the founders. No slide deck.",
+                    "Was wir anders machen": "What we do differently",
+                    "Kein neues System. Keine Migration. Kein Jahresprojekt.": "No new system. No migration. No year-long project.",
+                    "KI-Agenten, die auf Ihren bestehenden Systemen mitarbeiten. Sechs Punkte, an denen Sie uns messen können.": "AI agents that work on the systems you already run. Six points you can hold us to.",
+                    "Souveräne Intelligenz": "Sovereign intelligence",
+                    "Frontier-Modelle, in Deutschland gehostet. Ihre Daten bleiben Ihre.": "Frontier models, hosted in Germany. Your data stays yours.",
+                    "Rechnet sich nicht? Bauen wir nicht.": "Doesn't pay for itself? We don't build it.",
+                    "Vor jedem Fall steht die Rechnung: was der Vorgang heute kostet, was er mit Agent kostet.": "Every case starts with the math: what the process costs today, and what it costs with an agent.",
+                    "Läuft auf dem, was Sie haben.": "Runs on what you already have.",
+                    "ERP, CRM, Postfach: die Agenten arbeiten auf Ihren Systemen, nicht auf einem neuen.": "ERP, CRM, inbox: the agents work on your systems, not on a new one.",
+                    "Wochen, nicht Monate.": "Weeks, not months.",
+                    "Der erste Anwendungsfall geht in Wochen produktiv, nicht nach einem Jahr Konzeptphase.": "The first use case goes live within weeks, not after a year of planning.",
+                    "Klein anfangen. Systematisch wachsen.": "Start small. Grow systematically.",
                     "Ein Vorgang nach dem anderen, in Ihrer Reihenfolge. Tempo und Budget bleiben bei Ihnen.": "One process at a time, in the order you choose. You control the pace and the budget.",
-                    "Woran Sie es merken: Jeder weitere Anwendungsfall ist ein eigenes Angebot, das Sie annehmen oder ablehnen können.": "How you can tell: every additional use case is a separate proposal you can accept or decline.",
-                    "Unabhängig von Ihrem ERP- und CRM-Anbieter": "Independent of your ERP and CRM vendor",
-                    "Wir verdienen nicht an Ihrem Lock-in. Was wir bauen, gehört Ihrem Unternehmen und arbeitet weiter, falls Sie das System darunter eines Tages doch wechseln.": "We do not make money on your lock-in. What we build belongs to your company and keeps working if you ever do switch the system underneath.",
-                    "Woran Sie es merken: In keinem unserer Angebote steht, dass Sie ein System kaufen, behalten oder verlängern müssen.": "How you can tell: none of our proposals requires you to buy, keep, or renew any system.",
-                    "An diesen sechs Punkten können Sie uns messen. Bleibt die Frage, wie man anfängt, ohne ins Risiko zu gehen.": "These six points are what you can hold us to. That leaves one question: how to start without taking on risk.",
-                    "Der Einstieg ist bewusst klein gehalten. Drei Stationen, und nach jeder können Sie aufhören.": "The starting point is deliberately small. Three stages, and you can stop after any one of them.",
-                    "Ein Gespräch, 30 Minuten": "A 30-minute conversation",
-                    "Direkt mit den Gründern, kein Verkaufscall, kein Foliensatz. Wir schauen uns gemeinsam einen Ihrer Vorgänge an. Mitbringen müssen Sie nur einen Vorgang, der nervt. Danach kann Schluss sein: Sie haben 30 Minuten investiert, mehr nicht.": "You talk directly with the founders, no sales call, no slide deck. Bring one process that annoys you, nothing else, and we look at it together. This can be the end of it: you have spent 30 minutes, nothing more.",
-                    "Ein erster Anwendungsfall": "A first use case",
-                    "Aus dem Gespräch wird ein klar umrissener erster Fall. Vor dem Start bekommen Sie ein Angebot mit festem Rahmen, kein Rahmenvertrag, kein Abo. Auch hier kann Schluss sein: Sie beauftragen genau diesen einen Fall oder gar nichts.": "The conversation turns into one clearly defined first case. Before anything starts, you receive a fixed-scope proposal, no framework agreement, no subscription. This too can be the end of it: you commission exactly this one case, or nothing at all.",
-                    "Produktiv in Wochen, dann entscheiden Sie": "Live within weeks, then you decide",
-                    "Der Fall geht produktiv, Ihre Leute arbeiten damit, Sie sehen, was er im Alltag leistet. Erst dann entscheiden Sie über den nächsten Schritt. Und wenn Sie aufhören: Das Gebaute gehört Ihrem Unternehmen.": "The case goes into production, your people work with it, you see what it delivers day to day. Only then do you decide on the next step. And if you stop, everything that was built belongs to your company.",
+                    "Ihr Lock-in ist nicht unser Geschäftsmodell.": "Your lock-in is not our business model.",
+                    "Was wir bauen, gehört Ihrem Unternehmen. Und arbeitet weiter, falls Sie das System darunter wechseln.": "What we build belongs to your company. And keeps working if you ever switch the system underneath.",
+                    "Der schnellste Weg, uns zu prüfen.": "The fastest way to put us to the test.",
+                    "Die beste KI. Zu Ihren Bedingungen.": "The best AI. On your terms.",
+                    "In Deutschland gehostet.": "Hosted in Germany.",
+                    "Sophia arbeitet mit Frontier-Modellen, die in Deutschland gehostet werden. Souveränität heißt nicht, sich mit schwächerer KI zufriedenzugeben.": "Sophia works with frontier models hosted in Germany. Sovereignty does not mean settling for weaker AI.",
+                    "An kein Modell gebunden.": "Tied to no single model.",
+                    "Sophia ist modell-agnostisch. Jeder Vorgang läuft auf dem Modell, das ihn am besten kann, und wechselt, wenn ein besseres kommt.": "Sophia is model-agnostic. Every process runs on the model that handles it best, and switches when a better one arrives.",
+                    "Ihre Daten bleiben bei Ihnen.": "Your data stays with you.",
+                    "In Ihren Systemen, unter Ihren Verträgen. Sie entscheiden, welches Modell welche Daten sieht und was das Haus nie verlässt.": "In your systems, under your contracts. You decide which model sees which data and what never leaves your company.",
+                    "Der erste Schritt": "The first step",
+                    "Drei Stationen. Nach jeder können Sie aufhören.": "Three stages. You can stop after any one of them.",
+                    "Ein Gespräch. 30 Minuten.": "One conversation. 30 minutes.",
+                    "Direkt mit den Gründern, kein Verkaufscall. Bringen Sie einen Vorgang mit, der nervt.": "Directly with the founders, no sales call. Bring one process that annoys you.",
+                    "Ein Fall. Festes Angebot.": "One case. A fixed proposal.",
+                    "Klar umrissen, Preis vor dem Start. Kein Abo, kein Rahmenvertrag.": "Clearly defined, priced before anything starts. No subscription, no framework agreement.",
+                    "Produktiv in Wochen.": "Live within weeks.",
+                    "Ihre Leute arbeiten damit, Sie sehen, was es bringt. Dann erst entscheiden Sie weiter. Das Gebaute gehört Ihnen.": "Your people work with it, you see what it delivers. Only then do you decide what comes next. What was built belongs to you.",
                     "Drei Fragen, die an dieser Stelle jeder stellt.": "Three questions everyone asks at this point.",
                     "Wo landen unsere Daten?": "Where does our data end up?",
-                    "In Ihren Systemen, und dort bleiben sie. Der Zugriff läuft über Schnittstellen. Ein Vertrag zur Auftragsverarbeitung gehört zum ersten Anwendungsfall, Ihr Vertragspartner ist die Krops GmbH, die deutsche Gesellschaft hinter Sophia.": "In your systems, and it stays there. The agents access it through interfaces. A data processing agreement is part of the first use case, and your contract is with Krops GmbH, the German company behind Sophia.",
+                    "In Ihren Systemen, und dort bleiben sie. Zum ersten Fall gehört ein Vertrag zur Auftragsverarbeitung. Ihr Vertragspartner ist die Krops GmbH, die deutsche Gesellschaft hinter Sophia.": "In your systems, and it stays there. The first case comes with a data processing agreement. Your contract partner is Krops GmbH, the German company behind Sophia.",
                     "Was kostet der erste Schritt?": "What does the first step cost?",
-                    "Das Gespräch kostet 30 Minuten Ihrer Zeit und sonst nichts. Für den ersten Anwendungsfall bekommen Sie vor dem Start ein Angebot mit festem Rahmen.": "The conversation costs 30 minutes of your time and nothing else. For the first use case, you receive a fixed-scope proposal before anything starts.",
+                    "Das Gespräch: 30 Minuten Ihrer Zeit. Der erste Fall: ein Angebot mit festem Rahmen, bevor irgendetwas startet.": "The conversation: 30 minutes of your time. The first case: a fixed-scope proposal before anything starts.",
                     "Wie viel Zeit bindet das bei uns?": "How much of our team's time does this take?",
-                    "Wenig. Einen Ansprechpartner aus dem Fachbereich, der den Vorgang kennt. Kein internes Projektteam, kein IT-Projekt.": "Very little. One person on your side who knows the process. No internal project team, no IT project.",
-                    "Gespräch vereinbaren": "Book a conversation",
-                    "30 Minuten, direkt mit den Gründern, ohne Foliensatz. Bringen Sie einen Vorgang mit, der nervt.": "30 minutes, directly with the founders, no slide deck. Bring one process that annoys you.",
-                    "Hinter diesem Aufruf steht Sophia (gosophia.ai), ein Team aus Freiburg. Ihr Vertragspartner ist die Krops GmbH mit Sitz in Berlin. Wir bauen KI-Agenten für das Back-Office mittelständischer Fertigungsbetriebe, auf den Systemen, die dort schon laufen.": "This manifesto comes from Sophia (gosophia.ai), a team based in Freiburg, Germany. Your contract partner is Krops GmbH, registered in Berlin. We build AI agents for the back office of manufacturing SMEs, on the systems already running there."
+                    "Ein Ansprechpartner, der den Vorgang kennt. Kein Projektteam, kein IT-Projekt.": "One person on your side who knows the process. No project team, no IT project.",
+                    "Bringen Sie einen Vorgang mit, der nervt.": "Bring one process that annoys you.",
+                    "Hinter dieser Seite steht Sophia (gosophia.ai), ein Team aus Freiburg. Ihr Vertragspartner ist die Krops GmbH mit Sitz in Berlin.": "This page comes from Sophia (gosophia.ai), a team based in Freiburg, Germany. Your contract partner is Krops GmbH, registered in Berlin."
                 };
                 swap(EN);
                 document.title = "Time to free the Mittelstand. A manifesto by Sophia";
                 var desc = document.querySelector('meta[name="description"]');
                 if (desc) desc.setAttribute('content', "Your ERP vendor profits when switching is too expensive. Sophia builds AI agents on the systems you already run, with no migration and no new dependency.");
-                var railNav = document.getElementById('chapter-rail');
-                if (railNav) {
-                    railNav.setAttribute('aria-label', 'Chapters');
-                    // Tooltips laufen nicht durch den textContent-Tausch, daher aus den
-                    // bereits uebersetzten sr-only-Spans nachziehen.
-                    railNav.querySelectorAll('.rail-stop').forEach(function (a) {
-                        var s = a.querySelector('.sr-only');
-                        if (s) a.setAttribute('title', s.textContent);
-                    });
-                }
             }
         })();
     </script>
