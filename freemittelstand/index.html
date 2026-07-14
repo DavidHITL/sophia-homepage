@@ -204,7 +204,7 @@
             box-shadow: 0 14px 34px rgba(0,0,0,0.45);
         }
 
-        /* KMR Apparat Book fuer die Thesen-Zeilen */
+        /* KMR Apparat Book fuer Litanei- und Unterzeilen */
         .fw-book { font-weight: 350; }
 
         /* Kapitel-Leiste: 1px-Haarlinie mit fuenf Stopps im linken Gutter,
@@ -312,15 +312,15 @@
     <nav id="chapter-rail" class="chapter-rail" aria-label="Kapitel">
         <div class="rail-track">
             <div class="rail-fill" id="rail-fill"></div>
-            <a href="#der-befund" class="rail-stop" style="top: 0%;"><span class="rail-dot" aria-hidden="true"></span><span class="rail-num" aria-hidden="true">01</span><span class="sr-only">Der Befund</span></a>
-            <a href="#warum-sich-nichts-bewegt" class="rail-stop" style="top: 25%;"><span class="rail-dot" aria-hidden="true"></span><span class="rail-num" aria-hidden="true">02</span><span class="sr-only">Warum sich nichts bewegt</span></a>
-            <a href="#der-ausweg" class="rail-stop" style="top: 50%;"><span class="rail-dot" aria-hidden="true"></span><span class="rail-num" aria-hidden="true">03</span><span class="sr-only">Der Ausweg</span></a>
-            <a href="#sechs-grundsaetze" class="rail-stop" style="top: 75%;"><span class="rail-dot" aria-hidden="true"></span><span class="rail-num" aria-hidden="true">04</span><span class="sr-only">Sechs Grundsätze</span></a>
-            <a href="#der-erste-schritt" class="rail-stop" style="top: 100%;"><span class="rail-dot" aria-hidden="true"></span><span class="rail-num" aria-hidden="true">05</span><span class="sr-only">Der erste Schritt</span></a>
+            <a href="#der-befund" class="rail-stop" style="top: 0%;" title="Der Befund"><span class="rail-dot" aria-hidden="true"></span><span class="rail-num" aria-hidden="true">01</span><span class="sr-only">Der Befund</span></a>
+            <a href="#warum-sich-nichts-bewegt" class="rail-stop" style="top: 25%;" title="Warum sich nichts bewegt"><span class="rail-dot" aria-hidden="true"></span><span class="rail-num" aria-hidden="true">02</span><span class="sr-only">Warum sich nichts bewegt</span></a>
+            <a href="#der-ausweg" class="rail-stop" style="top: 50%;" title="Der Ausweg"><span class="rail-dot" aria-hidden="true"></span><span class="rail-num" aria-hidden="true">03</span><span class="sr-only">Der Ausweg</span></a>
+            <a href="#sechs-grundsaetze" class="rail-stop" style="top: 75%;" title="Sechs Grundsätze"><span class="rail-dot" aria-hidden="true"></span><span class="rail-num" aria-hidden="true">04</span><span class="sr-only">Sechs Grundsätze</span></a>
+            <a href="#der-erste-schritt" class="rail-stop" style="top: 100%;" title="Der erste Schritt"><span class="rail-dot" aria-hidden="true"></span><span class="rail-num" aria-hidden="true">05</span><span class="sr-only">Der erste Schritt</span></a>
         </div>
     </nav>
 
-    <!-- HERO: Sunrise-Gradient, Wortmarke, Absender-Unterzeile, Argument-Index als Signature -->
+    <!-- HERO: Sunrise-Gradient, Wortmarke, Absender-Unterzeile, der Befund als Litanei mit KI-Pointe -->
     <section class="relative min-h-screen flex flex-col overflow-hidden" data-rail-dark>
         <div class="absolute inset-0 hero-gradient"></div>
 
@@ -351,62 +351,34 @@
             </nav>
         </header>
 
-        <div class="relative z-10 flex-1 flex items-center text-white px-6 md:px-16 pb-10 pt-4">
+        <div class="relative z-10 flex-1 flex items-center text-white px-6 md:px-16 pb-6 pt-4">
             <div class="max-w-[1200px] mx-auto w-full">
                 <p class="hero-animate text-sm md:text-base uppercase tracking-[2px] text-white/80">Ein Manifest für den Mittelstand</p>
                 <h1 id="hero-h1" class="hero-animate mt-4 text-[40px] sm:text-5xl md:text-6xl lg:text-[64px] 2xl:text-[70px] font-bold uppercase leading-[0.92] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px]">Zeit, den Mittelstand zu befreien.</h1>
                 <p id="hero-sub" class="hero-animate hero-animate-delay-1 text-lg md:text-2xl lg:text-[24px] leading-[1.35] mt-5 md:mt-6 max-w-[900px] text-white/90">Von Sophia aus Freiburg. Wir bauen KI-Agenten, die im Back-Office von Fertigungsbetrieben mitarbeiten, auf dem ERP und dem Postfach, die schon da sind.</p>
 
-                <!-- Argument-Index: das komplette Argument in fuenf Zeilen, klickbar -->
-                <nav id="argument-index" class="hero-animate hero-animate-delay-2 mt-5 md:mt-6" aria-label="Inhaltsverzeichnis">
-                    <ol class="max-w-[1000px] border-t border-white/25 list-none">
-                        <li class="border-b border-white/25">
-                            <a href="#der-befund" class="flex items-baseline gap-4 md:gap-6 py-3 px-2 md:px-3 text-white transition-colors hover:bg-white/[0.08]">
-                                <span class="shrink-0 w-8 md:w-11 text-lg md:text-2xl font-bold tracking-[-0.5px]">01</span>
-                                <span class="min-w-0">
-                                    <span class="block text-xl md:text-[28px] font-bold tracking-[-0.5px] leading-tight">Der Befund</span>
-                                    <span class="index-thesis hidden md:block mt-1 text-[15px] lg:text-base leading-[1.45] text-white/80 fw-book max-w-[780px]">Offene Tickets, wechselnde Ansprechpartner, fünfstellige Angebote für kleine Schnittstellen: das hören wir quer durch den Mittelstand.</span>
-                                </span>
-                            </a>
+                <!-- Der Befund als Litanei: der Stillstand Zeile fuer Zeile, dann die KI-Pointe -->
+                <div id="befund-litanei" class="hero-animate hero-animate-delay-2 mt-6 md:mt-8">
+                    <p class="text-xl md:text-2xl font-bold tracking-[-0.5px] [text-wrap:balance]">Stillstand in der Mittelstands-IT.</p>
+                    <ul class="mt-4 max-w-[900px] border-t border-white/25 list-none">
+                        <li class="border-b border-white/25 py-3">
+                            <p class="text-base md:text-lg leading-[1.45] text-white/90 fw-book">Gewöhnt an Systemanpassungen in Quartalen, nicht in Tagen.</p>
                         </li>
-                        <li class="border-b border-white/25">
-                            <a href="#warum-sich-nichts-bewegt" class="flex items-baseline gap-4 md:gap-6 py-3 px-2 md:px-3 text-white transition-colors hover:bg-white/[0.08]">
-                                <span class="shrink-0 w-8 md:w-11 text-lg md:text-2xl font-bold tracking-[-0.5px]">02</span>
-                                <span class="min-w-0">
-                                    <span class="block text-xl md:text-[28px] font-bold tracking-[-0.5px] leading-tight">Warum sich nichts bewegt</span>
-                                    <span class="index-thesis hidden md:block mt-1 text-[15px] lg:text-base leading-[1.45] text-white/80 fw-book max-w-[780px]">Ihr Anbieter verdient daran, dass ein Wechsel zu teuer wäre, also muss er sich nicht anstrengen.</span>
-                                </span>
-                            </a>
+                        <li class="border-b border-white/25 py-3">
+                            <p class="text-base md:text-lg leading-[1.45] text-white/90 fw-book">Standardprozesse, gestützt von Exceltabellen und Kopfwissen, weil man längst aufgegeben hat, alles in einem Guss abzuwickeln.</p>
                         </li>
-                        <li class="border-b border-white/25">
-                            <a href="#der-ausweg" class="flex items-baseline gap-4 md:gap-6 py-3 px-2 md:px-3 text-white transition-colors hover:bg-white/[0.08]">
-                                <span class="shrink-0 w-8 md:w-11 text-lg md:text-2xl font-bold tracking-[-0.5px]">03</span>
-                                <span class="min-w-0">
-                                    <span class="block text-xl md:text-[28px] font-bold tracking-[-0.5px] leading-tight">Der Ausweg</span>
-                                    <span class="index-thesis hidden md:block mt-1 text-[15px] lg:text-base leading-[1.45] text-white/80 fw-book max-w-[780px]">Eine Intelligenz-Schicht auf Ihren bestehenden Systemen, ohne Migration und ohne neue Abhängigkeit.</span>
-                                </span>
-                            </a>
+                        <li class="border-b border-white/25 py-3">
+                            <p class="text-base md:text-lg leading-[1.45] text-white/90 fw-book">Workarounds für die eigens angepassten Systeme.</p>
                         </li>
-                        <li class="border-b border-white/25">
-                            <a href="#sechs-grundsaetze" class="flex items-baseline gap-4 md:gap-6 py-3 px-2 md:px-3 text-white transition-colors hover:bg-white/[0.08]">
-                                <span class="shrink-0 w-8 md:w-11 text-lg md:text-2xl font-bold tracking-[-0.5px]">04</span>
-                                <span class="min-w-0">
-                                    <span class="block text-xl md:text-[28px] font-bold tracking-[-0.5px] leading-tight">Sechs Grundsätze</span>
-                                    <span class="index-thesis hidden md:block mt-1 text-[15px] lg:text-base leading-[1.45] text-white/80 fw-book max-w-[780px]">Keine Versprechen ohne Prüfstein: zu jedem Grundsatz sagen wir, woran Sie merken, ob er gilt.</span>
-                                </span>
-                            </a>
+                        <li class="border-b border-white/25 py-3">
+                            <p class="text-base md:text-lg leading-[1.45] text-white/90 fw-book">Und ein Lock-in, so tief, dass die Dienstleister sich ausruhen, statt wettbewerbsfähigen Service zu leisten.</p>
                         </li>
-                        <li class="border-b border-white/25">
-                            <a href="#der-erste-schritt" class="flex items-baseline gap-4 md:gap-6 py-3 px-2 md:px-3 text-white transition-colors hover:bg-white/[0.08]">
-                                <span class="shrink-0 w-8 md:w-11 text-lg md:text-2xl font-bold tracking-[-0.5px]">05</span>
-                                <span class="min-w-0">
-                                    <span class="block text-xl md:text-[28px] font-bold tracking-[-0.5px] leading-tight">Der erste Schritt</span>
-                                    <span class="index-thesis hidden md:block mt-1 text-[15px] lg:text-base leading-[1.45] text-white/80 fw-book max-w-[780px]">Ein Gespräch von 30 Minuten, ein klar umrissener erster Fall, produktiv in Wochen, dann entscheiden Sie.</span>
-                                </span>
-                            </a>
-                        </li>
-                    </ol>
-                </nav>
+                    </ul>
+                </div>
+                <div class="hero-animate hero-animate-delay-3 mt-5 md:mt-7 max-w-[900px]">
+                    <p class="text-2xl md:text-[32px] font-bold tracking-[-0.5px] leading-tight">Und jetzt kommt KI.</p>
+                    <p class="mt-2 text-base md:text-lg leading-[1.45] text-white/90 fw-book">Also plant man das nächste Sechs-Monats-Projekt. Mit denselben Anbietern, von denen man das Tempo bereits kennt.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -417,7 +389,7 @@
             <header>
                 <p class="text-sm md:text-base uppercase tracking-[2px] text-black/60">01/05</p>
                 <h2 class="mt-4 md:mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-[64px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] font-bold">Der Befund</h2>
-                <p class="mt-5 md:mt-6 text-xl md:text-2xl leading-[1.4] text-black/60 fw-book max-w-[900px]">Offene Tickets, wechselnde Ansprechpartner, fünfstellige Angebote für kleine Schnittstellen: das hören wir quer durch den Mittelstand.</p>
+                <p class="mt-5 md:mt-6 text-xl md:text-2xl leading-[1.4] text-black/60 fw-book max-w-[900px]">So sieht der Stillstand aus der Nähe aus: offene Tickets, wechselnde Ansprechpartner, fünfstellige Angebote für kleine Schnittstellen.</p>
             </header>
             <div class="mt-10 md:mt-14 space-y-6 max-w-[840px]">
                 <p class="text-lg md:text-xl leading-[1.6] text-black/60">Sie kennen das. Das Ticket ist seit vier Monaten offen. Der Ansprechpartner hat wieder gewechselt. Das Angebot für eine kleine Schnittstelle liegt auf dem Tisch: fünfstellig, Lieferzeit unklar.</p>
@@ -463,7 +435,7 @@
                 <p class="mt-5 md:mt-6 text-xl md:text-2xl leading-[1.4] text-black/60 fw-book max-w-[900px]">Eine Intelligenz-Schicht auf Ihren bestehenden Systemen, ohne Migration und ohne neue Abhängigkeit.</p>
             </header>
             <div class="mt-10 md:mt-14 max-w-[840px]">
-                <p class="text-lg md:text-xl leading-[1.6] text-black/60">Der Ausweg ist keine Migration. Niemand muss sein ERP wechseln, um besser zu arbeiten. Wir legen eine Intelligenz-Schicht auf die Systeme, die Sie schon haben: KI-Agenten, die Vorgänge lesen, gegen Ihre Daten prüfen und ins System zurückschreiben.</p>
+                <p class="text-lg md:text-xl leading-[1.6] text-black/60">Der Ausweg ist keine Migration, und er ist kein Sechs-Monats-Projekt. Niemand muss sein ERP wechseln, um besser zu arbeiten. Wir legen eine Intelligenz-Schicht auf die Systeme, die Sie schon haben: KI-Agenten, die Vorgänge lesen, gegen Ihre Daten prüfen und ins System zurückschreiben.</p>
                 <ul class="mt-8 md:mt-10 border-t border-black/10 list-none">
                     <li class="py-5 md:py-6 border-b border-black/10"><p class="text-lg md:text-xl leading-[1.6] text-black/60">Erstens: Die Agenten lesen und schreiben über Schnittstellen. Kein Systemwechsel, keine Datenmigration, das ERP bleibt, was es ist.</p></li>
                     <li class="py-5 md:py-6 border-b border-black/10"><p class="text-lg md:text-xl leading-[1.6] text-black/60">Zweitens: Ihre Leute arbeiten weiter, wo sie heute arbeiten, im Postfach und im ERP. Es gibt kein neues Programm, das jemand lernen muss.</p></li>
@@ -777,12 +749,19 @@
                     "Ein Manifest für den Mittelstand": "A manifesto for the Mittelstand",
                     "Zeit, den Mittelstand zu befreien.": "Time to free the Mittelstand.",
                     "Von Sophia aus Freiburg. Wir bauen KI-Agenten, die im Back-Office von Fertigungsbetrieben mitarbeiten, auf dem ERP und dem Postfach, die schon da sind.": "From Sophia in Freiburg. We build AI agents that work inside the back office of manufacturing companies, on the ERP and the inbox already in place.",
+                    "Stillstand in der Mittelstands-IT.": "Standstill in Mittelstand IT.",
+                    "Gewöhnt an Systemanpassungen in Quartalen, nicht in Tagen.": "Accustomed to system changes that take quarters, not days.",
+                    "Standardprozesse, gestützt von Exceltabellen und Kopfwissen, weil man längst aufgegeben hat, alles in einem Guss abzuwickeln.": "Standard processes propped up by Excel sheets and tribal knowledge, because everyone gave up long ago on handling things end to end.",
+                    "Workarounds für die eigens angepassten Systeme.": "Workarounds for the very systems that were customized to fit.",
+                    "Und ein Lock-in, so tief, dass die Dienstleister sich ausruhen, statt wettbewerbsfähigen Service zu leisten.": "And a lock-in so deep that the service providers can afford to coast instead of delivering competitive service.",
+                    "Und jetzt kommt KI.": "And now comes AI.",
+                    "Also plant man das nächste Sechs-Monats-Projekt. Mit denselben Anbietern, von denen man das Tempo bereits kennt.": "So the next six-month project gets planned. With the same vendors whose pace everyone already knows.",
                     "Der Befund": "The Diagnosis",
                     "Warum sich nichts bewegt": "Why Nothing Changes",
                     "Der Ausweg": "The Way Out",
                     "Sechs Grundsätze": "Six Principles",
                     "Der erste Schritt": "The First Step",
-                    "Offene Tickets, wechselnde Ansprechpartner, fünfstellige Angebote für kleine Schnittstellen: das hören wir quer durch den Mittelstand.": "Open tickets, a revolving door of contacts, five-figure quotes for small interfaces: we hear this across the Mittelstand.",
+                    "So sieht der Stillstand aus der Nähe aus: offene Tickets, wechselnde Ansprechpartner, fünfstellige Angebote für kleine Schnittstellen.": "This is what the standstill looks like up close: open tickets, a revolving door of contacts, five-figure quotes for small interfaces.",
                     "Ihr Anbieter verdient daran, dass ein Wechsel zu teuer wäre, also muss er sich nicht anstrengen.": "Your vendor profits because switching would cost you too much, so it does not have to try.",
                     "Eine Intelligenz-Schicht auf Ihren bestehenden Systemen, ohne Migration und ohne neue Abhängigkeit.": "An intelligence layer on top of the systems you already run, with no migration and no new dependency.",
                     "Keine Versprechen ohne Prüfstein: zu jedem Grundsatz sagen wir, woran Sie merken, ob er gilt.": "No promise without a test: for each principle, we tell you how to check that it holds.",
@@ -797,7 +776,7 @@
                     "Das ist kein Naturgesetz. Das ist ein Geschäftsmodell auf Kosten der Betriebe.": "This is not a law of nature. It is a business model built at the companies' expense.",
                     "Der Mittelstand kann frei werden. Von der Wartezeit, von der Abhängigkeit, von der Angst vor dem eigenen System.": "The Mittelstand can be free. Free of the waiting, the dependency, the fear of its own system.",
                     "So weit der Appell. Ab hier wird es nüchtern: wie der Ausweg konkret aussieht.": "That was the rallying cry. From here on, plain mechanics: how the way out actually works.",
-                    "Der Ausweg ist keine Migration. Niemand muss sein ERP wechseln, um besser zu arbeiten. Wir legen eine Intelligenz-Schicht auf die Systeme, die Sie schon haben: KI-Agenten, die Vorgänge lesen, gegen Ihre Daten prüfen und ins System zurückschreiben.": "The way out is not a migration. Nobody has to replace their ERP to work better. We put an intelligence layer on top of the systems you already have: AI agents that read your transactions, check them against your data, and write back into the system.",
+                    "Der Ausweg ist keine Migration, und er ist kein Sechs-Monats-Projekt. Niemand muss sein ERP wechseln, um besser zu arbeiten. Wir legen eine Intelligenz-Schicht auf die Systeme, die Sie schon haben: KI-Agenten, die Vorgänge lesen, gegen Ihre Daten prüfen und ins System zurückschreiben.": "The way out is not a migration, and it is not another six-month project. Nobody has to replace their ERP to work better. We put an intelligence layer on top of the systems you already have: AI agents that read your transactions, check them against your data, and write back into the system.",
                     "Erstens: Die Agenten lesen und schreiben über Schnittstellen. Kein Systemwechsel, keine Datenmigration, das ERP bleibt, was es ist.": "First, the agents read and write through interfaces. No system change, no data migration. Your ERP stays as it is.",
                     "Zweitens: Ihre Leute arbeiten weiter, wo sie heute arbeiten, im Postfach und im ERP. Es gibt kein neues Programm, das jemand lernen muss.": "Second, your people keep working where they work today: in the inbox and in the ERP. There is no new tool to learn.",
                     "Drittens: Was wir für Sie bauen, gehört Ihrem Unternehmen. Keine neue Abhängigkeit, die die alte ersetzt.": "Third, what we build for you belongs to your company. No trading one dependency for another.",
@@ -846,10 +825,16 @@
                 document.title = "Time to free the Mittelstand. A manifesto by Sophia";
                 var desc = document.querySelector('meta[name="description"]');
                 if (desc) desc.setAttribute('content', "Your ERP vendor profits when switching is too expensive. Sophia builds AI agents on the systems you already run, with no migration and no new dependency.");
-                var argIndex = document.getElementById('argument-index');
-                if (argIndex) argIndex.setAttribute('aria-label', 'Table of contents');
                 var railNav = document.getElementById('chapter-rail');
-                if (railNav) railNav.setAttribute('aria-label', 'Chapters');
+                if (railNav) {
+                    railNav.setAttribute('aria-label', 'Chapters');
+                    // Tooltips laufen nicht durch den textContent-Tausch, daher aus den
+                    // bereits uebersetzten sr-only-Spans nachziehen.
+                    railNav.querySelectorAll('.rail-stop').forEach(function (a) {
+                        var s = a.querySelector('.sr-only');
+                        if (s) a.setAttribute('title', s.textContent);
+                    });
+                }
             }
         })();
     </script>
