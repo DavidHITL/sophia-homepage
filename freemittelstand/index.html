@@ -254,31 +254,22 @@
             <div class="max-w-[1200px] mx-auto w-full">
                 <p class="hero-animate text-sm md:text-base uppercase tracking-[2px] text-white/80">Ein Manifest für den Mittelstand</p>
                 <h1 id="hero-h1" class="hero-animate mt-4 text-[40px] sm:text-5xl md:text-6xl lg:text-[64px] 2xl:text-[70px] font-bold uppercase leading-[0.92] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px]">Es ist Zeit. Free the Mittelstand.</h1>
-                <p id="hero-sub" class="hero-animate hero-animate-delay-1 text-base md:text-lg leading-[1.5] mt-4 md:mt-5 max-w-[760px] text-white/85">Von Sophia aus Freiburg. Wir bauen KI-Agenten für das Back-Office des Mittelstands, auf ERP und Postfach, die schon da sind.</p>
-
-                <!-- Der Befund als Litanei: der Stillstand Zeile fuer Zeile, dann die KI-Pointe -->
-                <div id="befund-litanei" class="hero-animate hero-animate-delay-2 mt-6 md:mt-8">
+                <!-- Die Diagnose, ruhig gesetzt: zwei gleich grosse fette Anker,
+                     dazwischen vier stille Einzeiler ohne Linien, drei Typo-Ebenen insgesamt -->
+                <div id="befund-litanei" class="hero-animate hero-animate-delay-1 mt-10 md:mt-12">
                     <p class="text-xl md:text-2xl font-bold tracking-[-0.5px] [text-wrap:balance]">Das ERP hält den Mittelstand zurück.</p>
-                    <ul class="mt-4 max-w-[1000px] border-t border-white/25 list-none">
-                        <li class="border-b border-white/25 py-2.5">
-                            <p class="text-base md:text-lg leading-[1.45] text-white/90 fw-book">Gewöhnt an Systemanpassungen in Quartalen, nicht in Tagen.</p>
-                        </li>
-                        <li class="border-b border-white/25 py-2.5">
-                            <p class="text-base md:text-lg leading-[1.45] text-white/90 fw-book">Standardprozesse, gestützt von Exceltabellen und Kopfwissen, weil man längst aufgegeben hat, alles in einem Guss abzuwickeln.</p>
-                        </li>
-                        <li class="border-b border-white/25 py-2.5">
-                            <p class="text-base md:text-lg leading-[1.45] text-white/90 fw-book">Workarounds für die eigens angepassten Systeme.</p>
-                        </li>
-                        <li class="border-b border-white/25 py-2.5">
-                            <p class="text-base md:text-lg leading-[1.45] text-white/90 fw-book">Und ein Lock-in, so tief, dass die Dienstleister sich ausruhen, statt wettbewerbsfähigen Service zu leisten.</p>
-                        </li>
+                    <ul class="mt-3 md:mt-4 space-y-1.5 md:space-y-2 list-none">
+                        <li><p class="text-base md:text-lg leading-[1.5] text-white/85 fw-book">Systemanpassungen dauern Quartale, nicht Tage.</p></li>
+                        <li><p class="text-base md:text-lg leading-[1.5] text-white/85 fw-book">Standardprozesse laufen über Excel und Kopfwissen.</p></li>
+                        <li><p class="text-base md:text-lg leading-[1.5] text-white/85 fw-book">Workarounds für die eigens angepassten Systeme.</p></li>
+                        <li><p class="text-base md:text-lg leading-[1.5] text-white/85 fw-book">Und ein Lock-in, auf dem die Dienstleister sich ausruhen.</p></li>
                     </ul>
                 </div>
-                <div class="hero-animate hero-animate-delay-3 mt-4 md:mt-6 max-w-[1000px]">
-                    <p class="text-2xl md:text-[32px] font-bold tracking-[-0.5px] leading-tight">Und jetzt kommt KI.</p>
-                    <p class="mt-2 text-base md:text-lg leading-[1.45] text-white/90 fw-book">Zeit, dass sich was ändert. Rufen Sie uns an.</p>
+                <div id="ki-pointe" class="hero-animate hero-animate-delay-2 mt-8 md:mt-10">
+                    <p class="text-xl md:text-2xl font-bold tracking-[-0.5px]">Und jetzt kommt KI.</p>
+                    <p class="mt-2 text-base md:text-lg leading-[1.5] text-white/85 fw-book">Zeit, dass sich was ändert. Rufen Sie uns an.</p>
                 </div>
-                <div class="hero-animate hero-animate-delay-3 mt-5 md:mt-6 flex flex-wrap items-center gap-x-6 gap-y-4">
+                <div class="hero-animate hero-animate-delay-3 mt-8 md:mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
                     <a href="../contact.html" class="btn-hover bg-white text-black text-base md:text-lg font-medium px-8 py-4 rounded-full inline-block">Gespräch vereinbaren</a>
                     <p class="text-sm md:text-base text-white/80">30 Minuten, direkt mit den Gründern. Kein Foliensatz.</p>
                 </div>
@@ -535,12 +526,11 @@
                 var EN = {
                     "Ein Manifest für den Mittelstand": "A manifesto for the Mittelstand",
                     "Es ist Zeit. Free the Mittelstand.": "Time to free the Mittelstand.",
-                    "Von Sophia aus Freiburg. Wir bauen KI-Agenten für das Back-Office des Mittelstands, auf ERP und Postfach, die schon da sind.": "From Sophia in Freiburg. We build AI agents for the Mittelstand back office, on the ERP and inbox already in place.",
                     "Das ERP hält den Mittelstand zurück.": "ERP is holding the Mittelstand back.",
-                    "Gewöhnt an Systemanpassungen in Quartalen, nicht in Tagen.": "Accustomed to system changes that take quarters, not days.",
-                    "Standardprozesse, gestützt von Exceltabellen und Kopfwissen, weil man längst aufgegeben hat, alles in einem Guss abzuwickeln.": "Standard processes propped up by Excel sheets and tribal knowledge, because everyone gave up long ago on handling things end to end.",
+                    "Systemanpassungen dauern Quartale, nicht Tage.": "System changes take quarters, not days.",
+                    "Standardprozesse laufen über Excel und Kopfwissen.": "Standard processes run on Excel and tribal knowledge.",
                     "Workarounds für die eigens angepassten Systeme.": "Workarounds for the very systems that were customized to fit.",
-                    "Und ein Lock-in, so tief, dass die Dienstleister sich ausruhen, statt wettbewerbsfähigen Service zu leisten.": "And a lock-in so deep that the service providers can afford to coast instead of delivering competitive service.",
+                    "Und ein Lock-in, auf dem die Dienstleister sich ausruhen.": "And a lock-in the service providers rest on.",
                     "Und jetzt kommt KI.": "And now comes AI.",
                     "Zeit, dass sich was ändert. Rufen Sie uns an.": "Time for that to change. Give us a call.",
                     "Gespräch vereinbaren": "Book a conversation",
