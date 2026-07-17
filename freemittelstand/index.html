@@ -145,10 +145,9 @@
         /* Hero gradient: der kanonische Sunrise aus dem Styleguide (--grad-sunrise),
            Blau oben links ueber Amber in Ember unten rechts */
         .hero-gradient {
-            background: linear-gradient(145deg,
-                #3c66a9 0%,
-                #c5752d 60%,
-                #b7490f 80%);
+            background: linear-gradient(160deg,
+                #16161c 0%,
+                #000000 72%);
         }
 
         /* Button hover */
@@ -167,6 +166,14 @@
             border-bottom: 1px solid rgba(0,0,0,0.06);
         }
         .zone-tint section { background-color: transparent; }
+
+        /* Promised-Land-Bahn: der Sunrise-Gradient (frueher im Hero), jetzt als
+           positiver "yeah"-Hintergrund nach dem schwarzen "baeh"-Hero. Die weissen
+           Karten schweben darauf, der Section-Header steht weiss (im Markup). */
+        .zone-sunrise {
+            background: linear-gradient(145deg, #3c66a9 0%, #c5752d 60%, #b7490f 80%);
+        }
+        .zone-sunrise section { background-color: transparent; }
 
         /* Dunkle Bahn: der Dusk-Gradient aus dem Styleguide (--grad-dusk),
            Indigo ueber Dusk-Blau in Mauve, mit einem Scrim, der zum hellen Mauve-Ende
@@ -277,23 +284,19 @@
         </div>
     </section>
 
-    <!-- WAS WIR ANDERS MACHEN (graues Tint-Band mit Punchline-Karten) -->
-    <div class="zone-tint">
+    <!-- WAS WIR ANDERS MACHEN (Sunrise-Bahn, das "yeah" nach dem schwarzen Hero) -->
+    <div class="zone-sunrise">
         <section id="was-wir-anders-machen" class="py-20 md:py-28 fade-in-scroll">
             <div class="max-w-[1200px] mx-auto px-6 md:px-16">
                 <header>
-                    <p class="text-sm md:text-base uppercase tracking-[2px] text-black/60">Was wir anders machen</p>
-                    <h2 class="mt-4 md:mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-[64px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] font-bold">Kein Systemwechsel. Keine Migration. Kein Jahresprojekt.</h2>
-                    <p class="mt-5 md:mt-6 text-xl md:text-2xl leading-[1.4] text-black/60 fw-book max-w-[900px]">KI-Agenten, die mit Ihren bestehenden Systemen Arbeit erledigen.</p>
+                    <p class="text-sm md:text-base uppercase tracking-[2px] text-white/80">Was wir anders machen</p>
+                    <h2 class="mt-4 md:mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-[64px] leading-[0.95] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] font-bold text-white">Kein Systemwechsel. Keine Migration. Kein Jahresprojekt.</h2>
+                    <p class="mt-5 md:mt-6 text-xl md:text-2xl leading-[1.4] text-white/85 fw-book max-w-[900px]">KI-Agenten, die mit Ihren bestehenden Systemen Arbeit erledigen.</p>
                 </header>
                 <div class="mt-10 md:mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div class="security-card">
                         <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Souveräne Intelligenz</h3>
                         <p class="text-base text-black/60 leading-[1.6]">Modell-agnostisch, in Deutschland gehostet. Ihre Daten bleiben hier. DSGVO- und EU-AI-Act-kompatibel.</p>
-                    </div>
-                    <div class="security-card">
-                        <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Rechnet sich nicht? Bauen wir nicht.</h3>
-                        <p class="text-base text-black/60 leading-[1.6]">Vor jedem Fall steht die Rechnung: was der Vorgang heute kostet, was er mit Agent kostet.</p>
                     </div>
                     <div class="security-card">
                         <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px] mb-3">Läuft auf dem, was Sie haben.</h3>
@@ -318,7 +321,7 @@
             </div>
         </section>
     </div>
-    <!-- /zone-tint -->
+    <!-- /zone-sunrise -->
 
     <!-- VIDEO (Platzhalter, echtes Embed folgt) -->
     <section id="video" class="bg-white py-20 md:py-28 fade-in-scroll">
@@ -354,7 +357,7 @@
                     </li>
                     <li class="border-b border-white/25 py-6 md:py-8">
                         <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px]">Ihre Daten bleiben bei Ihnen.</h3>
-                        <p class="mt-2 text-base md:text-lg leading-[1.5] text-white/80 fw-book">In Ihren Systemen, unter Ihren Verträgen. Sie entscheiden, welches Modell welche Daten sieht und was das Haus nie verlässt.</p>
+                        <p class="mt-2 text-base md:text-lg leading-[1.5] text-white/80 fw-book">In Ihren Systemen, unter Ihren Verträgen.</p>
                     </li>
                 </ul>
             </div>
@@ -389,7 +392,7 @@
                         <span class="text-2xl md:text-3xl font-bold tracking-[-0.5px] leading-none pt-1" aria-hidden="true">3</span>
                         <div class="min-w-0">
                             <h3 class="text-xl md:text-2xl font-bold tracking-[-0.5px]">Produktiv in Wochen.</h3>
-                            <p class="mt-3 text-base md:text-lg leading-[1.6] text-black/60">Ihre Leute arbeiten damit, Sie sehen, was es bringt. Dann erst entscheiden Sie weiter.</p>
+                            <p class="mt-3 text-base md:text-lg leading-[1.6] text-black/60">Ihre Leute arbeiten damit, Sie sehen, was es bringt.</p>
                         </div>
                     </li>
                 </ol>
@@ -530,8 +533,6 @@
                     "KI-Agenten, die mit Ihren bestehenden Systemen Arbeit erledigen.": "AI agents that get work done with the systems you already run.",
                     "Souveräne Intelligenz": "Sovereign intelligence",
                     "Modell-agnostisch, in Deutschland gehostet. Ihre Daten bleiben hier. DSGVO- und EU-AI-Act-kompatibel.": "Model-agnostic, hosted in Germany. Your data stays here. GDPR and EU AI Act compliant.",
-                    "Rechnet sich nicht? Bauen wir nicht.": "Doesn't pay for itself? We don't build it.",
-                    "Vor jedem Fall steht die Rechnung: was der Vorgang heute kostet, was er mit Agent kostet.": "Every case starts with the math: what the process costs today, and what it costs with an agent.",
                     "Läuft auf dem, was Sie haben.": "Runs on what you already have.",
                     "ERP, CRM, Postfach: die Agenten arbeiten auf Ihren Systemen, nicht auf einem neuen.": "ERP, CRM, inbox: the agents work on your systems, not on a new one.",
                     "Wochen, nicht Monate.": "Weeks, not months.",
@@ -546,7 +547,7 @@
                     "An kein Modell gebunden.": "Tied to no single model.",
                     "Sophia ist modell-agnostisch. Jeder Vorgang läuft auf dem Modell, das ihn am besten kann, und wechselt, wenn ein besseres kommt.": "Sophia is model-agnostic. Every process runs on the model that handles it best, and switches when a better one arrives.",
                     "Ihre Daten bleiben bei Ihnen.": "Your data stays with you.",
-                    "In Ihren Systemen, unter Ihren Verträgen. Sie entscheiden, welches Modell welche Daten sieht und was das Haus nie verlässt.": "In your systems, under your contracts. You decide which model sees which data and what never leaves your company.",
+                    "In Ihren Systemen, unter Ihren Verträgen.": "In your systems, under your contracts.",
                     "Der erste Schritt": "The first step",
                     "Drei Stationen. Nach jeder können Sie aufhören.": "Three stages. You can stop after any one of them.",
                     "Ein Gespräch. 30 Minuten.": "One conversation. 30 minutes.",
@@ -554,7 +555,7 @@
                     "Ein Fall. Festes Angebot.": "One case. A fixed proposal.",
                     "Klar umrissen, Angebot vor dem Start. Und Sie zahlen nur die KI, die Sie wirklich nutzen.": "Clearly defined, with a proposal before anything starts. And you only pay for the AI you actually use.",
                     "Produktiv in Wochen.": "Live within weeks.",
-                    "Ihre Leute arbeiten damit, Sie sehen, was es bringt. Dann erst entscheiden Sie weiter.": "Your people work with it, you see what it delivers. Only then do you decide what comes next.",
+                    "Ihre Leute arbeiten damit, Sie sehen, was es bringt.": "Your people work with it, you see what it delivers.",
                 };
                 swap(EN);
                 document.title = "Time to free the Mittelstand. A manifesto by Sophia";
